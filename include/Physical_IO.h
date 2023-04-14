@@ -32,17 +32,19 @@ const uint8_t ENC_1_B = 26;
 // const uint8_t ENC_2_B = P4;
 
 // The buttons are on the pcf857X encoder. pins "Pn" are the PCF857X pin numbers
-const uint8_t BUTTON_JOY_1 = P0;
-const uint8_t BUTTON_JOY_2 = P1;
-const uint8_t BUTTON_JOY_3 = P2;
-const uint8_t BUTTON_JOY_4 = P3;
+const uint8_t BUTTON_1R = P1;
+const uint8_t BUTTON_2R = P2;
+const uint8_t BUTTON_3R = P3;
+const uint8_t BUTTON_4R = P4;
+const uint8_t BUTTON_5R = P5;
 
-const uint8_t BUTTON_1 = P8;
-const uint8_t BUTTON_2 = P9;
-const uint8_t BUTTON_3 = P10;
-const uint8_t BUTTON_4 = P11;
+const uint8_t BUTTON_1L = P11;
+const uint8_t BUTTON_2L = P12;
+const uint8_t BUTTON_3L = P13;
+const uint8_t BUTTON_4L = P14;
+const uint8_t BUTTON_5L = P15;
 
-const uint8_t ENC_1_SW = P14;
+const uint8_t ENC_1_SW = P0;
 
 extern PCF857X::DigitalInput pcf857X_inputs;
 extern const uint8_t HWButton_Pins[];

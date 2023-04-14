@@ -449,23 +449,27 @@ void printIOValues()
     tft.print(encoder1Value);
     tft.println("   "); 
 
-    tft.print(" Buttons 1-2-3-4: ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1));
+    tft.print(" Buttons 1L-2L-3L-4L-5L: ");
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1L));
     tft.print(" - ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2));
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2L));
     tft.print(" - ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_3));
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_3L));
     tft.print(" - ");
-    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_4));
+    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_4L));
+    tft.print(" - ");
+    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_5L));
 
-    tft.print(" Joystick Buttons 1-2-3-4: ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_JOY_1));
+    tft.print(" Buttons 1R-2R-3R-4R: ");
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1R));
     tft.print(" - ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_JOY_2));
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2R));
     tft.print(" - ");
-    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_JOY_3));
+    tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_3R));
     tft.print(" - ");
-    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_JOY_4));
+    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_4R));
+    tft.print(" - ");
+    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_5R));
 
     tft.print(" Joystick Mode Pins 0-1-2-3: ");
     tft.print(joystick_mode_pins[0]);

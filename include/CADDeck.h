@@ -273,7 +273,7 @@ struct CADConfig {
     uint16_t num_programs;
 };
 
-#define NUM_HW_BUTTONS 9
+#define NUM_HW_BUTTONS 11
 struct CADProgramConfig {
     uint8_t version;
     char name[32];

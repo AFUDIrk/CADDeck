@@ -15,7 +15,7 @@ uint8_t previous_joystick_mode = JoystickMode_None;
 long millis_last_joystick_move = 0;
 
 int8_t joystick_mode_pins[4] = {0, 0, 0, 0};
-const uint8_t HWButton_Pins[NUM_HW_BUTTONS] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4, BUTTON_JOY_1, BUTTON_JOY_2, BUTTON_JOY_3, BUTTON_JOY_4, ENC_1_SW};
+const uint8_t HWButton_Pins[NUM_HW_BUTTONS] = {BUTTON_1L, BUTTON_2L, BUTTON_3L, BUTTON_4L, BUTTON_5L, BUTTON_1R, BUTTON_2R, BUTTON_3R, BUTTON_4R, BUTTON_5R, ENC_1_SW};
 
 PCF857X::DigitalInput pcf857X_inputs;
 
