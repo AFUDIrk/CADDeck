@@ -460,7 +460,7 @@ void printIOValues()
     tft.print(" - ");
     tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_5L));
 
-    tft.print(" Buttons 1R-2R-3R-4R: ");
+    tft.print(" Buttons 1R-2R-3R-4R-5R: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1R));
     tft.print(" - ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2R));
