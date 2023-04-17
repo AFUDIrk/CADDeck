@@ -43,7 +43,7 @@
 			<form method='post' action='/restart'>
 				<button style="float: right;"
 					onclick="return confirm('Are you sure? Unsaved configuration will be lost!')" class="tablinks">
-					Restart </button>
+					Neu starten </button>
 			</form>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
@@ -85,11 +85,11 @@
 					<label for="ssid">WiFi SSID:</label><br>
 					<input type="text" id="ssid" name="ssid"><br><br>
 
-					<label for="password">WiFi Password:</label><br>
+					<label for="password">WiFi Passwort:</label><br>
 					<input type="password" id="password" name="password" autocomplete="new-password"><br>
 					<input type="checkbox" onclick="togglepassword()">Show Password <br><br>
 
-					&nbsp;&nbsp;Wifi Mode:&nbsp;
+					&nbsp;&nbsp;Wifi Modus:&nbsp;
 					<select class="wifimode" id='wifimode' name='wifimode'>
 						<option value="WIFI_STA">Station</option>
 						<option value="WIFI_AP">Access Point</option>
@@ -241,7 +241,7 @@
 
 			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="general">
-				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Save General Config</button>
+				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Allgemeine Konfig speichern</button>
 			</div>
 		</form>
 	</div>
@@ -251,7 +251,7 @@
 	<div id="menu" class="tabcontent">
 		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">download menu1.json</a></div>
 		<br>
-		<h3>Menu</h3>
+		<h3>Menü</h3>
 		<p>
 		<form method='post' id="savemenu" action='/saveconfig'>
 			<label for="framework">Wählen Sie Menü</label>
@@ -562,7 +562,7 @@
 		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">download cadparams.json</a>
 		</div>
 		<br>
-		<h3>CAD Settings</h3>
+		<h3>CAD-Einstellungen</h3>
 		<p>
 
 		<form method='post' id="cadparamsconfig" action='/saveconfig'>
@@ -656,7 +656,7 @@
 						</td>
 						<!-- <td style="width: 50%;"> -->
 						<td>
-							<br>Selected CAD Program:&nbsp;
+							<br>Ausgewähltes CAD-Programm:&nbsp;
 							<select name="selected_program" id='selected_program'
 								onchange="update_selected_program_items(this)">
 								<option value="0">Solidworks</option>
@@ -709,7 +709,7 @@
 									</td>
 								</tr>
 								<tr>
-									<br />Selected Button
+									<br />Ausgewählter Button
 									<br />Action 1:
 									<select class="actions" id='joybuttonaction0' name='joybuttonaction0'></select>
 									<select class="actions" id='joybuttonvalue0' name='joybuttonvalue0'></select>
@@ -735,27 +735,26 @@
 	</div>
 	<!-- Upload Logo -->
 	<div id="uploadimage" class="tabcontent">
-		<h3>Upload a new logo</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> You can customize the logos that are used. If you
-			upload a file with a name that already exists, the file is <u>overwritten</u>. You can only upload .bmp
-			images. There images should be in a 24-bit RGB format and should be no more then 75x75 pixels. Smaller
-			images are supported.<br /><br />
+		<h3>Laden Sie ein neues Logo hoch</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst die verwendeten Logos anpassen. Wenn du
+			eine Datei mit einem Namen hochlädst, der bereits existiert, wird die Datei <u>überschrieben</u>. Du kannst nur .bmp Bilder
+			hochladen. Die Bilder sollten im 24-Bit-RGB-Format vorliegen und nicht mehr als 75 x 75 Pixel groß sein. Kleinere
+			Bilder werden unterstützt.<br /><br />
 
-			Images that are used for Elgato's Stream Deck are also supported. These should also be in a 24-bit RGB
-			format. You can convert these using free online tools like <a
+			Auch Bilder, die für Elgatos Stream Deck verwendet werden, werden unterstützt. Diese sollten auch in einem 24-Bit-RGB Format
+			vorliegen. Du kannst diese mit kostenlosen Online-Tools wie konvertieren <a
 				href="https://online-converting.com/image/convert2bmp/"
 				target="_blank">https://online-converting.com/image/convert2bmp/</a>.<br /><br />
 
-			CADDeck will check the colour of the first pixel in the image. If that pixel is black (#000000),
-			all
-			black pixels will be rendered as transparent and the button colour chosen in the "General" tab will be
-			used.
-			If that pixel has a colour, the button will have that colour so that the image blends in nicely.
+				CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
+				werden alle schwarze Pixel transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe
+				wird transparent dargestellt.
+				Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
 		</div>
 		<p>
 		<div class="form" style="width: 10%; text-align: : center; margin: auto;">
 			<input form="uploadfile" type="file" name="name" accept=".bmp"><br /><br />
-			<button style='cursor: pointer;' form="uploadfile" type="save">Upload</button>
+			<button style='cursor: pointer;' form="uploadfile" type="save">Hochladen</button>
 		</div>
 		</p>
 	</div>
@@ -772,45 +771,45 @@
 
 	<!-- Upload JSON -->
 	<div id="uploadjson" class="tabcontent">
-		<h3>Upload a JSON Config File</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> You can upload a previously downloaded JSON file
-			to save you some time from having to configure a whole menu. The filename should be the menu name (all
-			lower-case), e.g. menu.json for Menu, menu2.json for Menu 2, etc. It is also a good idea to validate
-			your .json file if you made any manual modifications. You can do that using
+		<h3>Laden Sie eine JSON-Konfigurationsdatei hoch</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Sie können eine zuvor heruntergeladene JSON-Datei hochladen
+			um Ihnen etwas Zeit zu ersparen, da Sie nicht ein ganzes Menü konfigurieren müssen. Der Dateiname sollte der Menüname sein (alles
+			klein geschrieben), z.B. menu.json für Menü, menu2.json für Menü 2 usw. Es ist auch eine gute Idee
+			Ihre .json-Datei  zu validieren, wenn Sie manuelle Änderungen vorgenommen haben. Das kannst du machen mit
 			<a href="https://jsonlint.com/" target="_blank">JSONLint</a>
 			<br /><br />
 		</div>
 		<p>
 		<div class="form" style="width: 10%; text-align: center; margin: auto;">
 			<input form="uploadjsonfile" type="file" name="name" accept=".json"><br /><br />
-			<button style='cursor: pointer;' form="uploadjsonfile" type="save">Upload JSON</button>
+			<button style='cursor: pointer;' form="uploadjsonfile" type="save">JSON hochladen</button>
 		</div>
 		</p>
 	</div>
 
 	<!-- Download JSON -->
 	<div id="downloadjson" class="tabcontent">
-		<h3>Download a Menu Config File</h3>
-		<div style="width: 70%; text-align: center; margin: auto;"> Select a file from the list and download it to
-			the client computer. <br /><br /></div>
+		<h3>Laden Sie eine Menükonfigurationsdatei herunter</h3>
+		<div style="width: 70%; text-align: center; margin: auto;"> Wählen Sie eine Datei aus der Liste aus und laden Sie sie herunter
+			dem Client-Rechner. <br /><br /></div>
 		<p>
 		<div class="form" style="width: 20%; text-align: center; margin: auto;">
-			<label for="framework">Select Menu</label>
+			<label for="framework">Wählen Sie ein Menü</label>
 			<select name="menunumberlist_download" id="menunumberlist_download" form="downloadjsonfile">
-				<option value="0">Home Menu</option>
-				<option value="1">Menu 1</option>
-				<option value="2">Menu 2</option>
-				<option value="3">Menu 3</option>
-				<option value="4">Menu 4</option>
-				<option value="5">Menu 5</option>
-				<option value="6">Menu 6</option>
-				<option value="7">Menu 7</option>
-				<option value="8">Menu 8</option>
-				<option value="9">Menu 9</option>
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
 			</select>
 			<br /><br />
 			<!-- <input form="downloadjsonfile" type=hidden name="name" ><br /><br /> -->
-			<button style='cursor: pointer;' form="downloadjsonfile" type="save">Download</button>
+			<button style='cursor: pointer;' form="downloadjsonfile" type="save">herunterladen</button>
 		</div>
 		</p>
 	</div>
@@ -819,7 +818,7 @@
 
 	<!-- INFO -->
 	<div id="info" class="tabcontent">
-		<h3>About CADDeck</h3>
+		<h3>Über CADDeck</h3>
 		<div id="infocontent" style="width: 40%; text-align: left; margin: auto;">
 
 		</div>
