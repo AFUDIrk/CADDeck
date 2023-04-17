@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\" />
-	<title>CADDeck Configurator</title>
+	<title>CADDeck Konfigurator</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<script src="jquery-3.5.1.slim.min.js"></script>
@@ -16,7 +16,7 @@
 	<!-- <div id="contentloading" class="pageloading"> Loading the configurator.</div> -->
 
 	<div id="contentloading" class="pageloading">
-		Loading Configurator
+		Lade Konfigurator
 	</div>
 
 	<div id="ball-loader" class="ball-loader">
@@ -27,7 +27,7 @@
 	</div>
 
 	<div id="maincontent" style="display: none;">
-		<h1>CADDeck Configurator</h1>
+		<h1>CADDeck Konfigurator</h1>
 		<form class="form" method="post" action='/upload' id="uploadfile" enctype="multipart/form-data"></form>
 		<form class="form" method="post" action='/uploadJSON' id="uploadjsonfile" enctype="multipart/form-data"></form>
 		<form class="form" method="get" action='/downloadJSON' id="downloadjsonfile"></form>
@@ -35,10 +35,10 @@
 		<!-- Menu -->
 		<div class="tab">
 			<button class="tablinks" onclick="openMenu(event, 'wifi')">WiFi</button>
-			<button class="tablinks" onclick="openMenu(event, 'general')">Settings</button>
-			<button class="tablinks" onclick="openMenu(event, 'menu')">Menu</button>
-			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameters</button>
-			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Upload logo</button>
+			<button class="tablinks" onclick="openMenu(event, 'general')">Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'menu')">Menü</button>
+			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Logo hochladen</button>
 
 			<form method='post' action='/restart'>
 				<button style="float: right;"
@@ -48,24 +48,24 @@
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">File editor</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Upload Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Konfig Menü
+				hochladen</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Download Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
+				herunterladen</button>
 		</div>
 
 		<!-- Tab Intro -->
 		<div id="intro" class="tabcontent">
-			<h3>Welcome</h3>
+			<h3>Willkommen</h3>
 			<p>
-				Welcome to the configurator! Select an option/page from the top menu. If you have any questions,
-				join my
+				Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
+				mach mit bei meinem
 				Discord server: <a href="https://discord.gg/RE3XevS"
 					target="_blank">https://discord.gg/RE3XevS</a><br />
-				A guide on how to use the configurator can be found here: <a
+				Eine Anleitung zur Verwendung des Konfigurators finden Sie hier: <a
 					href="https://github.com/DustinWatts/FreeTouchDeck/wiki/3.-The-Configurator" target="_blank">
 					FreeTouchDeck Wiki</a>
 			</p>
@@ -74,7 +74,7 @@
 		<div id="wifi" class="tabcontent">
 			<div style="float: right; font-size: 11px"><a href="/download?file=wificonfig.json">download
 					wificonfig.json</a></div><br>
-			<h3>WiFi Settings</h3>
+			<h3>WiFi Einstellungen</h3>
 			<p>
 			<form method='post' id="savewifi" action='/saveconfig'>
 
@@ -98,7 +98,7 @@
 					<label for="wifihostname">Wifi Hostname:</label>
 					<input type="text" id="wifihostname" name="wifihostname"><br>
 
-					&nbsp;&nbsp;Connection attempts:&nbsp;
+					&nbsp;&nbsp;Verbindungsversuche:&nbsp;
 					<select class="attempts" id='attempts' name='attempts'>
 						<option value="5">5</option>
 						<option value="10">10</option>
@@ -106,7 +106,7 @@
 						<option value="20">20</option>
 					</select><br>
 
-					&nbsp;&nbsp;Delay between attempts:&nbsp;
+					&nbsp;&nbsp;Verzögerung zwischen Versuchen:&nbsp;
 					<select class="attemptdelay" id='attemptdelay' name='attemptdelay'>
 						<option value="100">100 ms</option>
 						<option value="500">500 ms</option>
@@ -117,7 +117,7 @@
 
 				<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 					<input type="hidden" id='save' name='save' value="wifi">
-					<br /><button style='cursor: pointer;' form="savewifi" type='save'>Save WiFi Config</button>
+					<br /><button style='cursor: pointer;' form="savewifi" type='save'>WLAN-Konfiguration speichern</button>
 				</div>
 			</form>
 
@@ -129,64 +129,64 @@
 		<div style="float: right; font-size: 11px"><a href="/download?file=general.json">download general.json</a>
 		</div>
 		<br>
-		<h3>General Settings</h3>
+		<h3>Allgemeine Einstellungen</h3>
 		<p>
 		<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-			<h2>Colors</h2>
+			<h2>Farben</h2>
 		</div>
 
 		<form method='post' id="generalconfig" action='/saveconfig'>
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				&nbsp;&nbsp;Menu Button Colour:&nbsp;
+				&nbsp;&nbsp;Farbe der Menüschaltfläche:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='menubuttoncolor'
 					name='menubuttoncolor' type="color" value=''>
-				&nbsp;&nbsp;Function Button Colour:&nbsp;
+				&nbsp;&nbsp;Farbe der Funktionsschaltfläche:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='functionbuttoncolor'
 					name='functionbuttoncolor' type="color" value=''>
-				&nbsp;&nbsp;Latch Colour:&nbsp;
+				&nbsp;&nbsp;Verriegelungsfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='latchcolor'
 					name='latchcolor' type="color" value=''>
-				&nbsp;&nbsp;Background Colour:&nbsp;
+				&nbsp;&nbsp;Hintergrundfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='background'
 					name='background' type="color" value=''>
 			</div><br>
 
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>Deep Sleep</h2>
+				<h2>Tiefschlaf</h2>
 			</div>
 
-			&nbsp;&nbsp;Deep Sleep:&nbsp;
+			&nbsp;&nbsp;Tiefschlaf:&nbsp;
 			<select class="sleepenable" id='sleepenable' name='sleepenable'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
-			&nbsp;&nbsp;Deep Sleep Timer:&nbsp;
+			&nbsp;&nbsp;Tiefschlaf-Timer:&nbsp;
 			<select class="sleeptimer" id='sleeptimer' name='sleeptimer'>
-				<option value="10">10 Minutes</option>
-				<option value="20">20 Minutes</option>
-				<option value="30">30 Minutes</option>
-				<option value="60">60 Minutes</option>
+				<option value="10">10 Minuten</option>
+				<option value="20">20 Minuten</option>
+				<option value="30">30 Minuten</option>
+				<option value="60">60 Minuten</option>
 			</select>
 			&nbsp;&nbsp;USB Comms:&nbsp;
 			<select class="usbcommsenable" id='usbcommsenable' name='usbcommsenable'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
 				<h2>Sound</h2>
 			</div>
 
-			&nbsp;&nbsp;Beep on Touch:&nbsp;
+			&nbsp;&nbsp;Signalton bei Berührung:&nbsp;
 			<select class="sleepenable" id='beep' name='beep'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
 
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>CADDeck Helpers</h2>
+				<h2>CADDeck-Helfer</h2>
 			</div>
 
-			&nbsp;&nbsp;Modifier 1:&nbsp;
+			&nbsp;&nbsp;Modifikator 1:&nbsp;
 			<select class="modifier1" id='modifier1' name='modifier1'>
 				<option value="0">None</option>
 				<option value="128">CTRL</option>
@@ -195,7 +195,7 @@
 				<option value="131">GUI</option>
 			</select>
 
-			&nbsp;&nbsp;Modifier 2:&nbsp;
+			&nbsp;&nbsp;Modifikator 2:&nbsp;
 			<select class="modifier2" id='modifier2' name='modifier2'>
 				<option value="0">None</option>
 				<option value="128">CTRL</option>
@@ -204,7 +204,7 @@
 				<option value="131">GUI</option>
 			</select>
 
-			&nbsp;&nbsp;Modifier 3:&nbsp;
+			&nbsp;&nbsp;Modifikator 3:&nbsp;
 			<select class="modifier3" id='modifier3' name='modifier3'>
 				<option value="0">None</option>
 				<option value="128">CTRL</option>
@@ -215,7 +215,7 @@
 
 			<br>
 
-			&nbsp;&nbsp;Delay after helper (ms):&nbsp;
+			&nbsp;&nbsp;Verzögerung nach Helfer (ms):&nbsp;
 			<select class="helperdelay" id='helperdelay' name='helperdelay'>
 				<option value="0">0</option>
 				<option value="100">100</option>
@@ -225,7 +225,7 @@
 			</select>
 
 
-			&nbsp;&nbsp;Menu on startup:&nbsp;
+			&nbsp;&nbsp;Menü beim Start:&nbsp;
 			<select class="startup_menu" id='startup_menu' name='startup_menu'>
 				<option value="0">0</option>
 				<option value="1">1</option>
@@ -254,21 +254,21 @@
 		<h3>Menu</h3>
 		<p>
 		<form method='post' id="savemenu" action='/saveconfig'>
-			<label for="framework">Select Menu</label>
+			<label for="framework">Wählen Sie Menü</label>
 			<select name="menunumberlist_save" id="menunumberlist_save" onchange="updateMenuItems(this)">
-				<option value="0">Home Menu</option>
-				<option value="1">Menu 1</option>
-				<option value="2">Menu 2</option>
-				<option value="3">Menu 3</option>
-				<option value="4">Menu 4</option>
-				<option value="5">Menu 5</option>
-				<option value="6">Menu 6</option>
-				<option value="7">Menu 7</option>
-				<option value="8">Menu 8</option>
-				<option value="9">Menu 9</option>
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
 			</select>
 			<div></div> <!-- Add a little space -->
-			<label for="menuname">Menu Name:</label>
+			<label for="menuname">Menü Name:</label>
 			<input type="text" id="menuname" name="menuname"><br><br>
 			<div></div> <!-- Add a little space -->
 			<table style="height: 250px; width: 100%; border: 1px solid #000088; text-align: left;">
@@ -567,7 +567,7 @@
 
 		<form method='post' id="cadparamsconfig" action='/saveconfig'>
 
-			&nbsp;&nbsp;Current CAD Program:&nbsp;
+			&nbsp;&nbsp;Aktuelles CAD-Programm:&nbsp;
 			<select name="current_program" id='current_program'>
 				<option value="0">Solidworks</option>
 				<option value="1">Fusion360</option>
@@ -577,10 +577,10 @@
 			</select>
 			<br><br>
 
-			&nbsp;&nbsp;Joystick Scale X:&nbsp;
+			&nbsp;&nbsp;Joystick-Skalierung X:&nbsp;
 			<input type="number" id="joy_scale_x" name="joy_scale_x" min="-5.0" max="5.0" step="0.01" value="3.00">
 
-			&nbsp;&nbsp;Joystick Scale Y:&nbsp;
+			&nbsp;&nbsp;Joystick-Skalierung Y:&nbsp;
 			<input type="number" id="joy_scale_y" name="joy_scale_y" min="-5.0" max="5.0" step="0.01" value="3.00">
 
 			&nbsp;&nbsp;Joystick Deadzone:&nbsp;
@@ -592,7 +592,7 @@
 				<option value="0.1">0.1</option>
 			</select>
 			<br><br>
-			&nbsp;&nbsp;Joystick Sensitivity:&nbsp;
+			&nbsp;&nbsp;Joystick Empfindlichkeit:&nbsp;
 			<select class="joy_sensitivity" id='joy_sensitivity' name='joy_sensitivity'>
 				<option value="5">5</option>
 				<option value="10">10</option>
@@ -602,7 +602,7 @@
 				<option value="200">200</option>
 			</select>
 
-			&nbsp;&nbsp;Thumbwheel Sensitivity:&nbsp;
+			&nbsp;&nbsp;Thumbwheel Empfindlichkeit:&nbsp;
 			<select class="thumbwheel_sensitivity" id='thumbwheel_sensitivity' name='thumbwheel_sensitivity'>
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -611,7 +611,7 @@
 				<option value="5">5</option>
 			</select>
 
-			&nbsp;&nbsp;Steady Time (ms):&nbsp;
+			&nbsp;&nbsp;Stabilisierungszeit (ms):&nbsp;
 			<select class="joy_steady_time" id='joy_steady_time' name='joy_steady_time'>
 				<option value="50">50</option>
 				<option value="100">100</option>
