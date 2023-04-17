@@ -1,0 +1,37 @@
+{
+    "ac parameters": {
+        "ac end value": "",
+        "ac start value": "1",
+        "ac sweep type": "Dec"
+    },
+    "dc parameters": {
+        "dc end value": "",
+        "dc source": "",
+        "dc start value": ""
+    },
+    "settings": {
+        "abstol": "1e-12",
+        "chgtol": "1e-15",
+        "gmin": "1e-12",
+        "itl1": "100",
+        "itl2": "50",
+        "itl4": "10",
+        "max limit": "2000",
+        "method": "TRAP",
+        "numpoints": "500",
+        "pivrel": "1e-3",
+        "pivtol": "1e-13",
+        "reltol": "1e-3",
+        "rshunt": "OFF",
+        "srcsteps": "0",
+        "trtol": "7",
+        "vntol": "1e-6"
+    },
+    "simulation type": "OP",
+    "temperature": 25,
+    "tran parameters": {
+        "tran start value": "",
+        "tran stop value": "",
+        "tran tmax": ""
+    }
+}

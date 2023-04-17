@@ -154,63 +154,63 @@ void configmode()
 
     if (String(wificonfig.ssid) == "YOUR_WIFI_SSID" || String(wificonfig.password) == "YOUR_WIFI_PASSWORD")  // Still default
     {
-        tft.println("WiFi Config still set to default! Starting as AP.");
-        MSG_WARNLN("[WARNING]: WiFi Config still set to default! Configurator started as AP.");
+        tft.println("WiFi Config noch auf Default gesetzt! Starte als AP.");
+        MSG_WARNLN("[WARNUNG]: WiFi Config noch auf Default gesetzt! Konfigurator als AP gestartet.");
         startDefaultAP();
-        tft.println("Started as AP because WiFi settings are still set to default.");
+        tft.println("Als AP gestartet, da die WLAN-Einstellungen noch auf Standard gesetzt sind.");
         tft.println("");
-        tft.println("To configure, connect to 'CADDeck' with password 'defaultpass'");
-        tft.println("Then go to http://CADDeck.local");
-        tft.print("The IP is: ");
+        tft.println("Verbinden Sie sich zur Konfiguration mit 'CADDeck' mit Passwort 'defaultpass'");
+        tft.println("Dann geh zu http://CADDeck.local");
+        tft.print("Die IP ist: ");
         tft.println(WiFi.softAPIP());
         return;
     }
     else if (String(wificonfig.ssid) == "FAILED" || String(wificonfig.password) == "FAILED" || String(wificonfig.wifimode) == "FAILED")  // The wificonfig.json failed to load
     {
-        tft.println("WiFi Config Failed to load! Starting as AP.");
-        MSG_WARNLN("[WARNING]: WiFi Config Failed to load! Configurator started as AP.");
+        tft.println("WLAN-Konfiguration konnte nicht geladen werden! Starte als AP.");
+        MSG_WARNLN("[WARNUNG]: WLAN-Konfiguration konnte nicht geladen werden! Konfigurator als AP gestartet.");
         startDefaultAP();
-        tft.println("Started as AP because WiFi settings failed to load.");
+        tft.println("Als AP gestartet, weil die WLAN-Einstellungen nicht geladen werden konnten.");
         tft.println("");
-        tft.println("To configure, connect to 'CADDeck' with password 'defaultpass'");
-        tft.println("Then go to http://CADDeck.local");
-        tft.print("The IP is: ");
+        tft.println("Verbinden Sie sich zur Konfiguration mit 'CADDeck' mit Passwort 'defaultpass'");
+        tft.println("Dann geh zu http://CADDeck.local");
+        tft.print("Die IP ist: ");
         tft.println(WiFi.softAPIP());
         return;
     }
     else if (strcmp(wificonfig.wifimode, "WIFI_STA") == 0) {
         if (!startWifiStation()) {
             startDefaultAP();
-            MSG_WARNLN("[WARNING]: Could not connect to AP, so started as AP.");
-            tft.println("Started as AP because WiFi connection failed.");
+            MSG_WARNLN("[WARNUNG]: Verbindung zum AP konnte nicht hergestellt werden, daher als AP gestartet.");
+            tft.println("Als AP gestartet, weil die WLAN-Verbindung fehlgeschlagen ist.");
             tft.println("");
-            tft.println("To configure, connect to 'CADDeck' with password 'defaultpass'");
-            tft.println("Then go to http://CADDeck.local");
-            tft.print("The IP is: ");
+            tft.println("Verbinden Sie sich zur Konfiguration mit 'CADDeck' mit Passwort 'defaultpass'");
+            tft.println("Dann geh zu http://CADDeck.local");
+            tft.print("Die IP ist: ");
             tft.println(WiFi.softAPIP());
         }
         else {
-            MSG_WARNLN("[WARNING]: Started as STA and in config mode.");
-            tft.println("Started as STA and in config mode.");
+            MSG_WARNLN("[WARNUNG]: Als STA und im Konfigurationsmodus gestartet.");
+            tft.println("Gestartet als STA und im Konfigurationsmodus.");
             tft.println("");
-            tft.println("To configure:");
+            tft.println("Zum Konfigurieren:");
             tft.println("http://CADDeck.local");
-            tft.print("The IP is: ");
+            tft.print("Die IP ist: ");
             tft.println(WiFi.localIP());
         }
     }
     else if (strcmp(wificonfig.wifimode, "WIFI_AP") == 0) {
-        MSG_WARNLN("[WARNING]: Started as AP and in config mode.");
+        MSG_WARNLN("[WARNUNG]: Als AP und im Konfigurationsmodus gestartet.");
         startWifiAP();
-        tft.println("Started as AP and in config mode.");
+        tft.println("Als AP und im Konfigurationsmodus gestartet.");
         tft.println("");
-        tft.println("To configure:");
+        tft.println("Zum Konfigurieren:");
         tft.println("http://CADDeck.local");
-        tft.print("The IP is: ");
+        tft.print("Die IP ist: ");
         tft.println(WiFi.softAPIP());
     }
     else {
-        MSG_WARNLN("[WARNING]: No valid config mode identified.");
+        MSG_WARNLN("[WARNUNG]: Kein gültiger Konfigurationsmodus identifiziert.");
     }
 }
 
@@ -341,9 +341,9 @@ bool checkfile(const char* filename, bool showMessage)
             tft.setTextFont(2);
             tft.setTextSize(2);
             tft.setTextColor(TFT_WHITE, TFT_BLACK);
-            tft.printf("%s not found!\n\n", filename);
+            tft.printf("%s nicht gefunden!\n\n", filename);
             tft.setTextSize(1);
-            tft.printf("If this has happend after confguration, the data on the ESP may \nbe corrupted.");
+            tft.printf("Wenn dies nach der Konfiguration passiert ist, Die Daten auf dem ESP sind möglicher \nweise beschädigt.");
         }
         return false;
     }
@@ -384,8 +384,8 @@ bool resetconfig(String file)
                 // Close the newly created file
                 newfile.close();
             }
-            MSG_INFOLN("[INFO] Done resetting.");
-            MSG_INFOLN("[INFO] Type \"restart\" to reload configuration.");
+            MSG_INFOLN("[INFO] Zurücksetzen abgeschlossen.");
+            MSG_INFOLN("[INFO] Geben Sie \"restart\" ein, um die Konfiguration neu zu laden.");
 
             // Close the default.json file
             defaultfile.close();

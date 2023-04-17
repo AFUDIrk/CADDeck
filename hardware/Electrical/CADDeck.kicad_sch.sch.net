@@ -1,0 +1,25 @@
+* SpiceNetList
+* 
+* Exported from CADDeck.kicad_sch.sch at 20.02.2023 17:07
+* 
+* EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+* 
+.TEMP=25.000000
+* --------- .OPTIONS ---------
+* --------- .PARAMS ---------
+
+* --------- simulation ---------
+.print DC 
+.print AC 
+.print TRAN 
+.END
+
+
+
+
+
+
+
+
+
+

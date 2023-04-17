@@ -1,0 +1,33 @@
+* SpiceNetList
+* 
+* Exported from CADDeck.kicad_sch.sch at 20.02.2023 17:07
+* 
+* EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+* 
+.TEMP=25.0
+
+* --------- .OPTIONS ---------
+.OPTIONS ABSTOL=1e-12 GMIN=1e-12 PIVREL=1e-3 ITL1=100 ITL2=50 PIVTOL=1e-13 RELTOL=1e-3 VNTOL=1e-6 CHGTOL=1e-15 ITL4=10 METHOD=TRAP SRCSTEPS=0 TRTOL=7 NODE
+
+* --------- .PARAMS ---------
+
+* --------- simulation ---------
+.control
+set filetype=ascii
+OP
+write CADDeck.kicad_sch.sch.sim
+.endc
+
+
+
+.END
+
+
+
+
+
+
+
+
+
+
