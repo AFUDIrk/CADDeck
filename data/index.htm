@@ -36,14 +36,14 @@
 		<div class="tab">
 			<button class="tablinks" onclick="openMenu(event, 'wifi')">WiFi</button>
 			<button class="tablinks" onclick="openMenu(event, 'general')">Einstellungen</button>
-			<button class="tablinks" onclick="openMenu(event, 'menu')">Menü</button>
-			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'menu')">Menu</button>
+			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameter</button>
 			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Logo hochladen</button>
 
 			<form method='post' action='/restart'>
 				<button style="float: right;"
 					onclick="return confirm('Are you sure? Unsaved configuration will be lost!')" class="tablinks">
-					Neu starten </button>
+					Neustart </button>
 			</form>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
@@ -59,7 +59,7 @@
 
 		<!-- Tab Intro -->
 		<div id="intro" class="tabcontent">
-			<h3>Willkommen</h3>
+			<h3>Welcome</h3>
 			<p>
 				Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
 				mach mit bei meinem
@@ -132,12 +132,12 @@
 		<h3>Allgemeine Einstellungen</h3>
 		<p>
 		<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-			<h2>Farben</h2>
+			<h2>Colors</h2>
 		</div>
 
 		<form method='post' id="generalconfig" action='/saveconfig'>
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				&nbsp;&nbsp;Farbe der Menüschaltfläche:&nbsp;
+				&nbsp;&nbsp;Farbe der Menüschaltfläche::&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='menubuttoncolor'
 					name='menubuttoncolor' type="color" value=''>
 				&nbsp;&nbsp;Farbe der Funktionsschaltfläche:&nbsp;
@@ -146,7 +146,7 @@
 				&nbsp;&nbsp;Verriegelungsfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='latchcolor'
 					name='latchcolor' type="color" value=''>
-				&nbsp;&nbsp;Hintergrundfarbe:&nbsp;
+				&nbsp;&nbsp;BHintergrundfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='background'
 					name='background' type="color" value=''>
 			</div><br>
@@ -155,12 +155,12 @@
 				<h2>Tiefschlaf</h2>
 			</div>
 
-			&nbsp;&nbsp;Tiefschlaf:&nbsp;
+			&nbsp;&nbsp;Deep Sleep:&nbsp;
 			<select class="sleepenable" id='sleepenable' name='sleepenable'>
 				<option value="true">Aktiviert</option>
 				<option value="false">Deaktiviert</option>
 			</select>
-			&nbsp;&nbsp;Tiefschlaf-Timer:&nbsp;
+			&nbsp;&nbsp;Tiefschlaf Timer:&nbsp;
 			<select class="sleeptimer" id='sleeptimer' name='sleeptimer'>
 				<option value="10">10 Minuten</option>
 				<option value="20">20 Minuten</option>
@@ -176,14 +176,14 @@
 				<h2>Sound</h2>
 			</div>
 
-			&nbsp;&nbsp;Signalton bei Berührung:&nbsp;
+			&nbsp;&nbsp;Beep on Touch:&nbsp;
 			<select class="sleepenable" id='beep' name='beep'>
 				<option value="true">Aktiviert</option>
 				<option value="false">Deaktiviert</option>
 			</select>
 
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>CADDeck-Helfer</h2>
+				<h2>CADDeck Helfer</h2>
 			</div>
 
 			&nbsp;&nbsp;Modifikator 1:&nbsp;
@@ -241,7 +241,7 @@
 
 			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="general">
-				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Allgemeine Konfig speichern</button>
+				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>llgemeine Konfig speichern</button>
 			</div>
 		</form>
 	</div>
@@ -251,10 +251,10 @@
 	<div id="menu" class="tabcontent">
 		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">download menu1.json</a></div>
 		<br>
-		<h3>Menü</h3>
+		<h3>Menu</h3>
 		<p>
 		<form method='post' id="savemenu" action='/saveconfig'>
-			<label for="framework">Wählen Sie Menü</label>
+			<label for="framework">Select Menu</label>
 			<select name="menunumberlist_save" id="menunumberlist_save" onchange="updateMenuItems(this)">
 				<option value="0">Home Menü</option>
 				<option value="1">Menü 1</option>
@@ -562,7 +562,7 @@
 		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">download cadparams.json</a>
 		</div>
 		<br>
-		<h3>CAD-Einstellungen</h3>
+		<h3>CAD Einstellungen</h3>
 		<p>
 
 		<form method='post' id="cadparamsconfig" action='/saveconfig'>
@@ -577,10 +577,10 @@
 			</select>
 			<br><br>
 
-			&nbsp;&nbsp;Joystick-Skalierung X:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung X:&nbsp;
 			<input type="number" id="joy_scale_x" name="joy_scale_x" min="-5.0" max="5.0" step="0.01" value="3.00">
 
-			&nbsp;&nbsp;Joystick-Skalierung Y:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung Y:&nbsp;
 			<input type="number" id="joy_scale_y" name="joy_scale_y" min="-5.0" max="5.0" step="0.01" value="3.00">
 
 			&nbsp;&nbsp;Joystick Deadzone:&nbsp;
@@ -591,8 +591,7 @@
 				<option value="0.05">0.05</option>
 				<option value="0.1">0.1</option>
 			</select>
-			<br><br>
-			&nbsp;&nbsp;Joystick Empfindlichkeit:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung:&nbsp;
 			<select class="joy_sensitivity" id='joy_sensitivity' name='joy_sensitivity'>
 				<option value="5">5</option>
 				<option value="10">10</option>
@@ -601,17 +600,48 @@
 				<option value="100">100</option>
 				<option value="200">200</option>
 			</select>
-
-			&nbsp;&nbsp;Thumbwheel Empfindlichkeit:&nbsp;
-			<select class="thumbwheel_sensitivity" id='thumbwheel_sensitivity' name='thumbwheel_sensitivity'>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
+			<br><br>
+			&nbsp;&nbsp;Zoomskalierung:&nbsp;
+			<input type="number" id="zoom_scale" name="zoom_scale" min="-5.0" max="5.0" step="0.01" value="3.00">
+			&nbsp;&nbsp;Zoom Deadzone:&nbsp;
+			<select class="zoom_deadzone" id='zoom_deadzone' name='zoom_deadzone'>
+				<option value="0">0</option>
+				<option value="0.01">0.01</option>
+				<option value="0.02">0.02</option>
+				<option value="0.05">0.05</option>
+				<option value="0.1">0.1</option>
 			</select>
-
-			&nbsp;&nbsp;Stabilisierungszeit (ms):&nbsp;
+			&nbsp;&nbsp;Zoom-Empfindlichkeit:&nbsp;
+			<select class="zoom_sensitivity" id='zoom_sensitivity' name='zoom_sensitivity'>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+			</select>
+			<br><br>
+			&nbsp;&nbsp;Drehempfindlichkeit:&nbsp;
+			<input type="number" id="rotate_scale" name="rotate_scale" min="-5.0" max="5.0" step="0.01" value="3.00">
+			&nbsp;&nbsp;Rotation Totzone:&nbsp;
+			<select class="rotate_deadzone" id='rotate_deadzone' name='rotate_deadzone'>
+				<option value="0">0</option>
+				<option value="0.01">0.01</option>
+				<option value="0.02">0.02</option>
+				<option value="0.05">0.05</option>
+				<option value="0.1">0.1</option>
+			</select>
+			&nbsp;&nbsp;Rotation Empfindlichkeit:&nbsp;
+			<select class="rotate_sensitivity" id='rotate_sensitivity' name='rotate_sensitivity'>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+			</select>
+			<br><br>
+			&nbsp;&nbsp;Bestätigungszeit (ms):&nbsp;
 			<select class="joy_steady_time" id='joy_steady_time' name='joy_steady_time'>
 				<option value="50">50</option>
 				<option value="100">100</option>
@@ -627,36 +657,34 @@
 						<!-- <td style="width: 50%;"> -->
 						<td>
 							<!-- Image Map Generated by http://www.image-map.net/ -->
-							<img src="ButtonLayout.png" usemap="#image-map-buttons">
+							<img src="ButtonLayout10.png" usemap="#image-map">
 
-							<map name="image-map-buttons">
-								<area alt="Button 11" title="Button 11" href="#" coords="66,52,40"
-									shape="circle" onclick="select_new_button(0)">
-								<area alt="Button 12" title="Button 12" href="#" coords="129,51,40"
-									shape="circle" onclick="select_new_button(1)">
-								<area alt="Button 13" title="Button 13" href="#" coords="69,110,40"
-									shape="circle" onclick="select_new_button(2)">
-								<area alt="Button 14" title="Button 14" href="#" coords="129,110,40"
-									shape="circle" onclick="select_new_button(3)">
-								<area alt="Button 15" title="Button 15" href="#" coords="129,170,40"
-									shape="circle" onclick="select_new_button(4)">
-								<area alt="Button 1" title="Button 1" href="#" coords="410,50,30"
-									shape="circle" onclick="select_new_button(5)">
-								<area alt="Button 2" title="Button 2" href="#" coords="470,50,30"
-									shape="circle" onclick="select_new_button(6)">
-								<area alt="Button 3" title="Button 3" href="#" coords="410,110,30"
-									shape="circle" onclick="select_new_button(7)">
-								<area alt="Button 4" title="Button 4" href="#" coords="470,110,30"
-									shape="circle" onclick="select_new_button(8)">
-								<area alt="Button 5" title="Button 5" href="#" coords="410,170,30"
-									shape="circle" onclick="select_new_button(9)">
-								<area alt="Encoder Button" title="Encoder Button" href="#" coords="265,110,30"
-									shape="circle" onclick="select_new_button(11)">
+							<map name="image-map">
+								<area target="" alt="Button 1" title="Button 1" href="#" coords="67,74,103,110"
+									shape="rect" onclick="select_new_button(0)">
+								<area target="" alt="Button 2" title="Button 2" href="#" coords="120,74,151,106"
+									shape="rect" onclick="select_new_button(1)">
+								<area target="" alt="Button 3" title="Button 3" href="#" coords="63,125,101,164"
+									shape="rect" onclick="select_new_button(2)">
+								<area target="" alt="Button 4" title="Button 4" href="#" coords="116,131,156,165"
+									shape="rect" onclick="select_new_button(3)">
+								<area target="" alt="Button 5" title="Button 5" href="#" coords="114,184,157,224"
+									shape="rect" onclick="select_new_button(4)">
+								<area target="" alt="Button 6" title="Button 6" href="#" coords="378,76,417,110"
+									shape="rect" onclick="select_new_button(5)">
+								<area target="" alt="Button 7" title="Button 7" href="#" coords="430,73,473,111"
+									shape="rect" onclick="select_new_button(6)">
+								<area target="" alt="Button 8" title="Button 8" href="#" coords="377,126,420,167"
+									shape="rect" onclick="select_new_button(7)">
+								<area target="" alt="Button 9" title="Button 9" href="#" coords="431,129,474,171"
+									shape="rect" onclick="select_new_button(8)">
+								<area target="" alt="Button 10" title="Button 10" href="#" coords="376,179,421,224"
+									shape="rect" onclick="select_new_button(9)">
 							</map>
 						</td>
 						<!-- <td style="width: 50%;"> -->
 						<td>
-							<br>Ausgewähltes CAD-Programm:&nbsp;
+							<br>Ausgewähltes CAD Programm:&nbsp;
 							<select name="selected_program" id='selected_program'
 								onchange="update_selected_program_items(this)">
 								<option value="0">Solidworks</option>
@@ -668,7 +696,7 @@
 							<br><br>
 							<table style="height: 250px; width: 100%;">
 								<tr>
-									<td style="width: 33%;">
+									<td style="width: 25%;">
 										<br />Joystick Schwenken
 										<br />Aktion 1:
 										<select class="actions" id='panmodeaction0' name='panmodeaction0'></select>
@@ -680,9 +708,33 @@
 										<select class="actions" id='panmodeaction2' name='panmodeaction2'></select>
 										<select class="actions" id='panmodevalue2' name='panmodevalue2'></select>
 									</td>
-									<td style="width: 33%;">
-										<br />Joystick Drehen
+									<td style="width: 25%;">
+										<br />Joystick Neigen
 										<br />Aktion 1:
+										<select class="actions" id='tiltmodeaction0' name='tiltmodeaction0'></select>
+										<select class="actions" id='tiltmodevalue0' name='tiltmodevalue0'></select>
+										<br />Aktion 2:
+										<select class="actions" id='tiltmodeaction1' name='tiltmodeaction1'></select>
+										<select class="actions" id='tiltmodevalue1' name='tiltmodevalue1'></select>
+										<br />Aktion 3:
+										<select class="actions" id='tiltmodeaction2' name='tiltmodeaction2'></select>
+										<select class="actions" id='tiltmodevalue2' name='tiltmodevalue2'></select>
+									</td>
+									<td style="width: 25%;">
+										<br />Joystick Zoom
+										<br />Aktion 1:
+										<select class="actions" id='zoommodeaction0' name='zoommodeaction0'></select>
+										<select class="actions" id='zoommodevalue0' name='zoommodevalue0'></select>
+										<br />Aktion 2:
+										<select class="actions" id='zoommodeaction1' name='zoommodeaction1'></select>
+										<select class="actions" id='zoommodevalue1' name='zoommodevalue1'></select>
+										<br />Aktion 3:
+										<select class="actions" id='zoommodeaction2' name='zoommodeaction2'></select>
+										<select class="actions" id='zoommodevalue2' name='zoommodevalue2'></select>
+									</td>
+									<td style="width: 25%;">
+										<br />Joystick Drehen
+										<br />Action 1:
 										<select class="actions" id='rotatemodeaction0'
 											name='rotatemodeaction0'></select>
 										<select class="actions" id='rotatemodevalue0' name='rotatemodevalue0'></select>
@@ -695,18 +747,7 @@
 											name='rotatemodeaction2'></select>
 										<select class="actions" id='rotatemodevalue2' name='rotatemodevalue2'></select>
 									</td>
-									<td style="width: 34%;">
-										<br />Joystick Zoom
-										<br />Aktion 1:
-										<select class="actions" id='zoommodeaction0' name='zoommodeaction0'></select>
-										<select class="actions" id='zoommodevalue0' name='zoommodevalue0'></select>
-										<br />Aktion 2:
-										<select class="actions" id='zoommodeaction1' name='zoommodeaction1'></select>
-										<select class="actions" id='zoommodevalue1' name='zoommodevalue1'></select>
-										<br />Aktion 3:
-										<select class="actions" id='zoommodeaction2' name='zoommodeaction2'></select>
-										<select class="actions" id='zoommodevalue2' name='zoommodevalue2'></select>
-									</td>
+
 								</tr>
 								<tr>
 									<br />Ausgewählter Button
@@ -746,7 +787,7 @@
 				href="https://online-converting.com/image/convert2bmp/"
 				target="_blank">https://online-converting.com/image/convert2bmp/</a>.<br /><br />
 
-				CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
+			CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
 				werden alle schwarze Pixel transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe
 				wird transparent dargestellt.
 				Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
@@ -761,7 +802,7 @@
 
 	<!-- File Editor -->
 	<div id="editor" class="tabcontent">
-		<h3>Dateien entfernen</h3>
+		<h3>ateien entfernen</h3>
 
 		<div class="form" id=deletefilelist style="width: 20%; text-align: left; margin: auto;">
 
@@ -789,7 +830,7 @@
 
 	<!-- Download JSON -->
 	<div id="downloadjson" class="tabcontent">
-		<h3>Laden Sie eine Menükonfigurationsdatei herunter</h3>
+		<h3>Download a Menu Config File</h3>
 		<div style="width: 70%; text-align: center; margin: auto;"> Wählen Sie eine Datei aus der Liste aus und laden Sie sie herunter
 			dem Client-Rechner. <br /><br /></div>
 		<p>
@@ -809,7 +850,7 @@
 			</select>
 			<br /><br />
 			<!-- <input form="downloadjsonfile" type=hidden name="name" ><br /><br /> -->
-			<button style='cursor: pointer;' form="downloadjsonfile" type="save">herunterladen</button>
+			<button style='cursor: pointer;' form="downloadjsonfile" type="save">Herunterladen</button>
 		</div>
 		</p>
 	</div>
@@ -820,7 +861,7 @@
 	<div id="info" class="tabcontent">
 		<h3>Über CADDeck</h3>
 		<div id="infocontent" style="width: 40%; text-align: left; margin: auto;">
-			Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
+           Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
 			mach mit bei meinem
 			Discord server: <a href="https://discord.gg/RE3XevS"
 				target="_blank">https://discord.gg/RE3XevS</a><br />
@@ -836,23 +877,6 @@
 
 	<!-- ---------------------- javscript includes ---------------------- -->
 
-	<!--  Password toggle -->
-	<!--<script src="togglepassword.js"></script>-->
-
-	<!-- Menu Handler -->
-	<!--<script src="openmenu.js"></script>-->
-
-	<!-- Load the array with all the dropdown menu items  -->
-	<!--<script src="selecteditems.js"></script>-->
-
-	<!-- Look for change in savemenu form. Then find out what was changed so that value lists can be updated -->
-	<!--<script src="savemenu.js"></script>-->
-
-	<!-- Loading button function -->
-	<!--<script src="loadbuttons.js"></script>-->
-
-	<!--  Load Config data from JSON -->
-	<!--<script src="loadconfig.js"></script>-->
 
 	<script>
 		function togglepassword() {
@@ -937,7 +961,7 @@
 				value: '1'
 			},
 			{
-				name: 'Pfeil Abwärts ',
+				name: 'Pfeil Abwärts',
 				value: '2'
 			},
 			{
@@ -1002,7 +1026,7 @@
 				value: '2'
 			},
 			{
-				name: 'Lautstärke höher',
+				name: 'Lautstärke hoch',
 				value: '3'
 			},
 			{
@@ -1014,7 +1038,7 @@
 				value: '5'
 			},
 			{
-				name: 'Weitert',
+				name: 'Weiter',
 				value: '6'
 			},
 			{
@@ -1532,7 +1556,7 @@
 				value: '10'
 			},
 			{
-				name: 'Helper 11',
+				name: 'Helfer 11',
 				value: '11'
 			}
 
@@ -1562,7 +1586,7 @@
 				value: '5'
 			},
 			{
-				name: 'Gehe zu Menü 0 (Home)',
+				name: 'ehe zu Menü 0 (Home)',
 				value: '6'
 			},
 			{
@@ -1649,31 +1673,31 @@
 			name: 'Benutzeraktionen',
 			value: '13',
 			subitems: [{
-				name: 'Aktionen 1',
+				name: 'Aktion 1',
 				value: '1'
 			},
 			{
-				name: 'Aktionen 2',
+				name: 'Aktion 2',
 				value: '2'
 			},
 			{
-				name: 'Aktionen 3',
+				name: 'Aktion 3',
 				value: '3'
 			},
 			{
-				name: 'Aktionen 4',
+				name: 'Aktion 4',
 				value: '4'
 			},
 			{
-				name: 'Aktionen 5',
+				name: 'Aktion 5',
 				value: '5'
 			},
 			{
-				name: 'Aktionen 6',
+				name: 'Aktion 6',
 				value: '6'
 			},
 			{
-				name: 'Aktionen 7',
+				name: 'Aktion 7',
 				value: '7'
 			}
 
@@ -1728,32 +1752,52 @@
 				value: '2'
 			},
 			{
-				name: 'Joystick-Skalierung',
+				name: 'Joystick Skalierung',
 				value: '3'
 			},
 			{
-				name: 'Joystick Invert X',
+				name: 'Zoom Skalierung',
 				value: '4'
 			},
 			{
-				name: 'Joystick Invert Y',
+				name: 'Rotate Skalierung',
 				value: '5'
 			},
 			{
-				name: 'Einstellungen speichern',
+				name: 'Joystick Invert X',
 				value: '6'
 			},
 			{
-				name: 'Joystick Schwenken',
+				name: 'Joystick Invert Y',
 				value: '7'
 			},
 			{
-				name: 'Joystick Drehen',
+				name: 'Zoom Invert',
 				value: '8'
 			},
 			{
-				name: 'Joystick Zoom',
+				name: 'Rotate Invert',
 				value: '9'
+			},
+			{
+				name: 'Einstellungen speichern',
+				value: '10'
+			},
+			{
+				name: 'Joystick-Schwenken',
+				value: '11'
+			},
+			{
+				name: 'Joystick-Neigung',
+				value: '12'
+			},
+			{
+				name: 'Joystick Zoom',
+				value: '13'
+			},
+			{
+				name: 'Joystick drehen',
+				value: '14'
 			}
 			]
 		},
@@ -1788,7 +1832,7 @@
 				name: 'Drücke Rechten Button',
 				value: '2'
 			}, {
-				name: 'Drücke Mittleren Button',
+				name: 'PDrücke Mittleren Button',
 				value: '3'
 			}, {
 				name: 'Drücke Linken und Mittleren Button',
@@ -1809,7 +1853,7 @@
 				name: 'Freigeben Linken und Mittleren Button',
 				value: '9'
 			}, {
-				name: 'Freigeben Rechten und Mittleren Button',
+				name: 'Freigeben Rechten und Mittleren Button'',
 				value: '10'
 			}, {
 				name: 'Freigeben AllE Buttons',
@@ -1818,7 +1862,7 @@
 			]
 		},
 		{
-			name: 'Vorherige Seite',
+			name: 'Previous Page',
 			value: '18',
 			subitems: [{
 				name: 'Keine Aktion',
@@ -3115,19 +3159,20 @@
 				})
 				.change();
 
-			// joystick button actions
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#rotatemodeaction0');
-				temp[this.value] = this.subitems;
-			});
 
-			$('#rotatemodeaction0')
+			// joystick tilt mode actions
+			$.each(items, function () {
+					$('<option />')
+						.attr('value', this.value)
+						.html(this.name)
+						.appendTo('#tiltmodeaction0');
+					temp[this.value] = this.subitems;
+				});
+
+			$('#tiltmodeaction0')
 				.change(function () {
 					var value = $(this).val();
-					var menu = $('#rotatemodevalue0');
+					var menu = $('#tiltmodevalue0');
 
 					menu.empty();
 					$.each(temp[value], function () {
@@ -3136,13 +3181,13 @@
 							.html(this.name)
 							.appendTo(menu);
 					});
-					update_axisbutton_def(this, RotateAxis, 1, 0);
+					update_axisbutton_def(this, TiltAxis, 1, 0);
 				})
 				.change();
 
-			$('#rotatemodevalue0')
+			$('#tiltmodevalue0')
 				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 0);
+					update_axisbutton_def(this, TiltAxis, 2, 0);
 				})
 				.change();
 
@@ -3150,14 +3195,14 @@
 				$('<option />')
 					.attr('value', this.value)
 					.html(this.name)
-					.appendTo('#rotatemodeaction1');
+					.appendTo('#tiltmodeaction1');
 				temp[this.value] = this.subitems;
 			});
 
-			$('#rotatemodeaction1')
+			$('#tiltmodeaction1')
 				.change(function () {
 					var value = $(this).val();
-					var menu = $('#rotatemodevalue1');
+					var menu = $('#tiltmodevalue1');
 
 					menu.empty();
 					$.each(temp[value], function () {
@@ -3166,13 +3211,13 @@
 							.html(this.name)
 							.appendTo(menu);
 					});
-					update_axisbutton_def(this, RotateAxis, 1, 1);
+					update_axisbutton_def(this, TiltAxis, 1, 1);
 				})
 				.change();
 
-			$('#rotatemodevalue1')
+			$('#tiltmodevalue1')
 				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 1);
+					update_axisbutton_def(this, TiltAxis, 2, 1);
 				})
 				.change();
 
@@ -3180,14 +3225,14 @@
 				$('<option />')
 					.attr('value', this.value)
 					.html(this.name)
-					.appendTo('#rotatemodeaction2');
+					.appendTo('#tiltmodeaction2');
 				temp[this.value] = this.subitems;
 			});
 
-			$('#rotatemodeaction2')
+			$('#tiltmodeaction2')
 				.change(function () {
 					var value = $(this).val();
-					var menu = $('#rotatemodevalue2');
+					var menu = $('#tiltmodevalue2');
 
 					menu.empty();
 					$.each(temp[value], function () {
@@ -3196,16 +3241,15 @@
 							.html(this.name)
 							.appendTo(menu);
 					});
-					update_axisbutton_def(this, RotateAxis, 1, 2);
+					update_axisbutton_def(this, TiltAxis, 1, 2);
 				})
 				.change();
 
-			$('#rotatemodevalue2')
+			$('#tiltmodevalue2')
 				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 2);
+					update_axisbutton_def(this, TiltAxis, 2, 2);
 				})
 				.change();
-
 
 			// joystick zoom mode actions
 			$.each(items, function () {
@@ -3295,6 +3339,97 @@
 			$('#zoommodevalue2')
 				.change(function () {
 					update_axisbutton_def(this, ZoomAxis, 2, 2);
+				})
+				.change();
+
+			// joystick button actions
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#rotatemodeaction0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#rotatemodeaction0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#rotatemodevalue0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_axisbutton_def(this, RotateAxis, 1, 0);
+				})
+				.change();
+
+			$('#rotatemodevalue0')
+				.change(function () {
+					update_axisbutton_def(this, RotateAxis, 2, 0);
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#rotatemodeaction1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#rotatemodeaction1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#rotatemodevalue1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_axisbutton_def(this, RotateAxis, 1, 1);
+				})
+				.change();
+
+			$('#rotatemodevalue1')
+				.change(function () {
+					update_axisbutton_def(this, RotateAxis, 2, 1);
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#rotatemodeaction2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#rotatemodeaction2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#rotatemodevalue2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_axisbutton_def(this, RotateAxis, 1, 2);
+				})
+				.change();
+
+			$('#rotatemodevalue2')
+				.change(function () {
+					update_axisbutton_def(this, RotateAxis, 2, 2);
 				})
 				.change();
 
@@ -3552,24 +3687,30 @@
 			[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]]]];
 
-		// Five applications, each with three axis, each with action and value arrays
+		// Five applications, each with four axis, each with action and value arrays
 		const PanAxis = 0;
-		const RotateAxis = 1;
+		const TiltAxis = 1;
 		const ZoomAxis = 2;
+		const RotateAxis = 3;
 		axisbuttondefs =
 			[[[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]],
-			[["0", "0", "0"], ["0", "0", "0"]]],
-			[[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]]],
 			[[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]],
-			[["0", "0", "0"], ["0", "0", "0"]]],
-			[[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]]],
 			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]],
 			[["0", "0", "0"], ["0", "0", "0"]]]];
 
@@ -3589,7 +3730,12 @@
 					document.getElementById("joy_scale_y").value = data.joy_scale_y;
 					document.getElementById("joy_deadzone").value = data.joy_deadzone;
 					document.getElementById("joy_sensitivity").value = data.joy_sensitivity;
-					document.getElementById("thumbwheel_sensitivity").value = data.thumbwheel_sensitivity;
+					document.getElementById("zoom_scale").value = data.zoom_scale;
+					document.getElementById("zoom_deadzone").value = data.zoom_deadzone;
+					document.getElementById("zoom_sensitivity").value = data.zoom_sensitivity;
+					document.getElementById("rotate_scale").value = data.rotate_scale;
+					document.getElementById("rotate_deadzone").value = data.rotate_deadzone;
+					document.getElementById("rotate_sensitivity").value = data.rotate_sensitivity;
 					document.getElementById("joy_steady_time").value = data.joy_steady_time;
 					document.getElementById("current_program").value = data.current_program;
 					document.getElementById("selected_program").value = data.current_program;
@@ -3602,6 +3748,13 @@
 						axisbuttondefs[program][PanAxis][1][1] = data.programs[program].pan.valuearray[1];
 						axisbuttondefs[program][PanAxis][1][2] = data.programs[program].pan.valuearray[2];
 
+						axisbuttondefs[program][TiltAxis][0][0] = data.programs[program].tilt.actionarray[0];
+						axisbuttondefs[program][TiltAxis][0][1] = data.programs[program].tilt.actionarray[1];
+						axisbuttondefs[program][TiltAxis][0][2] = data.programs[program].tilt.actionarray[2];
+						axisbuttondefs[program][TiltAxis][1][0] = data.programs[program].tilt.valuearray[0];
+						axisbuttondefs[program][TiltAxis][1][1] = data.programs[program].tilt.valuearray[1];
+						axisbuttondefs[program][TiltAxis][1][2] = data.programs[program].tilt.valuearray[2];
+						
 						axisbuttondefs[program][RotateAxis][0][0] = data.programs[program].rotate.actionarray[0];
 						axisbuttondefs[program][RotateAxis][0][1] = data.programs[program].rotate.actionarray[1];
 						axisbuttondefs[program][RotateAxis][0][2] = data.programs[program].rotate.actionarray[2];
@@ -3661,6 +3814,28 @@
 			fillvaluelist(document.getElementById('panmodevalue2'), selecteditems[axisbuttondefs[program_index][PanAxis][0][2]].subitems);
 			document.getElementById('panmodevalue2').value = axisbuttondefs[program_index][PanAxis][1][2];
 
+			document.getElementById('tiltmodeaction0').value = axisbuttondefs[program_index][TiltAxis][0][0];
+			document.getElementById('tiltmodeaction1').value = axisbuttondefs[program_index][TiltAxis][0][1];
+			document.getElementById('tiltmodeaction2').value = axisbuttondefs[program_index][TiltAxis][0][2];
+
+			fillvaluelist(document.getElementById('tiltmodevalue0'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][0]].subitems);
+			document.getElementById('tiltmodevalue0').value = axisbuttondefs[program_index][TiltAxis][1][0];
+			fillvaluelist(document.getElementById('tiltmodevalue1'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][1]].subitems);
+			document.getElementById('tiltmodevalue1').value = axisbuttondefs[program_index][TiltAxis][1][1];
+			fillvaluelist(document.getElementById('tiltmodevalue2'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][2]].subitems);
+			document.getElementById('tiltmodevalue2').value = axisbuttondefs[program_index][TiltAxis][1][2];
+			
+			document.getElementById('zoommodeaction0').value = axisbuttondefs[program_index][ZoomAxis][0][0];
+			document.getElementById('zoommodeaction1').value = axisbuttondefs[program_index][ZoomAxis][0][1];
+			document.getElementById('zoommodeaction2').value = axisbuttondefs[program_index][ZoomAxis][0][2];
+
+			fillvaluelist(document.getElementById('zoommodevalue0'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][0]].subitems);
+			document.getElementById('zoommodevalue0').value = axisbuttondefs[program_index][ZoomAxis][1][0];
+			fillvaluelist(document.getElementById('zoommodevalue1'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][1]].subitems);
+			document.getElementById('zoommodevalue1').value = axisbuttondefs[program_index][ZoomAxis][1][1];
+			fillvaluelist(document.getElementById('zoommodevalue2'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][2]].subitems);
+			document.getElementById('zoommodevalue2').value = axisbuttondefs[program_index][ZoomAxis][1][2];
+			
 			document.getElementById('rotatemodeaction0').value = axisbuttondefs[program_index][RotateAxis][0][0];
 			document.getElementById('rotatemodeaction1').value = axisbuttondefs[program_index][RotateAxis][0][1];
 			document.getElementById('rotatemodeaction2').value = axisbuttondefs[program_index][RotateAxis][0][2];
@@ -3672,16 +3847,6 @@
 			fillvaluelist(document.getElementById('rotatemodevalue2'), selecteditems[axisbuttondefs[program_index][RotateAxis][0][2]].subitems);
 			document.getElementById('rotatemodevalue2').value = axisbuttondefs[program_index][RotateAxis][1][2];
 
-			document.getElementById('zoommodeaction0').value = axisbuttondefs[program_index][ZoomAxis][0][0];
-			document.getElementById('zoommodeaction1').value = axisbuttondefs[program_index][ZoomAxis][0][1];
-			document.getElementById('zoommodeaction2').value = axisbuttondefs[program_index][ZoomAxis][0][2];
-
-			fillvaluelist(document.getElementById('zoommodevalue0'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][0]].subitems);
-			document.getElementById('zoommodevalue0').value = axisbuttondefs[program_index][ZoomAxis][1][0];
-			fillvaluelist(document.getElementById('zoommodevalue1'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][1]].subitems);
-			document.getElementById('zoommodevalue1').value = axisbuttondefs[program_index][ZoomAxis][1][1];
-			fillvaluelist(document.getElementById('zoommodevalue2'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][2]].subitems);
-			document.getElementById('zoommodevalue2').value = axisbuttondefs[program_index][ZoomAxis][1][2];
 		}
 
 		function select_new_button(button_index) {
@@ -3702,6 +3867,8 @@
 				let axisPrefix = "";
 				if (axis == PanAxis) {
 					axisPrefix = "pan";
+				} else if (axis == TiltAxis) {
+					axisPrefix = "tilt";
 				} else if (axis == RotateAxis) {
 					axisPrefix = "rotate";
 				} else if (axis == ZoomAxis) {

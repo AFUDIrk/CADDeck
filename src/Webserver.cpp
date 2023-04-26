@@ -482,13 +482,13 @@ void handlerSetup()
                     }
                 }
                 else if (buttonType == 1) {
-                    cadprogramconfig[appIndex].rotate[arrayIndex].action = action;
+                    cadprogramconfig[appIndex].tilt[arrayIndex].action = action;
 
                     if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].rotate[arrayIndex].symbol, value.c_str());
+                        strcpy(cadprogramconfig[appIndex].tilt[arrayIndex].symbol, value.c_str());
                     }
                     else {
-                        cadprogramconfig[appIndex].rotate[arrayIndex].value = value.toInt();
+                        cadprogramconfig[appIndex].tilt[arrayIndex].value = value.toInt();
                     }
                 }
                 else if (buttonType == 2) {

@@ -1,8 +1,11 @@
 #pragma once
 
+// This code is being developed on two different hardware platforms with different pin allocations.
+#define NEW_PINS
+
 // Basic macros for debug and info messages to the serial port
 #define LOG_MSG_BASIC 1
-#define LOG_MSG_LEVEL 2  // 1=ERROR, 2=ERROR+WARN, 3=ERROR+WARN+INFO
+#define LOG_MSG_LEVEL 1  // 1=ERROR, 2=ERROR+WARN, 3=ERROR+WARN+INFO
 #define LOG_MSG_DEBUG 1
 #define LOG_MSG_TOUCH_DEBUG 0  // messages to console each time a touch is detected
 #define USE_DEBUG_PINS 0
@@ -268,7 +271,12 @@ struct CADConfig {
     float joy_scale_y;
     float joy_deadzone;
     float joy_sensitivity;
-    float thumbwheel_sensitivity;
+    float zoom_scale;
+    float zoom_deadzone;
+    float zoom_sensitivity;
+    float rotate_scale;
+    float rotate_deadzone;
+    float rotate_sensitivity;
     float joy_steady_time;
     uint16_t num_programs;
 };
@@ -280,8 +288,9 @@ struct CADProgramConfig {
     char logo[32];
     uint8_t default_joystick_mode;
     Actions pan[3];
-    Actions rotate[3];
+    Actions tilt[3];
     Actions zoom[3];
+    Actions rotate[3];
     uint16_t num_buttons;
     Actions hw_buttons[NUM_HW_BUTTONS][3];
     uint8_t hw_button_state[NUM_HW_BUTTONS];
@@ -367,18 +376,24 @@ enum CADFnEnum {
     CADFn_SetCADProgram = 1,
     CADFn_CalibrateZero = 2,
     CADFn_CalibrateJoyScale = 3,
-    CADFn_InvertJoyScaleX = 4,
-    CADFn_InvertJoyScaleY = 5,
-    CADFn_SaveCADConfig = 6,
-    CADFn_JoystickPan = 7,
-    CADFn_JoystickRotate = 8,
-    CADFn_JoystickZoom = 9
+    CADFn_CalibrateZoomScale = 4,
+    CADFn_CalibrateRotateScale = 5,
+    CADFn_InvertJoyScaleX = 6,
+    CADFn_InvertJoyScaleY = 7,
+    CADFn_InvertScaleZoom = 8,
+    CADFn_InvertScaleRotate = 9,
+    CADFn_SaveCADConfig = 10,
+    CADFn_JoystickPan = 11,
+    CADFn_JoystickTilt = 12,
+    CADFn_JoystickZoom = 13,
+    CADFn_JoystickRotate = 14
 };
 
 enum JoystickMode {
-    JoystickMode_None = 0,
-    JoystickMode_Pan = 1,
-    JoystickMode_Rotate = 2,
-    JoystickMode_Zoom = 3,
-    JoystickMode_Mouse = 4,
+    JoystickModeNone = 0,
+    JoystickModePan = 1,
+    JoystickModeTilt = 2,
+    JoystickModeZoom = 3,
+    JoystickModeRotate = 4,
+    JoystickModeMouse = 5
 };

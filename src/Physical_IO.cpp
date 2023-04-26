@@ -1,39 +1,36 @@
 #include "Physical_IO.h"
 
 Joystick joystick(JOYSTICK_X, JOYSTICK_Y);
+AnalogControl zoomControl(ZOOM_PIN);
+AnalogControl rotateControl(ROTATE_PIN);
 
 PCF857X pcf857X(PCF857X_ADDR);  // Note that the SCL and SDA pins have already been defined as part of
-                                   // the touch screen setup.
+                                // the touch screen setup.
 
-
-long encoder1Value = 0;
-long lastEncoder1Value = 0;
-bool encoder1Changed = false;
-
-uint8_t current_joystick_mode = JoystickMode_None;
-uint8_t previous_joystick_mode = JoystickMode_None;
+uint8_t current_joystick_mode = JoystickModeNone;
+uint8_t previous_joystick_mode = JoystickModeNone;
 long millis_last_joystick_move = 0;
 
-int8_t joystick_mode_pins[4] = {0, 0, 0, 0};
-const uint8_t HWButton_Pins[NUM_HW_BUTTONS] = {BUTTON_1L, BUTTON_2L, BUTTON_3L, BUTTON_4L, BUTTON_5L, BUTTON_1R, BUTTON_2R, BUTTON_3R, BUTTON_4R, BUTTON_5R, ENC_1_SW};
+int8_t joystick_mode_pins[4] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4};
+const uint8_t HWButton_Pins[NUM_HW_BUTTONS] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4, BUTTON_5, BUTTON_6, BUTTON_7, BUTTON_8, BUTTON_9, BUTTON_10};
 
 PCF857X::DigitalInput pcf857X_inputs;
-
-// Encoder encoder1(ENC_1_A, ENC_1_B);
-//  Setup a RotaryEncoder with 2 steps per latch for the 2 signal input pins:
-RotaryEncoder encoder1(ENC_1_A, ENC_1_B, RotaryEncoder::LatchMode::TWO03);
-
-void encoder1_ISR();
 
 void init_io()
 {
     MSG_INFOLN("[INFO] Init joystick");
     joystick.Init();
-
     joystick.SetDeadzone(cadconfig.joy_deadzone);
     joystick.SetScale(0, cadconfig.joy_scale_x);
     joystick.SetScale(1, cadconfig.joy_scale_y);
 
+    zoomControl.Init();
+    zoomControl.SetDeadzone(cadconfig.zoom_deadzone);
+    zoomControl.SetScale(cadconfig.zoom_scale);
+
+    rotateControl.Init();
+    rotateControl.SetDeadzone(cadconfig.rotate_deadzone);
+    rotateControl.SetScale(cadconfig.rotate_scale);
 
     MSG_INFOLN("[INFO] Init pcf857X pins");
     // All pins are inputs. Note that the PCF857X library doesn't support pullups, so
@@ -43,16 +40,6 @@ void init_io()
     }
 
     pcf857X.begin(false);  // false so as not to start the I2C bus (already done by the touch controller)
-
-    attachInterrupt(ENC_1_A, encoder1_ISR, CHANGE);
-    attachInterrupt(ENC_1_B, encoder1_ISR, CHANGE);
-}    
-
-void encoder1_ISR()
-{
-    noInterrupts();
-    encoder1.tick();
-    interrupts();
 }
 
 void update_io()
@@ -60,23 +47,14 @@ void update_io()
     joystick.Update();
     pcf857X_inputs = pcf857X.digitalReadAll();
 
-    encoder1Value = (encoder1.getPosition())/2; // 2 steps per latch
-    if(encoder1Value != lastEncoder1Value){
-        encoder1Changed = true;
-    }
-    else{
-        encoder1Changed = false;
-    }
-
     if (Keyboard.isConnected()) {
-        if (set_mouse_buttons() != JoystickMode_None || encoder1Changed) {
-            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, (encoder1Value - lastEncoder1Value) * cadconfig.thumbwheel_sensitivity);
+        if (set_mouse_buttons() != JoystickModeNone) {
+            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
         }
     }
     else {
         MSG_WARNLN("[DEBUG] BLE Mouse not connected");
     }
-    lastEncoder1Value = encoder1Value;
 }
 
 // Handle the joystick driving the mouse
@@ -85,15 +63,14 @@ uint8_t set_mouse_buttons()
     current_joystick_mode = check_joystick_mode();
 
     if (current_joystick_mode != previous_joystick_mode) {
-
         MSG_DEBUG1("[DEBUG] Joystick mode changed to ", current_joystick_mode);
         switch (current_joystick_mode) {
-            case JoystickMode_None:
+            case JoystickModeNone:
                 KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
                 KeyboardMouseAction(5, 9, 0);
                 break;
 
-            case JoystickMode_Pan:
+            case JoystickModePan:
                 for (int i = 0; i < 3; i++) {
                     if (cadprogramconfig[cadconfig.current_program].pan[i].action != 0) {
                         KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].pan[i].action,
@@ -103,17 +80,17 @@ uint8_t set_mouse_buttons()
                 }
                 break;
 
-            case JoystickMode_Rotate:
+            case JoystickModeTilt:
                 for (int i = 0; i < 3; i++) {
-                    if (cadprogramconfig[cadconfig.current_program].rotate[i].action != 0) {
-                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].rotate[i].action,
-                                            cadprogramconfig[cadconfig.current_program].rotate[i].value,
-                                            cadprogramconfig[cadconfig.current_program].rotate[i].symbol);
+                    if (cadprogramconfig[cadconfig.current_program].tilt[i].action != 0) {
+                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].tilt[i].action,
+                                            cadprogramconfig[cadconfig.current_program].tilt[i].value,
+                                            cadprogramconfig[cadconfig.current_program].tilt[i].symbol);
                     }
                 }
                 break;
 
-            case JoystickMode_Zoom:
+            case JoystickModeZoom:
                 for (int i = 0; i < 3; i++) {
                     if (cadprogramconfig[cadconfig.current_program].zoom[i].action != 0) {
                         KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].zoom[i].action,
@@ -123,11 +100,21 @@ uint8_t set_mouse_buttons()
                 }
                 break;
 
-            case JoystickMode_Mouse:
+            case JoystickModeRotate:
+                for (int i = 0; i < 3; i++) {
+                    if (cadprogramconfig[cadconfig.current_program].rotate[i].action != 0) {
+                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].rotate[i].action,
+                                            cadprogramconfig[cadconfig.current_program].rotate[i].value,
+                                            cadprogramconfig[cadconfig.current_program].rotate[i].symbol);
+                    }
+                }
+                break;
+
+            case JoystickModeMouse:
                 KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
                 KeyboardMouseAction(5, 9, 0);
                 break;
-                
+
             default:
                 break;
         }
@@ -142,22 +129,26 @@ uint8_t check_joystick_mode()
 
     if (fabs(joystick.x()) < 0.001 && fabs(joystick.y()) < 0.001) {
         if (millis() - millis_last_joystick_move > cadconfig.joy_steady_time) {
-            mode = JoystickMode_None;
+            mode = JoystickModeNone;
         }
         else {
             mode = previous_joystick_mode;
         }
     }
     else if (pan_button()) {
-        mode = JoystickMode_Pan;
+        mode = JoystickModePan;
         millis_last_joystick_move = millis();
     }
-    else if (rotate_button()) {
-        mode = JoystickMode_Rotate;
+    else if (tilt_button()) {
+        mode = JoystickModeTilt;
         millis_last_joystick_move = millis();
     }
     else if (zoom_button()) {
-        mode = JoystickMode_Zoom;
+        mode = JoystickModeZoom;
+        millis_last_joystick_move = millis();
+    }
+    else if (rotate_button()) {
+        mode = JoystickModeRotate;
         millis_last_joystick_move = millis();
     }
     else {
@@ -171,17 +162,17 @@ uint8_t check_joystick_mode()
 uint8_t pan_button()
 {
     uint8_t state;
-    uint8_t pin = joystick_mode_pins[JoystickMode_Pan];
+    uint8_t pin = joystick_mode_pins[JoystickModePan-1];
 
     state = !get_pcf857X_bit(pcf857X_inputs, pin);
 
     return state;
 }
 
-uint8_t rotate_button()
+uint8_t tilt_button()
 {
     uint8_t state;
-    uint8_t pin = joystick_mode_pins[JoystickMode_Rotate];
+    uint8_t pin = joystick_mode_pins[JoystickModeTilt-1];
 
     state = !get_pcf857X_bit(pcf857X_inputs, pin);
 
@@ -191,7 +182,17 @@ uint8_t rotate_button()
 uint8_t zoom_button()
 {
     uint8_t state;
-    uint8_t pin = joystick_mode_pins[JoystickMode_Zoom];
+    uint8_t pin = joystick_mode_pins[JoystickModeZoom-1];
+
+    state = !get_pcf857X_bit(pcf857X_inputs, pin);
+
+    return state;
+}
+
+uint8_t rotate_button()
+{
+    uint8_t state;
+    uint8_t pin = joystick_mode_pins[JoystickModeRotate-1];
 
     state = !get_pcf857X_bit(pcf857X_inputs, pin);
 
@@ -202,7 +203,7 @@ uint8_t get_hwbutton(uint8_t button)
 {
     uint8_t state;
     if (button >= 0 && button < NUM_HW_BUTTONS) {
-        state = !get_pcf857X_bit(pcf857X_inputs,HWButton_Pins[button]);
+        state = !get_pcf857X_bit(pcf857X_inputs, HWButton_Pins[button]);
     }
     else {
         state = 0;

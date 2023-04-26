@@ -45,10 +45,11 @@
 
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.8WIP";
+const char *versionnumber = "0.0.8.10Button.WIP";
 
 /*
- * Version 0.0.8     - In work
+ * Version 0.0.8.10Button.WIP    - In work
+ *                   - Added support for 10 buttons, analog zoom control, and analog rotate control
  *
  * Version 0.0.7     - Adapted for four button knob.
  *                   - Added support for AC3D as fifth CAD program
@@ -202,7 +203,7 @@ char jsonFileFail[32] = "";
 
 bool psramAvailable = false;
 
-uint8_t last_hwbutton_state[NUM_HW_BUTTONS] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+uint8_t last_hwbutton_state[NUM_HW_BUTTONS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 // Invoke the TFT_eSPI button class and create all the button objects
 TFT_eSPI_Button key[BUTTON_ROWS][BUTTON_COLS];

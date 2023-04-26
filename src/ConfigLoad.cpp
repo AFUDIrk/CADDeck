@@ -201,24 +201,61 @@ bool loadConfig(String value)
             return false;
         }
 
-        float deadzone = doc["joy_deadzone"] | 0.0;
-        cadconfig.joy_deadzone = deadzone;
+        float joy_deadzone = doc["joy_deadzone"] | 20.0;
+        cadconfig.joy_deadzone = joy_deadzone;
         if (error) {
             MSG_ERROR2("[ERROR] deserializeJson() error joy_deadzone ", error.c_str(), doc.memoryUsage());
             return false;
         }
 
-        float sensitivity = doc["joy_sensitivity"] | 20.0;
-        cadconfig.joy_sensitivity = sensitivity;
+        float joy_sensitivity = doc["joy_sensitivity"] | 20.0;
+        cadconfig.joy_sensitivity = joy_sensitivity;
         if (error) {
             MSG_ERROR2("[ERROR] deserializeJson() error joy_sensitivity ", error.c_str(), doc.memoryUsage());
             return false;
         }
 
-        float tw_sensitivity = doc["thumbwheel_sensitivity"] | 1.0;
-        cadconfig.thumbwheel_sensitivity = tw_sensitivity;
+        float zoom_scale = doc["zoom_scale"] | 1.0;
+        cadconfig.zoom_scale = zoom_scale;
+
         if (error) {
-            MSG_ERROR2("[ERROR] deserializeJson() error thumbwheel_sensitivity ", error.c_str(), doc.memoryUsage());
+            MSG_ERROR2("[ERROR] deserializeJson() error zoom_scale ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        float zoom_deadzone = doc["zoom_deadzone"] | 20.0;
+        cadconfig.zoom_deadzone = zoom_deadzone;
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error zoom_deadzone ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        float zoom_sensitivity = doc["zoom_sensitivity"] | 20.0;
+        cadconfig.zoom_sensitivity = zoom_sensitivity;
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error zoom_sensitivity ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        float rotate_scale = doc["rotate_scale"] | 1.0;
+        cadconfig.rotate_scale = rotate_scale;
+
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error rotate_scale ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        float rotate_deadzone = doc["rotate_deadzone"] | 20.0;
+        cadconfig.rotate_deadzone = rotate_deadzone;
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error rotate_deadzone ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        float rotate_sensitivity = doc["rotate_sensitivity"] | 20.0;
+        cadconfig.rotate_sensitivity = rotate_sensitivity;
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error rotate_sensitivity ", error.c_str(), doc.memoryUsage());
             return false;
         }
 
@@ -265,7 +302,7 @@ bool loadConfig(String value)
             strlcpy(cadprogramconfig[program].logo, logo, sizeof(cadprogramconfig[program].logo));
             MSG_INFO2("[INFO] load_config loading logo", program_name, templogopath);
 
-            cadprogramconfig[program].default_joystick_mode = program_array[program]["default_joystick_mode"] | JoystickMode_Rotate;
+            cadprogramconfig[program].default_joystick_mode = program_array[program]["default_joystick_mode"] | JoystickModeTilt;
 
             ///  pan
             JsonArray joystickkey_pan_actionarray = program_array[program]["pan"]["actionarray"];
@@ -308,44 +345,44 @@ bool loadConfig(String value)
             cadprogramconfig[program].pan[2].action = joystickkey_pan_actionarray_2;
 
             /// rotate
-            JsonArray joystickkey_rotate_actionarray = program_array[program]["rotate"]["actionarray"];
+            JsonArray joystickkey_tilt_actionarray = program_array[program]["tilt"]["actionarray"];
 
-            int joystickkey_rotate_actionarray_0 = joystickkey_rotate_actionarray[0];
-            int joystickkey_rotate_actionarray_1 = joystickkey_rotate_actionarray[1];
-            int joystickkey_rotate_actionarray_2 = joystickkey_rotate_actionarray[2];
+            int joystickkey_tilt_actionarray_0 = joystickkey_tilt_actionarray[0];
+            int joystickkey_tilt_actionarray_1 = joystickkey_tilt_actionarray[1];
+            int joystickkey_tilt_actionarray_2 = joystickkey_tilt_actionarray[2];
 
-            JsonArray joystickkey_rotate_valuearray = program_array[program]["rotate"]["valuearray"];
+            JsonArray joystickkey_tilt_valuearray = program_array[program]["tilt"]["valuearray"];
 
-            if (joystickkey_rotate_actionarray_0 == Action_Char || joystickkey_rotate_actionarray_0 == Action_SpecialChar) {
-                const char *button_symbolarray_0 = joystickkey_rotate_valuearray[0];
-                strcpy(cadprogramconfig[program].rotate[0].symbol, button_symbolarray_0);
+            if (joystickkey_tilt_actionarray_0 == Action_Char || joystickkey_tilt_actionarray_0 == Action_SpecialChar) {
+                const char *button_symbolarray_0 = joystickkey_tilt_valuearray[0];
+                strcpy(cadprogramconfig[program].tilt[0].symbol, button_symbolarray_0);
             }
             else {
-                int joystickkey_rotate_valuearray_0 = joystickkey_rotate_valuearray[0];
-                cadprogramconfig[program].rotate[0].value = joystickkey_rotate_valuearray_0;
+                int joystickkey_tilt_valuearray_0 = joystickkey_tilt_valuearray[0];
+                cadprogramconfig[program].tilt[0].value = joystickkey_tilt_valuearray_0;
             }
 
-            if (joystickkey_rotate_actionarray_1 == Action_Char || joystickkey_rotate_actionarray_1 == Action_SpecialChar) {
-                const char *button_symbolarray_1 = joystickkey_rotate_valuearray[1];
-                strcpy(cadprogramconfig[program].rotate[1].symbol, button_symbolarray_1);
+            if (joystickkey_tilt_actionarray_1 == Action_Char || joystickkey_tilt_actionarray_1 == Action_SpecialChar) {
+                const char *button_symbolarray_1 = joystickkey_tilt_valuearray[1];
+                strcpy(cadprogramconfig[program].tilt[1].symbol, button_symbolarray_1);
             }
             else {
-                int joystickkey_rotate_valuearray_1 = joystickkey_rotate_valuearray[1];
-                cadprogramconfig[program].rotate[1].value = joystickkey_rotate_valuearray_1;
+                int joystickkey_tilt_valuearray_1 = joystickkey_tilt_valuearray[1];
+                cadprogramconfig[program].tilt[1].value = joystickkey_tilt_valuearray_1;
             }
 
-            if (joystickkey_rotate_actionarray_2 == Action_Char || joystickkey_rotate_actionarray_2 == Action_SpecialChar) {
-                const char *button_symbolarray_2 = joystickkey_rotate_valuearray[2];
-                strcpy(cadprogramconfig[program].rotate[2].symbol, button_symbolarray_2);
+            if (joystickkey_tilt_actionarray_2 == Action_Char || joystickkey_tilt_actionarray_2 == Action_SpecialChar) {
+                const char *button_symbolarray_2 = joystickkey_tilt_valuearray[2];
+                strcpy(cadprogramconfig[program].tilt[2].symbol, button_symbolarray_2);
             }
             else {
-                int joystickkey_rotate_valuearray_2 = joystickkey_rotate_valuearray[2];
-                cadprogramconfig[program].rotate[2].value = joystickkey_rotate_valuearray_2;
+                int joystickkey_tilt_valuearray_2 = joystickkey_tilt_valuearray[2];
+                cadprogramconfig[program].tilt[2].value = joystickkey_tilt_valuearray_2;
             }
 
-            cadprogramconfig[program].rotate[0].action = joystickkey_rotate_actionarray_0;
-            cadprogramconfig[program].rotate[1].action = joystickkey_rotate_actionarray_1;
-            cadprogramconfig[program].rotate[2].action = joystickkey_rotate_actionarray_2;
+            cadprogramconfig[program].tilt[0].action = joystickkey_tilt_actionarray_0;
+            cadprogramconfig[program].tilt[1].action = joystickkey_tilt_actionarray_1;
+            cadprogramconfig[program].tilt[2].action = joystickkey_tilt_actionarray_2;
 
             /// zoom
             JsonArray joystickkey_zoom_actionarray = program_array[program]["zoom"]["actionarray"];
@@ -387,6 +424,47 @@ bool loadConfig(String value)
             cadprogramconfig[program].zoom[1].action = joystickkey_zoom_actionarray_1;
             cadprogramconfig[program].zoom[2].action = joystickkey_zoom_actionarray_2;
 
+            /// rotate
+            JsonArray joystickkey_rotate_actionarray = program_array[program]["rotate"]["actionarray"];
+
+            int joystickkey_rotate_actionarray_0 = joystickkey_rotate_actionarray[0];
+            int joystickkey_rotate_actionarray_1 = joystickkey_rotate_actionarray[1];
+            int joystickkey_rotate_actionarray_2 = joystickkey_rotate_actionarray[2];
+
+            JsonArray joystickkey_rotatevaluearray = program_array[program]["rotate"]["valuearray"];
+
+            if (joystickkey_rotate_actionarray_0 == Action_Char || joystickkey_rotate_actionarray_0 == Action_SpecialChar) {
+                const char *button_symbolarray_0 = joystickkey_rotatevaluearray[0];
+                strcpy(cadprogramconfig[program].rotate[0].symbol, button_symbolarray_0);
+            }
+            else {
+                int joystickkey_rotatevaluearray_0 = joystickkey_rotatevaluearray[0];
+                cadprogramconfig[program].rotate[0].value = joystickkey_rotatevaluearray_0;
+            }
+
+            if (joystickkey_rotate_actionarray_1 == Action_Char || joystickkey_rotate_actionarray_1 == Action_SpecialChar) {
+                const char *button_symbolarray_1 = joystickkey_rotatevaluearray[1];
+                strcpy(cadprogramconfig[program].rotate[1].symbol, button_symbolarray_1);
+            }
+            else {
+                int joystickkey_rotatevaluearray_1 = joystickkey_rotatevaluearray[1];
+                cadprogramconfig[program].rotate[1].value = joystickkey_rotatevaluearray_1;
+            }
+
+            if (joystickkey_rotate_actionarray_2 == Action_Char || joystickkey_rotate_actionarray_2 == Action_SpecialChar) {
+                const char *button_symbolarray_2 = joystickkey_rotatevaluearray[2];
+                strcpy(cadprogramconfig[program].rotate[2].symbol, button_symbolarray_2);
+            }
+            else {
+                int joystickkey_rotatevaluearray_2 = joystickkey_rotatevaluearray[2];
+                cadprogramconfig[program].rotate[2].value = joystickkey_rotatevaluearray_2;
+            }
+
+            cadprogramconfig[program].rotate[0].action = joystickkey_rotate_actionarray_0;
+            cadprogramconfig[program].rotate[1].action = joystickkey_rotate_actionarray_1;
+            cadprogramconfig[program].rotate[2].action = joystickkey_rotate_actionarray_2;
+            
+            
             // Button assignments
 
             JsonArray button_array = program_array[program]["buttons"];

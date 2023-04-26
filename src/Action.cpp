@@ -674,6 +674,16 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     cadconfig.joy_scale_y = joystick.GetScale(1);
                     break;
 
+                case CADFn_CalibrateZoomScale:
+                    zoomControl.CalibrateScale();
+                    cadconfig.zoom_scale = zoomControl.GetScale();
+                    break;
+
+                case CADFn_CalibrateRotateScale:
+                    zoomControl.CalibrateScale();
+                    cadconfig.rotate_scale = rotateControl.GetScale();
+                    break;
+
                 case CADFn_InvertJoyScaleX:
                     joystick.SetScale(0, joystick.GetScale(0) * -1.0);
                     cadconfig.joy_scale_x = joystick.GetScale(0);
@@ -684,20 +694,34 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     cadconfig.joy_scale_y = joystick.GetScale(1);
                     break;
 
+                case CADFn_InvertScaleZoom:
+                    zoomControl.SetScale(zoomControl.GetScale() * -1.0);
+                    cadconfig.zoom_scale = zoomControl.GetScale();
+                    break;
+
+                case CADFn_InvertScaleRotate:
+                    rotateControl.SetScale(rotateControl.GetScale() * -1.0);
+                    cadconfig.rotate_scale = rotateControl.GetScale();
+                    break;
+
                 case CADFn_SaveCADConfig:
                     saveCurrentConfigCADParams();
                     break;
 
                 case CADFn_JoystickPan:
-                    joystick_mode_pins[JoystickMode_Pan] = HWButton_Pins[hwbutton_index];
+                    joystick_mode_pins[JoystickModePan] = HWButton_Pins[hwbutton_index];
                     break;
 
-                case CADFn_JoystickRotate:
-                    joystick_mode_pins[JoystickMode_Rotate] = HWButton_Pins[hwbutton_index];
+                case CADFn_JoystickTilt:
+                    joystick_mode_pins[JoystickModeTilt] = HWButton_Pins[hwbutton_index];
                     break;
 
                 case CADFn_JoystickZoom:
-                    joystick_mode_pins[JoystickMode_Zoom] = HWButton_Pins[hwbutton_index];
+                    joystick_mode_pins[JoystickModeZoom] = HWButton_Pins[hwbutton_index];
+                    break;
+
+                case CADFn_JoystickRotate:
+                    joystick_mode_pins[JoystickModeRotate] = HWButton_Pins[hwbutton_index];
                     break;
             }
             break;
