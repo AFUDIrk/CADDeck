@@ -62,7 +62,7 @@ References to button numbers are as shown in this diagram:
 
 
 ## Case
-A Fusion360 model of the case, as well as STL files, are included in the CADDeck repository. The main case is printed in four pieces. The two top sections are bolted together internal to the case with M3 cap screws and nuts. M3 threaded inserts are used in the top front piece (six places), then the bottom is attached to the top with M3 flat head screws. 
+A Fusion360 model of the case, as well as STL files, are included in the CADDeck repository. The main case is printed in two pieces. The two top sections are bolted together internal to the case with M3 cap screws and nuts. M3 threaded inserts are used in the top front piece (six places), then the bottom is attached to the top with M3 flat head screws. 
 
 
 ![Case](images/Case.png)
