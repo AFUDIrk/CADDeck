@@ -171,7 +171,7 @@ bool loadConfig(String value)
 
         // How to decide on the size of the buffer? Edit the JSON file that will be loaded and use the
         // ArduinoJSON Assistant (https://arduinojson.org/v6/assistant/#/step1) to get the size.
-        DynamicJsonDocument doc(12288);
+        DynamicJsonDocument doc(14000);
 
         DeserializationError error = deserializeJson(doc, configfile);
 
@@ -532,7 +532,7 @@ bool loadConfig(String value)
             return false;
         }
         else {
-            MSG_DEBUG1("[INFO] cadparams.json load_config() success. Memory usage: ", doc.memoryUsage());
+            MSG_INFO1("[INFO] cadparams.json load_config() success. Memory usage: ", doc.memoryUsage());
         }
 
         cadconfig.version = CADCONFIG_VERSION;

@@ -251,6 +251,8 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
         programObject["name"] = cadprogramconfig[program].name;
         programObject["logo"] = cadprogramconfig[program].logo;
         programObject["default_joystick_mode"] = cadprogramconfig[program].default_joystick_mode;
+
+
         // Pan
         JsonObject programPanObject = programObject.createNestedObject("pan");
 
@@ -282,35 +284,35 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
             programPanObject_valuearray.add(String((cadprogramconfig[program].pan[2].value)));
         }
 
-        // Rotate
-        JsonObject programRotateObject = programObject.createNestedObject("rotate");
+        // tilt
+        JsonObject programTiltObject = programObject.createNestedObject("tilt");
 
-        JsonArray programRotateObject_actionarray = programRotateObject.createNestedArray("actionarray");
+        JsonArray programTiltObject_actionarray = programTiltObject.createNestedArray("actionarray");
 
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[0].action)));
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[1].action)));
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[2].action)));
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[0].action)));
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[1].action)));
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[2].action)));
 
-        JsonArray programRotateObject_valuearray = programRotateObject.createNestedArray("valuearray");
+        JsonArray programTiltObject_valuearray = programTiltObject.createNestedArray("valuearray");
         if (cadprogramconfig[program].tilt[0].action == Action_Char || cadprogramconfig[program].tilt[0].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[0].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[0].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[0].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[0].value)));
         }
 
         if (cadprogramconfig[program].tilt[1].action == Action_Char || cadprogramconfig[program].tilt[1].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[1].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[1].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[1].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[1].value)));
         }
 
         if (cadprogramconfig[program].tilt[2].action == Action_Char || cadprogramconfig[program].tilt[2].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[2].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[2].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[2].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[2].value)));
         }
 
         // Zoom
@@ -342,6 +344,37 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
         }
         else {
             programZoomObject_valuearray.add(String((cadprogramconfig[program].zoom[2].value)));
+        }
+
+        // Rotate
+        JsonObject programRotateObject = programObject.createNestedObject("rotate");
+
+        JsonArray programRotateObject_actionarray = programRotateObject.createNestedArray("actionarray");
+
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[0].action)));
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[1].action)));
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[2].action)));
+
+        JsonArray programRotateObject_valuearray = programRotateObject.createNestedArray("valuearray");
+        if (cadprogramconfig[program].rotate[0].action == Action_Char || cadprogramconfig[program].rotate[0].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[0].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[0].value)));
+        }
+
+        if (cadprogramconfig[program].rotate[1].action == Action_Char || cadprogramconfig[program].rotate[1].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[1].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[1].value)));
+        }
+
+        if (cadprogramconfig[program].rotate[2].action == Action_Char || cadprogramconfig[program].rotate[2].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[2].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[2].value)));
         }
 
         JsonArray programHWButtonsArray = programObject.createNestedArray("buttons");
@@ -436,6 +469,7 @@ int saveCurrentConfigCADParams()
         programObject["name"] = cadprogramconfig[program].name;
         programObject["logo"] = cadprogramconfig[program].logo;
         programObject["default_joystick_mode"] = cadprogramconfig[program].default_joystick_mode;
+
         // Pan
         JsonObject programPanObject = programObject.createNestedObject("pan");
 
@@ -449,7 +483,7 @@ int saveCurrentConfigCADParams()
         if (cadprogramconfig[program].pan[0].action == Action_Char || cadprogramconfig[program].pan[0].action == Action_SpecialChar) {
             programPanObject_valuearray.add(cadprogramconfig[program].pan[0].symbol);
         }
-        else{
+        else {
             programPanObject_valuearray.add(String((cadprogramconfig[program].pan[0].value)));
         }
 
@@ -466,36 +500,36 @@ int saveCurrentConfigCADParams()
         else {
             programPanObject_valuearray.add(String((cadprogramconfig[program].pan[2].value)));
         }
-        
-        // Rotate
-        JsonObject programRotateObject = programObject.createNestedObject("rotate");
 
-        JsonArray programRotateObject_actionarray = programRotateObject.createNestedArray("actionarray");
+        // tilt
+        JsonObject programTiltObject = programObject.createNestedObject("tilt");
 
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[0].action)));
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[1].action)));
-        programRotateObject_actionarray.add(String((cadprogramconfig[program].tilt[2].action)));
+        JsonArray programTiltObject_actionarray = programTiltObject.createNestedArray("actionarray");
 
-        JsonArray programRotateObject_valuearray = programRotateObject.createNestedArray("valuearray");
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[0].action)));
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[1].action)));
+        programTiltObject_actionarray.add(String((cadprogramconfig[program].tilt[2].action)));
+
+        JsonArray programTiltObject_valuearray = programTiltObject.createNestedArray("valuearray");
         if (cadprogramconfig[program].tilt[0].action == Action_Char || cadprogramconfig[program].tilt[0].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[0].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[0].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[0].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[0].value)));
         }
 
         if (cadprogramconfig[program].tilt[1].action == Action_Char || cadprogramconfig[program].tilt[1].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[1].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[1].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[1].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[1].value)));
         }
 
         if (cadprogramconfig[program].tilt[2].action == Action_Char || cadprogramconfig[program].tilt[2].action == Action_SpecialChar) {
-            programRotateObject_valuearray.add(cadprogramconfig[program].tilt[2].symbol);
+            programTiltObject_valuearray.add(cadprogramconfig[program].tilt[2].symbol);
         }
         else {
-            programRotateObject_valuearray.add(String((cadprogramconfig[program].tilt[2].value)));
+            programTiltObject_valuearray.add(String((cadprogramconfig[program].tilt[2].value)));
         }
 
         // Zoom
@@ -527,6 +561,37 @@ int saveCurrentConfigCADParams()
         }
         else {
             programZoomObject_valuearray.add(String((cadprogramconfig[program].zoom[2].value)));
+        }
+
+        // Rotate
+        JsonObject programRotateObject = programObject.createNestedObject("rotate");
+
+        JsonArray programRotateObject_actionarray = programRotateObject.createNestedArray("actionarray");
+
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[0].action)));
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[1].action)));
+        programRotateObject_actionarray.add(String((cadprogramconfig[program].rotate[2].action)));
+
+        JsonArray programRotateObject_valuearray = programRotateObject.createNestedArray("valuearray");
+        if (cadprogramconfig[program].rotate[0].action == Action_Char || cadprogramconfig[program].rotate[0].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[0].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[0].value)));
+        }
+
+        if (cadprogramconfig[program].rotate[1].action == Action_Char || cadprogramconfig[program].rotate[1].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[1].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[1].value)));
+        }
+
+        if (cadprogramconfig[program].rotate[2].action == Action_Char || cadprogramconfig[program].rotate[2].action == Action_SpecialChar) {
+            programRotateObject_valuearray.add(cadprogramconfig[program].rotate[2].symbol);
+        }
+        else {
+            programRotateObject_valuearray.add(String((cadprogramconfig[program].rotate[2].value)));
         }
 
         JsonArray programHWButtonsArray = programObject.createNestedArray("buttons");

@@ -18,8 +18,8 @@
 */
 void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_index)
 {
-    MSG_DEBUG("[DEBUG] Action received: ");
-    MSG_DEBUG3(action, value, symbol, hwbutton_index);
+//    MSG_INFO("[DEBUG] Action received: ");
+//    MSG_INFO3(action, value, symbol, hwbutton_index);
     int callingPageNum;
     
     switch (action) {

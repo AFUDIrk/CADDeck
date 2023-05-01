@@ -63,7 +63,7 @@ uint8_t set_mouse_buttons()
     current_joystick_mode = check_joystick_mode();
 
     if (current_joystick_mode != previous_joystick_mode) {
-        MSG_DEBUG1("[DEBUG] Joystick mode changed to ", current_joystick_mode);
+//        MSG_DEBUG1("[DEBUG] Joystick mode changed to ", current_joystick_mode);
         switch (current_joystick_mode) {
             case JoystickModeNone:
                 KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons

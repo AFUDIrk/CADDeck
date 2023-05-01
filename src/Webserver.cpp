@@ -460,7 +460,7 @@ void handlerSetup()
         uint8_t action = 0;
 
         if (request->hasParam("app") && request->hasParam("button") && request->hasParam("buttonType") &&
-            request->hasParam("arrayIndex") && request->hasParam("actionValue") && 
+            request->hasParam("arrayIndex") && request->hasParam("actionValue") &&
             request->hasParam("action") && request->hasParam("value")) {
             appIndex = request->getParam("app")->value().toInt();
             buttonIndex = request->getParam("button")->value().toInt();
@@ -471,55 +471,60 @@ void handlerSetup()
             value = request->getParam("value")->value();
 
             if (appIndex >= 0 && appIndex < NUM_CAD_PROGRAMS) {
-                if (buttonType == 0) {
-                    cadprogramconfig[appIndex].pan[arrayIndex].action = action;
+                if (buttonIndex >= 0 && buttonIndex < NUM_HW_BUTTONS) {
+                    if (buttonType == 0) {
+                        cadprogramconfig[appIndex].pan[arrayIndex].action = action;
 
-                    if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].pan[arrayIndex].symbol, value.c_str());
+                        if (action == Action_Char || action == Action_SpecialChar) {
+                            strcpy(cadprogramconfig[appIndex].pan[arrayIndex].symbol, value.c_str());
+                        }
+                        else {
+                            cadprogramconfig[appIndex].pan[arrayIndex].value = value.toInt();
+                        }
+                    }
+                    else if (buttonType == 1) {
+                        cadprogramconfig[appIndex].tilt[arrayIndex].action = action;
+
+                        if (action == Action_Char || action == Action_SpecialChar) {
+                            strcpy(cadprogramconfig[appIndex].tilt[arrayIndex].symbol, value.c_str());
+                        }
+                        else {
+                            cadprogramconfig[appIndex].tilt[arrayIndex].value = value.toInt();
+                        }
+                    }
+                    else if (buttonType == 2) {
+                        cadprogramconfig[appIndex].zoom[arrayIndex].action = action;
+
+                        if (action == Action_Char || action == Action_SpecialChar) {
+                            strcpy(cadprogramconfig[appIndex].zoom[arrayIndex].symbol, value.c_str());
+                        }
+                        else {
+                            cadprogramconfig[appIndex].zoom[arrayIndex].value = value.toInt();
+                        }
+                    }
+                    else if (buttonType == 3) {
+                        cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = value.toInt();
+
+                        cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = action;
+
+                        if (action == Action_Char || action == Action_SpecialChar) {
+                            strcpy(cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].symbol, value.c_str());
+                        }
+                        else {
+                            cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].value = value.toInt();
+                        }
                     }
                     else {
-                        cadprogramconfig[appIndex].pan[arrayIndex].value = value.toInt();
+                        MSG_ERROR1("[ERROR] updatebutton: unknown button type: ", buttonType);
                     }
-                }
-                else if (buttonType == 1) {
-                    cadprogramconfig[appIndex].tilt[arrayIndex].action = action;
 
-                    if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].tilt[arrayIndex].symbol, value.c_str());
-                    }
-                    else {
-                        cadprogramconfig[appIndex].tilt[arrayIndex].value = value.toInt();
-                    }
-                }
-                else if (buttonType == 2) {
-                    cadprogramconfig[appIndex].zoom[arrayIndex].action = action;
-
-                    if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].zoom[arrayIndex].symbol, value.c_str());
-                    }
-                    else {
-                        cadprogramconfig[appIndex].zoom[arrayIndex].value = value.toInt();
-                    }
-                }
-                else if (buttonType == 3) {
-                    cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = value.toInt();
-
-                    cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = action;
-
-                    if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].symbol, value.c_str());
-                    }
-                    else {
-                        cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].value = value.toInt();
-                    }
+                    debugString = "appIndex: " + String(appIndex) + ", buttonIndex: " + String(buttonIndex) + ", buttonType: " + String(buttonType) +
+                                  ", arrayIndex: " + String(arrayIndex) + ", action: " + action + ", value: " + value;
+//                    MSG_DEBUG1("[DEBUG] updatebutton: ", debugString.c_str());
                 }
                 else {
-                    MSG_ERROR1("[ERROR] updatebutton: unknown button type: ", buttonType);
+                    MSG_ERROR1("[ERROR] updatebutton: invalid button index: ", buttonIndex);
                 }
-
-                debugString = "appIndex: " + String(appIndex) + ", buttonIndex: " + String(buttonIndex) + ", buttonType: " + String(buttonType) +
-                              ", arrayIndex: " + String(arrayIndex) + ", action: " + action + ", value: " + value;
-                MSG_DEBUG1("[DEBUG] updatebutton: ", debugString.c_str());
             }
             else {
                 MSG_ERROR1("[ERROR] updatebutton: invalid app index: ", appIndex);

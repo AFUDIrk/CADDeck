@@ -9,8 +9,8 @@ bool startWifiStation()
         MSG_INFO2("startWifiStation(): ssid, pwd=", wificonfig.ssid, wificonfig.password);
         WiFi.begin(wificonfig.ssid, wificonfig.password);
         uint8_t attempts = wificonfig.attempts;
-        MSG_DEBUG1("startWifiStation(): attempts =", attempts);
-        MSG_DEBUG1("startWifiStation(): attempt delay =", wificonfig.attemptdelay);
+//        MSG_DEBUG1("startWifiStation(): attempts =", attempts);
+//        MSG_DEBUG1("startWifiStation(): attempt delay =", wificonfig.attemptdelay);
         while (WiFi.status() != WL_CONNECTED) {
             if (attempts == 0) {
                 WiFi.disconnect();

@@ -9,7 +9,7 @@
 #define LOG_MSG_DEBUG 1
 #define LOG_MSG_TOUCH_DEBUG 0  // messages to console each time a touch is detected
 #define USE_DEBUG_PINS 0
-#define LOG_JSON_FILES  // log the contents of the JSON files to the console. Comment out to disable.
+//#define LOG_JSON_FILES  // log the contents of the JSON files to the console. Comment out to disable.
 
 #include "std_defs.h"
 
@@ -263,7 +263,7 @@ struct Config {
 
 
 
-const uint8_t CADCONFIG_VERSION = 1;
+const uint8_t CADCONFIG_VERSION = 2;
 struct CADConfig {
     uint8_t version;
     uint8_t current_program;
@@ -281,7 +281,7 @@ struct CADConfig {
     uint16_t num_programs;
 };
 
-#define NUM_HW_BUTTONS 11
+#define NUM_HW_BUTTONS 10
 struct CADProgramConfig {
     uint8_t version;
     char name[32];
