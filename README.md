@@ -68,21 +68,26 @@ A Fusion360 model of the case, as well as STL files, are included in the CADDeck
 ![Case](images/Case.png)
 
 
-There is no obvious way to attach the screen to the case, so I soldered four 6mm long M2.5 brass standoffs to the PCB.
+There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
+If necessary, it can also be pressed against the seal with two screws. But wasn't necessary for me.
 ![Screen Attachment](images/ScreenAttachment.png)
 M2.5 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
 
 ## Joystick knob
-The joystick knob consists of two more 3D printed parts.  Two M3 screws are used to hold the two parts together, with threaded inserts in the bottom part. The perfboard to which the encoder and debounce/pullup components are mounted is clamped by the top and bottom parts. 
+The joystick button consists of other 3D printed parts. Three guide pins hold the two parts together, with three bech screws in the lower part. The touch sensor is fixed in the lid with glue, the lid is clamped in the wheel.
 
-Four tactile buttons are located around the knob. I used a little hot glue to hold them in place against the bottom part of the knob. 
+There are several magnets in the button that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
 
-The first version of the knob only had two buttons, equivalent to Buttons 5 and 6. The idea was to hold one down while moving the joystick to pan the view and the other to rotate the view. The problem was that I found it awkward to use Button 6 while holding the joystick in my left hand, and the same problem with Button 5 while holding the joystick in my right hand. So, I added Buttons 7 and 8.  I find that Buttons 5 and 8 work well with the left hand, and Buttons 6 and 7 work well with the right hand.
+The push sensor in the lid is held down while you move the joystick to pan the view back and forth. The button can be dragged up and down to zoom. It can also be rotated slightly left or right to rotate the view.
 
 ## Wiring
 A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
 
-The touchy part is the joystick grip, and in particular the resistors and capacitors to debounce the encoder and pull the switches high. I used a small piece of perfboard to which I soldered 0805 size SMD components. I also used 30AWG silicon stranded wire to connect the perfboard into the base. Too many wires, and not enough space.
+The tricky part is the joystick knob and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly and I soldered the lower one to a small perforated board beforehand and then attached it with superglue.
+
+The cables from the touch sensor and the upper Hall sensor are routed down through holes. Please leave the cables a little longer, as the button will later be turned onto the joystick and countered with a grub screw from above.
+
+I made plugs on the cables, both for the button, the joystick, the 10 buttons and the connections between the display and the PCF 8575.
 
 ![Perfboard for knob](images/pcb.png)
 
