@@ -3,9 +3,9 @@
 
 This is a combined joystick and touch panel display suitable for use with common CAD programs. It includes:
 1. Two axis joystick (e.g. for X, Y pan)
-2. Thumbwheel encoder in the joystick grip (e.g. for zoom) with push switch (e.g. for select)
-3. Four switches around joystick grip (e.g. hold one down while moving joystick for pan and another for rotate)
-4. Four switches around the base (e.g. measure, ESC...)
+2. Hallsensor in the joystick Knob (e.g. for zoom) with push Sensor (e.g. move to the component in connection with the joystick)
+3. There is a second Hall sensor in the knob. With a slight turn to the right or left, you can rotate the component.
+4. Ten switches around the base (e.g. measure, ESC...)
 5. LCD touch panel with up to 10 screens of 12 buttons
 
 All H/W buttons as well as the touch panel buttons are programmable through a web page.
@@ -62,7 +62,9 @@ References to button numbers are as shown in this diagram:
 
 
 ## Case
-A Fusion360 model of the case, as well as STL files, are included in the CADDeck repository. The main case is printed in two pieces. The two top sections are bolted together internal to the case with M3 cap screws and nuts. M3 threaded inserts are used in the top front piece (six places), then the bottom is attached to the top with M3 flat head screws. 
+A Fusion360 model of the case and STL files are included in the CADDeck repository. The main body is printed in two parts.
+The upper part is screwed inside the housing with M3 head screws. M3 thread inserts are used in the upper part (six positions),
+Then the bottom is attached to the top with M3 pan head screws. 
 
 
 ![Case](images/Case.png)
@@ -71,14 +73,18 @@ A Fusion360 model of the case, as well as STL files, are included in the CADDeck
 There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
 If necessary, it can also be pressed against the seal with two screws. But wasn't necessary for me.
 ![Screen Attachment](images/ScreenAttachment.png)
-M2.5 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
+4 pcs M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the 10 switch plate.
 
 ## Joystick knob
-The joystick button consists of other 3D printed parts. Three guide pins hold the two parts together, with three bech screws in the lower part. The touch sensor is fixed in the lid with glue, the lid is clamped in the wheel.
+The joystick button consists of several 3D printed parts. Three guide pins hold the two parts together, and the lower part with the magnets is attached with three self-tapping screws. The touch sensor is fixed in the lid with glue, the lid is glued into the wheel.
 
-There are several magnets in the button that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
+Inside the button are several magnets that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
+In the pictures directory you will find a representation of how the magnets (N+S) are arranged.
 
-The push sensor in the lid is held down while you move the joystick to pan the view back and forth. The button can be dragged up and down to zoom. It can also be rotated slightly left or right to rotate the view.
+The pressure sensor in the lid is held down while you move the joystick to pan the view back and forth. The button can be dragged up and down to zoom. It can also be rotated slightly left or right to rotate the view.
+
+An M4x16mm spacer made of brass is pressed into the button from above (fix with some glue if necessary).
+This is used to attach the button to the joystick and counter it from above with an M4 stud screw so that it sits firmly on the joystick axis.
 
 ## Wiring
 A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
@@ -98,30 +104,38 @@ Qty 1 [ESP32-SC01 LCD touchscreen](https://www.aliexpress.com/item/1005004399769
 
 Qty 1 [2mm 2x20 Male Header](https://www.aliexpress.com/item/1005001852671581.html)
 
-Qty 1 [EVQWGD001 Encoder](https://www.aliexpress.com/item/1005002824178689.html)
+Qty 1 [TTP223 Kapazitive Touch-Switch](https://de.aliexpress.com/item/33013050574.html?spm=a2g0o.productlist.main.5.34c063fbTcgCnU&algo_pvid=ee3d933d-e328-486a-b54d-4e8c9976bf73&algo_exp_id=ee3d933d-e328-486a-b54d-4e8c9976bf73-2&pdp_npi=3%40dis%21EUR%210.25%210.21%21%21%21%21%21%402145279016829361809717128d0790%2167182316577%21sea%21DE%21876101376&curPageLogUid=ozgoC29NqnOW)
 
-
-Qty 4 [12mm x 12mm x 8.5mm High Tactile Pushbuttons](https://www.aliexpress.com/item/1005004735827784.html) 8mm, 9mm, or 10mm high wouild also work fine 
-
-Qty 4 [8mm momentary pushbuttons](https://www.aliexpress.com/item/1005002898978166.html) (these are the ones I used, but are not great - I would prefer something with a better tactile feel)
+Qty 10 [Cherry MX Taster](https://www.ebay.de/itm/183967039197) (These are available in different versions. With or without a click, heavy or light resistance.)
 
 Qty 1 [FrSky M9 joystick](https://www.aliexpress.com/item/32829691785.html)   This one is a bit pricey, but it is a good quality unit. Nothing special in terms of functionality - you just need something with analog X and Y outputs.
 
 
 Qty 1 [PCF8575 I2C IO Expander](https://www.aliexpress.com/item/1005004433286881.html)
 
-Qty5 10k 0805 SMD resistors for the encoder debounce and joystick button pullups
+Qty 1 [USB-C Adapter Board](https://de.aliexpress.com/item/1005003446036071.html?spm=a2g0o.order_list.order_list_main.55.72175c5fBl0s9h&gatewayAdapt=glo2deu)
 
-Qty5 10k 1/8W throughhole resistors for 8mm button pullups
+Qty 2 [Hall sensors 49E](https://de.aliexpress.com/item/32910342894.html?spm=a2g0o.order_list.order_list_main.116.72175c5fBl0s9h&gatewayAdapt=glo2deu)
 
-Qty2 100nF 0805 SMD capacitors for the encoder debounce
+Qty 40 [balancing adhesive weights](https://www.ebay.de/itm/363221786745) (If necessary. The case was too light for me when I pull the button up. But you can also complain about something else.)
 
-Qty 8 M3 Brass inserts
+Qty 10 10k 1/8W throughhole resistors Cherry MX Taster
 
-Misc M3 hardware (nuts, screws, etc)
+Qty 6 M3 Brass inserts
 
-30AWG silicon stranded wire
-r
+Qty 3 M2 Brass inserts
+
+Qty 3 Self-tapping screw 2.2x5 (Magnetic Holder below)
+
+Qty 11 Neodymium magnet N52 5x5x1 mm
+
+Qty 6 Neodymium magnet N52 8x1 mm
+
+Qty 3 Neodymium magnet N52 8x3 mm
+
+Misc M3 and M2 hardware (nuts, screws, etc)
+
+30AWG silicon stranded wire R
 
 # Setup
 Once the unit is assembled and the display is coming up you should see the main page.
@@ -196,14 +210,13 @@ While everything can be changed via the configurator, there are some default set
 
 ### Control assignments
 1. Joystick moves the mouse pointer
-2. Joystick with Button 5 held down pans the view
-3. Joystick with Button 6 held down rotates the view
-4. The encoder zooms in and out
-5. The encoder Button 9 is the same as the left mouse button (select)
-6. Button 1 is measure ("i" in Fusion360) (I assigned "i" as a keyboard shortcut to measure in Solidworks)
-7. Button 2 sets the zoom to fit ("F6" in Fusion360), ("f" in Solidworks)
-8. Button 3 unselects ("ESC" in Fusion360 and Solidworks)
-9. Button 4 toggles object visibility ("v" in Fusion360) or hides object ("TAB" in Solidworks)
+2. Joystick with pressed button 0 pans the view
+3. Rotate Joystick rotates the view
+4. Pushing the joystick down or pulling it up zooms the view.
+5. Button 1 is measure ("i" in Fusion360) (I assigned "i" as a keyboard shortcut to measure in Solidworks)
+6. Button 2 sets the zoom to fit ("F6" in Fusion360), ("f" in Solidworks)
+7. Button 3 unselects ("ESC" in Fusion360 and Solidworks)
+8. Button 4 toggles object visibility ("v" in Fusion360) or hides object ("TAB" in Solidworks)
 
 ### Menus
 Menu numbers are assigned as follows:
