@@ -76,7 +76,7 @@ Then the bottom is attached to the top with M3 pan head screws.
 There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
 If necessary, it can also be pressed against the seal with two screws. But wasn't necessary for me.
 ![Screen Attachment](images/ScreenAttachment.png)
-![Screen Attachment] (images/displayinstallation.png)
+![Screen Attachment](images/displayinstallation.png)
 
 
 4 4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches..
