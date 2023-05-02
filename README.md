@@ -69,18 +69,13 @@ Then the bottom is attached to the top with M3 pan head screws.
 ![Case](images/Case.png)
 
 ![Case](images/FrontBottomView.png)
-![Case](images/FrontBottomView.png)
 
 ![Case](images/BottomView.png)
-![Case](images/BottomView.png)
-
 
 There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
 If necessary, it can also be pressed against the seal with two screws. But wasn't necessary for me.
 ![Screen Attachment](images/ScreenAttachment.png)
 ![Screen Attachment](images/displayinstallation.png)
-![Screen Attachment](images/display installation.png)
-
 
 4 4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches..
 
@@ -91,6 +86,8 @@ The joystick button consists of several 3D printed parts. Three guide pins hold 
 
 Inside the button are several magnets that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
 In the pictures directory you will find a representation of how the magnets (N+S) are arranged.
+
+![Knob](images/buttonbelow.png)
 
 The pressure sensor in the lid is held down while you move the joystick to pan the view back and forth. The button can be dragged up and down to zoom. It can also be rotated slightly left or right to rotate the view.
 
