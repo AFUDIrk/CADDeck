@@ -73,10 +73,10 @@ Then the bottom is attached to the top with M3 pan head screws.
 There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
 If necessary, it can also be pressed against the seal with two screws. But wasn't necessary for me.
 ![Screen Attachment](images/ScreenAttachment.png)
-4 pcs M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the 10 switch plate.
+4 4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches..
 
 ## Joystick knob
-The joystick button consists of several 3D printed parts. Three guide pins hold the two parts together, and the lower part with the magnets is attached with three self-tapping screws. The touch sensor is fixed in the lid with glue, the lid is glued into the wheel.
+The joystick button consists of several 3D printed parts. Three guide pins hold the two parts together and the base with the magnets is attached with three self-tapping screws. The touch sensor is secured in the lid with glue, the lid is pressed into the top of the wheel and should hold without glue.
 
 Inside the button are several magnets that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
 In the pictures directory you will find a representation of how the magnets (N+S) are arranged.
@@ -84,7 +84,7 @@ In the pictures directory you will find a representation of how the magnets (N+S
 The pressure sensor in the lid is held down while you move the joystick to pan the view back and forth. The button can be dragged up and down to zoom. It can also be rotated slightly left or right to rotate the view.
 
 An M4x16mm spacer made of brass is pressed into the button from above (fix with some glue if necessary).
-This is used to attach the button to the joystick and counter it from above with an M4 stud screw so that it sits firmly on the joystick axis.
+This is used to attach the button to the joystick and counter it from above with an M4 stud screw so that it sits firmly on the joystick axis..
 
 ## Wiring
 A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
