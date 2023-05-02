@@ -66,8 +66,11 @@ A Fusion360 model of the case and STL files are included in the CADDeck reposito
 The upper part is screwed inside the housing with M3 head screws. M3 thread inserts are used in the upper part (six positions),
 Then the bottom is attached to the top with M3 pan head screws. 
 
-
 ![Case](images/Case.png)
+
+![Case] (FrontBottomView.png)
+
+![Case] (BottomView.png)
 
 
 There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs at the back and two insertable standoffs at the front.
@@ -77,6 +80,8 @@ If necessary, it can also be pressed against the seal with two screws. But wasn'
 
 ## Joystick knob
 The joystick button consists of several 3D printed parts. Three guide pins hold the two parts together and the base with the magnets is attached with three self-tapping screws. The touch sensor is secured in the lid with glue, the lid is pressed into the top of the wheel and should hold without glue.
+
+![Knob] (guide sleeve.png)
 
 Inside the button are several magnets that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
 In the pictures directory you will find a representation of how the magnets (N+S) are arranged.
@@ -92,6 +97,8 @@ A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the 
 The tricky part is the joystick knob and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly and I soldered the lower one to a small perforated board beforehand and then attached it with superglue.
 
 ![Knob Interior](images/Knobinterior.png)
+
+![Knob Interior] (button from below)
 
 The cables from the touch sensor and the upper Hall sensor are routed down through holes. Please leave the cables a little longer, as the button will later be turned onto the joystick and countered with a grub screw from above.
 
