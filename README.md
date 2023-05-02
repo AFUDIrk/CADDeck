@@ -84,7 +84,7 @@ If necessary, it can also be pressed against the seal with two screws. But wasn'
 ## Joystick knob
 The joystick button consists of several 3D printed parts. Three guide pins hold the two parts together and the base with the magnets is attached with three self-tapping screws. The touch sensor is secured in the lid with glue, the lid is pressed into the top of the wheel and should hold without glue.
 
-![Knob](images/guide sleeve.png)
+![Knob](images/guidesleeve.png)
 
 Inside the button are several magnets that repel each other, keeping it in a floating position. I used a little super glue to attach the magnets.
 In the pictures directory you will find a representation of how the magnets (N+S) are arranged.
