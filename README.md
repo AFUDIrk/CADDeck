@@ -91,13 +91,13 @@ A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the 
 
 The tricky part is the joystick knob and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly and I soldered the lower one to a small perforated board beforehand and then attached it with superglue.
 
+![Knob Interior](images/Knobinterior.png)
+
 The cables from the touch sensor and the upper Hall sensor are routed down through holes. Please leave the cables a little longer, as the button will later be turned onto the joystick and countered with a grub screw from above.
 
 I made plugs on the cables, both for the button, the joystick, the 10 buttons and the connections between the display and the PCF 8575.
 
 ![Perfboard for knob](images/pcb.png)
-
-![Knob Interior](images/KnobInterior.png)
 
 ## Parts List
 Qty 1 [ESP32-SC01 LCD touchscreen](https://www.aliexpress.com/item/1005004399769442.html)
