@@ -1,309 +1,309 @@
-# CADDeck
-![Systemfoto](images/systemphoto.png)
+# CADdeck
+![system photo](images/systemphoto.png)
 
-Dies ist ein kombiniertes Joystick- und Touch-Panel-Display, das für die Verwendung mit gängigen CAD-Programmen geeignet ist. Es enthält:
-1. Zwei-Achsen-Joystick (z. B. für X-, Y-Pan)
-2. Hallsensor im Joystick Drehknopf (z. B. für Zoom) mit Drucksensor (z. B. Bewegung des Bauteils in Verbindung mit dem Joystick)
-3. Im Knopf befindet sich ein zweiter Hallsensor. Mit einer leichten Drehung nach rechts oder links können Sie das Bauteil drehen.
-4. Zehn Schalter um die Basis herum (z. B. Messen, ESC ...)
-5. LCD-Touchpanel mit bis zu 10 Bildschirmen mit 12 Tasten
+This is a combined joystick and touch panel display suitable for use with popular CAD programs. It contains:
+1. Two-axis joystick (e.g. for X, Y pan)
+2. Hall sensor in the joystick Rotary knob (e.g. for zoom) with pressure sensor (e.g. movement of the component in connection with the joystick)
+3. There is a second Hall sensor in the knob. With a slight turn to the right or left you can rotate the component.
+4. Ten switches around the base (e.g. measure, ESC...)
+5. LCD touch panel up to 10 screens with 12 keys
 
-Alle H/W-Tasten sowie die Touch-Panel-Tasten sind über eine Webseite programmierbar.
+All H/W keys and the touch panel keys are programmable via a web page.
 
-Es verbindet sich über Bluetooth mit der HID-Schnittstelle mit dem PC (dh es sieht für den PC aus wie eine Tastatur und eine Maus). Ein USB-C-Anschluss ist für die Stromversorgung und zum Herunterladen von Code vorgesehen. Die Position des USB-C-Anschlusses auf der linken Seite ist nicht ideal, aber dort befindet er sich auf dem verwendeten Bildschirm. Es sollte möglich sein, das Gerät mit Strom zu versorgen und es fest mit dem Bildschirm zu verdrahten, anstatt USB-C für die Stromversorgung zu verwenden, aber ich habe dies nicht versucht.
+It connects to the PC via Bluetooth using the HID interface (i.e. it looks like a keyboard and mouse to the PC). A USB-C port is provided for power and code downloading. The USB-C port's left-side location isn't ideal, but that's where it's located on the screen being used. It should be possible to power the device and hardwire it to the screen instead of using USB-C for power, but I haven't tried this.
 
-## Touch-Panel
-Das Touchpanel ist aus dem FreeTouchDeck-Projekt von Dustin Watt (https://github.com/DustinWatts/FreeTouchDeck.git) adaptiert, das ich modifiziert habe, um die Anzahl der Tasten usw. zu erhöhen (https://github.com/andrewfernie/FreeTouchDeckWT32.git ). Für dieses Projekt habe ich Unterstützung für Joystick, Encoder und Tasten hinzugefügt. Am einfachsten geht es mit einem WT32-SC01 Board (http://www.wireless-tag.com/portfolio/wt32-sc01/). Kaufen Sie das Basisboard, nicht die "Plus"-Version, da das Plus eine parallele Schnittstelle zum LCD-Panel verwendet und nicht genügend IO-Leitungen für den Joystick und die Tasten usw. frei lässt. Das Board enthält ein ESP32-Modul und ein 3,5-Zoll-Modul. LCD mit kapazitivem Touchscreen.
+## Touch panel
+The touch panel is adapted from Dustin Watt's FreeTouchDeck project (https://github.com/DustinWatts/FreeTouchDeck.git), which I modified to increase the number of buttons etc. (https://github.com /andrewfernie/FreeTouchDeckWT32.git ). For this project I added joystick, encoder and button support. The easiest way is with a WT32-SC01 board (http://www.wireless-tag.com/portfolio/wt32-sc01/). Buy the base board, not the "Plus" version, as the Plus uses a parallel interface to the LCD panel and doesn't leave enough IO lines free for the joystick and buttons etc. The board contains an ESP32 module and a 3.5 inch module. LCD with capacitive touch screen.
 
 
-## S/W-Build-Hinweise:
-1. Der Build verwendet die PlatformIO-IDE für VSCode. Installieren Sie VSCode, dann das PlatformIO-Plugin und Sie sollten loslegen.
-2. Sie müssen sicherstellen, dass die entsprechenden Pins für Ihre Hardwarekonfiguration definiert sind. Ich habe meine für den WT32-SC01 gebaut und den Code für ein handverdrahtetes ESP32-Modul + resistiven Touchscreen erstellt.
-3. Möglicherweise sehen Sie Build-Meldungen wie
+## S/W Build Notes:
+1. The build uses the PlatformIO IDE for VSCode. Install VSCode, then the PlatformIO plugin and you should be good to go.
+2. You must ensure that the appropriate pins are defined for your hardware configuration. I built mine for the WT32-SC01 and created the code for a hand wired ESP32 module + resistive touchscreen.
+3. You may see build messages like
  
-In der Datei enthalten von include/CADDeck.h:14,
-aus include/SaveConfig.h:3,
-aus src/SaveConfig.cpp:1:
-.pio/libdeps/esp-wrover-kit/TFT_eSPI/TFT_eSPI.h:909:8: Warnung: #warning >>>>------>> TOUCH_CS-Pin nicht definiert, TFT_eSPI-Touchfunktionen sind nicht verfügbar! [-Wcpp]
-#warning >>>>------>> TOUCH_CS-Pin nicht definiert, TFT_eSPI-Touch-Funktionen sind nicht verfügbar!`
+Contained in the file by include/CADDeck.h:14,
+from include/SaveConfig.h:3,
+from src/SaveConfig.cpp:1:
+.pio/libdeps/esp-wrover-kit/TFT_eSPI/TFT_eSPI.h:909:8: Warning: #warning >>>>------>> TOUCH_CS pin not defined, TFT_eSPI touch functions are not available! [-Wcpp]
+#warning >>>>------>> TOUCH_CS pin not defined, TFT_eSPI touch functions are not available!`
  
-Sie können diese loswerden, indem Sie TOUCH_CS in der platformio.ini für jeden unbenutzten Pin definieren, der ein gültiger Ausgangspin ist. Die Alternative besteht darin, TOUCH_CS nicht zu definieren (die Zeile zu löschen oder ein Semikolon davor zu setzen) und die Meldungen einfach zu ignorieren.
+You can get rid of these by defining TOUCH_CS in platformio.ini for each unused pin that is a valid output pin. The alternative is to not define TOUCH_CS (delete the line or put a semicolon in front of it) and just ignore the messages.
 
 #define TOUCH_CS=33
 
-4. Das System versucht beim Start das Logo in "CADDeck_logo.bmp" anzuzeigen. Wenn nichts angezeigt werden soll, vergewissern Sie sich, dass die Datei nicht existiert. In diesem Fall sehen Sie eine Meldung wie die folgende auf der seriellen Schnittstelle. Solange Sie nichts beim Start angezeigt haben, ignorieren Sie die Meldung.
+4. The system tries to display the logo in "CADDeck_logo.bmp" at startup. If you don't want anything to appear, make sure the file doesn't exist. In this case you will see a message like the following on the serial port. As long as you didn't see anything at startup, ignore the message.
  
-[ 1159][E][vfs_api.cpp:104] open(): /littlefs/logos/CADDeck_logo.bmp existiert nicht, keine Erlaubnis zur Erstellung
+[ 1159][E][vfs_api.cpp:104] open(): /littlefs/logos/CADDeck_logo.bmp does not exist, no permission to create
 
-5. Möglicherweise sehen Sie einige Fehlermeldungen wie
+5. You may see some error messages like
  
-[vfs_api.cpp:104] open(): /littlefs/list existiert nicht
+[vfs_api.cpp:104] open(): /littlefs/list does not exist
  
-Dies ist ein bekanntes Problem mit ESPAsyncWebsServer im Zusammenhang mit LittleFS, das Ordner unterstützt, während SPIFFS dies nicht tut. Siehe https://github.com/lorol/
+This is a known issue with ESPAsyncWebsServer related to LittleFS supporting folders while SPIFFS does not. See https://github.com/lorol/
 
-6. Probleme? Es gibt einige Debug-Meldungen, die in FreeTouchDeck.h aktiviert werden können
+6. Problems? There are some debug messages that can be enabled in FreeTouchDeck.h
  
 #define LOG_MSG_BASIC 1
-#define LOG_MSG_LEVEL 1 // 1=FEHLER, 2=FEHLER+WARNUNG, 3=FEHLER+WARNUNG+INFO
+#define LOG_MSG_LEVEL 1 // 1=ERROR, 2=ERROR+WARNING, 3=ERROR+WARNING+INFO
 #define LOG_MSG_DEBUG 0
-#define LOG_MSG_TOUCH_DEBUG 0 // Nachrichten an die Konsole jedes Mal, wenn eine Berührung erkannt wird
+#define LOG_MSG_TOUCH_DEBUG 0 // Messages to the console each time a touch is detected
 
-Versuchen Sie, LOG_MSG_LEVEL auf 3 einzustellen, und Sie erhalten einige weitere Statusmeldungen
+Try setting LOG_MSG_LEVEL to 3 and you'll get some more status messages
 
 
-# Hardware-Build
+# Hardware build
 
-![Montage](images/Assembly.png)
+![Assembly](images/Assembly.png)
 
-Die meiste Montage ist einfach und besteht hauptsächlich aus Verkabelung. Vollständige 3D-CAD-Modelle werden sowohl im Fusion360- als auch im STEP-Format im Hardware-/Modellordner bereitgestellt.
+Most assembly is simple and consists primarily of wiring. Complete 3D CAD models are provided in both Fusion360 and STEP format in the hardware/models folder.
 
-Verweise auf Tastennummern sind in diesem Diagramm dargestellt:
-![Tastennummern](images/ButtonLayout.png)
+References to button numbers are shown in this diagram:
+![button numbers](images/ButtonLayout.png)
 
 
-## Fall
-Ein Fusion360-Modell des Gehäuses und STL-Dateien sind im CADDeck-Repository enthalten. Der Hauptteil ist zweiteilig gedruckt.
-Das Oberteil wird mit 6 Stücke M3-Kopfschrauben von unten verschraubt. Im Oberteil kommen M3 Gewindeeinsätze zum Einsatz (sechs Positionen),
-Dann wird der Boden mit M3-Flachkopfschrauben an der Oberseite befestigt.
+## case
+A Fusion360 model of the case and STL files are included in the CADDeck repository. The main part is printed in two parts.
+The upper part is screwed on from below with 6 pieces of M3 head screws. M3 thread inserts are used in the upper part (six positions),
+Then the bottom is attached to the top with M3 pan head screws.
 
-![Fall](images/Case.png)
+![Case](images/Case.png)
 
-![Fall](images/FrontBottomView.png)
+![case](images/FrontBottomView.png)
 
-![Fall](images/BottomView.png)
+![case](images/BottomView.png)
 
-## Display Einbauen
-Es gibt keine offensichtliche Möglichkeit, den Bildschirm am Gehäuse zu befestigen, also habe ich ihn mit festen Abstandshaltern auf der Rückseite und zwei einsteckbaren Abstandshaltern auf der Vorderseite befestigt, die erst eingesetzt werden, wenn das Display und die TPU-Dichtung in das Gehäuse eingesetzt wurden.
-Bei Bedarf kann er auch mit zwei Schrauben gegen die TPU-Dichtung gedrückt werden. Bei mir war es nicht nötig.
-![Bildschirmanhang](images/displayinstallation.png)
-![Bildschirmanhang](images/ScreenAttachment.png)
+## Install the display
+There is no obvious way to attach the screen to the case, so I attached it with fixed standoffs on the back and two snap-in standoffs on the front that only go in place once the display and TPU gasket have been placed into the case .
+If necessary, it can also be pressed against the TPU seal with two screws. For me it wasn't necessary.
+![screen attachment](images/displayinstallation.png)
+![Screen Attachment](images/ScreenAttachment.png)
 
-Die USB-C Adapterplatine wird mit zwei Blechschrauben auf dem kleinen Sockel befestigt.
+The USB-C adapter board is attached to the small base with two self-tapping screws.
 
-![Bildschirmanhang](images/USBPlatine.png)
+![screen attachment](images/USBPlatine.png)
 
-4 x M3 Flachkopfschrauben kommen durch den Boden des Gehäuses und werden verwendet, um sowohl den Joystick als auch die Schalterplatte mit den 10 Schaltern zu befestigen.
+4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches.
 
-## Joystick-Knopf
+## Joystick button
 
-![Knopf](images/guidesleeve.png)
+![button](images/guidesleeve.png)
 
-Der knifflige Teil ist der Joystick-Knopf und insbesondere die Magnete und Hallsensoren. Der obere Hallsensor wird direkt eingeklebt und den unteren habe ich vorher auf ein kleines Lochblech gelötet und dann mit Sekundenkleber befestigt, eventuell werden wir versuchen eine Platinen-Layout dafür zu erstellen, ebendso für die MX-Taster.
+The tricky part is the joystick button and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly and I soldered the lower one to a small perforated plate beforehand and then attached it with superglue. We may try to create a circuit board layout for it, as well as for the MX buttons.
 
-![Knopfinnenraum](images/Knobinterior.png)
+![Knobinterior](images/Knobinterior.png)
 
-Ich habe an den Kabeln Stecker angebracht, sowohl für die Joystickknopf, den Joystick, die 10 Tasten und die Verbindungen zwischen dem Display und dem PCF 8575.
+I attached connectors to the cables for both the joystick button, the joystick, the 10 buttons and the connections between the display and the PCF 8575.
 
-![Perfboard für Knopf](images/pcb.png)
-Der Joystickknopf besteht aus mehreren 3D-gedruckten Teilen.
-Im Inneren des Joystickknopfes befinden sich mehrere Magnete, die sich gegenseitig abstoßen und ihn in einer schwebenden Position halten. Ich habe ein wenig Sekundenkleber verwendet, um die Magnete zu befestigen, dazu kann man einfach einen Tropfen Sekundenkleber durch die kleine Bohrung im Kunststoff laufen lassen.
-Im Bildverzeichnis finden Sie eine Darstellung wie die Magnete (N+S) angeordnet sind.
+![Perfboard for button](images/pcb.png)
+The joystick button consists of several 3D printed parts.
+Inside the joystick button are several magnets that repel each other and keep it in a floating position. I used a little superglue to attach the magnets, you can just run a drop of superglue through the small hole in the plastic.
+In the picture directory you will find a representation of how the magnets (N+S) are arranged.
 
-Wenn alle Magnete montiert sind, werde das Kreuz und der Magnethalter vorsichtig zusammengesteckt und dann so verdreht, dass die Magnete übereinander liegen. 
-Dann werden die drei Führungsstifte mit etwas Fett eingesetzt, sie halten die beiden Teile zusammen.
-Ein M4x16mm Abstandshalter aus Messing wird von oben in den die Grundplatte gedrückt (ggf. mit etwas Kleber fixieren).
-Dann die Grundplatte mit etwas Fett von unten in die das Kreuz einführen und darauf acht, das es schön leichtgängig ist.
-Eventuell muss die Achse etwas bearbeitet werden, je nachdem wie genau ihr Drucker druckt.
-Ich habe ein M4 Schraube in die Grundplatte geschraubt, diese in einen Akkuschrauber gespannt und mit Schmirgelpapier so lange bearbeitet,
-bis es passte.
-Die untere Platte mit den Magneten wird mit drei selbstschneidenden Schrauben befestigt.
-Der Berührungssensor wird mit Klebstoff im Deckel befestigt, der Deckel wird erst ganz zum Schluss oben in das Rad gedrückt und sollte ohne Klebstoff halten.
+When all magnets are mounted, the cross and the magnet holder are carefully put together and then twisted so that the magnets are on top of each other.
+Then the three guide pins are inserted with some grease, they hold the two parts together.
+An M4x16mm spacer made of brass is pressed into the base plate from above (fix with some glue if necessary).
+Then insert the base plate with a little grease from below into the cross and make sure that it runs smoothly.
+The axis may need some editing, depending on how accurate your printer prints.
+I screwed an M4 screw into the base plate, clamped it in a cordless screwdriver and sandpapered it until
+until it fits.
+The bottom plate with the magnets is attached with three self-tapping screws.
+The touch sensor is attached to the lid with glue, the lid is pushed into the top of the wheel at the very end and should hold without glue.
 
-![Knopf](images/TP-223.png)
+![button](images/TP-223.png)
 
-Die Kabel vom Berührungssensor und den oberen Hallsensor werden durch Löcher nach unten geführt. Lassen Sie die Kabel bitte etwas länger, da der Joystickknopf später auf den Joystick gedreht wird.
+The wires from the touch sensor and the top hall sensor are routed down through holes. Please leave the cables a bit longer as the joystick knob will be rotated onto the joystick later.
 
-![Knopf](images/buttonbelow.png)
+![button](images/buttonbelow.png)
 
-Auf der Schalterkonsole werde alle 10 MX-Taster eingesetzt und gemäß Schaltplan verdrahtet.
-Der PCF8575 wird mit Blechschrauben auf der Adapterplatte befestigt.
-Erst den Joystick von unten einsetzen, dann die Adapterplatte und dann die Schalterkonsole.
-Von oben den Schaumstoff einlegen, dann Joystickknopf auf den Joystick drehen und die Kabel unter den Schaumsoff nach unten führen.
-Der Joystickknopf wird am Joystick befestigt und von oben mit einer M4 Stiftschraube gekontert, so dass er fest auf der Joystickachse sitzt.
-Nun wird das Gehäuse zusammengesetzt. Erst alle Schrauben von unten los eindrehen. Dann die Sechs äußeren Schrauben festziehen.
-Die Schalterkonsole nun so ausrichten, dass die Schalterkappen nicht klemmen und zum Schluss die vier letzten Schrauben anziehen.
+All 10 MX buttons are used on the switch console and wired according to the circuit diagram.
+The PCF8575 is attached to the adapter plate with self-tapping screws.
+First insert the joystick from below, then the adapter plate and then the switch console.
+Insert the foam from above, then turn the joystick knob onto the joystick and guide the cables down under the foam.
+The joystick button is attached to the joystick and countered from above with an M4 stud screw so that it sits firmly on the joystick axis.
+Now the housing is assembled. First screw in all the screws loosely from below. Then tighten the six outer screws.
+Now align the switch console so that the switch caps do not jam and finally tighten the last four screws.
 
-Im Verzeichniss Bilder sind noch ein paar Darstellungen, wie ich den Support gedruckt habe.
+In the Images directory there are a few more illustrations of how I printed the support.
 
-## Verkabelung
-Ein [Schaltplan](hardware/Electrical/Wiring%20Diagram.pdf) ist im Ordner hardware/electrical enthalten. Das meiste davon ist einfach.
+## wiring
+A [Schematic](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is easy.
 
-![Innenraum](images/Innenansichtverkabelt.png)
+![Interior](images/Insideviewwired.png)
 
-## Liste der Einzelteile
-Menge 1 [ESP32-SC01 LCD-Touchscreen] (https://www.aliexpress.com/item/1005004399769442.html)
+## List of parts
+Quantity 1 [ESP32-SC01 LCD Touch Screen] (https://www.aliexpress.com/item/1005004399769442.html)
 
-Menge 1 [2mm 2x20 Stiftleiste](https://www.aliexpress.com/item/1005001852671581.html)
+Quantity 1 [2mm 2x20 Pin Header](https://www.aliexpress.com/item/1005001852671581.html)
 
-Menge 1 [TTP223 Kapazitiver Touch-Schalter](https://de.aliexpress.com/i/33012282190.html)
+Quantity 1 [TTP223 Capacitive Touch Switch](https://www.aliexpress.com/i/33012282190.html)
 
-Menge 10 [Cherry MX Taster](https://www.ebay.de/itm/183967039197) (Diese gibt es in verschiedenen Ausführungen. Mit oder ohne Klick, schwerer oder leichter Widerstand.)
+Lot of 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (These come in different styles. With or without click, heavy or light resistance.)
 
-Menge  1 [FrSky M9 Joystick] (https://www.aliexpress.com/item/32829691785.html) Dieser ist ein bisschen teuer, aber es ist ein Gerät von guter Qualität.
-         Nichts Besonderes in Bezug auf die Funktionalität - Sie brauchen nur etwas mit analogen X- und Y-Ausgängen.
+Quantity 1 [FrSky M9 Joystick] (https://www.aliexpress.com/item/32829691785.html) This one is a bit expensive but it is a good quality device.
+Nothing fancy in terms of functionality - you just need something with analog X and Y outputs.
 
 
-Menge  1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
+Quantity 1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
 
-Menge  1 [USB-C Adapterplatine] (https://de.aliexpress.com/item/1005003446036071.html)
+Quantity 1 [USB-C Adapter Board] (https://www.aliexpress.com/item/1005003446036071.html)
 
-Menge  2 [Hallsensoren 49E](https://de.aliexpress.com/item/1903819684.html)
+Quantity 2 [Hall Sensors 49E](https://www.aliexpress.com/item/1903819684.html)
 
-Menge 40 [Auswucht-Klebegewichte](https://www.ebay.de/itm/363221786745) (Falls nötig. Der Koffer war mir zu leicht, als ich den Knopf nach oben zog.
-          Man kann aber auch was anderes nehmen um das Gewicht zu erhöhen.)
+Quantity 40 [Adhesive Balance Weights](https://www.ebay.de/itm/363221786745) (If necessary. The case was too light for me when I pulled the knob up.
+But you can also use something else to increase the weight.)
 
-Menge 10 10k 1/8W Durchsteckwiderstände Cherry MX Taster
+Lot of 10 10k 1/8W push-through resistors Cherry MX pushbutton
 
-Menge  6 M3 Messingeinsätze (für das Gehäuseoberteil)
+Quantity 6 M3 brass inserts (for the case top)
 
-Menge  3 M2 Messingeinsätze (für den Joystick-Knopf um das Rad zu befestigen)
+Quantity 3 M2 brass inserts (for the joystick button to attach the wheel)
 
-Menge  3 Blechschraube 2,2x5mm (für Magnethalter unten)
+Quantity 3 sheet metal screw 2.2x5mm (for magnet holder below)
 
-Menge 11 Neodym-Magnet N52 5x5x1mm (9 Stück für die Drehbewegung und zwei Stück übereinander für den Hallsensor)
+Quantity 11 neodymium magnets N52 5x5x1mm (9 pieces for the rotary movement and two pieces on top of each other for the hall sensor)
 
-Menge  6 Neodym-Magnet N52 8x1mm (im Joystickknopf oben und unten)
+Quantity 6 neodymium magnet N52 8x1mm (in the joystick button above and below)
 
-Menge  3 Neodym-Magnet N52 8x3mm (im Joystick-Knopf in der Mitte)
+Quantity 3 neodymium magnet N52 8x3mm (inside the joystick button in the middle)
 
-Menge 10 Schrauben M3x16mm (für das Gehäuse und zur Befestigung des Joysticks)
+Quantity 10 screws M3x16mm (for the housing and for attaching the joystick)
 
-Menge  9 Schrauben M2x5mm  (um das Rad auf dem Joystick-Knopf, die USB-C Platine zu befestigen und den PCF8575 zu befestigen)
+Quantity 9 screws M2x5mm (to fix the wheel on the joystick button, the USB-C board and fix the PCF8575)
 
-JST RM 2,54mm Steckverbinder 5polig.
+JST RM 2.54mm connector 5-pin.
 
-JST RM 2,54mm Steckverbinder 2polig.
+JST RM 2.54mm connector 2-pin.
 
-Dupont Steckverbinder RM 2,54mm
+Dupont connector RM 2.54mm
 
-Etwas weichen Schaumstoff (zwischen Joystickknopf und Joystick)
+Some soft foam (between joystick button and joystick)
 
-26 AWG Silikonlitze (0,14mm²) (am besten in mehreren Farben um Verwechslung zu vermeiden)
+26 AWG silicone wire (0.14mm²) (preferably in several colors to avoid confusion)
 
-# Aufstellen
-Sobald das Gerät zusammengebaut ist und das Display erscheint, sollten Sie die Hauptseite sehen.
-![Hauptseite](images/mainpage.png)
+# Set up
+Once the device is assembled and the display appears, you should see the main page.
+![main page](images/mainpage.png)
 
-Gehen Sie zur Seite CAD-Einstellungen.
-![CAD-Einstellungsseite](images/cadsettings.png)
+Go to the CAD Settings page.
+![CAD Settings Page](images/cadsettings.png)
 
-Dann die Switch-Monitor-Seite.
+Then the switch monitor page.
 
-![Monitorseite wechseln](images/iodebug.png)
+![switch monitor side](images/iodebug.png)
 
-Es zeigt den Status von Joystick, Encoder und Tasten an. Sie sollten das Ergebnis jeder Joystick-Bewegung oder Tastenauswahl sehen können. Beachten Sie, dass die Werte als 1 angezeigt werden, wenn sie nicht ausgewählt sind, und als 0, wenn sie ausgewählt (gedrückt) sind.
+It shows the status of the joystick, encoder and buttons. You should be able to see the result of each joystick movement or button selection. Note that the values ​​are shown as 1 when unselected and 0 when selected (pressed).
 
-Die X- und Y-Daten des Joysticks springen möglicherweise etwas herum. Dies ist normal, da der Joystick zu diesem Zeitpunkt noch nicht kalibriert ist.
+The joystick X and Y data may jump around a bit. This is normal as the joystick has not yet been calibrated at this point.
 
-So kalibrieren Sie den Joystick:
-1. Gehen Sie zurück zur Seite CAD-Einstellungen
-2. Drücken Sie die Joystick Zero-Taste, wenn der Joystick zentriert und ruhig ist. Damit wird der Nullpunkt für den Joystick eingestellt.
-3. Drücken Sie die Joystick Scale-Taste und bewegen Sie den Joystick zu den Extremen in X und Y. Sie haben 5s. Sobald die Funktion beendet ist,
-   werden die Kalibrierungsparameter berechnet und der Joystick sollte sowohl in X als auch in Y einen Bereich von ungefähr +/- 1 anzeigen.
-4. Wenn Sie mit der Kalibrierung zufrieden sind, klicken Sie auf die Schaltfläche CAD-Konfiguration speichern und die Parameter werden
-   in der Datei caparams.json im ESP32 gespeichert. Diese Datei kann über die Seite CAD-Einstellungen im Konfigurator vom ESP32 auf Ihren PC heruntergeladen werden.
-   Es ist eine gute Idee, dies zu tun und die Datei in den Ordner data\config im CADDeck-Code zu kopieren, damit Sie die Parameter nicht verlieren,
-   wenn Sie den Datenordner das nächste Mal auf den ESP32 hochladen.
-4. Wenn Sie mit den Ergebnissen nicht zufrieden sind, versuchen Sie es erneut.
+To calibrate the joystick:
+1. Go back to the CAD Settings page
+2. Press the Joystick Zero button when the joystick is centered and steady. This sets the zero point for the joystick.
+3. Press the Joystick Scale button and move the joystick to the extremes in X and Y. You have 5s. Once the function is finished,
+the calibration parameters will be calculated and the joystick should show a range of approximately +/- 1 in both X and Y.
+4. When you are happy with the calibration, click the Save CAD Configuration button and the parameters will be saved
+stored in the caparams.json file in the ESP32. This file can be downloaded to your PC from the ESP32 via the CAD Settings page in the Configurator.
+It's a good idea to do this and copy the file to the data\config folder in the CADDeck code so you don't lose the parameters,
+next time you upload the data folder to the ESP32.
+4. If you are not satisfied with the results, try again.
 
-Binden Sie Ihren Computer über die Bluetooth-Einstellungsseite auf Ihrem Computer an das CADDeck.
+Bind your computer to the CADDeck using the Bluetooth settings page on your computer.
 
-# Aufbau
-Beachten Sie, dass es sich bei allen oben gezeigten oder erwähnten Seiten um Muster handelt.
-Über den Konfigurator lässt sich jede Seite neu organisieren und an Ihre Bedürfnisse anpassen.
+# Construction
+Note that all pages shown or mentioned above are samples.
+Each page can be reorganized and adapted to your needs using the configurator.
 
-## WLAN-Konfiguration
-Der Zugriff auf den Konfigurator erfolgt über einen Webbrowser auf einem Computer oder Tablet, das mit demselben Netzwerk wie der ESP32 verbunden ist.
-Um den Konfigurator zu aktivieren, gehen Sie zur Einstellungsseite auf dem Touchpanel und wählen Sie die Schaltfläche WLAN aktivieren.
-![Systemeinstellungen](images/systemsettings.png)
+## WLAN configuration
+The configurator is accessed via a web browser on a computer or tablet connected to the same network as the ESP32.
+To activate the configurator, go to the settings page on the touch panel and select the Activate WiFi button.
+![System Settings](images/systemsettings.png)
 
-Wenn Sie Ihre WLAN-Verbindung bereits in wificonfig.json konfiguriert haben, sollten Sie eine Meldung sehen, die besagt, dass sie mit dem WLAN verbunden ist
-und die IP-Adresse anzeigt. An diesem Punkt können Sie zu Ihrem Browser gehen und die IP-Adresse oben eingeben. Der Konfigurator wird angezeigt.
-![Hauptseite des Konfigurators](images/mainconfiguratorpage.png)
+If you've already configured your WiFi connection in wificonfig.json, you should see a message saying it's connected to WiFi
+and displays the IP address. At this point you can go to your browser and enter the IP address above. The configurator is displayed.
+![main configurator page](images/mainconfiguratorpage.png)
 
-Wenn Sie das WLAN noch nicht konfiguriert haben, sollte eine Meldung angezeigt werden, die besagt, dass ein Zugangspunkt (AP) mit einem Netzwerknamen
-und einer IP-Adresse erstellt wurde. Sie müssen Ihren Computer mit dem bereitgestellten Netzwerk verbinden und dann Ihren Browser auf die IP-Adresse verweisen.
-Sobald der Konfigurator-Bildschirm in Ihrem Browser angezeigt wird, gehen Sie zur WLAN-Seite und geben Sie Ihre Netzwerk-SSID und Ihr Passwort ein.
-Wählen Sie dann „Save WiFi Config“, um die Einstellungen zu speichern.
+If you haven't already configured the wireless network, you should see a message stating that an access point (AP) with a network name
+and an IP address was created. You need to connect your computer to the provided network and then point your browser to the IP address.
+Once the configurator screen appears in your browser, go to the WiFi page and enter your network SSID and password.
+Then select “Save WiFi Config” to save the settings.
 
-## Menükonfiguration
-Die Hauptänderung gegenüber dem ursprünglichen FreeTouchDeck besteht darin, mehr Schaltflächen pro Seite zuzulassen - die Bildschirmfläche ist nur ein bisschen kleiner
-als die Größe von zwölf StreamDeck-Schaltflächen, was vernünftig erscheint. Der Code ist derzeit auf drei Reihen mit vier Schaltflächen eingestellt,
-kann aber auf drei Reihen mit fünf Schaltflächen (oder zwei Reihen mit vier usw.) geändert werden,
-indem CADDeck.h geändert wird: „#define BUTTON_ROWS 3“ und „#define BUTTON_COLS 5“. ". Im Prinzip sollte es größere Arrays unterstützen, aber nicht getestet,
-und die Konfiguratorseite ist auf maximal 3x5 eingestellt.
+## Menu configuration
+The main change from the original FreeTouchDeck is allowing more buttons per side - the screen real estate is just a bit smaller
+than the size of twelve StreamDeck buttons, which seems reasonable. The code is currently set to three rows of four buttons,
+but can be changed to three rows of five buttons (or two rows of four, etc.),
+by changing CADDeck.h: "#define BUTTON_ROWS 3" and "#define BUTTON_COLS 5". ". In principle it should support larger arrays, but not tested,
+and the configurator page is set to a maximum of 3x5.
 
-Der Konfigurator zeigt eine Reihe von drei Reihen mit fünf Schaltflächen mit einer Dropdown-Liste zur Auswahl der zu ändernden Menüseite an.
-Wenn Sie weniger als 3x5 verwenden, ignorieren Sie einfach die zusätzlichen Zeilen und Spalten. Auf der To-do-Liste steht die dynamische Generierung des HTML
-entsprechend der Anzahl der Zeilen und Spalten.
-![Menükonfigurator](images/MenuConfigurator.png)
+The configurator will display a series of three rows of five buttons with a drop down list for selecting the menu page to change.
+If you're using less than 3x5, just ignore the extra rows and columns. Dynamic HTML generation is on the to-do list
+according to the number of rows and columns.
+![MenuConfigurator](images/MenuConfigurator.png)
 
-Jede Menüseite hat ein 2D-Array von programmierbaren Tasten, und jede Taste hat eine Reihe von 3 Aktionen, die definiert werden können, wenn die Taste gedrückt wird.
+Each menu page has a 2D array of programmable buttons, and each button has a set of 3 actions that can be defined when the button is pressed.
 
-Sie können verschiedene Hintergrundfarben für eine Schaltfläche festlegen, die eine Aktion ausführt (schwarzer Hintergrund im Bild oben)
-oder Links zu einem anderen Menü (hellblau im Bild). Dies wird auf der Seite Einstellungen des Konfigurators gesteuert.
+You can set different background colors for a button that performs an action (black background in the image above)
+or links to another menu (light blue in the image). This is controlled on the Settings page of the configurator.
 
-Wenn Sie nicht alle Schaltflächen verwenden möchten, verwenden Sie den Konfigurator, um das Logo auf "blank.bmp" einzustellen, und stellen Sie sicher,
-dass für diese Schaltfläche keine Aktionen definiert sind. Schaltflächen mit diesen Eigenschaften werden nicht gezeichnet.
+If you don't want to use all buttons, use the configurator to set the logo to "blank.bmp" and make sure
+that no actions are defined for this button. Buttons with these properties are not drawn.
 
-Eine Einschränkung ist die Größe des FLASH-Speichers, der für die auf dem Touchscreen angezeigten Konfigurationsdateien und Symbole verwendet wird.
-Die Symbole sind 75 x 75 24-Bit-Farb-BMP-Dateien, die jeweils etwa 17 kB benötigen. Wenn Ihnen der Speicherplatz ausgeht, besteht Ihre einzige Möglichkeit darin,
-zu prüfen, ob welche unbenutzt sind und sie zu löschen.
+One limitation is the amount of FLASH memory used for the configuration files and icons displayed on the touch screen.
+The icons are 75 x 75 24-bit color BMP files, each taking up about 17kB. If you are running out of disk space, your only option is to
+to check if any are unused and delete them.
 
 
-## Hardwaretasten
-Die Konfiguration der Hardwaretasten erfolgt über eine spezielle Seite innerhalb desselben webbasierten Konfigurators wie für das LCD-Panel.
-![Konfigurator für CAD-Einstellungen](images/CADSettingsConfigurator.png)
+## Hardware keys
+The hardware buttons are configured via a dedicated page within the same web-based configurator as for the LCD panel.
+![CAD Settings Configurator](images/CADSettingsConfigurator.png)
 
-Der obere Abschnitt enthält:
-1. Aktuelles CAD-Programm: Dies ist das Programm, dessen Einstellungen geladen werden, wenn das CADDeck neu gestartet wird
-2. X- und Y-Skalierungsparameter für den Joystick. Diese können manuell eingestellt werden, es wird jedoch eine Funktion bereitgestellt, um Daten zu erfassen,
-   wenn der Joystick bis  zu seinen Extremen bewegt wird, und die Skalierungen für Sie zu berechnen. Die Ausgangsskalierung beträgt +/-1
-3. Totzone des Joysticks. Jeder X- oder Y-Wert mit einem Absolutwert unterhalb dieser Zahl wird auf Null gesetzt.
-4. Joystick-Empfindlichkeit. Joystick-Werte werden damit multipliziert, wenn sie in Mausbewegungsbefehle umgewandelt werden
-5. Daumenrad-Empfindlichkeit. Der Encoderwert wird damit multipliziert, wenn er in Mausbewegungsbefehle umgewandelt wird
-6. Stabile Zeit: Nachdem der Joystick länger als diese Zeit zentriert war, ohne dass eine Schaltfläche zum Schwenken oder Drehen ausgewählt wurde,
-   kehrt der Joystick in seinen Standardmodus zurück (normalerweise Mauszeiger).
+The top section contains:
+1. Current CAD program: This is the program whose settings will be loaded when CADDeck is restarted
+2. X and Y scaling parameters for the joystick. These can be set manually, however a facility is provided to collect data
+when the joystick is moved to its extremes, and calculate the scales for you. The output scaling is +/-1
+3. Joystick dead zone. Any X or Y value with an absolute value below this number will be set to zero.
+4. Joystick Sensitivity. Joystick values ​​are multiplied by this when converted to mouse movement commands
+5. Thumbwheel Sensitivity. The encoder value is multiplied by this when converted to mouse movement commands
+6. Stable Time: After the joystick has been centered for more than this time without a pan or rotate button selected,
+the joystick returns to its default mode (usually mouse pointer).
 
-Darunter befindet sich die Schaltflächenaktionsdefinition. Der gleiche Ansatz zur Definition der Aktionen wird verwendet wie für die Tasten des LCD-Bedienfelds.
-Die Aktionen sind:
-1. Ausgewähltes CAD-Programm. Das Programm, dessen Einstellungen in diesem Teil des Konfigurators geändert werden.
-   Für jedes der fünf verfügbaren CAD-Programme werden separate  Definitionen dieser Einstellungen gespeichert.
-2. Ausgewählte Schaltfläche. Einer der neun Knöpfe, die im Bild links gezeigt werden.
-   Klicken Sie auf einen der angezeigten Bereiche im Bild und ändern Sie dann die Aktionen für diese Schaltfläche nach Bedarf.
-3. Die Aktionen, die unternommen werden müssen, damit das Schwenken/Drehen/Zoomen durch den Joystick (dh die Maus) innerhalb des ausgewählten CAD-Programms gesteuert werden kann.
-   Beachten Sie, dass die Definition dessen, was zum Steuern des Schwenkens/Drehens/Zoomens erforderlich ist, unabhängig davon ist, welche Schaltfläche diesen Modus aktiviert.
-   Beispielsweise benötigt Solidworks die mittlere Maustaste, um die Ansicht zu drehen. JoystickRotate/Action1 ist also auf „Mouse Buttons“ und Value1 auf „Press Middle Button“ eingestellt. Um die Rotate-Funktion der Taste 8 zuzuweisen, klicken Sie im Bild links auf „8“,
-   setzen Sie dann SelectedButton/Action1 auf „CAD Functions“ und Value1 auf „Joystick Rotate“.
-![Konfigurieren der Rotationsfunktion](images/ConfigureRotate.png)
-Ganz unten befindet sich die Schaltfläche "CAD-Konfiguration speichern".
-Bei Auswahl werden die Einstellungen für alle CAD-Programme auf dem ESP32 in der Datei caparams.json gespeichert
+Below that is the button action definition. The same approach to defining the actions is used as for the LCD panel buttons.
+The actions are:
+1. Selected CAD program. The program whose settings are changed in this part of the configurator.
+Separate definitions of these settings are stored for each of the five available CAD programs.
+2. Selected button. One of the nine buttons shown in the image to the left.
+Click on one of the areas shown in the image, and then change the actions for that button as needed.
+3. The actions that need to be taken in order for the pan/rotate/zoom to be controlled by the joystick (ie mouse) within the selected CAD program.
+Note that the definition of what is required to control pan/rotate/zoom is independent of which button activates that mode.
+For example, Solidworks needs the middle mouse button to rotate the view. So JoystickRotate/Action1 is set to "Mouse Buttons" and Value1 is set to "Press Middle Button". To assign the rotate function to key 8, click on "8" in the image on the left,
+then set SelectedButton/Action1 to "CAD Functions" and Value1 to "Joystick Rotate".
+![Configure Rotate Function](images/ConfigureRotate.png)
+At the very bottom is the "Save CAD Configuration" button.
+When selected, the settings for all CAD programs on the ESP32 are saved in the caparams.json file
 
-## Standardkonfiguration
-Während alles über den Konfigurator geändert werden kann, gibt es einige Standardeinstellungen, die mit dem Code bereitgestellt werden.
-Diese sind:
+## Default configuration
+While everything can be changed via the configurator, there are some default settings that are provided with the code.
+These are:
 
-### Kontrollzuweisungen
-1. Joystick bewegt den Mauszeiger
-2. Joystick mit gedrückter Taste 0 schwenkt die Ansicht
-3. Joystick drehen dreht die Ansicht
-4. Drücken Sie den Joystick nach unten oder ziehen Sie ihn nach oben, um die Ansicht zu vergrößern.
-5. Schaltfläche 1 ist Messen ("i" in Fusion360) (Ich habe "i" als Tastenkombination zum Messen in Solidworks zugewiesen)
-6. Taste 2 stellt den Zoom passend ein ("F6" in Fusion360), ("f" in Solidworks)
-7. Taste 3 deaktiviert ("ESC" in Fusion360 und Solidworks)
-8. Schaltfläche 4 schaltet die Objektsichtbarkeit um ("v" in Fusion360) oder blendet das Objekt aus ("TAB" in Solidworks)
+### Control Assignments
+1. Joystick moves the mouse pointer
+2. Joystick with pressed button 0 pans the view
+3. Rotate the joystick rotates the view
+4. Push the joystick down or drag it up to zoom in.
+5. Button 1 is Measure ("i" in Fusion360) (I assigned "i" as a shortcut to Measure in Solidworks)
+6. Button 2 adjusts the zoom appropriately ("F6" in Fusion360), ("f" in Solidworks)
+7. Button 3 disabled ("ESC" in Fusion360 and Solidworks)
+8. Button 4 toggles object visibility ("v" in Fusion360) or hides ("TAB" in Solidworks) the object
 
-### Menüs
-Menünummern werden wie folgt vergeben:
- 1. Menü 0: Hauptmenü
- 2. Menü 1: Systemeinstellungen
- 3. Menü 2: CAD-Einstellungen
- 4. Menü 3: Nicht verwendet
- 5. Menü 4: Nicht verwendet
- 6. Menü 5: Nicht verwendet
- 7. Menü 6: Nicht verwendet
- 8. Menü 7: Aktives CAD-Programm auswählen
- 9. Menü 8: Fusion360-Aktionen
-10. Menü 9: Nicht verwendet
+### Menus
+Menu numbers are assigned as follows:
+1. Menu 0: Main menu
+2. Menu 1: System settings
+3. Menu 2: CAD settings
+4. Menu 3: Not used
+5. Menu 4: Not used
+6. Menu 5: Not used
+7. Menu 6: Not used
+8. Menu 7: Select active CAD program
+9. Menu 8: Fusion360 Actions
+10. Menu 9: Not used
  
 
