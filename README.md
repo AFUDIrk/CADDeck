@@ -128,7 +128,7 @@ In the Images directory there are a few more illustrations of how I printed the 
 ## wiring
 A [Schematic](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is easy.
 
-![Interior](images/Insideviewwired.png)
+![Interior](images/Innenansichtverkabelt.png)
 
 ## List of parts
 Quantity 1 [ESP32-SC01 LCD Touch Screen] (https://www.aliexpress.com/item/1005004399769442.html)
