@@ -110,6 +110,7 @@ Die untere Platte mit den Magneten wird mit drei selbstschneidenden Schrauben be
 Der Berührungssensor wird mit Klebstoff im Deckel befestigt, der Deckel wird erst ganz zum Schluss oben in das Rad gedrückt und sollte ohne Klebstoff halten.
 
 ![Knopf](images/TP-223.png)
+
 Die Kabel vom Berührungssensor und den oberen Hallsensor werden durch Löcher nach unten geführt. Lassen Sie die Kabel bitte etwas länger, da der Joystickknopf später auf den Joystick gedreht wird.
 
 ![Knopf](images/buttonbelow.png)
@@ -121,6 +122,8 @@ Von oben den Schaumstoff einlegen, dann Joystickknopf auf den Joystick drehen un
 Der Joystickknopf wird am Joystick befestigt und von oben mit einer M4 Stiftschraube gekontert, so dass er fest auf der Joystickachse sitzt.
 Nun wird das Gehäuse zusammengesetzt. Erst alle Schrauben von unten los eindrehen. Dann die Sechs äußeren Schrauben festziehen.
 Die Schalterkonsole nun so ausrichten, dass die Schalterkappen nicht klemmen und zum Schluss die vier letzten Schrauben anziehen.
+
+Im Verzeichniss Bilder sind noch ein paar Darstellungen, wie ich den Support gedruckt habe.
 
 ## Verkabelung
 Ein [Schaltplan](hardware/Electrical/Wiring%20Diagram.pdf) ist im Ordner hardware/electrical enthalten. Das meiste davon ist einfach.
