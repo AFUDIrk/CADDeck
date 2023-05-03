@@ -1,5 +1,5 @@
 # CADDeck
-![Systemfoto](images/systemphoto.jpg)
+![Systemfoto](images/systemphoto.png)
 
 Dies ist ein kombiniertes Joystick- und Touch-Panel-Display, das für die Verwendung mit gängigen CAD-Programmen geeignet ist. Es enthält:
 1. Zwei-Achsen-Joystick (z. B. für X-, Y-Pan)
