@@ -75,16 +75,19 @@ Dann wird der Boden mit M3-Flachkopfschrauben an der Oberseite befestigt.
 ## Display Einbauen
 Es gibt keine offensichtliche Möglichkeit, den Bildschirm am Gehäuse zu befestigen, also habe ich ihn mit festen Abstandshaltern auf der Rückseite und zwei einsteckbaren Abstandshaltern auf der Vorderseite befestigt, die erst eingesetzt werden, wenn das Display und die TPU-Dichtung in das Gehäuse eingesetzt wurden.
 Bei Bedarf kann er auch mit zwei Schrauben gegen die TPU-Dichtung gedrückt werden. Bei mir war es nicht nötig.
-![Bildschirmanhang](images/ScreenAttachment.png)
 ![Bildschirmanhang](images/displayinstallation.png)
+![Bildschirmanhang](images/ScreenAttachment.png)
 
 Die USB-C Adapterplatine wird mit zwei Blechschrauben auf dem kleinen Sockel befestigt.
+
+![Bildschirmanhang](images/USBPlatine.png)
 
 4 x M3 Flachkopfschrauben kommen durch den Boden des Gehäuses und werden verwendet, um sowohl den Joystick als auch die Schalterplatte mit den 10 Schaltern zu befestigen.
 
 ## Joystick-Knopf
 
 ![Knopf](images/guidesleeve.png)
+
 Der knifflige Teil ist der Joystick-Knopf und insbesondere die Magnete und Hallsensoren. Der obere Hallsensor wird direkt eingeklebt und den unteren habe ich vorher auf ein kleines Lochblech gelötet und dann mit Sekundenkleber befestigt, eventuell werden wir versuchen eine Platinen-Layout dafür zu erstellen, ebendso für die MX-Taster.
 
 ![Knopfinnenraum](images/Knobinterior.png)
@@ -105,6 +108,8 @@ Ich habe ein M4 Schraube in die Grundplatte geschraubt, diese in einen Akkuschra
 bis es passte.
 Die untere Platte mit den Magneten wird mit drei selbstschneidenden Schrauben befestigt.
 Der Berührungssensor wird mit Klebstoff im Deckel befestigt, der Deckel wird erst ganz zum Schluss oben in das Rad gedrückt und sollte ohne Klebstoff halten.
+
+![Knopf](images/TP-223.png)
 Die Kabel vom Berührungssensor und den oberen Hallsensor werden durch Löcher nach unten geführt. Lassen Sie die Kabel bitte etwas länger, da der Joystickknopf später auf den Joystick gedreht wird.
 
 ![Knopf](images/buttonbelow.png)
@@ -119,6 +124,8 @@ Die Schalterkonsole nun so ausrichten, dass die Schalterkappen nicht klemmen und
 
 ## Verkabelung
 Ein [Schaltplan](hardware/Electrical/Wiring%20Diagram.pdf) ist im Ordner hardware/electrical enthalten. Das meiste davon ist einfach.
+
+![Innenraum](images/Innenansichtverkabelt.png)
 
 ## Liste der Einzelteile
 Menge 1 [ESP32-SC01 LCD-Touchscreen] (https://www.aliexpress.com/item/1005004399769442.html)
