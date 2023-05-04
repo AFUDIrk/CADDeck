@@ -16,7 +16,7 @@
 	<!-- <div id="contentloading" class="pageloading"> Loading the configurator.</div> -->
 
 	<div id="contentloading" class="pageloading">
-		Loading Configurator
+		Loading Konfigurator
 	</div>
 
 	<div id="ball-loader" class="ball-loader">
@@ -35,26 +35,26 @@
 		<!-- Menu -->
 		<div class="tab">
 			<button class="tablinks" onclick="openMenu(event, 'wifi')">WiFi</button>
-			<button class="tablinks" onclick="openMenu(event, 'general')">Settings</button>
-			<button class="tablinks" onclick="openMenu(event, 'menu')">Menu</button>
-			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameters</button>
-			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Upload logo</button>
+			<button class="tablinks" onclick="openMenu(event, 'general')">Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'menu')">Menü</button>
+			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameter</button>
+			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Logo hochladen</button>
 
 			<form method='post' action='/restart'>
 				<button style="float: right;"
-					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfigurationen gehen verloren!')" class="tablinks">
+					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfiguration gehen verloren!')" class="tablinks">
 					Restart </button>
 			</form>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">File editor</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Upload Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Konfig Menü
+				hochladen</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Download Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
+				Herunterladen</button>
 		</div>
 
 		<!-- Tab Intro -->
@@ -917,7 +917,7 @@
 	</script>
 	<script>
 		var selecteditems = [{
-			name: 'Do Nothing',
+			name: 'Tue nichts',
 			value: '0',
 			subitems: [{
 				name: '--',
@@ -925,7 +925,7 @@
 			}]
 		},
 		{
-			name: 'Delay',
+			name: 'Verzögerung',
 			value: '1',
 			subitems: [{
 				name: '100ms',
@@ -948,30 +948,30 @@
 			]
 		},
 		{
-			name: 'Arrows and TAB',
+			name: 'Pfeile und TAB',
 			value: '2',
 			subitems: [{
 				name: '--',
 				value: '0'
 			},
 			{
-				name: 'UP Arrow',
+				name: 'Pfeil nach oben',
 				value: '1'
 			},
 			{
-				name: 'DOWN Arrow',
+				name: 'Pfeil nach unten',
 				value: '2'
 			},
 			{
-				name: 'LEFT Arrow',
+				name: 'Pfeil nach links',
 				value: '3'
 			},
 			{
-				name: 'RIGHT Arrow',
+				name: 'Pfeil nach rechts',
 				value: '4'
 			},
 			{
-				name: 'Backspace',
+				name: 'Rücktaste',
 				value: '5'
 			},
 			{
@@ -983,19 +983,19 @@
 				value: '7'
 			},
 			{
-				name: 'Page Up',
+				name: 'Seite hoch',
 				value: '8'
 			},
 			{
-				name: 'Page Down',
+				name: 'Seite runter',
 				value: '9'
 			},
 			{
-				name: 'Delete',
+				name: 'Löschen',
 				value: '10'
 			},
 			{
-				name: 'PrintScreen',
+				name: 'Bildschirm drucken',
 				value: '11'
 			},
 			{
@@ -1016,19 +1016,19 @@
 			name: 'Mediakey',
 			value: '3',
 			subitems: [{
-				name: 'Mute',
+				name: 'Ton aus',
 				value: '1'
 			},
 			{
-				name: 'Volume Down',
+				name: 'Lautstärke runter',
 				value: '2'
 			},
 			{
-				name: 'Volume Up',
+				name: 'Lautstärke hoch',
 				value: '3'
 			},
 			{
-				name: 'Play/Pause',
+				name: 'Abspielen/Pause',
 				value: '4'
 			},
 			{
@@ -1036,11 +1036,11 @@
 				value: '5'
 			},
 			{
-				name: 'Next',
+				name: 'Nächste',
 				value: '6'
 			},
 			{
-				name: 'Previous',
+				name: 'Vorherige',
 				value: '7'
 			},
 			{
@@ -1048,19 +1048,19 @@
 				value: '8'
 			},
 			{
-				name: 'File Browser',
+				name: 'Dateibrowser',
 				value: '9'
 			},
 			{
-				name: 'Calculator',
+				name: 'Rechner',
 				value: '10'
 			},
 			{
-				name: 'WWW Bookmarks',
+				name: 'WWW Lesezeichen',
 				value: '11'
 			},
 			{
-				name: 'WWW Search',
+				name: 'WWW Suchen',
 				value: '12'
 			},
 			{
@@ -1068,11 +1068,11 @@
 				value: '13'
 			},
 			{
-				name: 'WWW Back',
+				name: 'WWW Zurück',
 				value: '14'
 			},
 			{
-				name: 'Cons Control',
+				name: 'Cons-Steuerung',
 				value: '15'
 			},
 			{
@@ -1082,7 +1082,7 @@
 			]
 		},
 		{
-			name: 'Letters',
+			name: 'Buchstaben',
 			value: '4',
 			subitems: [{
 				name: '-space-',
@@ -1196,47 +1196,47 @@
 			]
 		},
 		{
-			name: 'Option Keys',
+			name: 'Optionstasten,
 			value: '5',
 			subitems: [{
-				name: 'Left CTRL',
+				name: 'Links CTRL',
 				value: '1'
 			},
 			{
-				name: 'Left Shift',
+				name: 'Links Shift',
 				value: '2'
 			},
 			{
-				name: 'Left ALT',
+				name: 'Links ALT',
 				value: '3'
 			},
 			{
-				name: 'Left GUI',
+				name: 'Links GUI',
 				value: '4'
 			},
 			{
-				name: 'Right CTRL',
+				name: 'Rechts CTRL',
 				value: '5'
 			},
 			{
-				name: 'Right Shift',
+				name: 'Rechts Shift',
 				value: '6'
 			},
 			{
-				name: 'Right ALT',
+				name: 'Rechts ALT',
 				value: '7'
 			},
 			{
-				name: 'Right GUI',
+				name: 'Rechts GUI',
 				value: '8'
 			},
 			{
-				name: 'Release All',
+				name: 'Alle loslassen',
 				value: '9'
 			}]
 		},
 		{
-			name: 'Function Keys',
+			name: 'Funktionstasten',
 			value: '6',
 			subitems: [{
 				name: 'F1',
@@ -1337,7 +1337,7 @@
 			]
 		},
 		{
-			name: 'Numbers',
+			name: 'Zahlen',
 			value: '7',
 			subitems: [{
 				name: '0',
@@ -1383,7 +1383,7 @@
 			]
 		},
 		{
-			name: 'Special Chars',
+			name: 'Sonderzeichen',
 			value: '8',
 			subitems: [{
 				name: '.',
@@ -1452,301 +1452,301 @@
 			name: 'Combos',
 			value: '9',
 			subitems: [{
-				name: 'LEFT CTRL+SHIFT',
+				name: 'LINKS CTRL+SHIFT',
 				value: '1'
 			},
 			{
-				name: 'LEFT ALT+SHIFT',
+				name: 'LINKS ALT+SHIFT',
 				value: '2'
 			},
 			{
-				name: 'LEFT GUI+SHIFT',
+				name: 'LINKS GUI+SHIFT',
 				value: '3'
 			},
 			{
-				name: 'LEFT CTRL+GUI',
+				name: 'LINKS CTRL+GUI',
 				value: '4'
 			},
 			{
-				name: 'LEFT ALT+GUI',
+				name: 'LINKS ALT+GUI',
 				value: '5'
 			},
 			{
-				name: 'LEFT CTRL+ALT',
+				name: 'LINKS CTRL+ALT',
 				value: '6'
 			},
 			{
-				name: 'LEFT CTRL+ALT+GUI',
+				name: 'LINKS CTRL+ALT+GUI',
 				value: '7'
 			},
 			{
-				name: 'RIGHT CTRL+SHIFT',
+				name: 'Rechts CTRL+SHIFT',
 				value: '8'
 			},
 			{
-				name: 'RIGHT ALT+SHIFT',
+				name: 'Rechts ALT+SHIFT',
 				value: '9'
 			},
 			{
-				name: 'RIGHT GUI+SHIFT',
+				name: 'Rechts GUI+SHIFT',
 				value: '10'
 			},
 			{
-				name: 'RIGHT CTRL+GUI',
+				name: 'Rechts CTRL+GUI',
 				value: '11'
 			},
 			{
-				name: 'RIGHT ALT+GUI',
+				name: 'Rechts ALT+GUI',
 				value: '12'
 			},
 			{
-				name: 'RIGHT CTRL+ALT',
+				name: 'Rechts CTRL+ALT',
 				value: '13'
 			},
 			{
-				name: 'RIGHT CTRL+ALT+GUI',
+				name: 'Rechts CTRL+ALT+GUI',
 				value: '14'
 			}
 
 			]
 		},
 		{
-			name: 'Helpers',
+			name: 'Helfer',
 			value: '10',
 			subitems: [{
-				name: 'Helper 1',
+				name: 'Helfer 1',
 				value: '1'
 			},
 			{
-				name: 'Helper 2',
+				name: 'Helfer 2',
 				value: '2'
 			},
 			{
-				name: 'Helper 3',
+				name: 'Helfer 3',
 				value: '3'
 			},
 			{
-				name: 'Helper 4',
+				name: 'Helfer 4',
 				value: '4'
 			},
 			{
-				name: 'Helper 5',
+				name: 'Helfer 5',
 				value: '5'
 			},
 			{
-				name: 'Helper 6',
+				name: 'Helfer 6',
 				value: '6'
 			},
 			{
-				name: 'Helper 7',
+				name: 'Helfer 7',
 				value: '7'
 			},
 			{
-				name: 'Helper 8',
+				name: 'Helfer 8',
 				value: '8'
 			},
 			{
-				name: 'Helper 9',
+				name: 'Helfer 9',
 				value: '9'
 			},
 			{
-				name: 'Helper 10',
+				name: 'Helfer 10',
 				value: '10'
 			},
 			{
-				name: 'Helper 11',
+				name: 'Helfer 11',
 				value: '11'
 			}
 
 			]
 		},
 		{
-			name: 'FTD Functions',
+			name: 'FTD-Funktionen',
 			value: '11',
 			subitems: [{
-				name: 'Config Mode',
+				name: 'Konfigurationsmodus'',
 				value: '1'
 			},
 			{
-				name: 'Brightness Up',
+				name: 'Helligkeit hoch,
 				value: '2'
 			},
 			{
-				name: 'Brightness Down',
+				name: 'Helligkeit runter,
 				value: '3'
 			},
 			{
-				name: 'Enable/Disable Sleep',
+				name: 'Ruhezustand aktivieren/deaktivieren',
 				value: '4'
 			},
 			{
-				name: 'Info Page',
+				name: 'Infoseite',
 				value: '5'
 			},
 			{
-				name: 'Goto Menu 0 (Home)',
+				name: 'Gehe zu Menü 0 (Home)',
 				value: '6'
 			},
 			{
-				name: 'Save General Config',
+				name: 'Allgemeine Konfig speichern',
 				value: '7'
 			},
 			{
-				name: 'Enable USB Comms',
+				name: 'USB-Kommunikation aktivieren',
 				value: '8'
 			}
 			]
 		},
 		{
-			name: 'Numpad',
+			name: 'Ziffernblock',
 			value: '12',
 			subitems: [{
-				name: 'Numpad 0',
+				name: 'Ziffernblock 0',
 				value: '0'
 			},
 			{
-				name: 'Numpad 1',
+				name: 'Ziffernblock 1',
 				value: '1'
 			},
 			{
-				name: 'Numpad 2',
+				name: 'Ziffernblock 2',
 				value: '2'
 			},
 			{
-				name: 'Numpad 3',
+				name: 'Ziffernblock 3',
 				value: '3'
 			},
 			{
-				name: 'Numpad 4',
+				name: 'Ziffernblock 4',
 				value: '4'
 			},
 			{
-				name: 'Numpad 5',
+				name: 'Ziffernblock 5',
 				value: '5'
 			},
 			{
-				name: 'Numpad 6',
+				name: 'Ziffernblock 6',
 				value: '6'
 			},
 			{
-				name: 'Numpad 7',
+				name: 'Ziffernblock 7',
 				value: '7'
 			},
 			{
-				name: 'Numpad 8',
+				name: 'Ziffernblock 8',
 				value: '8'
 			},
 			{
-				name: 'Numpad 9',
+				name: 'Ziffernblock 9',
 				value: '9'
 			},
 			{
-				name: 'Numpad /',
+				name: 'Ziffernblock /',
 				value: '10'
 			},
 			{
-				name: 'Numpad *',
+				name: 'Ziffernblock *',
 				value: '11'
 			},
 			{
-				name: 'Numpad -',
+				name: 'Ziffernblock -',
 				value: '12'
 			},
 			{
-				name: 'Numpad +',
+				name: 'Ziffernblock +',
 				value: '13'
 			},
 			{
-				name: 'Numpad RETURN',
+				name: 'Ziffernblock RETURN',
 				value: '14'
 			},
 			{
-				name: 'Numpad .',
+				name: 'Ziffernblock .',
 				value: '15'
 			}
 
 			]
 		},
 		{
-			name: 'User Actions',
+			name: 'UBenutzeraktionen',
 			value: '13',
 			subitems: [{
-				name: 'Action 1',
+				name: 'Aktion 1',
 				value: '1'
 			},
 			{
-				name: 'Action 2',
+				name: 'Aktion 2',
 				value: '2'
 			},
 			{
-				name: 'Action 3',
+				name: 'Aktion 3',
 				value: '3'
 			},
 			{
-				name: 'Action 4',
+				name: 'Aktion 4',
 				value: '4'
 			},
 			{
-				name: 'Action 5',
+				name: 'Aktion 5',
 				value: '5'
 			},
 			{
-				name: 'Action 6',
+				name: 'Aktion 6',
 				value: '6'
 			},
 			{
-				name: 'Action 7',
+				name: 'Aktion 7',
 				value: '7'
 			}
 
 			]
 		},
 		{
-			name: 'Goto Page',
+			name: 'Gehe zu Seite',
 			value: '14',
 			subitems: [{
-				name: 'Page 0',
+				name: 'Seite 0',
 				value: '0'
 			}, {
-				name: 'Page 1',
+				name: 'Seite 1',
 				value: '1'
 			}, {
-				name: 'Page 2',
+				name: 'Seite 2',
 				value: '2'
 			}, {
-				name: 'Page 3',
+				name: 'Seite 3',
 				value: '3'
 			}, {
-				name: 'Page 4',
+				name: 'Seite 4',
 				value: '4'
 			}, {
-				name: 'Page 5',
+				name: 'Seite 5',
 				value: '5'
 			}, {
-				name: 'Page 6',
+				name: 'Seite 6',
 				value: '6'
 			}, {
-				name: 'Page 7',
+				name: 'Seite 7',
 				value: '7'
 			}, {
-				name: 'Page 8',
+				name: 'Seite 8',
 				value: '8'
 			}, {
-				name: 'Page 9',
+				name: 'Seite 9',
 				value: '9'
 			}
 
 			]
 		},
 		{
-			name: 'CAD Functions',
+			name: 'CAD Funktionen',
 			value: '15',
 			subitems: [{
-				name: 'Set Program',
+				name: 'Programm einstellen',
 				value: '1'
 			},
 			{
-				name: 'Joystick Zero',
+				name: 'Joystick Null',
 				value: '2'
 			},
 			{
@@ -1754,11 +1754,11 @@
 				value: '3'
 			},
 			{
-				name: 'Zoom Scale',
+				name: 'Zoom Skalieren',
 				value: '4'
 			},
 			{
-				name: 'Rotate Scale',
+				name: 'Drehen Skalieren',
 				value: '5'
 			},
 			{
@@ -1774,19 +1774,19 @@
 				value: '8'
 			},
 			{
-				name: 'Rotate Invert',
+				name: 'Drehen Invert',
 				value: '9'
 			},
 			{
-				name: 'Save Settings',
+				name: 'Einstellungen speichern',
 				value: '10'
 			},
 			{
-				name: 'Joystick Pan',
+				name: 'Joystick-Schwenken',
 				value: '11'
 			},
 			{
-				name: 'Joystick Tilt',
+				name: 'Joystick-Neigen',
 				value: '12'
 			},
 			{
@@ -1794,13 +1794,13 @@
 				value: '13'
 			},
 			{
-				name: 'Joystick Rotate',
+				name: 'Joystick Drehen',
 				value: '14'
 			}
 			]
 		},
 		{
-			name: 'Set CAD Program',
+			name: 'CAD-Programm einstellen',
 			value: '16',
 			subitems: [{
 				name: 'Solidworks',
@@ -1821,66 +1821,66 @@
 			]
 		},
 		{
-			name: 'Mouse Buttons',
+			name: 'Maustasten',
 			value: '17',
 			subitems: [{
 				name: 'Press Left Button',
 				value: '1'
 			}, {
-				name: 'Press Right Button',
+				name: 'Linke Taste drücken',
 				value: '2'
 			}, {
-				name: 'Press Middle Button',
+				name: 'Mittlere Taste drücken',
 				value: '3'
 			}, {
-				name: 'Press Left and Middle Buttons',
+				name: 'Linke und mittlere Taste drücken',
 				value: '4'
 			}, {
-				name: 'Press Right and Middle Buttons',
+				name: 'Rechte und mittlere Taste drücken',
 				value: '5'
 			}, {
-				name: 'Release Left Button',
+				name: 'Linke Taste loslassen',
 				value: '6'
 			}, {
-				name: 'Release Right Button',
+				name: 'Rechte Taste loslassen',
 				value: '7'
 			}, {
-				name: 'Release Middle Button',
+				name: 'Mittlere Taste loslassen',
 				value: '8'
 			}, {
-				name: 'Release Left and Middle Buttons',
+				name: 'Linke und mittlere Taste loslassen',
 				value: '9'
 			}, {
-				name: 'Release Right and Middle Buttons',
+				name: 'Rechte und mittlere Taste loslassen',
 				value: '10'
 			}, {
-				name: 'Release All Buttons',
+				name: 'Alle Tasten loslassen',
 				value: '11'
 			}
 			]
 		},
 		{
-			name: 'Previous Page',
+			name: 'Vorige Seite',
 			value: '18',
 			subitems: [{
-				name: 'No Action',
+				name: 'Keine Aktion',
 				value: '0'
 			}
 			]
 		},
 		{
-			name: 'Default Joystick Mode',
+			name: 'Standard-Joystick-Modus',
 			value: '19',
 			subitems: [{
-				name: 'None',
+				name: 'Keiner',
 				value: '0'
 			},
 			{
-				name: 'Pan',
+				name: 'Schwenken',
 				value: '1'
 			},
 			{
-				name: 'Rotate',
+				name: 'Drehen',
 				value: '2'
 			},
 			{
@@ -1909,7 +1909,7 @@
 					// 		.html(this.name)
 					// 		.appendTo(menu);
 					// });
-					console.log("Change detected in form savemenu.")
+					console.log("Änderung im Formularspeichermenü festgestellt.")
 				});
 		});
 
