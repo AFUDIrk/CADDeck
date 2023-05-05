@@ -16,7 +16,7 @@
 	<!-- <div id="contentloading" class="pageloading"> Loading the configurator.</div> -->
 
 	<div id="contentloading" class="pageloading">
-		Loading Konfigurator
+		Lade Konfigurator
 	</div>
 
 	<div id="ball-loader" class="ball-loader">
@@ -42,8 +42,8 @@
 
 			<form method='post' action='/restart'>
 				<button style="float: right;"
-					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfiguration gehen verloren!')" class="tablinks">
-					Restart </button>
+					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfiguration gehen verloren!!')" class="tablinks">
+					Neustart </button>
 			</form>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
@@ -62,7 +62,7 @@
 			<h3>Willkommen</h3>
 			<p>
 				Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
-				treten sie meinem 
+				treten sie meinem
 				Discord Server bei: <a href="https://discord.gg/RE3XevS"
 					target="_blank">https://discord.gg/RE3XevS</a><br />
 				Eine Anleitung zur Verwendung des Konfigurators finden Sie hier: <a
@@ -87,7 +87,7 @@
 
 					<label for="password">Wlan Passwort:</label><br>
 					<input type="password" id="password" name="password" autocomplete="new-password"><br>
-					<input type="checkbox" onclick="togglepassword()">Passwort anzeigen <br><br>
+					<input type="checkbox" onclick="togglepassword()">asswort anzeigen <br><br>
 
 					&nbsp;&nbsp;WLAN-Modus:&nbsp;
 					<select class="wifimode" id='wifimode' name='wifimode'>
@@ -95,7 +95,7 @@
 						<option value="WIFI_AP">Zugangspunkt</option>
 					</select><br>
 
-					<label for="wifihostname">WLAN-Hostname:</label>
+					<label for="wifihostname">WLAN Hostname:</label>
 					<input type="text" id="wifihostname" name="wifihostname"><br>
 
 					&nbsp;&nbsp;Verbindungsversuche:&nbsp;
@@ -167,7 +167,7 @@
 				<option value="30">30 Minuten</option>
 				<option value="60">60 Minuten</option>
 			</select>
-			&nbsp;&nbsp;USB-Kommunikation:&nbsp;
+			&nbsp;&nbsp;USB Kommunikation:&nbsp;
 			<select class="usbcommsenable" id='usbcommsenable' name='usbcommsenable'>
 				<option value="true">Aktiviert</option>
 				<option value="false">Deaktiviert</option>
@@ -249,14 +249,14 @@
 	</div>
 	<!-- Tab Menu -->
 	<div id="menu" class="tabcontent">
-		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">herunterladen menu1.json</a></div>
+		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">Herunterladen  menu1.json</a></div>
 		<br>
 		<h3>Menü</h3>
 		<p>
 		<form method='post' id="savemenu" action='/saveconfig'>
 			<label for="framework">Menü auswählen</label>
 			<select name="menunumberlist_save" id="menunumberlist_save" onchange="updateMenuItems(this)">
-				<option value="0">Home-Menü</option>
+				<option value="0">Home Menü</option>
 				<option value="1">Menü 1</option>
 				<option value="2">Menü 2</option>
 				<option value="3">Menü 3</option>
@@ -408,7 +408,7 @@
 							<br />Aktion 2:
 							<select class="actions" id='button22action1' name='button22action1'></select>
 							<select class="actions" id='button22value1' name='button22value1'></select>
-							<br />Aktion 3:
+							<br />Action 3:
 							<select class="actions" id='button22action2' name='button22action2'></select>
 							<select class="actions" id='button22value2' name='button22value2'></select>
 							<br />Verriegeln? <input type="checkbox" id="button22latch" name="button22latch">
@@ -559,7 +559,7 @@
 	</div>
 	<!-- Tab CADParams -->
 	<div id="cadparams" class="tabcontent">
-		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">herunterladen cadparams.json</a>
+		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">Herunterladen cadparams.json</a>
 		</div>
 		<br>
 		<h3>CAD Einstellungen</h3>
@@ -577,10 +577,10 @@
 			</select>
 			<br><br>
 
-			&nbsp;&nbsp;Joystick-Skalierung X:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung X:&nbsp;
 			<input type="number" id="joy_scale_x" name="joy_scale_x" min="-5.0" max="5.0" value="3.00" step="any">
 
-			&nbsp;&nbsp;Joystick-Skalierung Y:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung Y:&nbsp;
 			<input type="number" id="joy_scale_y" name="joy_scale_y" min="-5.0" max="5.0" value="3.00" step="any">
 
 			&nbsp;&nbsp;Joystick Totzone:&nbsp;
@@ -699,51 +699,51 @@
 								<tr>
 									<td style="width: 25%;">
 										<br />Joystick Schwenken
-										<br />Aktion 1:
+										<br />Action 1:
 										<select class="actions" id='panmodeaction0' name='panmodeaction0'></select>
 										<select class="actions" id='panmodevalue0' name='panmodevalue0'></select>
-										<br />Aktion 2:
+										<br />Action 2:
 										<select class="actions" id='panmodeaction1' name='panmodeaction1'></select>
 										<select class="actions" id='panmodevalue1' name='panmodevalue1'></select>
-										<br />Aktion 3:
+										<br />Action 3:
 										<select class="actions" id='panmodeaction2' name='panmodeaction2'></select>
 										<select class="actions" id='panmodevalue2' name='panmodevalue2'></select>
 									</td>
 									<td style="width: 25%;">
 										<br />Joystick Neigen
-										<br />Aktion 1:
+										<br />Action 1:
 										<select class="actions" id='tiltmodeaction0' name='tiltmodeaction0'></select>
 										<select class="actions" id='tiltmodevalue0' name='tiltmodevalue0'></select>
-										<br />Aktion 2:
+										<br />Action 2:
 										<select class="actions" id='tiltmodeaction1' name='tiltmodeaction1'></select>
 										<select class="actions" id='tiltmodevalue1' name='tiltmodevalue1'></select>
-										<br />Aktion 3:
+										<br />Action 3:
 										<select class="actions" id='tiltmodeaction2' name='tiltmodeaction2'></select>
 										<select class="actions" id='tiltmodevalue2' name='tiltmodevalue2'></select>
 									</td>
 									<td style="width: 25%;">
 										<br />Joystick Zoom
-										<br />Aktion 1:
+										<br />Action 1:
 										<select class="actions" id='zoommodeaction0' name='zoommodeaction0'></select>
 										<select class="actions" id='zoommodevalue0' name='zoommodevalue0'></select>
-										<br />Aktion 2:
+										<br />Action 2:
 										<select class="actions" id='zoommodeaction1' name='zoommodeaction1'></select>
 										<select class="actions" id='zoommodevalue1' name='zoommodevalue1'></select>
-										<br />Aktion 3:
+										<br />Action 3:
 										<select class="actions" id='zoommodeaction2' name='zoommodeaction2'></select>
 										<select class="actions" id='zoommodevalue2' name='zoommodevalue2'></select>
 									</td>
 									<td style="width: 25%;">
 										<br />Joystick Drehen
-										<br />Aktion 1:
+										<br />Action 1:
 										<select class="actions" id='rotatemodeaction0'
 											name='rotatemodeaction0'></select>
 										<select class="actions" id='rotatemodevalue0' name='rotatemodevalue0'></select>
-										<br />Aktion 2:
+										<br />Action 2:
 										<select class="actions" id='rotatemodeaction1'
 											name='rotatemodeaction1'></select>
 										<select class="actions" id='rotatemodevalue1' name='rotatemodevalue1'></select>
-										<br />Aktion 3:
+										<br />Action 3:
 										<select class="actions" id='rotatemodeaction2'
 											name='rotatemodeaction2'></select>
 										<select class="actions" id='rotatemodevalue2' name='rotatemodevalue2'></select>
@@ -780,21 +780,21 @@
 	<!-- Upload Logo -->
 	<div id="uploadimage" class="tabcontent">
 		<h3>Hochladen eines neuen Logos</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> Sie können die verwendeten Logos anpassen. Wenn du
-			eine Datei mit einem Namen hochlädst, der bereits existiert, wird die Datei <u>überschrieben</u>. Sie können nur .bmp
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst die verwendeten Logos anpassen. Wenn du
+			eine Datei mit einem Namen hochlädst, der bereits existiert, wird die Datei <u>überschrieben</u>. Du kannst nur .bmp
 			Bilder hochladen. Die Bilder sollten im 24-Bit-RGB-Format vorliegen und nicht mehr als 75 x 75 Pixel groß sein.
 			Kleinere Bilder werden unterstützt.<br /><br />
 
 			Auch Bilder, die für Elgatos Stream Deck verwendet werden, werden unterstützt. Diese sollten auch in einem 24-Bit-RGB
-			Format vorliegen. Sie können diese mit diesem kostenlosen Online-Tool konvertieren <a
+			Format vorliegen. Du kannst diese mit diesem kostenlosen Online-Tool konvertieren  <a
 				href="https://online-converting.com/image/convert2bmp/"
 				target="_blank">https://online-converting.com/image/convert2bmp/</a>.<br /><br />
 
-				CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
-				alle
-				schwarze Pixel werden transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe wird transparent
-				dargestellt.
-			    Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
+			CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
+			alle
+			schwarze Pixel werden transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe wird transparent
+			dargestellt.
+			Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
 		</div>
 		<p>
 		<div class="form" style="width: 10%; text-align: : center; margin: auto;">
@@ -816,11 +816,11 @@
 
 	<!-- Upload JSON -->
 	<div id="uploadjson" class="tabcontent">
-		<h3>Hochladen JSON Config File</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> ie können eine zuvor heruntergeladene JSON-Datei hochladen
+		<h3>JSON-Konfigurationsdatei Hochladen</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst eine zuvor heruntergeladene JSON-Datei hochladen
 			um Ihnen etwas Zeit zu ersparen, da Sie nicht ein ganzes Menü konfigurieren müssen. Der Dateiname sollte der Menüname sein (alles
 			Kleinschreibung), z.B. menu.json für Menü, menu2.json für Menü 2 usw. Es ist auch eine gute Idee zu validieren
-			Ihre .json-Datei, wenn Sie manuelle Änderungen vorgenommen haben. Das kannst du mit machen
+			Ihre .json-Datei, wenn Sie manuelle Änderungen vorgenommen haben. Das kannst das machen mit
 			<a href="https://jsonlint.com/" target="_blank">JSONLint</a>
 			<br /><br />
 		</div>
@@ -834,12 +834,12 @@
 
 	<!-- Download JSON -->
 	<div id="downloadjson" class="tabcontent">
-		<h3>Laden Sie eine Menükonfigurationsdatei herunter</h3>
-		<div style="width: 70%; text-align: center; margin: auto;"> Wählen Sie eine Datei aus der Liste aus und laden Sie sie auf
+		<h3>Menükonfigurationsdatei Herunterladen</h3>
+		<div style="width: 70%; text-align: center; margin: auto;"> Wählen eine Datei aus der Liste aus und lade diese auf
 			den Client-Rechner herunter. <br /><br /></div>
 		<p>
 		<div class="form" style="width: 20%; text-align: center; margin: auto;">
-			<label for="framework">Wählen Sie Menü</label>
+			<label for="framework">Menüauswahl</label>
 			<select name="menunumberlist_download" id="menunumberlist_download" form="downloadjsonfile">
 				<option value="0">Home Menü</option>
 				<option value="1">Menü 1</option>
@@ -917,7 +917,7 @@
 	</script>
 	<script>
 		var selecteditems = [{
-			name: 'Tue nichts',
+			name: 'Mache nichts',
 			value: '0',
 			subitems: [{
 				name: '--',
@@ -955,23 +955,23 @@
 				value: '0'
 			},
 			{
-				name: 'Pfeil nach oben',
+				name: 'Pfeil HOCH',
 				value: '1'
 			},
 			{
-				name: 'Pfeil nach unten',
+				name: 'Pfeil RUNTER',
 				value: '2'
 			},
 			{
-				name: 'Pfeil nach links',
+				name: 'Pfeil LINKS',
 				value: '3'
 			},
 			{
-				name: 'Pfeil nach rechts',
+				name: 'Pfeil RECHTS',
 				value: '4'
 			},
 			{
-				name: 'Rücktaste',
+				name: 'Backspace',
 				value: '5'
 			},
 			{
@@ -983,19 +983,19 @@
 				value: '7'
 			},
 			{
-				name: 'Seite hoch',
+				name: 'Seite HOCH',
 				value: '8'
 			},
 			{
-				name: 'Seite runter',
+				name: 'Seite RUNTER',
 				value: '9'
 			},
 			{
-				name: 'Löschen',
+				name: 'Delete',
 				value: '10'
 			},
 			{
-				name: 'Bildschirm drucken',
+				name: 'PrintScreen',
 				value: '11'
 			},
 			{
@@ -1016,19 +1016,19 @@
 			name: 'Mediakey',
 			value: '3',
 			subitems: [{
-				name: 'Ton aus',
+				name: 'Stumm',
 				value: '1'
 			},
 			{
-				name: 'Lautstärke runter',
+				name: 'Leise',
 				value: '2'
 			},
 			{
-				name: 'Lautstärke hoch',
+				name: 'Lauter',
 				value: '3'
 			},
 			{
-				name: 'Abspielen/Pause',
+				name: 'Play/Pause',
 				value: '4'
 			},
 			{
@@ -1196,7 +1196,7 @@
 			]
 		},
 		{
-			name: 'Optionstasten,
+			name: 'Optionstasten',
 			value: '5',
 			subitems: [{
 				name: 'Links CTRL',
@@ -1449,7 +1449,7 @@
 			]
 		},
 		{
-			name: 'Combos',
+			name: 'Kombinationen',
 			value: '9',
 			subitems: [{
 				name: 'LINKS CTRL+SHIFT',
@@ -1480,31 +1480,31 @@
 				value: '7'
 			},
 			{
-				name: 'Rechts CTRL+SHIFT',
+				name: 'RECHTS CTRL+SHIFT',
 				value: '8'
 			},
 			{
-				name: 'Rechts ALT+SHIFT',
+				name: 'RECHTS ALT+SHIFT',
 				value: '9'
 			},
 			{
-				name: 'Rechts GUI+SHIFT',
+				name: 'RECHTS GUI+SHIFT',
 				value: '10'
 			},
 			{
-				name: 'Rechts CTRL+GUI',
+				name: 'RECHTS CTRL+GUI',
 				value: '11'
 			},
 			{
-				name: 'Rechts ALT+GUI',
+				name: 'RECHTS ALT+GUI',
 				value: '12'
 			},
 			{
-				name: 'Rechts CTRL+ALT',
+				name: 'RECHTS CTRL+ALT',
 				value: '13'
 			},
 			{
-				name: 'Rechts CTRL+ALT+GUI',
+				name: 'RECHTS CTRL+ALT+GUI',
 				value: '14'
 			}
 
@@ -1561,18 +1561,18 @@
 			]
 		},
 		{
-			name: 'FTD-Funktionen',
+			name: 'FTD Funktionen',
 			value: '11',
 			subitems: [{
-				name: 'Konfigurationsmodus'',
+				name: 'Config-Modus',
 				value: '1'
 			},
 			{
-				name: 'Helligkeit hoch,
+				name: 'Helligkeit hoch',
 				value: '2'
 			},
 			{
-				name: 'Helligkeit runter,
+				name: 'Helligkeit runter',
 				value: '3'
 			},
 			{
@@ -1580,7 +1580,7 @@
 				value: '4'
 			},
 			{
-				name: 'Infoseite',
+				name: 'Info Seite',
 				value: '5'
 			},
 			{
@@ -1668,7 +1668,7 @@
 			]
 		},
 		{
-			name: 'UBenutzeraktionen',
+			name: 'Benutzeraktionen',
 			value: '13',
 			subitems: [{
 				name: 'Aktion 1',
@@ -1739,18 +1739,18 @@
 			]
 		},
 		{
-			name: 'CAD Funktionen',
+			name: 'CAD Funktion',
 			value: '15',
 			subitems: [{
-				name: 'Programm einstellen',
+				name: 'Programm festlegen',
 				value: '1'
 			},
 			{
-				name: 'Joystick Null',
+				name: 'Joystick Nullpunkt',
 				value: '2'
 			},
 			{
-				name: 'Joystick Scale',
+				name: 'Joystick Skalieren',
 				value: '3'
 			},
 			{
@@ -1758,23 +1758,23 @@
 				value: '4'
 			},
 			{
-				name: 'Drehen Skalieren',
+				name: 'Rotate Skalieren',
 				value: '5'
 			},
 			{
-				name: 'Joystick Invert X',
+				name: 'Joystick Invertieren X',
 				value: '6'
 			},
 			{
-				name: 'Joystick Invert Y',
+				name: 'Joystick Invertieren Y',
 				value: '7'
 			},
 			{
-				name: 'Zoom Invert',
+				name: 'Zoom Invertieren',
 				value: '8'
 			},
 			{
-				name: 'Drehen Invert',
+				name: 'Rotate Invertieren',
 				value: '9'
 			},
 			{
@@ -1782,11 +1782,11 @@
 				value: '10'
 			},
 			{
-				name: 'Joystick-Schwenken',
+				name: 'Joystick Schwenken',
 				value: '11'
 			},
 			{
-				name: 'Joystick-Neigen',
+				name: 'Joystick Neigen',
 				value: '12'
 			},
 			{
@@ -1824,43 +1824,43 @@
 			name: 'Maustasten',
 			value: '17',
 			subitems: [{
-				name: 'Press Left Button',
+				name: 'Drücke Linke Taste',
 				value: '1'
 			}, {
-				name: 'Linke Taste drücken',
+				name: 'Drücke Rechte Taste',
 				value: '2'
 			}, {
-				name: 'Mittlere Taste drücken',
+				name: 'Drücke Mittlere Taste',
 				value: '3'
 			}, {
-				name: 'Linke und mittlere Taste drücken',
+				name: 'Drücke Linke und Mittlere Taste',
 				value: '4'
 			}, {
-				name: 'Rechte und mittlere Taste drücken',
+				name: 'Drücke rechte und Mittlere Taste',
 				value: '5'
 			}, {
-				name: 'Linke Taste loslassen',
+				name: 'Freigeben Linke Taste',
 				value: '6'
 			}, {
-				name: 'Rechte Taste loslassen',
+				name: 'Freigeben Rechte Taste',
 				value: '7'
 			}, {
-				name: 'Mittlere Taste loslassen',
+				name: 'Freigeben Mittlere Taste',
 				value: '8'
 			}, {
-				name: 'Linke und mittlere Taste loslassen',
+				name: 'Freigeben Linke und Mittlere Taste',
 				value: '9'
 			}, {
-				name: 'Rechte und mittlere Taste loslassen',
+				name: 'Freigeben Rechte und Mittlere Taste',
 				value: '10'
 			}, {
-				name: 'Alle Tasten loslassen',
+				name: 'Freigeben alle Tasten',
 				value: '11'
 			}
 			]
 		},
 		{
-			name: 'Vorige Seite',
+			name: 'Vorherige Seite',
 			value: '18',
 			subitems: [{
 				name: 'Keine Aktion',
@@ -1909,7 +1909,7 @@
 					// 		.html(this.name)
 					// 		.appendTo(menu);
 					// });
-					console.log("Änderung im Formularspeichermenü festgestellt.")
+					console.log("Änderung im Formularspeichermenü erkannt.")
 				});
 		});
 
@@ -3591,7 +3591,7 @@
 								});
 
 							});
-							checkboxlist += '<br><button style="cursor: pointer;"" type="save">Delete files</button></form>';
+							checkboxlist += '<br><button style="cursor: pointer;"" type="save">Dateien löschen</button></form>';
 							document.getElementById("deletefilelist").innerHTML = checkboxlist;
 
 						})
