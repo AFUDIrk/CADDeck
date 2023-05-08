@@ -293,6 +293,8 @@ These are:
 7. Button 3 disabled ("ESC" in Fusion360 and Solidworks)
 8. Button 4 toggles object visibility ("v" in Fusion360) or hides ("TAB" in Solidworks) the object
 
+![system photo](images/CADDeck.png)
+
 ### Menus
 Menu numbers are assigned as follows:
 1. Menu 0: Main menu
