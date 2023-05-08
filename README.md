@@ -285,7 +285,7 @@ These are:
 
 ### Control Assignments
 1. Joystick moves the mouse pointer
-2. Joystick with pressed button 0 pans the view
+2. Joystick with pressed button 0 moves the component
 3. Rotate the joystick rotates the view
 4. Push the joystick down or drag it up to zoom in.
 5. Button 1 is Measure ("i" in Fusion360) (I assigned "i" as a shortcut to Measure in Solidworks)
