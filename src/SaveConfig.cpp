@@ -381,7 +381,7 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
         for (int button = 0; button < cadprogramconfig[program].num_buttons; button++) {
             JsonObject programButtonObject = programHWButtonsArray.createNestedObject();
 
-            programButtonObject["name"] = "button" + String(button + 1);
+            programButtonObject["name"] = "button" + String(button);
 
             JsonArray programButtonObject_actionarray = programButtonObject.createNestedArray("actionarray");
 
@@ -598,7 +598,7 @@ int saveCurrentConfigCADParams()
         for (int button = 0; button < cadprogramconfig[program].num_buttons; button++) {
             JsonObject programButtonObject = programHWButtonsArray.createNestedObject();
 
-            programButtonObject["name"] = "button" + String(button + 1);
+            programButtonObject["name"] = "button" + String(button);
 
             JsonArray programButtonObject_actionarray = programButtonObject.createNestedArray("actionarray");
 

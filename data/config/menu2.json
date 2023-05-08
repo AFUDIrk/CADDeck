@@ -31,31 +31,31 @@
     ]
   },
   "button13": {
-    "logo": "flip_x.bmp",
+    "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "15",
+      "0",
       "0",
       "0"
     ],
     "valuearray": [
-      "4",
+      "0",
       "0",
       "0"
     ]
   },
   "button14": {
-    "logo": "flip_y.bmp",
+    "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "15",
+      "0",
       "0",
       "0"
     ],
     "valuearray": [
-      "5",
+      "0",
       "0",
       "0"
     ]
@@ -76,7 +76,7 @@
     ]
   },
   "button21": {
-    "logo": "floppy.bmp",
+    "logo": "flip_x.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -91,11 +91,11 @@
     ]
   },
   "button22": {
-    "logo": "app.bmp",
+    "logo": "flip_y.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "14",
+      "15",
       "0",
       "0"
     ],
@@ -106,26 +106,26 @@
     ]
   },
   "button23": {
-    "logo": "blank.bmp",
+    "logo": "flip_z.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "15",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "8",
       "0",
       "0"
     ]
   },
   "button24": {
-    "logo": "ones_zeros.bmp",
+    "logo": "flip_r.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "11",
+      "15",
       "0",
       "0"
     ],
@@ -151,46 +151,46 @@
     ]
   },
   "button31": {
-    "logo": "blank.bmp",
+    "logo": "floppy.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "15",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "10",
       "0",
       "0"
     ]
   },
   "button32": {
-    "logo": "blank.bmp",
+    "logo": "app.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "14",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "7",
       "0",
       "0"
     ]
   },
   "button33": {
-    "logo": "blank.bmp",
+    "logo": "ones_zeros.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "11",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "9",
       "0",
       "0"
     ]

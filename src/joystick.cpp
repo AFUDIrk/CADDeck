@@ -169,7 +169,7 @@ uint8_t Joystick::CalibrateScale()
     return 0;
 }
 
-float Joystick::Joystick::x()
+float Joystick::x()
 {
     float value = (value_int_x - zero_x) * scale_x / 4095.0;
     if (value > deadzone) {
@@ -184,7 +184,15 @@ float Joystick::Joystick::x()
     return value;
 };
 
-float Joystick::Joystick::y()
+int Joystick::RawX(){
+    return value_int_x;
+};
+
+int Joystick::RawY(){
+    return value_int_y;
+};
+
+float Joystick::y()
 {
     float value = (value_int_y - zero_y) * scale_y / 4095.0;
     if (value > deadzone) {

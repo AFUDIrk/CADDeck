@@ -120,7 +120,7 @@ uint8_t AnalogControl::CalibrateScale()
     return 0;
 }
 
-float AnalogControl::AnalogControl::Value()
+float AnalogControl::Value()
 {
     float value = (value_int_a - zero_a) * scale_a / 4095.0;
     if (value > deadzone) {
@@ -133,4 +133,9 @@ float AnalogControl::AnalogControl::Value()
         value = 0.0;
     }
     return value;
+};
+
+int AnalogControl::RawValue()
+{
+    return value_int_a;
 };

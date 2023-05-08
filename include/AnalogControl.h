@@ -38,6 +38,7 @@ class AnalogControl {
     void SetScale(float scale);
     float GetScale();
     float Value();
+    int RawValue();
 
    private:
     // AnalogControl variables

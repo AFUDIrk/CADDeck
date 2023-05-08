@@ -665,23 +665,17 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     break;
 
                 case CADFn_CalibrateZero:
-                    joystick.CalibrateZeroAll();
+                    calibrate_zero_analog_controls();
                     break;
 
-                case CADFn_CalibrateJoyScale:
-                    joystick.CalibrateScale();
-                    cadconfig.joy_scale_x = joystick.GetScale(0);
-                    cadconfig.joy_scale_y = joystick.GetScale(1);
+                case CADFn_CalibrateControlScale:
+                    calibrate_scale_analog_controls();
                     break;
 
-                case CADFn_CalibrateZoomScale:
-                    zoomControl.CalibrateScale();
-                    cadconfig.zoom_scale = zoomControl.GetScale();
+                case CADFn_Spare1:
                     break;
 
-                case CADFn_CalibrateRotateScale:
-                    zoomControl.CalibrateScale();
-                    cadconfig.rotate_scale = rotateControl.GetScale();
+                case CADFn_Spare2:
                     break;
 
                 case CADFn_InvertJoyScaleX:
@@ -722,6 +716,10 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
 
                 case CADFn_JoystickRotate:
                     joystick_mode_pins[JoystickModeRotate] = HWButton_Pins[hwbutton_index];
+                    break;
+
+                case CADFn_ModeSelect:
+                    mode_select_button_pin = HWButton_Pins[hwbutton_index];
                     break;
             }
             break;

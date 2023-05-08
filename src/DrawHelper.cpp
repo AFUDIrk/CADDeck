@@ -437,6 +437,8 @@ void printIOValues()
     tft.printf("Rotate: %f     \n", rotateControl.Value());
 
     //    PCF857X::DigitalInput di = pcf857X.digitalReadAll();
+    tft.print(" Button 0: ");
+    tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_0));
 
     tft.print(" Buttons 1-2-3-4-5: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1));

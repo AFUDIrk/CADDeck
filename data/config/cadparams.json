@@ -6,7 +6,7 @@
   "joy_sensitivity": 20,
   "zoom_scale": -2.65,
   "zoom_deadzone": 0.05,
-  "zoom_sensitivity": 20,
+  "zoom_sensitivity": 2,
   "rotate_scale": -2.65,
   "rotate_deadzone": 0.05,
   "rotate_sensitivity": 20,
@@ -66,6 +66,19 @@
         ]
       },
       "buttons": [
+        {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
         {
           "name": "button1",
           "actionarray": [
@@ -252,6 +265,19 @@
       },
       "buttons": [
         {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
+        {
           "name": "button1",
           "actionarray": [
             "4",
@@ -436,6 +462,19 @@
         ]
       },
       "buttons": [
+        {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
         {
           "name": "button1",
           "actionarray": [
@@ -622,6 +661,19 @@
       },
       "buttons": [
         {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
+        {
           "name": "button1",
           "actionarray": [
             "0",
@@ -806,6 +858,19 @@
         ]
       },
       "buttons": [
+        {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
         {
           "name": "button1",
           "actionarray": [

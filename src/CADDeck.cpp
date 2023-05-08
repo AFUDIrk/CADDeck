@@ -45,10 +45,17 @@
 
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.8.10Button.WIP";
+const char *versionnumber = "0.0.10_10Button";
 
 /*
- * Version 0.0.8.10Button.WIP    - In work
+
+ * Version 0.0.10.10Button
+ *                   - Added hardcoded control functionality for Solidworks, Fusion360, Blender, FreeCAD, and AC3D
+ *
+ * Version 0.0.9.10Button.WIP
+ *                   - More support for 10 buttons, analog zoom control, and analog rotate control. Hardcoded for Fusion360 only.
+ *
+ * Version 0.0.8.10Button.WIP
  *                   - Added support for 10 buttons, analog zoom control, and analog rotate control
  *
  * Version 0.0.7     - Adapted for four button knob.
@@ -203,7 +210,7 @@ char jsonFileFail[32] = "";
 
 bool psramAvailable = false;
 
-uint8_t last_hwbutton_state[NUM_HW_BUTTONS] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+uint8_t last_hwbutton_state[NUM_HW_BUTTONS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 // Invoke the TFT_eSPI button class and create all the button objects
 TFT_eSPI_Button key[BUTTON_ROWS][BUTTON_COLS];

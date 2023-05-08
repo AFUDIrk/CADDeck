@@ -40,6 +40,8 @@ class Joystick {
     float GetScale(uint8_t axis);
     float x();
     float y();
+    int RawX();
+    int RawY();
 
    private:
     // joystick variables
