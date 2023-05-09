@@ -11,7 +11,7 @@
   "rotate_deadzone": 0.05,
   "rotate_sensitivity": 20,
   "joy_steady_time": 200,
-  "current_program": 0,
+  "current_program": 1,
   "programs": [
     {
       "name": "Solidworks",

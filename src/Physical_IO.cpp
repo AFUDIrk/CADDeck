@@ -174,25 +174,37 @@ void update_io()
             case CADApp_FreeCAD:
             case CADApp_AC3D:
                 if (control_mode == 0) {
-                    Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0);
+                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
+                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                    }
                 }
                 else if (control_mode == 1) {
-                    Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
+                    if (rotateControl.Value() != 0) {
+                        Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
+                    }
                 }
                 else if (control_mode == 2) {
-                    Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
+                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                    }
                 }
                 break;
 
             case CADApp_Blender:
                 if (control_mode == 0) {
-                    Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
+                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                    }
                 }
                 else if (control_mode == 1) {
-                    Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
+                    if (rotateControl.Value() != 0) {
+                        Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
+                    }
                 }
                 else if (control_mode == 2) {
-                    Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0);
+                    if (joystick.x() != 0 || joystick.y() != 0) {
+                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0);
+                    }
                 }
                 break;
 

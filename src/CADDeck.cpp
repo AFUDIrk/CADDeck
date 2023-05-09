@@ -45,10 +45,13 @@
 
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.10_10Button";
+const char *versionnumber = "0.0.11_10Button";
 
 /*
 
+ * Version 0.0.11.10Button
+ *                   - Zoom control active without pushing button
+ *
  * Version 0.0.10.10Button
  *                   - Added hardcoded control functionality for Solidworks, Fusion360, Blender, FreeCAD, and AC3D
  *
