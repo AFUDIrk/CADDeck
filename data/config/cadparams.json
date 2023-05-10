@@ -87,7 +87,7 @@
             "0"
           ],
           "valuearray": [
-            "i",
+            "s",
             "0",
             "0"
           ]
@@ -108,12 +108,12 @@
         {
           "name": "button3",
           "actionarray": [
-            "2",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "12",
+            "q",
             "0",
             "0"
           ]
@@ -121,12 +121,12 @@
         {
           "name": "button4",
           "actionarray": [
-            "2",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "6",
+            "e",
             "0",
             "0"
           ]
@@ -134,12 +134,12 @@
         {
           "name": "button5",
           "actionarray": [
-            "15",
+            "2",
             "0",
             "0"
           ],
           "valuearray": [
-            "7",
+            "10",
             "0",
             "0"
           ]
@@ -147,12 +147,12 @@
         {
           "name": "button6",
           "actionarray": [
-            "0",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "0",
+            "l",
             "0",
             "0"
           ]
@@ -160,12 +160,12 @@
         {
           "name": "button7",
           "actionarray": [
-            "0",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "0",
+            "r",
             "0",
             "0"
           ]
@@ -173,12 +173,12 @@
         {
           "name": "button8",
           "actionarray": [
-            "15",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "8",
+            "w",
             "0",
             "0"
           ]
@@ -186,12 +186,12 @@
         {
           "name": "button9",
           "actionarray": [
-            "17",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "1",
+            "c",
             "0",
             "0"
           ]
@@ -199,12 +199,12 @@
         {
           "name": "button10",
           "actionarray": [
-            "0",
+            "2",
             "0",
             "0"
           ],
           "valuearray": [
-            "0",
+            "7",
             "0",
             "0"
           ]
