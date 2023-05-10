@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "joy_scale_x": -3.04,
-  "joy_scale_y": -2.65,
+  "joy_scale_x": -5,
+  "joy_scale_y": 2.65,
   "joy_deadzone": 0.05,
-  "joy_sensitivity": 20,
-  "zoom_scale": -2.65,
-  "zoom_deadzone": 0.05,
+  "joy_sensitivity": 50,
+  "zoom_scale": 3,
+  "zoom_deadzone": 0.1,
   "zoom_sensitivity": 2,
-  "rotate_scale": -2.65,
-  "rotate_deadzone": 0.05,
-  "rotate_sensitivity": 20,
+  "rotate_scale": 3,
+  "rotate_deadzone": 0.1,
+  "rotate_sensitivity": 10,
   "joy_steady_time": 200,
   "current_program": 1,
   "programs": [
@@ -24,7 +24,7 @@
           "0"
         ],
         "valuearray": [
-          "1",
+          "2",
           "3",
           "0"
         ]
@@ -217,13 +217,13 @@
       "default_joystick_mode": 4,
       "pan": {
         "actionarray": [
+          "5",
           "17",
-          "0",
           "0"
         ],
         "valuearray": [
+          "2",
           "3",
-          "0",
           "0"
         ]
       },
@@ -614,12 +614,12 @@
       "pan": {
         "actionarray": [
           "17",
-          "0",
+          "5",
           "0"
         ],
         "valuearray": [
           "3",
-          "0",
+          "2",
           "0"
         ]
       },
