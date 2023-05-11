@@ -69,15 +69,12 @@ References to button numbers are as shown in this diagram:
 
 ![Button Numbers](images/ButtonLayout.png)
 
-
 ## Case
 A Fusion360 model of the case, as well as STL files, are included in the CADDeck repository. The main case is printed in four pieces.
 The two top sections are bolted together internal to the case with M3 cap screws and nuts.
 M3 threaded inserts are used in the top front piece (six places), then the bottom is attached to the top with M3 flat head screws. 
 
-
 ![Case](images/Case.png)
-
 
 There is no obvious way to attach the screen to the case. So I designed the case so that the display is held with a frame.
 First the display is pushed into the housing until it snaps into the rear spacers.
@@ -141,11 +138,7 @@ In the Images directory there are a few more illustrations of how I printed the 
 ## Wiring
 A [wiring diagram](hardware/Electrical/WiringDiagram10Buttons.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
 
-
 ![Interior](images/Innenansichtverkabelt.png)
-
-![Perfboard for knob](images/pcb.png)
-
 
 ## Parts List
 Quantity 1 [ESP32-SC01 LCD Touch Screen] (https://www.aliexpress.com/item/1005004399769442.html)
