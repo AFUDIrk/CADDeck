@@ -98,6 +98,15 @@ The USB-C adapter board is attached to the small base with two self-tapping scre
 4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches.
 
 ## Joystick knob
+
+![Knopf](images/guidesleeve.png)
+
+The tricky part is the joystick button and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly
+and I soldered the lower one to a small perforated plate beforehand and then attached it with superglue.
+We may try to create a circuit board layout for it, as well as for the MX buttons.
+
+![Knopfinnenraum](images/Knobinterior.png)
+
 The joystick button consists of several 3D printed parts.
 Inside the joystick button are several magnets that repel each other and keep it in a floating position. I used a little superglue to attach the magnets, you can just run a drop of superglue through the small hole in the plastic.
 In the picture directory you will find a representation of how the magnets (N+S) are arranged.
@@ -115,12 +124,12 @@ The touch sensor is attached to the lid with glue, the lid is pushed into the to
 ## Wiring
 A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
 
-The touchy part is the joystick grip, and in particular the resistors and capacitors to debounce the encoder and pull the switches high. I used a small piece of perfboard to which I soldered 0805 size SMD components.
-I also used 30AWG silicon stranded wire to connect the perfboard into the base. Too many wires, and not enough space.
+A [Schematic](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is easy.
+
+![Interior](images/Innenansichtverkabelt.png)
 
 ![Perfboard for knob](images/pcb.png)
 
-![Knob Interior](images/Knobinterior.png)
 
 ## Parts List
 Qty 1 [ESP32-SC01 LCD touchscreen](https://www.aliexpress.com/item/1005004399769442.html)
