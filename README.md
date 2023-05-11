@@ -89,8 +89,6 @@ The USB-C adapter board is attached to the small base with two self-tapping scre
 
 ![Bildschirmanhang](images/USBPlatine.png)
 
-![Screen Attachment](images/ScreenAttachment.png)
-
 6 x M3 pan head screws go through the bottom of the case and are used to hold the case closed.
 4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches.
 
