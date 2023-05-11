@@ -79,11 +79,21 @@ M3 threaded inserts are used in the top front piece (six places), then the botto
 ![Case](images/Case.png)
 
 
-There is no obvious way to attach the screen to the case,
-so I soldered four 6mm long M2.5 brass standoffs to the PCB.
+There is no obvious way to attach the screen to the case. So I designed the case so that the display is held with a frame.
+First the display is pushed into the housing until it snaps into the rear spacers.
+Then the TPU seal is pushed between the housing and the display and finally the two front spacers are inserted.
+If necessary, the display can be pressed against the TPU seal from behind with two screws.
+But wasn't necessary for me.
+
+![Bildschirmanhang](images/displayinstallation.png)
+![Bildschirmanhang](images/ScreenAttachment.png)
+
+The USB-C adapter board is attached to the small base with two self-tapping screws.
+
+![Bildschirmanhang](images/USBPlatine.png)
 
 ![Screen Attachment](images/ScreenAttachment.png)
-M2.5 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
+M3 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
 
 ## Joystick knob
 The joystick knob consists of two more 3D printed parts.  Two M3 screws are used to hold the two parts together,
