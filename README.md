@@ -103,6 +103,7 @@ We may try to create a circuit board layout for it, as well as for the MX button
 ![Knopfinnenraum](images/Knobinterior.png)
 
 ![button](images/pcb.png)
+
 The joystick button consists of several 3D printed parts.
 Inside the joystick button are several magnets that repel each other and keep it in a floating position. I used a little superglue to attach the magnets, you can just run a drop of superglue through the small hole in the plastic.
 In the picture directory you will find a representation of how the magnets (N+S) are arranged.
