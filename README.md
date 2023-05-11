@@ -107,6 +107,7 @@ We may try to create a circuit board layout for it, as well as for the MX button
 
 ![Knopfinnenraum](images/Knobinterior.png)
 
+![button](images/pcb.png)
 The joystick button consists of several 3D printed parts.
 Inside the joystick button are several magnets that repel each other and keep it in a floating position. I used a little superglue to attach the magnets, you can just run a drop of superglue through the small hole in the plastic.
 In the picture directory you will find a representation of how the magnets (N+S) are arranged.
@@ -121,6 +122,22 @@ until it fits.
 The bottom plate with the magnets is attached with three self-tapping screws.
 The touch sensor is attached to the lid with glue, the lid is pushed into the top of the wheel at the very end and should hold without glue.
 
+![button](images/TP-223.png)
+
+The wires from the touch sensor and the top hall sensor are routed down through holes. Please leave the cables a bit longer as the joystick knob will be rotated onto the joystick later.
+
+![button](images/buttonbelow.png)
+
+All 10 MX buttons are used on the switch console and wired according to the circuit diagram.
+The PCF8575 is attached to the adapter plate with self-tapping screws.
+First insert the joystick from below, then the adapter plate and then the switch console.
+Insert the foam from above, then turn the joystick knob onto the joystick and guide the cables down under the foam.
+The joystick button is attached to the joystick and countered from above with an M4 stud screw so that it sits firmly on the joystick axis.
+Now the housing is assembled. First screw in all the screws loosely from below. Then tighten the six outer screws.
+Now align the switch console so that the switch caps do not jam and finally tighten the last four screws.
+
+In the Images directory there are a few more illustrations of how I printed the support.
+
 ## Wiring
 A [wiring diagram](hardware/Electrical/WiringDiagram10Buttons.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
 
@@ -131,36 +148,54 @@ A [wiring diagram](hardware/Electrical/WiringDiagram10Buttons.pdf) is included i
 
 
 ## Parts List
-Qty 1 [ESP32-SC01 LCD touchscreen](https://www.aliexpress.com/item/1005004399769442.html)
+Quantity 1 [ESP32-SC01 LCD Touch Screen] (https://www.aliexpress.com/item/1005004399769442.html)
 
-Qty 1 [2mm 2x20 Male Header](https://www.aliexpress.com/item/1005001852671581.html)
+Quantity 1 [2mm 2x20 Pin Header](https://www.aliexpress.com/item/1005001852671581.html)
 
-Qty 1 [EVQWGD001 Encoder](https://www.aliexpress.com/item/1005002824178689.html)
+Quantity 1 [TTP223 Capacitive Touch Switch](https://www.aliexpress.com/i/33012282190.html)
 
+Lot of 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (These come in different styles. With or without click, heavy or light resistance.)
 
-Qty 4 [12mm x 12mm x 8.5mm High Tactile Pushbuttons](https://www.aliexpress.com/item/1005004735827784.html) 8mm, 9mm, or 10mm high wouild also work fine 
-
-Qty 4 [8mm momentary pushbuttons](https://www.aliexpress.com/item/1005002898978166.html) (these are the ones I used, but are not great -
-      I would prefer something with a better tactile feel)
-
-Qty 1 [FrSky M9 joystick](https://www.aliexpress.com/item/32829691785.html)   This one is a bit pricey, but it is a good quality unit. Nothing special in terms of functionality -
-       you just need something with analog X and Y outputs.
+Quantity 1 [FrSky M9 Joystick] (https://www.aliexpress.com/item/32829691785.html) This one is a bit expensive but it is a good quality device.
+          Nothing fancy in terms of functionality - you just need something with analog X and Y outputs.
 
 
-Qty 1 [PCF8575 I2C IO Expander](https://www.aliexpress.com/item/1005004433286881.html)
+Quantity 1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
 
-Qty5 10k 0805 SMD resistors for the encoder debounce and joystick button pullups
+Quantity 1 [USB-C Adapter Board] (https://www.aliexpress.com/item/1005003446036071.html)
 
-Qty5 10k 1/8W throughhole resistors for 8mm button pullups
+Quantity 2 [Hall Sensors 49E](https://www.aliexpress.com/item/1903819684.html)
 
-Qty2 100nF 0805 SMD capacitors for the encoder debounce
+Quantity 40 [Adhesive Balance Weights](https://www.ebay.de/itm/363221786745) (If necessary. The case was too light for me when I pulled the knob up.
+           But you can also use something else to increase the weight.)
 
-Qty 8 M3 Brass inserts
+Lot of 10 10k 1/8W push-through resistors Cherry MX pushbutton
 
-Misc M3 hardware (nuts, screws, etc)
+Quantity 6 M3 brass inserts (for the case top)
 
-30AWG silicon stranded wire
-r
+Quantity 3 M2 brass inserts (for the joystick button to attach the wheel)
+
+Quantity 3 sheet metal screw 2.2x5mm (for magnet holder below)
+
+Quantity 11 neodymium magnets N52 5x5x1mm (9 pieces for the rotary movement and two pieces on top of each other for the hall sensor)
+
+Quantity 6 neodymium magnet N52 8x1mm (in the joystick button above and below)
+
+Quantity 3 neodymium magnet N52 8x3mm (inside the joystick button in the middle)
+
+Quantity 10 screws M3x16mm (for the housing and for attaching the joystick)
+
+Quantity 9 screws M2x5mm (to fix the wheel on the joystick button, the USB-C board and fix the PCF8575)
+
+JST RM 2.54mm connector 5-pin.
+
+JST RM 2.54mm connector 2-pin.
+
+Dupont connector RM 2.54mm
+
+Some soft foam (between joystick button and joystick)
+
+26 AWG silicone wire (0.14mm²) (preferably in several colors to avoid confusion)
 
 # Setup
 Once the unit is assembled and the display is coming up you should see the main page.
