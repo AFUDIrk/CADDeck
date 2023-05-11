@@ -122,9 +122,8 @@ The bottom plate with the magnets is attached with three self-tapping screws.
 The touch sensor is attached to the lid with glue, the lid is pushed into the top of the wheel at the very end and should hold without glue.
 
 ## Wiring
-A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
+A [wiring diagram](hardware/Electrical/Wiring Diagram_10 Buttons.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
 
-A [Schematic](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is easy.
 
 ![Interior](images/Innenansichtverkabelt.png)
 
