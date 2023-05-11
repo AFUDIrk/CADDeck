@@ -93,17 +93,24 @@ The USB-C adapter board is attached to the small base with two self-tapping scre
 ![Bildschirmanhang](images/USBPlatine.png)
 
 ![Screen Attachment](images/ScreenAttachment.png)
-M3 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
+
+6 x M3 pan head screws go through the bottom of the case and are used to hold the case closed.
+4 x M3 pan head screws come through the bottom of the case and are used to attach both the joystick and the switch plate with the 10 switches.
 
 ## Joystick knob
-The joystick knob consists of two more 3D printed parts.  Two M3 screws are used to hold the two parts together,
-with threaded inserts in the bottom part. The perfboard to which the encoder and debounce/pullup components are mounted is clamped by the top and bottom parts. 
+The joystick button consists of several 3D printed parts.
+Inside the joystick button are several magnets that repel each other and keep it in a floating position. I used a little superglue to attach the magnets, you can just run a drop of superglue through the small hole in the plastic.
+In the picture directory you will find a representation of how the magnets (N+S) are arranged.
 
-Four tactile buttons are located around the knob. I used a little hot glue to hold them in place against the bottom part of the knob. 
-
-The first version of the knob only had two buttons, equivalent to Buttons 5 and 6. The idea was to hold one down while moving the joystick to pan the view and the other to rotate the view.
-The problem was that I found it awkward to use Button 6 while holding the joystick in my left hand, and the same problem with Button 5 while holding the joystick in my right hand. So, I added Buttons 7 and 8.
-I find that Buttons 5 and 8 work well with the left hand, and Buttons 6 and 7 work well with the right hand.
+When all magnets are mounted, the cross and the magnet holder are carefully put together and then twisted so that the magnets are on top of each other.
+Then the three guide pins are inserted with some grease, they hold the two parts together.
+An M4x16mm spacer made of brass is pressed into the base plate from above (fix with some glue if necessary).
+Then insert the base plate with some grease from below into the cross and make sure that it runs smoothly.
+The axis may need some editing, depending on how accurate your printer prints.
+I screwed an M4 screw into the base plate, clamped it in a cordless screwdriver and sandpapered it until
+until it fits.
+The bottom plate with the magnets is attached with three self-tapping screws.
+The touch sensor is attached to the lid with glue, the lid is pushed into the top of the wheel at the very end and should hold without glue.
 
 ## Wiring
 A [wiring diagram](hardware/Electrical/Wiring%20Diagram.pdf) is included in the hardware/electrical folder. Most of it is straighjtforward.
