@@ -58,6 +58,7 @@ The touch panel is adapted from Dustin Watt's FreeTouchDeck project (https://git
 Most assembly is basic and is primarily wiring.  Complete 3D CAD models are provided in both Fusion360 and STEP formats in the hardware/model folder.
 
 References to button numbers are as shown in this diagram:
+
 ![Button Numbers](images/ButtonLayout.png)
 
 
@@ -68,7 +69,9 @@ A Fusion360 model of the case, as well as STL files, are included in the CADDeck
 ![Case](images/Case.png)
 
 
-There is no obvious way to attach the screen to the case, so I soldered four 6mm long M2.5 brass standoffs to the PCB.
+There is no obvious way to attach the screen to the case,
+so I soldered four 6mm long M2.5 brass standoffs to the PCB.
+
 ![Screen Attachment](images/ScreenAttachment.png)
 M2.5 flathead screews come through the bottom part of the case and are used to both hold the case closed and to attach the screen.
 
@@ -86,7 +89,7 @@ The touchy part is the joystick grip, and in particular the resistors and capaci
 
 ![Perfboard for knob](images/pcb.png)
 
-![Knob Interior](images/KnobInterior.png)
+![Knob Interior](images/Knobinterior.png)
 
 ## Parts List
 Qty 1 [ESP32-SC01 LCD touchscreen](https://www.aliexpress.com/item/1005004399769442.html)
