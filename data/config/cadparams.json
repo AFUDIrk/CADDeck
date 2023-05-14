@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "joy_scale_x": -5,
-  "joy_scale_y": 2.65,
+  "joy_scale_x": -3.045467,
+  "joy_scale_y": 2.65678,
   "joy_deadzone": 0.05,
   "joy_sensitivity": 20,
-  "zoom_scale": 3,
+  "zoom_scale": 2,
   "zoom_deadzone": 0.1,
   "zoom_sensitivity": 10,
-  "rotate_scale": 3,
-  "rotate_deadzone": 0.1,
-  "rotate_sensitivity": 5,
-  "joy_steady_time": 200,
+  "rotate_scale": 2,
+  "rotate_deadzone": 0.05,
+  "rotate_sensitivity": 10,
+  "joy_steady_time": 150,
   "current_program": 1,
   "programs": [
     {
@@ -24,7 +24,7 @@
           "0"
         ],
         "valuearray": [
-          "2",
+          "1",
           "3",
           "0"
         ]
@@ -49,6 +49,204 @@
         ],
         "valuearray": [
           "2",
+          "3",
+          "0"
+        ]
+      },
+      "rotate": {
+        "actionarray": [
+          "0",
+          "0",
+          "0"
+        ],
+        "valuearray": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "buttons": [
+        {
+          "name": "button0",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "15",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button1",
+          "actionarray": [
+            "4",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "i",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button2",
+          "actionarray": [
+            "4",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "f",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button3",
+          "actionarray": [
+            "2",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "12",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button4",
+          "actionarray": [
+            "2",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "6",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button5",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "7",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button6",
+          "actionarray": [
+            "0",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button7",
+          "actionarray": [
+            "0",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "0",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button8",
+          "actionarray": [
+            "15",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "8",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button9",
+          "actionarray": [
+            "17",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "1",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button10",
+          "actionarray": [
+            "0",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fusion360",
+      "logo": "fusion360.bmp",
+      "default_joystick_mode": 4,
+      "pan": {
+        "actionarray": [
+          "17",
+          "0",
+          "0"
+        ],
+        "valuearray": [
+          "3",
+          "0",
+          "0"
+        ]
+      },
+      "tilt": {
+        "actionarray": [
+          "5",
+          "17",
+          "0"
+        ],
+        "valuearray": [
+          "2",
+          "3",
+          "0"
+        ]
+      },
+      "zoom": {
+        "actionarray": [
+          "9",
+          "17",
+          "0"
+        ],
+        "valuearray": [
+          "1",
           "3",
           "0"
         ]
@@ -205,204 +403,6 @@
           ],
           "valuearray": [
             "7",
-            "0",
-            "0"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Fusion360",
-      "logo": "fusion360.bmp",
-      "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "2",
-          "3",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "2",
-          "3",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "9",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "1",
-          "3",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
-      "buttons": [
-        {
-          "name": "button0",
-          "actionarray": [
-            "15",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "15",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button1",
-          "actionarray": [
-            "4",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "i",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button2",
-          "actionarray": [
-            "6",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "6",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button3",
-          "actionarray": [
-            "2",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "12",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button4",
-          "actionarray": [
-            "4",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "v",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button5",
-          "actionarray": [
-            "15",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "7",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button6",
-          "actionarray": [
-            "0",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "0",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button7",
-          "actionarray": [
-            "0",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "0",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button8",
-          "actionarray": [
-            "15",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "8",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button9",
-          "actionarray": [
-            "17",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "1",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button10",
-          "actionarray": [
-            "0",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "0",
             "0",
             "0"
           ]
@@ -614,12 +614,12 @@
       "pan": {
         "actionarray": [
           "17",
-          "5",
+          "0",
           "0"
         ],
         "valuearray": [
           "3",
-          "2",
+          "0",
           "0"
         ]
       },
