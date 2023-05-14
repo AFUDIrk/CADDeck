@@ -4,6 +4,11 @@ Joystick joystick(JOYSTICK_X, JOYSTICK_Y);
 AnalogControl zoomControl(ZOOM_PIN);
 AnalogControl rotateControl(ROTATE_PIN);
 
+DenoiseComparison zoom_comparison(5, 0.0, 0.01);
+DenoiseComparison rotate_comparison(5, 0.0, 0.01);
+DenoiseComparison joy_x_comparison(5, 0.0, 0.01);
+DenoiseComparison joy_y_comparison(5, 0.0, 0.01);
+
 PCF857X pcf857X(PCF857X_ADDR);  // Note that the SCL and SDA pins have already been defined as part of
                                 // the touch screen setup.
 
@@ -15,10 +20,8 @@ int8_t joystick_mode_pins[4] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4};
 const uint8_t HWButton_Pins[NUM_HW_BUTTONS] = {BUTTON_0, BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4, BUTTON_5, BUTTON_6, BUTTON_7, BUTTON_8, BUTTON_9, BUTTON_10};
 int8_t mode_select_button_pin = BUTTON_0;
 
-uint8_t last_hw_button0_set = 0;
-uint8_t last_rotate_knob_turned = 0;
-uint8_t control_mode = 0;  // 0 = mouse, 1 = rotate, 2 = move
-uint8_t last_control_mode = 0;
+uint8_t control_mode = JOYSTICK_CONTROL_MODE_MOUSE;
+uint8_t last_control_mode = JOYSTICK_CONTROL_MODE_MOUSE;
 
 PCF857X::DigitalInput pcf857X_inputs;
 
@@ -44,6 +47,8 @@ void init_io()
     for (int i = 0; i < 16; i++) {
         pcf857X.pinMode(i, INPUT);
     }
+
+    set_pantilt_mode(cadconfig.current_program);
 
     pcf857X.begin(false);  // false so as not to start the I2C bus (already done by the touch controller)
 }
@@ -88,7 +93,8 @@ void set_move_mode(uint8_t cadapp)
             KeyboardMouseAction(5, 9, 0);    // Release all keys
             break;
     }
-    control_mode = 2;
+    control_mode = JOYSTICK_CONTROL_MODE_MOVE;
+    MSG_DEBUGLN("[DEBUG] Set move mode");
 }
 
 void set_rotate_mode(uint8_t cadapp)
@@ -133,14 +139,62 @@ void set_rotate_mode(uint8_t cadapp)
             break;
     }
 
-    control_mode = 1;
+    control_mode = JOYSTICK_CONTROL_MODE_ROTATE;
+    MSG_DEBUGLN("[DEBUG] Set rotate mode");
+}
+
+void set_pantilt_mode(uint8_t cadapp)
+{
+    switch (cadapp) {
+        case CADApp_SolidWorks:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            break;
+
+        case CADApp_Fusion360:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(5, 2, 0);    // Set left shift key
+            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            break;
+
+        case CADApp_Blender:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            break;
+
+        case CADApp_FreeCAD:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(17, 2, 0);   // Set right mouse button (must set middle mouse button then right mouse button for FreeCAD)
+            break;
+
+        case CADApp_AC3D:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(5, 3, 0);    // Set left alt key
+            KeyboardMouseAction(17, 1, 0);   // Set left mouse button
+            break;
+
+        default:
+            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
+            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            break;
+    }
+
+    control_mode = JOYSTICK_CONTROL_MODE_PANTILT;
+    MSG_DEBUGLN("[DEBUG] Set pantilt mode");
 }
 
 void set_mouse_mode()
 {
     KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
     KeyboardMouseAction(5, 9, 0);    // Release all keys
-    control_mode = 0;
+    control_mode = JOYSTICK_CONTROL_MODE_MOUSE;
+    MSG_DEBUGLN("[DEBUG] Set mouse mode");
 }
 
 void update_io()
@@ -151,68 +205,90 @@ void update_io()
     pcf857X_inputs = pcf857X.digitalReadAll();
 
     uint8_t hw_button0_set = get_hwbutton(0);
-    uint8_t rotate_knob_turned = rotateControl.Value() != 0;
+
+    uint8_t joystick_x_steadyzero = joy_x_comparison.Equals(joystick.x());
+    uint8_t joystick_y_steadyzero = joy_y_comparison.Equals(joystick.y());
+    uint8_t rotate_knob_steadyzero = rotate_comparison.Equals(rotateControl.Value());
+    uint8_t zoom_knob_steadyzero = zoom_comparison.Equals(zoomControl.Value());
+    uint8_t all_control_steadyzero = joystick_x_steadyzero && joystick_y_steadyzero && rotate_knob_steadyzero && zoom_knob_steadyzero;
 
     if (Keyboard.isConnected()) {
-        if (hw_button0_set && !last_hw_button0_set) {
-            set_move_mode(cadconfig.current_program);
+        if (!all_control_steadyzero) {
+            switch (cadconfig.current_program) {
+                case CADApp_SolidWorks:
+                case CADApp_Fusion360:
+                case CADApp_FreeCAD:
+                case CADApp_AC3D:
+                    if (hw_button0_set) {
+                        if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
+                            set_move_mode(cadconfig.current_program);
+                        }
+
+                        if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
+                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                        }
+                    }
+                    else {
+                        if (!zoom_knob_steadyzero) {
+                            if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
+                                set_move_mode(cadconfig.current_program);
+                            }
+                            Mouse.move(0, 0, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                        }
+                        else if (!rotate_knob_steadyzero) {
+                            if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
+                                set_rotate_mode(cadconfig.current_program);
+                            }
+                            Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
+                        }
+                        else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
+                            if (control_mode != JOYSTICK_CONTROL_MODE_PANTILT) {
+                                set_pantilt_mode(cadconfig.current_program);
+                            }
+                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
+                        }
+                    }
+
+                    break;
+
+                case CADApp_Blender:
+
+                    if (hw_button0_set) {
+                        if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
+                            set_move_mode(cadconfig.current_program);
+                        }
+
+                        if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
+                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
+                        }
+                    }
+                    else {
+                        if (!rotate_knob_steadyzero) {
+                            if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
+                                set_rotate_mode(cadconfig.current_program);
+                            }
+                            Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0.0, 0.0);
+                        }
+                        else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
+                            if (control_mode != JOYSTICK_CONTROL_MODE_PANTILT) {
+                                set_pantilt_mode(cadconfig.current_program);
+                            }
+                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
+                        }
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
         }
-        else if (!hw_button0_set && last_hw_button0_set) {
-            set_mouse_mode();
+        else {
+            if (all_control_steadyzero && (control_mode != JOYSTICK_CONTROL_MODE_MOUSE)) {
+                set_mouse_mode();
+            }
         }
 
-        if (rotate_knob_turned & !last_rotate_knob_turned) {
-            set_rotate_mode(cadconfig.current_program);
-        }
-        else if (!rotate_knob_turned & last_rotate_knob_turned) {
-            set_mouse_mode();
-        }
-
-        switch (cadconfig.current_program) {
-            case CADApp_SolidWorks:
-            case CADApp_Fusion360:
-            case CADApp_FreeCAD:
-            case CADApp_AC3D:
-                if (control_mode == 0) {
-                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
-                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
-                    }
-                }
-                else if (control_mode == 1) {
-                    if (rotateControl.Value() != 0) {
-                        Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
-                    }
-                }
-                else if (control_mode == 2) {
-                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
-                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
-                    }
-                }
-                break;
-
-            case CADApp_Blender:
-                if (control_mode == 0) {
-                    if (joystick.x() != 0 || joystick.y() != 0 || zoomControl.Value() != 0) {
-                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
-                    }
-                }
-                else if (control_mode == 1) {
-                    if (rotateControl.Value() != 0) {
-                        Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
-                    }
-                }
-                else if (control_mode == 2) {
-                    if (joystick.x() != 0 || joystick.y() != 0) {
-                        Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0);
-                    }
-                }
-                break;
-
-            default:
-                break;
-        }
-        last_hw_button0_set = hw_button0_set;
-        last_rotate_knob_turned = rotate_knob_turned;
         last_control_mode = control_mode;
     }
     else {

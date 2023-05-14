@@ -3,6 +3,7 @@
 #include "joystick.h"
 #include "AnalogControl.h"
 #include "PCF857X.h"
+#include "DenoiseComparison.h"
 
 
 const uint8_t PCF857X_SCL = 19;
@@ -70,6 +71,14 @@ void calibrate_scale_analog_controls();
 void calibrate_zero_analog_controls();
 void set_rotate_mode(uint8_t cadapp);
 void set_move_mode(uint8_t cadapp);
+void set_pantilt_mode(uint8_t cadapp);
 
 extern uint8_t current_joystick_mode;
 extern uint8_t previous_joystick_mode;
+
+enum JoystickControlMode {
+    JOYSTICK_CONTROL_MODE_MOUSE = 0,
+    JOYSTICK_CONTROL_MODE_PANTILT,
+    JOYSTICK_CONTROL_MODE_ROTATE,
+    JOYSTICK_CONTROL_MODE_MOVE
+};
