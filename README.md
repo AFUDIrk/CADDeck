@@ -139,7 +139,7 @@ In the picture directory there are a few more pictures of how I printed out the 
 ## wiring
 A [Wiring Diagram] (hardware/Electrical/WiringDiagram10Buttons.pdf) is included in the hardware/electrical folder. Most of this is straightforward.
 
-![Inside view](images/Inside view wired.png)
+![Inside view](images/Innenansichtverkabelt.png)
 
 ## List of parts
 Quantity 1 [ESP32-SC01 LCD Touch Screen] (https://www.aliexpress.com/item/1005004399769442.html)
@@ -148,7 +148,7 @@ Quantity 1 [2mm 2x20 Pin Header](https://www.aliexpress.com/item/100500185267158
 
 Quantity 1 [Capacitive Touch Switch TTP223](https://www.aliexpress.com/i/33012282190.html)
 
-Lot of 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (These come in different designs. With or without a click, strong or light resistance.)
+Quantity 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (These come in different designs. With or without a click, strong or light resistance.)
 
 Quantity 1 [FrSky M9 Joystick] (https://www.aliexpress.com/item/32829691785.html) This device is a bit expensive but good quality.
 Functionally, there's nothing fancy - you just need something with analog X and Y outputs.
@@ -163,7 +163,7 @@ Quantity 2 [Hall Sensors 49E](https://www.aliexpress.com/item/1903819684.html)
 Quantity 40 [Adhesive Balance Weights](https://www.ebay.de/itm/363221786745) (If needed. When I pulled up the knob, the case was too light for me.
 But you can also use something else to add weight.)
 
-Set of 10 10k 1/8W push through resistors Cherry MX push button
+Quantity 10 10k 1/8W push through resistors Cherry MX push button
 
 Quantity 6 M3 brass inserts (for case top)
 
@@ -202,7 +202,7 @@ Then the Switch Monitor page.
 
 ![switch monitor side](images/iodebug.png)
 
-It shows the status of the joystick, encoder and buttons. You should be able to see the result of each joystick movement or button selection.
+It shows the status of the joystick, Push-Sensor and buttons. You should be able to see the result of each joystick movement or button selection.
 Note that the values ​​are shown as 1 when unselected and 0 when selected (pressed).
 
 The joystick X and Y data and the rotate and zoom data may fluctuate slightly. This is normal as the joystick has not yet been calibrated at this point.
@@ -264,10 +264,11 @@ The hardware buttons are configured via a dedicated page within the same web-bas
 
 The top section includes:
 1. Current CAD program: This is the program whose settings will be loaded when CADDeck is restarted
-2. X and Y scaling parameters for the joystick. These can be set manually, but there is a feature available that collects data as the joystick is pushed all the way down and calculates the scales for you. The output scaling is +/-1
-3. Joystick Deadzone. Any X or Y value with an absolute value below this number will be set to zero.
+2. X and Y scaling parameters for the joystick and knob. These can be set manually
+   However, there is a feature that collects data while the joystick is pushed all the way down and calculates the scale for you. The output scaling is +/-1
+3. Joystick and Knob Deadzone. Any X or Y value with an absolute value below this number will be set to zero.
 4. Joystick Sensitivity. Joystick values ​​are multiplied by this when converted to mouse movement commands
-5. Thumbwheel sensitivity. The encoder value is multiplied by this while being converted to mouse movement commands
+5. Knob sensitivity. The Knob value is multiplied by this while being converted to mouse movement commands
 6. Steady Time: After the joystick has been centered for more than this amount of time without a pan or rotate button being selected, the joystick will revert to its default mode (usually mouse pointer).
 
 Below that is the definition of the button action. The same approach is used to define the actions as for the buttons on the LCD panel. The actions are:
