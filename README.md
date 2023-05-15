@@ -287,20 +287,20 @@ While everything can be changed via the configurator, there are some default set
 These are:
 
 ### Control assignments
-1. Joystick moves the component
-2. Joystick with pressed push sensor (0), moves the component.
-3. Rotating the joystick knob rotates the view
-4. Pushing or pulling the joystick button zooms in and out
-5. Button 1 is Model Toolbar ("S" in Fusion360)
-6. Button 2 is Fillet ("F" in Fusion360)
-7. Button 3 is Push Pull ("Q" in Fusion360)
-8. Button 4 is Extrude ("E" in Fusion360)
-9. Button 5 deselects ("ESC" in Fusion360 and Solidworks).
-10.Button 6 is Line ("L" in Fusion360)
-11.Button 7 is a rectangle with two dots ("R" in Fusion360)
-12.Button 8 is Spline (I set it to "W" in Fusion360)
-13.Button 9 is circle ("C" in Fusion360)
-14.Button 10 is line ("Return" in Fusion360)
+ 1. Joystick moves the component
+ 2. Joystick with pressed push sensor (0), moves the component
+ 3. Rotating the joystick knob rotates the view
+ 4. Pushing or pulling the joystick button zooms in and out
+ 5. Button 1 is Model Toolbar ("S" in Fusion360)
+ 6. Button 2 is Fillet ("F" in Fusion360)
+ 7. Button 3 is Push Pull ("Q" in Fusion360)
+ 8. Button 4 is Extrude ("E" in Fusion360)
+ 9. Button 5 deselects ("ESC" in Fusion360 and Solidworks)
+10. Button 6 is Line ("L" in Fusion360)
+11. Button 7 is a rectangle with two dots ("R" in Fusion360)
+12. Button 8 is Spline (I set it to "W" in Fusion360)
+13. Button 9 is circle ("C" in Fusion360)
+14. Button 10 is line ("Return" in Fusion360)
 
 ### Menus
 Menu numbers are assigned as follows:
