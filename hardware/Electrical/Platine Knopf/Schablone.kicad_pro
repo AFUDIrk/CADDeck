@@ -172,13 +172,16 @@
         }
       ],
       "track_widths": [
-        0.0,
-        0.5
+        0.0
       ],
       "via_dimensions": [
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 1.4,
+          "drill": 0.8
         }
       ],
       "zones_allow_external_fillets": false
@@ -391,7 +394,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "error",
+      "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "simulation_model_issue": "error",
@@ -406,7 +409,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "CADDeck.kicad_pro",
+    "filename": "Schablone.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -423,8 +426,8 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "via_diameter": 0.8,
+        "track_width": 0.8,
+        "via_diameter": 1.2,
         "via_drill": 0.4,
         "wire_width": 6
       }
@@ -440,7 +443,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "CADDeck.kicad_sch.sch.net",
+      "netlist": "Schablone.net",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
@@ -483,7 +486,7 @@
   },
   "sheets": [
     [
-      "35ea3785-d2ac-411c-b2c0-fb3fbf77b703",
+      "472b57b2-9bbe-4028-ab3c-fb0ce2578d6d",
       ""
     ]
   ],
