@@ -1,4 +1,0 @@
-(fp_lib_table
-  (version 7)
-  (lib (name "PCF8575")(type "KiCad")(uri "D:/KiCad Librari/PCF8575.pretty")(options "")(descr ""))
-)
