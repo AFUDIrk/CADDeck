@@ -1457,6 +1457,9 @@
   (junction (at 16.51 121.92) (diameter 0) (color 0 0 0 0)
     (uuid d131777f-93cd-4de8-84f8-747c4a391453)
   )
+  (junction (at 153.67 123.19) (diameter 0) (color 0 0 0 0)
+    (uuid d6b5ec94-8219-45f2-81e1-4fb28960b97e)
+  )
   (junction (at 176.53 62.23) (diameter 0) (color 0 0 0 0)
     (uuid e73a7973-50c9-47c2-8f1a-a86f0a7c6ae9)
   )
@@ -1604,6 +1607,10 @@
     (uuid 2161c1bd-0b82-409e-9e60-e78d3c444d09)
   )
 
+  (wire (pts (xy 207.01 123.19) (xy 207.01 140.97))
+    (stroke (width 0) (type default))
+    (uuid 221f3807-a0a3-4a3a-93ab-97cc7fb730d0)
+  )
   (wire (pts (xy 95.25 176.53) (xy 158.75 176.53))
     (stroke (width 0) (type default))
     (uuid 233d5d53-b74a-4e27-b95f-d54e8987364b)
@@ -1768,6 +1775,10 @@
     (stroke (width 0) (type default))
     (uuid 4da708a1-76ff-4023-87d0-94f12a642662)
   )
+  (wire (pts (xy 153.67 121.92) (xy 153.67 123.19))
+    (stroke (width 0) (type default))
+    (uuid 4f193c51-e5c2-4f6b-aa62-bff5987441ac)
+  )
   (wire (pts (xy 176.53 62.23) (xy 167.64 62.23))
     (stroke (width 0) (type default))
     (uuid 4f35d2ee-0f1b-4cef-9f7f-e00bb3a2bb29)
@@ -1835,6 +1846,10 @@
   (wire (pts (xy 185.42 48.26) (xy 185.42 76.2))
     (stroke (width 0) (type default))
     (uuid 5fa960c2-d9b0-499d-b534-4478ce26b6f4)
+  )
+  (wire (pts (xy 153.67 123.19) (xy 179.07 123.19))
+    (stroke (width 0) (type default))
+    (uuid 5ff2e6fd-cec9-43b8-b00b-01b82966e358)
   )
   (wire (pts (xy 54.61 171.45) (xy 54.61 179.07))
     (stroke (width 0) (type default))
@@ -2001,7 +2016,7 @@
     (stroke (width 0) (type default))
     (uuid 97887b3b-41ff-458e-82ef-340e048b2ec5)
   )
-  (wire (pts (xy 195.58 123.19) (xy 190.5 123.19))
+  (wire (pts (xy 190.5 123.19) (xy 207.01 123.19))
     (stroke (width 0) (type default))
     (uuid 988e4901-e54b-47ed-a1f0-4e43f9587c20)
   )
@@ -2241,10 +2256,6 @@
   (wire (pts (xy 54.61 95.25) (xy 130.81 95.25))
     (stroke (width 0) (type default))
     (uuid ddf5d385-d62e-4b7f-8272-491196207ff9)
-  )
-  (wire (pts (xy 153.67 123.19) (xy 179.07 123.19))
-    (stroke (width 0) (type default))
-    (uuid de3f52fa-2330-4622-a52b-ebd90b9298fe)
   )
   (wire (pts (xy 85.09 48.26) (xy 90.17 48.26))
     (stroke (width 0) (type default))
@@ -4265,7 +4276,7 @@
   (symbol (lib_id "Device:R") (at 54.61 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0839f961-5311-4e0b-ac6a-331578e43558)
-    (property "Reference" "R7" (at 57.15 86.995 0)
+    (property "Reference" "R6" (at 57.15 86.995 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 57.15 89.535 0)
@@ -4282,7 +4293,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R7") (unit 1)
+          (reference "R6") (unit 1)
         )
       )
     )
@@ -4317,7 +4328,7 @@
   (symbol (lib_id "power:GND") (at 194.31 130.81 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0d0826c8-0de0-4550-8bc9-0b4d943e9f27)
-    (property "Reference" "#PWR012" (at 200.66 130.81 0)
+    (property "Reference" "#PWR014" (at 200.66 130.81 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 198.12 131.445 90)
@@ -4333,32 +4344,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR012") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3.3V") (at 195.58 123.19 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 1386236f-95ea-40e1-a183-86268a9c8ea8)
-    (property "Reference" "#PWR013" (at 191.77 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3.3V" (at 199.39 123.825 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (at 195.58 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 195.58 123.19 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 7fe35601-f2dd-4df1-a302-5d9e6b218664))
-    (instances
-      (project "CADDeck"
-        (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR013") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -4392,7 +4378,7 @@
   (symbol (lib_id "Connector:Conn_01x04_Pin") (at 180.34 81.28 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 26c0941f-ba5f-4afc-8e82-3e09b3b9e340)
-    (property "Reference" "J5" (at 172.72 80.01 90)
+    (property "Reference" "J3" (at 172.72 80.01 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x04_Pin" (at 181.61 86.36 90)
@@ -4411,7 +4397,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J5") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
     )
@@ -4420,7 +4406,7 @@
   (symbol (lib_id "Connector:Conn_01x10_Pin") (at 185.42 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3590f43e-bdaf-47fc-a5c0-b1173b637a30)
-    (property "Reference" "J1" (at 187.96 107.95 0)
+    (property "Reference" "J6" (at 187.96 107.95 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x10_Pin" (at 186.055 109.22 0)
@@ -4445,7 +4431,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J1") (unit 1)
+          (reference "J6") (unit 1)
         )
       )
     )
@@ -4454,7 +4440,7 @@
   (symbol (lib_id "Andrew:FrSky_M9_Joystick") (at 162.56 48.26 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 39e0cc8d-2f1d-496b-9fd7-52cfb068817e)
-    (property "Reference" "U3" (at 162.56 36.83 0)
+    (property "Reference" "U4" (at 162.56 36.83 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "~" (at 162.56 48.26 0)
@@ -4466,16 +4452,16 @@
     (property "Datasheet" "" (at 162.56 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
-    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19be))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
+    (pin "" (uuid 7df0c895-a453-45e1-905d-e2a2f75b19c8))
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "U3") (unit 1)
+          (reference "U4") (unit 1)
         )
       )
     )
@@ -4484,7 +4470,7 @@
   (symbol (lib_id "power:GND") (at 147.32 86.36 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 42f9acca-c25d-416c-8d26-36f3593939ee)
-    (property "Reference" "#PWR017" (at 147.32 92.71 0)
+    (property "Reference" "#PWR08" (at 147.32 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 147.32 91.44 0)
@@ -4500,7 +4486,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR08") (unit 1)
         )
       )
     )
@@ -4509,7 +4495,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 30.48 106.68 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 478fc762-b1af-433e-a721-a7f9aafa5d36)
-    (property "Reference" "SW2" (at 31.75 106.045 90)
+    (property "Reference" "SW3" (at 31.75 106.045 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "SW_Push" (at 31.75 108.585 90)
@@ -4526,7 +4512,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW2") (unit 1)
+          (reference "SW3") (unit 1)
         )
       )
     )
@@ -4535,7 +4521,7 @@
   (symbol (lib_id "Device:R") (at 54.61 167.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4ca29208-4a2e-40ff-b7a6-d7e7c53880cf)
-    (property "Reference" "R5" (at 57.15 166.37 0)
+    (property "Reference" "R8" (at 57.15 166.37 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 57.15 168.91 0)
@@ -4552,7 +4538,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R5") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
     )
@@ -4561,7 +4547,7 @@
   (symbol (lib_id "Device:R") (at 54.61 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4db46bb5-094e-4eae-b37a-a57964c2c157)
-    (property "Reference" "R14" (at 57.15 128.905 0)
+    (property "Reference" "R7" (at 57.15 128.905 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 57.15 131.445 0)
@@ -4578,7 +4564,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R14") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
     )
@@ -4587,7 +4573,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 54.61 149.86 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5550778f-45b0-49ff-bf47-53a653306e94)
-    (property "Reference" "SW8" (at 58.42 149.225 90)
+    (property "Reference" "SW7" (at 58.42 149.225 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SW_Push" (at 58.42 151.765 90)
@@ -4604,7 +4590,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW8") (unit 1)
+          (reference "SW7") (unit 1)
         )
       )
     )
@@ -4632,6 +4618,31 @@
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
           (reference "U5") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 153.67 121.92 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 659786d6-c625-4efc-a4ea-11fdefd203d1)
+    (property "Reference" "#PWR011" (at 153.67 125.73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 153.67 118.11 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 153.67 121.92 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 153.67 121.92 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 1ca00067-9bfe-4039-abd3-e8b569a1b850))
+    (instances
+      (project "CADDeck"
+        (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -4666,7 +4677,7 @@
   (symbol (lib_id "power:+3.3V") (at 149.86 86.36 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6d927e95-ce19-4b38-a6b1-d70f07fa78b9)
-    (property "Reference" "#PWR016" (at 149.86 82.55 0)
+    (property "Reference" "#PWR09" (at 149.86 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 152.4 90.17 0)
@@ -4682,7 +4693,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR09") (unit 1)
         )
       )
     )
@@ -4691,7 +4702,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 54.61 184.15 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6df32c35-4db4-4b58-a49c-fe7ae0ce3290)
-    (property "Reference" "SW10" (at 58.42 183.515 90)
+    (property "Reference" "SW8" (at 58.42 183.515 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SW_Push" (at 58.42 186.055 90)
@@ -4708,7 +4719,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW10") (unit 1)
+          (reference "SW8") (unit 1)
         )
       )
     )
@@ -4717,7 +4728,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 69.85 149.86 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7660c394-449c-4eb8-9726-6316555464e6)
-    (property "Reference" "SW9" (at 73.66 149.225 90)
+    (property "Reference" "SW10" (at 73.66 149.225 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SW_Push" (at 73.66 151.765 90)
@@ -4734,7 +4745,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW9") (unit 1)
+          (reference "SW10") (unit 1)
         )
       )
     )
@@ -4743,7 +4754,7 @@
   (symbol (lib_id "Device:R") (at 69.85 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 767a2de2-29f0-43ac-9fc7-d20c57ed1e7f)
-    (property "Reference" "R2" (at 72.39 86.995 0)
+    (property "Reference" "R9" (at 72.39 86.995 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 72.39 89.535 0)
@@ -4760,7 +4771,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R2") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -4769,7 +4780,7 @@
   (symbol (lib_id "Device:R") (at 30.48 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7783233b-9199-4938-8ca7-74ee0ca96a3d)
-    (property "Reference" "R1" (at 33.02 86.995 0)
+    (property "Reference" "R3" (at 33.02 86.995 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 33.02 89.535 0)
@@ -4786,7 +4797,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R1") (unit 1)
+          (reference "R3") (unit 1)
         )
       )
     )
@@ -4795,7 +4806,7 @@
   (symbol (lib_id "Connector:Conn_01x05_Socket") (at 144.78 78.74 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 77cbd2f5-f710-46ae-8fff-398ea60ac81d)
-    (property "Reference" "J3" (at 152.4 81.28 90)
+    (property "Reference" "J1" (at 152.4 81.28 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x05_Socket" (at 151.13 79.375 0)
@@ -4815,7 +4826,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J3") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -4824,7 +4835,7 @@
   (symbol (lib_id "power:GND") (at 52.07 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7a08f00a-cb1f-448b-898b-1729e2ad92bd)
-    (property "Reference" "#PWR02" (at 52.07 78.74 0)
+    (property "Reference" "#PWR07" (at 52.07 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 52.07 91.44 0)
@@ -4840,7 +4851,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR02") (unit 1)
+          (reference "#PWR07") (unit 1)
         )
       )
     )
@@ -4849,7 +4860,7 @@
   (symbol (lib_id "Sensor_Magnetic:DRV5033AJxLPG") (at 113.03 46.99 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7dd5a7bf-ec9b-44e1-9c4c-ee65e457a247)
-    (property "Reference" "U4" (at 113.03 38.1 90)
+    (property "Reference" "U3" (at 113.03 38.1 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TTP223" (at 113.03 40.64 90)
@@ -4867,7 +4878,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "U4") (unit 1)
+          (reference "U3") (unit 1)
         )
       )
     )
@@ -4928,7 +4939,7 @@
   (symbol (lib_id "power:+3.3V") (at 177.8 88.9 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 90aa52dc-63fd-4dec-84a4-d1306156a191)
-    (property "Reference" "#PWR019" (at 177.8 85.09 0)
+    (property "Reference" "#PWR012" (at 177.8 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 173.99 88.9 0)
@@ -4944,7 +4955,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -5017,7 +5028,7 @@
   (symbol (lib_id "power:GND") (at 180.34 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9449966c-437c-4a9f-8c3d-f39d9fa915f2)
-    (property "Reference" "#PWR018" (at 180.34 93.98 0)
+    (property "Reference" "#PWR013" (at 180.34 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 180.34 91.44 0)
@@ -5033,7 +5044,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -5042,7 +5053,7 @@
   (symbol (lib_id "Device:R") (at 16.51 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9d2bf09e-d129-4cf9-9a57-9f5fd3ae57c5)
-    (property "Reference" "R6" (at 19.05 128.905 0)
+    (property "Reference" "R2" (at 19.05 128.905 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 19.05 131.445 0)
@@ -5059,7 +5070,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R6") (unit 1)
+          (reference "R2") (unit 1)
         )
       )
     )
@@ -5068,7 +5079,7 @@
   (symbol (lib_id "Device:R") (at 30.48 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a3a29ff7-4596-4010-b401-346c935af315)
-    (property "Reference" "R9" (at 33.02 128.905 0)
+    (property "Reference" "R4" (at 33.02 128.905 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 33.02 131.445 0)
@@ -5085,7 +5096,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R9") (unit 1)
+          (reference "R4") (unit 1)
         )
       )
     )
@@ -5094,7 +5105,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 16.51 149.86 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b450af25-488b-4cb4-aa69-62bcbd1432e8)
-    (property "Reference" "SW3" (at 17.78 149.225 90)
+    (property "Reference" "SW2" (at 17.78 149.225 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "SW_Push" (at 17.78 151.765 90)
@@ -5111,7 +5122,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW3") (unit 1)
+          (reference "SW2") (unit 1)
         )
       )
     )
@@ -5120,7 +5131,7 @@
   (symbol (lib_id "Device:R") (at 30.48 167.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b7d55590-8ec6-462a-b7a2-6f60ac559254)
-    (property "Reference" "R4" (at 33.02 167.005 0)
+    (property "Reference" "R5" (at 33.02 167.005 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 33.02 169.545 0)
@@ -5137,7 +5148,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R4") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
     )
@@ -5146,7 +5157,7 @@
   (symbol (lib_id "power:+3.3V") (at 16.51 80.01 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c786f3e9-7a7a-40ce-8a26-aa79e1a9ec70)
-    (property "Reference" "#PWR09" (at 16.51 83.82 0)
+    (property "Reference" "#PWR01" (at 16.51 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 16.51 76.2 0)
@@ -5162,7 +5173,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR09") (unit 1)
+          (reference "#PWR01") (unit 1)
         )
       )
     )
@@ -5171,7 +5182,7 @@
   (symbol (lib_id "Sensor_Magnetic:DRV5033AJxLPG") (at 77.47 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c83dece7-050c-40a5-a42b-cf235fb4d1f3)
-    (property "Reference" "U4" (at 71.12 47.625 0)
+    (property "Reference" "U6" (at 71.12 47.625 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "49E Zoom" (at 85.09 38.1 0)
@@ -5189,7 +5200,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "U4") (unit 1)
+          (reference "U6") (unit 1)
         )
       )
     )
@@ -5198,7 +5209,7 @@
   (symbol (lib_id "Connector:Conn_01x05_Pin") (at 144.78 78.74 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ca81ee0d-27f7-4c20-b0f0-bb085e480632)
-    (property "Reference" "J4" (at 151.13 73.66 90)
+    (property "Reference" "J2" (at 151.13 73.66 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x05_Pin" (at 142.875 80.01 0)
@@ -5218,7 +5229,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J4") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -5227,7 +5238,7 @@
   (symbol (lib_id "Device:R") (at 16.51 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ca896413-506c-41de-bc06-12a3ba2b9886)
-    (property "Reference" "R8" (at 19.05 86.995 0)
+    (property "Reference" "R1" (at 19.05 86.995 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 19.05 89.535 0)
@@ -5244,7 +5255,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R8") (unit 1)
+          (reference "R1") (unit 1)
         )
       )
     )
@@ -5253,7 +5264,7 @@
   (symbol (lib_id "power:GND") (at 43.18 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cad3868d-e4e3-4ce0-b136-7942c30bf9ef)
-    (property "Reference" "#PWR06" (at 43.18 118.11 0)
+    (property "Reference" "#PWR05" (at 43.18 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 39.37 111.76 0)
@@ -5269,7 +5280,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR06") (unit 1)
+          (reference "#PWR05") (unit 1)
         )
       )
     )
@@ -5278,7 +5289,7 @@
   (symbol (lib_id "Device:R") (at 69.85 129.54 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ccc45e10-fb95-4a53-b5fe-b9eaf5609054)
-    (property "Reference" "R15" (at 72.39 128.905 0)
+    (property "Reference" "R10" (at 72.39 128.905 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 72.39 131.445 0)
@@ -5295,7 +5306,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "R15") (unit 1)
+          (reference "R10") (unit 1)
         )
       )
     )
@@ -5304,7 +5315,7 @@
   (symbol (lib_id "Connector:Conn_01x04_Socket") (at 180.34 81.28 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d5226424-b92e-4e18-9e14-44a590e45f12)
-    (property "Reference" "J6" (at 172.72 85.09 90)
+    (property "Reference" "J4" (at 172.72 85.09 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x04_Socket" (at 181.61 80.01 90)
@@ -5323,7 +5334,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J6") (unit 1)
+          (reference "J4") (unit 1)
         )
       )
     )
@@ -5332,7 +5343,7 @@
   (symbol (lib_id "Connector:Conn_01x10_Socket") (at 184.15 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid da64a59e-48ed-4574-87c1-536fb5c0e32a)
-    (property "Reference" "J2" (at 176.53 107.95 0)
+    (property "Reference" "J5" (at 176.53 107.95 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x10_Socket" (at 185.42 123.825 0)
@@ -5357,7 +5368,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "J2") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -5366,7 +5377,7 @@
   (symbol (lib_id "power:+3.3V") (at 16.51 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e254ef22-6b59-407c-b6cc-b603e44801d0)
-    (property "Reference" "#PWR05" (at 16.51 124.46 0)
+    (property "Reference" "#PWR02" (at 16.51 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 16.51 116.84 0)
@@ -5382,7 +5393,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR05") (unit 1)
+          (reference "#PWR02") (unit 1)
         )
       )
     )
@@ -5439,7 +5450,7 @@
   (symbol (lib_id "power:+3.3V") (at 16.51 160.02 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e6d2a353-e365-4d36-a0f7-b9f7788eb6cb)
-    (property "Reference" "#PWR011" (at 16.51 163.83 0)
+    (property "Reference" "#PWR03" (at 16.51 163.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 16.51 156.21 0)
@@ -5455,32 +5466,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR011") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+3.3V") (at 207.01 140.97 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid e9539e02-513f-4824-9e28-4adb31ffa826)
-    (property "Reference" "#PWR014" (at 207.01 137.16 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+3.3V" (at 207.01 146.05 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 207.01 140.97 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 207.01 140.97 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 774c05e0-4147-43e5-8b82-c5e0247ce099))
-    (instances
-      (project "CADDeck"
-        (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR014") (unit 1)
+          (reference "#PWR03") (unit 1)
         )
       )
     )
@@ -5489,7 +5475,7 @@
   (symbol (lib_id "power:GND") (at 153.67 166.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ea17f9d0-f3c7-4252-809b-15e0476c16cc)
-    (property "Reference" "#PWR01" (at 153.67 172.72 0)
+    (property "Reference" "#PWR010" (at 153.67 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 153.67 171.45 0)
@@ -5505,7 +5491,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR01") (unit 1)
+          (reference "#PWR010") (unit 1)
         )
       )
     )
@@ -5514,7 +5500,7 @@
   (symbol (lib_id "power:GND") (at 43.18 154.94 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid fb96014f-99a2-40a0-9352-a0a84fda95cf)
-    (property "Reference" "#PWR08" (at 43.18 161.29 0)
+    (property "Reference" "#PWR06" (at 43.18 161.29 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 39.37 154.94 0)
@@ -5530,7 +5516,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "#PWR08") (unit 1)
+          (reference "#PWR06") (unit 1)
         )
       )
     )
@@ -5539,7 +5525,7 @@
   (symbol (lib_id "Switch:SW_Push") (at 69.85 106.68 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid feefe5cf-0d99-4fde-8819-eb0a694112b2)
-    (property "Reference" "SW7" (at 73.66 106.045 90)
+    (property "Reference" "SW9" (at 73.66 106.045 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "SW_Push" (at 73.66 108.585 90)
@@ -5556,7 +5542,7 @@
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "SW7") (unit 1)
+          (reference "SW9") (unit 1)
         )
       )
     )

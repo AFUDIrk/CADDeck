@@ -440,7 +440,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "CADDeck.kicad_sch.sch.net",
+      "netlist": "CADDeck.sch.net",
       "specctra_dsn": "",
       "step": "",
       "vrml": ""
