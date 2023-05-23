@@ -2508,6 +2508,9 @@
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp f0cadeaf-0ff9-4f0f-9aae-70912c33c224))
   (gr_line (start 189.86 136.06) (end 187.11 138.1)
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp f9a2a414-58b9-4744-981f-b0e30d564ad3))
+  (gr_text "AFUDirk\nCADDeck 10 Buttons" (at 122.58 136.713) (layer "F.Cu") (tstamp f21fb529-a868-412d-b298-5deaf4aaf839)
+    (effects (font (size 2 2) (thickness 0.4) bold) (justify left bottom))
+  )
 
   (segment (start 119.885 102.442) (end 119.885 101.665) (width 0.5) (layer "F.Cu") (net 1) (tstamp 00a67296-d42f-4726-a446-6e059a96994a))
   (segment (start 208.274 66.01) (end 210.35 66.01) (width 0.5) (layer "F.Cu") (net 1) (tstamp 012b71b6-b205-4ee2-9e5f-231b697a0995))
