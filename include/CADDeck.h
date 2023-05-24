@@ -278,7 +278,6 @@ struct CADConfig {
     float rotate_scale;
     float rotate_deadzone;
     float rotate_sensitivity;
-    float joy_steady_time;
     uint16_t num_programs;
 };
 
@@ -384,10 +383,10 @@ enum CADFnEnum {
     CADFn_InvertScaleZoom = 8,
     CADFn_InvertScaleRotate = 9,
     CADFn_SaveCADConfig = 10,
-    CADFn_JoystickPan = 11,
-    CADFn_JoystickTilt = 12,
-    CADFn_JoystickZoom = 13,
-    CADFn_JoystickRotate = 14,
+    CADFn_Spare3 = 11,
+    CADFn_Spare4 = 12,
+    CADFn_Spare5 = 13,
+    CADFn_Spare6 = 14,
     CADFn_ModeSelect = 15
 };
 

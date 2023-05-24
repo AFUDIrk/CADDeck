@@ -1,3 +1,26 @@
+/*                                          CADDeck
+
+    Author: Andrew Fernie
+    Date: 2023-05-20
+
+    CADDeck is a combined joystick and touch panel display suitable for use with common CAD programs. It includes:
+
+        1. Two axis joystick (e.g. for X, Y pan)
+        2. Thumbwheel encoder in the joystick grip (e.g. for zoom) with push switch (e.g. for select)
+        3. Four switches around joystick grip (e.g. hold one down while moving joystick for pan and another for rotate)
+        4. Four switches around the base (e.g. measure, ESC...)
+        5. LCD touch panel with up to 10 screens of 12 buttons
+
+    All H/W buttons as well as the touch panel buttons are programmable through a web page.
+
+    It connects to the PC via Bluetooth using the HID interface (i.e. it looks like a keyboard and mouse to the PC).
+    A USB-C port is provided for power and to download code.
+
+    This project is derived from TouchDeck by Dustin Watts. The original TouchDeck project is available at:
+    https://github.com/DustinWatts/FreeTouchDeck
+
+*/
+
 /*
   Author: Dustin Watts
   Date: 27-08-2020
@@ -45,10 +68,19 @@
 
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.11_10Button";
+const char *versionnumber = "0.0.13_10Button";
 
 /*
-
+ * Version 0.0.13.10Button
+ *                   - Removed unneeded configurator code that was previously used to define which buttons were selecting 
+ *                     joystick actions
+ *
+ * Version 0.0.12.10Button
+ *                   - Fix initialization of active CAD program for configurator
+ *                   - Disable sleep timer to see if this is the cause of losing bluetooth connection
+ *                   - To help setup debug, the default behavior of button_1 to button_10 (not including button 0) in
+ *                     cadparams.json is to send a letter "a" through "j". This can be changed in the configurator.
+ *
  * Version 0.0.11.10Button
  *                   - Zoom control active without pushing button
  *

@@ -673,9 +673,11 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     break;
 
                 case CADFn_Spare1:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 4");
                     break;
 
                 case CADFn_Spare2:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 5");
                     break;
 
                 case CADFn_InvertJoyScaleX:
@@ -702,20 +704,20 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     saveCurrentConfigCADParams();
                     break;
 
-                case CADFn_JoystickPan:
-                    joystick_mode_pins[JoystickModePan] = HWButton_Pins[hwbutton_index];
+                case CADFn_Spare3:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 11");
                     break;
 
-                case CADFn_JoystickTilt:
-                    joystick_mode_pins[JoystickModeTilt] = HWButton_Pins[hwbutton_index];
+                case CADFn_Spare4:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 12");
                     break;
 
-                case CADFn_JoystickZoom:
-                    joystick_mode_pins[JoystickModeZoom] = HWButton_Pins[hwbutton_index];
+                case CADFn_Spare5:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 13");
                     break;
 
-                case CADFn_JoystickRotate:
-                    joystick_mode_pins[JoystickModeRotate] = HWButton_Pins[hwbutton_index];
+                case CADFn_Spare6:
+                    MSG_ERRORLN("[ERROR] Invalid CAD Function 14");
                     break;
 
                 case CADFn_ModeSelect:

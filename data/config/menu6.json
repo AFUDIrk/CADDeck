@@ -1,16 +1,16 @@
 {
-  "menuname": "Menu-6",
+  "menuname":"Menu-6", 
   "button11": {
-    "logo": "Eigenschaften.bmp",
+    "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "4",
+      "0",
       "0",
       "0"
     ],
     "valuearray": [
-      "e",
+      "0",
       "0",
       "0"
     ]
@@ -46,6 +46,21 @@
     ]
   },
   "button14": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button15": {
     "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
@@ -120,6 +135,21 @@
       "0"
     ]
   },
+  "button25": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
   "button31": {
     "logo": "blank.bmp",
     "latch": false,
@@ -166,6 +196,21 @@
     ]
   },
   "button34": {
+    "logo": "home.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button35": {
     "logo": "home.bmp",
     "latch": false,
     "latchlogo": "",

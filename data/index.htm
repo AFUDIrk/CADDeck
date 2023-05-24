@@ -647,15 +647,6 @@
 				<option value="50">50</option>
 				<option value="100">100</option>
 			</select>
-			<br><br>
-			&nbsp;&nbsp;Steady Time (ms):&nbsp;
-			<select class="joy_steady_time" id='joy_steady_time' name='joy_steady_time'>
-				<option value="50">50</option>
-				<option value="100">100</option>
-				<option value="150">150</option>
-				<option value="200">200</option>
-				<option value="250">250</option>
-			</select>
 
 			<br><br>
 			<table style="height: 250px; width: 100%; border: 1px solid #000088; text-align: left;">
@@ -705,60 +696,6 @@
 							</select>
 							<br><br>
 							<table style="height: 250px; width: 100%;">
-								<tr>
-									<td style="width: 25%;">
-										<br />Joystick Pan
-										<br />Action 1:
-										<select class="actions" id='panmodeaction0' name='panmodeaction0'></select>
-										<select class="actions" id='panmodevalue0' name='panmodevalue0'></select>
-										<br />Action 2:
-										<select class="actions" id='panmodeaction1' name='panmodeaction1'></select>
-										<select class="actions" id='panmodevalue1' name='panmodevalue1'></select>
-										<br />Action 3:
-										<select class="actions" id='panmodeaction2' name='panmodeaction2'></select>
-										<select class="actions" id='panmodevalue2' name='panmodevalue2'></select>
-									</td>
-									<td style="width: 25%;">
-										<br />Joystick Tilt
-										<br />Action 1:
-										<select class="actions" id='tiltmodeaction0' name='tiltmodeaction0'></select>
-										<select class="actions" id='tiltmodevalue0' name='tiltmodevalue0'></select>
-										<br />Action 2:
-										<select class="actions" id='tiltmodeaction1' name='tiltmodeaction1'></select>
-										<select class="actions" id='tiltmodevalue1' name='tiltmodevalue1'></select>
-										<br />Action 3:
-										<select class="actions" id='tiltmodeaction2' name='tiltmodeaction2'></select>
-										<select class="actions" id='tiltmodevalue2' name='tiltmodevalue2'></select>
-									</td>
-									<td style="width: 25%;">
-										<br />Joystick Zoom
-										<br />Action 1:
-										<select class="actions" id='zoommodeaction0' name='zoommodeaction0'></select>
-										<select class="actions" id='zoommodevalue0' name='zoommodevalue0'></select>
-										<br />Action 2:
-										<select class="actions" id='zoommodeaction1' name='zoommodeaction1'></select>
-										<select class="actions" id='zoommodevalue1' name='zoommodevalue1'></select>
-										<br />Action 3:
-										<select class="actions" id='zoommodeaction2' name='zoommodeaction2'></select>
-										<select class="actions" id='zoommodevalue2' name='zoommodevalue2'></select>
-									</td>
-									<td style="width: 25%;">
-										<br />Joystick Rotate
-										<br />Action 1:
-										<select class="actions" id='rotatemodeaction0'
-											name='rotatemodeaction0'></select>
-										<select class="actions" id='rotatemodevalue0' name='rotatemodevalue0'></select>
-										<br />Action 2:
-										<select class="actions" id='rotatemodeaction1'
-											name='rotatemodeaction1'></select>
-										<select class="actions" id='rotatemodevalue1' name='rotatemodevalue1'></select>
-										<br />Action 3:
-										<select class="actions" id='rotatemodeaction2'
-											name='rotatemodeaction2'></select>
-										<select class="actions" id='rotatemodevalue2' name='rotatemodevalue2'></select>
-									</td>
-
-								</tr>
 								<tr>
 									<br>
 									<br />Selected Button:
@@ -1790,22 +1727,6 @@
 			{
 				name: 'Save Settings',
 				value: '10'
-			},
-			{
-				name: 'Joystick Pan',
-				value: '11'
-			},
-			{
-				name: 'Joystick Tilt',
-				value: '12'
-			},
-			{
-				name: 'Joystick Zoom',
-				value: '13'
-			},
-			{
-				name: 'Joystick Rotate',
-				value: '14'
 			},
 			{
 				name: 'Mode Button',
@@ -3079,372 +3000,6 @@
 				})
 				.change();
 
-			// joystick pan mode actions
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#panmodeaction0');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#panmodeaction0')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#panmodevalue0');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-
-					update_axisbutton_def(this, PanAxis, 1, 0);
-				})
-				.change();
-
-			$('#panmodevalue0')
-				.change(function () {
-					update_axisbutton_def(this, PanAxis, 2, 0);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#panmodeaction1');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#panmodeaction1')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#panmodevalue1');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, PanAxis, 1, 1);
-				})
-				.change();
-
-			$('#panmodevalue1')
-				.change(function () {
-					update_axisbutton_def(this, PanAxis, 2, 1);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#panmodeaction2');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#panmodeaction2')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#panmodevalue2');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, PanAxis, 1, 2);
-				})
-				.change();
-
-			$('#panmodevalue2')
-				.change(function () {
-					update_axisbutton_def(this, PanAxis, 2, 2);
-				})
-				.change();
-
-
-			// joystick tilt mode actions
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#tiltmodeaction0');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#tiltmodeaction0')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#tiltmodevalue0');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, TiltAxis, 1, 0);
-				})
-				.change();
-
-			$('#tiltmodevalue0')
-				.change(function () {
-					update_axisbutton_def(this, TiltAxis, 2, 0);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#tiltmodeaction1');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#tiltmodeaction1')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#tiltmodevalue1');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, TiltAxis, 1, 1);
-				})
-				.change();
-
-			$('#tiltmodevalue1')
-				.change(function () {
-					update_axisbutton_def(this, TiltAxis, 2, 1);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#tiltmodeaction2');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#tiltmodeaction2')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#tiltmodevalue2');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, TiltAxis, 1, 2);
-				})
-				.change();
-
-			$('#tiltmodevalue2')
-				.change(function () {
-					update_axisbutton_def(this, TiltAxis, 2, 2);
-				})
-				.change();
-
-			// joystick zoom mode actions
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#zoommodeaction0');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#zoommodeaction0')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#zoommodevalue0');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, ZoomAxis, 1, 0);
-				})
-				.change();
-
-			$('#zoommodevalue0')
-				.change(function () {
-					update_axisbutton_def(this, ZoomAxis, 2, 0);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#zoommodeaction1');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#zoommodeaction1')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#zoommodevalue1');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, ZoomAxis, 1, 1);
-				})
-				.change();
-
-			$('#zoommodevalue1')
-				.change(function () {
-					update_axisbutton_def(this, ZoomAxis, 2, 1);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#zoommodeaction2');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#zoommodeaction2')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#zoommodevalue2');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, ZoomAxis, 1, 2);
-				})
-				.change();
-
-			$('#zoommodevalue2')
-				.change(function () {
-					update_axisbutton_def(this, ZoomAxis, 2, 2);
-				})
-				.change();
-
-			// joystick button actions
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#rotatemodeaction0');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#rotatemodeaction0')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#rotatemodevalue0');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, RotateAxis, 1, 0);
-				})
-				.change();
-
-			$('#rotatemodevalue0')
-				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 0);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#rotatemodeaction1');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#rotatemodeaction1')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#rotatemodevalue1');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, RotateAxis, 1, 1);
-				})
-				.change();
-
-			$('#rotatemodevalue1')
-				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 1);
-				})
-				.change();
-
-			$.each(items, function () {
-				$('<option />')
-					.attr('value', this.value)
-					.html(this.name)
-					.appendTo('#rotatemodeaction2');
-				temp[this.value] = this.subitems;
-			});
-
-			$('#rotatemodeaction2')
-				.change(function () {
-					var value = $(this).val();
-					var menu = $('#rotatemodevalue2');
-
-					menu.empty();
-					$.each(temp[value], function () {
-						$('<option />')
-							.attr('value', this.value)
-							.html(this.name)
-							.appendTo(menu);
-					});
-					update_axisbutton_def(this, RotateAxis, 1, 2);
-				})
-				.change();
-
-			$('#rotatemodevalue2')
-				.change(function () {
-					update_axisbutton_def(this, RotateAxis, 2, 2);
-				})
-				.change();
-
 		});
 
 
@@ -3758,44 +3313,11 @@
 					document.getElementById("rotate_scale").value = data.rotate_scale;
 					document.getElementById("rotate_deadzone").value = data.rotate_deadzone;
 					document.getElementById("rotate_sensitivity").value = data.rotate_sensitivity;
-					document.getElementById("joy_steady_time").value = data.joy_steady_time;
 					document.getElementById("current_program").value = data.current_program;
 					document.getElementById("selected_program").value = data.current_program;
 
 					for (let program = 0; program < 5; program++) {
 						console.log('Loading program ' + program);
-						console.log('   Loading defn pan ');
-						axisbuttondefs[program][PanAxis][0][0] = data.programs[program].pan.actionarray[0];
-						axisbuttondefs[program][PanAxis][0][1] = data.programs[program].pan.actionarray[1];
-						axisbuttondefs[program][PanAxis][0][2] = data.programs[program].pan.actionarray[2];
-						axisbuttondefs[program][PanAxis][1][0] = data.programs[program].pan.valuearray[0];
-						axisbuttondefs[program][PanAxis][1][1] = data.programs[program].pan.valuearray[1];
-						axisbuttondefs[program][PanAxis][1][2] = data.programs[program].pan.valuearray[2];
-
-						console.log('   Loading defn tilt ');
-						axisbuttondefs[program][TiltAxis][0][0] = data.programs[program].tilt.actionarray[0];
-						axisbuttondefs[program][TiltAxis][0][1] = data.programs[program].tilt.actionarray[1];
-						axisbuttondefs[program][TiltAxis][0][2] = data.programs[program].tilt.actionarray[2];
-						axisbuttondefs[program][TiltAxis][1][0] = data.programs[program].tilt.valuearray[0];
-						axisbuttondefs[program][TiltAxis][1][1] = data.programs[program].tilt.valuearray[1];
-						axisbuttondefs[program][TiltAxis][1][2] = data.programs[program].tilt.valuearray[2];
-
-						console.log('   Loading defn rotate ');
-						axisbuttondefs[program][RotateAxis][0][0] = data.programs[program].rotate.actionarray[0];
-						axisbuttondefs[program][RotateAxis][0][1] = data.programs[program].rotate.actionarray[1];
-						axisbuttondefs[program][RotateAxis][0][2] = data.programs[program].rotate.actionarray[2];
-						axisbuttondefs[program][RotateAxis][1][0] = data.programs[program].rotate.valuearray[0];
-						axisbuttondefs[program][RotateAxis][1][1] = data.programs[program].rotate.valuearray[1];
-						axisbuttondefs[program][RotateAxis][1][2] = data.programs[program].rotate.valuearray[2];
-
-						console.log('   Loading defn zoom ');
-						axisbuttondefs[program][ZoomAxis][0][0] = data.programs[program].zoom.actionarray[0];
-						axisbuttondefs[program][ZoomAxis][0][1] = data.programs[program].zoom.actionarray[1];
-						axisbuttondefs[program][ZoomAxis][0][2] = data.programs[program].zoom.actionarray[2];
-						axisbuttondefs[program][ZoomAxis][1][0] = data.programs[program].zoom.valuearray[0];
-						axisbuttondefs[program][ZoomAxis][1][1] = data.programs[program].zoom.valuearray[1];
-						axisbuttondefs[program][ZoomAxis][1][2] = data.programs[program].zoom.valuearray[2];
-
 						for (let button = 0; button <= 10; button++) {
 							console.log('   Loading defn button ' + button);
 							hwbuttondefs[program][button][0][0] = data.programs[program].buttons[button].actionarray[0];
@@ -3807,10 +3329,9 @@
 						}
 					}
 
-					current_program_index = 0;
+					current_program_index = data.current_program;
 					current_button_index = 0;
 					show_hwbutton_def(current_program_index, current_button_index);
-					show_joystickmode_def(current_program_index);
 				})
 				.catch((err) => {
 					console.log(err)
@@ -3832,52 +3353,6 @@
 			document.getElementById("joybuttonvalue2").value = hwbuttondefs[program_index][button_index][1][2];
 		}
 
-		function show_joystickmode_def(program_index) {
-			document.getElementById('panmodeaction0').value = axisbuttondefs[program_index][PanAxis][0][0];
-			document.getElementById('panmodeaction1').value = axisbuttondefs[program_index][PanAxis][0][1];
-			document.getElementById('panmodeaction2').value = axisbuttondefs[program_index][PanAxis][0][2];
-
-			fillvaluelist(document.getElementById('panmodevalue0'), selecteditems[axisbuttondefs[program_index][PanAxis][0][0]].subitems);
-			document.getElementById('panmodevalue0').value = axisbuttondefs[program_index][PanAxis][1][0];
-			fillvaluelist(document.getElementById('panmodevalue1'), selecteditems[axisbuttondefs[program_index][PanAxis][0][1]].subitems);
-			document.getElementById('panmodevalue1').value = axisbuttondefs[program_index][PanAxis][1][1];
-			fillvaluelist(document.getElementById('panmodevalue2'), selecteditems[axisbuttondefs[program_index][PanAxis][0][2]].subitems);
-			document.getElementById('panmodevalue2').value = axisbuttondefs[program_index][PanAxis][1][2];
-
-			document.getElementById('tiltmodeaction0').value = axisbuttondefs[program_index][TiltAxis][0][0];
-			document.getElementById('tiltmodeaction1').value = axisbuttondefs[program_index][TiltAxis][0][1];
-			document.getElementById('tiltmodeaction2').value = axisbuttondefs[program_index][TiltAxis][0][2];
-
-			fillvaluelist(document.getElementById('tiltmodevalue0'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][0]].subitems);
-			document.getElementById('tiltmodevalue0').value = axisbuttondefs[program_index][TiltAxis][1][0];
-			fillvaluelist(document.getElementById('tiltmodevalue1'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][1]].subitems);
-			document.getElementById('tiltmodevalue1').value = axisbuttondefs[program_index][TiltAxis][1][1];
-			fillvaluelist(document.getElementById('tiltmodevalue2'), selecteditems[axisbuttondefs[program_index][TiltAxis][0][2]].subitems);
-			document.getElementById('tiltmodevalue2').value = axisbuttondefs[program_index][TiltAxis][1][2];
-
-			document.getElementById('zoommodeaction0').value = axisbuttondefs[program_index][ZoomAxis][0][0];
-			document.getElementById('zoommodeaction1').value = axisbuttondefs[program_index][ZoomAxis][0][1];
-			document.getElementById('zoommodeaction2').value = axisbuttondefs[program_index][ZoomAxis][0][2];
-
-			fillvaluelist(document.getElementById('zoommodevalue0'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][0]].subitems);
-			document.getElementById('zoommodevalue0').value = axisbuttondefs[program_index][ZoomAxis][1][0];
-			fillvaluelist(document.getElementById('zoommodevalue1'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][1]].subitems);
-			document.getElementById('zoommodevalue1').value = axisbuttondefs[program_index][ZoomAxis][1][1];
-			fillvaluelist(document.getElementById('zoommodevalue2'), selecteditems[axisbuttondefs[program_index][ZoomAxis][0][2]].subitems);
-			document.getElementById('zoommodevalue2').value = axisbuttondefs[program_index][ZoomAxis][1][2];
-
-			document.getElementById('rotatemodeaction0').value = axisbuttondefs[program_index][RotateAxis][0][0];
-			document.getElementById('rotatemodeaction1').value = axisbuttondefs[program_index][RotateAxis][0][1];
-			document.getElementById('rotatemodeaction2').value = axisbuttondefs[program_index][RotateAxis][0][2];
-
-			fillvaluelist(document.getElementById('rotatemodevalue0'), selecteditems[axisbuttondefs[program_index][RotateAxis][0][0]].subitems);
-			document.getElementById('rotatemodevalue0').value = axisbuttondefs[program_index][RotateAxis][1][0];
-			fillvaluelist(document.getElementById('rotatemodevalue1'), selecteditems[axisbuttondefs[program_index][RotateAxis][0][1]].subitems);
-			document.getElementById('rotatemodevalue1').value = axisbuttondefs[program_index][RotateAxis][1][1];
-			fillvaluelist(document.getElementById('rotatemodevalue2'), selecteditems[axisbuttondefs[program_index][RotateAxis][0][2]].subitems);
-			document.getElementById('rotatemodevalue2').value = axisbuttondefs[program_index][RotateAxis][1][2];
-
-		}
 
 		function select_new_button(button_index) {
 			current_button_index = button_index;
@@ -3887,65 +3362,7 @@
 		function update_selected_program_items(select) {
 			var selectedOption = select.options[select.selectedIndex];
 			current_program_index = selectedOption.value;
-			show_joystickmode_def(current_program_index);
 			show_hwbutton_def(current_program_index, current_button_index);
-		}
-
-		function update_axisbutton_def(select, axis, actionValue, arrayIndex) {
-
-			if (loadIsComplete) {
-				let axisPrefix = "";
-				if (axis == PanAxis) {
-					axisPrefix = "pan";
-				} else if (axis == TiltAxis) {
-					axisPrefix = "tilt";
-				} else if (axis == RotateAxis) {
-					axisPrefix = "rotate";
-				} else if (axis == ZoomAxis) {
-					axisPrefix = "zoom";
-				}
-
-				if (axisPrefix != "") {
-					let validArrayIndex = false;
-					switch (arrayIndex) {
-						case 0:
-							axisbuttondefs[current_program_index][axis][0][0] = document.getElementById(axisPrefix + 'modeaction0').value;
-							axisbuttondefs[current_program_index][axis][1][0] = document.getElementById(axisPrefix + 'modevalue0').value;
-							validArrayIndex = true;
-							break;
-
-						case 1:
-							axisbuttondefs[current_program_index][axis][1][1] = document.getElementById(axisPrefix + 'modevalue1').value;
-							axisbuttondefs[current_program_index][axis][0][1] = document.getElementById(axisPrefix + 'modeaction1').value;
-							validArrayIndex = true;
-							break;
-
-						case 2:
-							axisbuttondefs[current_program_index][axis][0][2] = document.getElementById(axisPrefix + 'modeaction2').value;
-							axisbuttondefs[current_program_index][axis][1][2] = document.getElementById(axisPrefix + 'modevalue2').value;
-							validArrayIndex = true;
-							break;
-
-						default:
-					}
-
-					if (validArrayIndex) {
-						let xhr = new XMLHttpRequest();
-
-						xhr.open("GET", "/updatebutton?app=" + current_program_index + "&button=" + current_button_index + "&buttonType=" + axis +
-							"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
-							"&action=" + axisbuttondefs[current_program_index][axis][0][arrayIndex] +
-							"&value=" + axisbuttondefs[current_program_index][axis][1][arrayIndex], true);
-
-						xhr.send();
-
-						console.log("updatebutton?app=" + current_program_index + "&button=" + current_button_index + "&buttonType=" + axis +
-							"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
-							"&action=" + axisbuttondefs[current_program_index][axis][0][arrayIndex] +
-							"&value=" + axisbuttondefs[current_program_index][axis][1][arrayIndex]);
-					}
-				}
-			}
 		}
 
 
@@ -3979,14 +3396,14 @@
 				if (validArrayIndex) {
 					let xhr = new XMLHttpRequest();
 
-					xhr.open("GET", "/updatebutton?app=" + current_program_index + "&button=" + current_button_index + "&buttonType=3" +
+					xhr.open("GET", "/updatebutton?app=" + current_program_index + "&button=" + current_button_index +
 						"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
 						"&action=" + hwbuttondefs[current_program_index][current_button_index][0][arrayIndex] +
 						"&value=" + hwbuttondefs[current_program_index][current_button_index][1][arrayIndex], true);
 
 					xhr.send();
 
-					console.log("updatebutton?app=" + current_program_index + "&button=" + current_button_index + "&buttonType=3" +
+					console.log("updatebutton?app=" + current_program_index + "&button=" + current_button_index +
 						"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
 						"&action=" + hwbuttondefs[current_program_index][current_button_index][0][arrayIndex] +
 						"&value=" + hwbuttondefs[current_program_index][current_button_index][1][arrayIndex]);

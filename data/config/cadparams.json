@@ -1,70 +1,21 @@
 {
   "version": 2,
   "joy_scale_x": -3.045467,
-  "joy_scale_y": 2.65678,
+  "joy_scale_y": -2.65678,
   "joy_deadzone": 0.05,
   "joy_sensitivity": 20,
-  "zoom_scale": -2.5,
-  "zoom_deadzone": 0.1,
-  "zoom_sensitivity": 5,
-  "rotate_scale": 2.2,
-  "rotate_deadzone": 0.1,
-  "rotate_sensitivity": 10,
-  "joy_steady_time": 250,
+  "zoom_scale": -2.65679,
+  "zoom_deadzone": 0.05,
+  "zoom_sensitivity": 2,
+  "rotate_scale": 2.652345,
+  "rotate_deadzone": 0.05,
+  "rotate_sensitivity": 20,
   "current_program": 1,
   "programs": [
     {
       "name": "Solidworks",
       "logo": "solidworks.bmp",
       "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "1",
-          "3",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "17",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "0",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "2",
-          "3",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
       "buttons": [
         {
           "name": "button0",
@@ -215,54 +166,6 @@
       "name": "Fusion360",
       "logo": "fusion360.bmp",
       "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "17",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "0",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "2",
-          "3",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "9",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "1",
-          "3",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
       "buttons": [
         {
           "name": "button0",
@@ -280,12 +183,12 @@
         {
           "name": "button1",
           "actionarray": [
-            "4",
+            "2",
             "0",
             "0"
           ],
           "valuearray": [
-            "s",
+            "12",
             "0",
             "0"
           ]
@@ -293,12 +196,12 @@
         {
           "name": "button2",
           "actionarray": [
-            "4",
+            "6",
             "0",
             "0"
           ],
           "valuearray": [
-            "f",
+            "6",
             "0",
             "0"
           ]
@@ -311,7 +214,7 @@
             "0"
           ],
           "valuearray": [
-            "q",
+            "i",
             "0",
             "0"
           ]
@@ -324,7 +227,7 @@
             "0"
           ],
           "valuearray": [
-            "e",
+            "v",
             "0",
             "0"
           ]
@@ -332,12 +235,12 @@
         {
           "name": "button5",
           "actionarray": [
-            "2",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "10",
+            "e",
             "0",
             "0"
           ]
@@ -350,7 +253,7 @@
             "0"
           ],
           "valuearray": [
-            "l",
+            "f",
             "0",
             "0"
           ]
@@ -363,7 +266,7 @@
             "0"
           ],
           "valuearray": [
-            "r",
+            "g",
             "0",
             "0"
           ]
@@ -376,7 +279,7 @@
             "0"
           ],
           "valuearray": [
-            "w",
+            "h",
             "0",
             "0"
           ]
@@ -389,7 +292,7 @@
             "0"
           ],
           "valuearray": [
-            "c",
+            "i",
             "0",
             "0"
           ]
@@ -397,12 +300,12 @@
         {
           "name": "button10",
           "actionarray": [
-            "2",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "7",
+            "j",
             "0",
             "0"
           ]
@@ -413,54 +316,6 @@
       "name": "Blender",
       "logo": "blender.bmp",
       "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "2",
-          "3",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "17",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "0",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "1",
-          "3",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
       "buttons": [
         {
           "name": "button0",
@@ -611,54 +466,6 @@
       "name": "FreeCAD",
       "logo": "FreeCAD.bmp",
       "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "17",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "0",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "17",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "2",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "9",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "1",
-          "2",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
       "buttons": [
         {
           "name": "button0",
@@ -809,54 +616,6 @@
       "name": "AC3D",
       "logo": "ac3d.bmp",
       "default_joystick_mode": 4,
-      "pan": {
-        "actionarray": [
-          "17",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "0",
-          "0"
-        ]
-      },
-      "tilt": {
-        "actionarray": [
-          "5",
-          "17",
-          "0"
-        ],
-        "valuearray": [
-          "3",
-          "1",
-          "0"
-        ]
-      },
-      "zoom": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
-      "rotate": {
-        "actionarray": [
-          "0",
-          "0",
-          "0"
-        ],
-        "valuearray": [
-          "0",
-          "0",
-          "0"
-        ]
-      },
       "buttons": [
         {
           "name": "button0",

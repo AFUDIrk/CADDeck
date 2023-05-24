@@ -428,7 +428,6 @@ bool resetconfig(String file)
         newfile.println("\"rotate_scale\": 1.0,");
         newfile.println("\"rotate_deadzone\": 0.01,");
         newfile.println("\"rotate_sensitivity\": 10,");
-        newfile.println("\"joy_steady_time\": 200,");
         newfile.println("\"CADProgram\": \"Solidworks\" ");
 
         newfile.println("}");
