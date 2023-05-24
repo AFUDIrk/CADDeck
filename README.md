@@ -150,7 +150,7 @@ Quantity 1 [Capacitive Touch Switch TTP223](https://www.aliexpress.com/i/3301228
 
 Quantity 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (These come in different designs. With or without a click, strong or light resistance.)
 
-Quantity 1 [FrSky M9 Joystick] (https://www.aliexpress.com/item/32829691785.html) This device is a bit expensive but good quality.
+Quantity 1 [FrSky M9 Joystick] (https://www.ebay.de/itm/374032459911) This device is a bit expensive but good quality.
 Functionally, there's nothing fancy - you just need something with analog X and Y outputs.
 
 
