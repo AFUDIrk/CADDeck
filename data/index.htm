@@ -6,7 +6,7 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\" />
-	<title>CADDeck Configurator</title>
+	<title>CADDeck  Konfigurator</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<script src="jquery-3.5.1.slim.min.js"></script>
@@ -16,7 +16,7 @@
 	<!-- <div id="contentloading" class="pageloading"> Loading the configurator.</div> -->
 
 	<div id="contentloading" class="pageloading">
-		Loading Configurator
+		Lade Konfigurator
 	</div>
 
 	<div id="ball-loader" class="ball-loader">
@@ -27,7 +27,7 @@
 	</div>
 
 	<div id="maincontent" style="display: none;">
-		<h1>CADDeck Configurator</h1>
+		<h1>CADDeck Konfigurator</h1>
 		<form class="form" method="post" action='/upload' id="uploadfile" enctype="multipart/form-data"></form>
 		<form class="form" method="post" action='/uploadJSON' id="uploadjsonfile" enctype="multipart/form-data"></form>
 		<form class="form" method="get" action='/downloadJSON' id="downloadjsonfile"></form>
@@ -35,46 +35,47 @@
 		<!-- Menu -->
 		<div class="tab">
 			<button class="tablinks" onclick="openMenu(event, 'wifi')">WiFi</button>
-			<button class="tablinks" onclick="openMenu(event, 'general')">Settings</button>
-			<button class="tablinks" onclick="openMenu(event, 'menu')">Menu</button>
-			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameters</button>
-			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Upload logo</button>
+			<button class="tablinks" onclick="openMenu(event, 'general')">Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'menu')">Menü</button>
+			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameter</button>
+			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Logo hochladen</button>
 
 			<form method='post' action='/restart'>
 				<button style="float: right;"
-					onclick="return confirm('Are you sure? Unsaved configuration will be lost!')" class="tablinks">
-					Restart </button>
+					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfiguration gehen verloren!')" class="tablinks">
+					Neustart </button>
 			</form>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">File editor</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Upload Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">Konfig Menü
+				hochladen</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Download Menu
-				Config</button>
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
+				Herunterladen</button>
 		</div>
 
 		<!-- Tab Intro -->
 		<div id="intro" class="tabcontent">
-			<h3>Welcome</h3>
+			<h3>Willkommen</h3>
 			<p>
-				Welcome to the configurator! Select an option/page from the top menu. If you have any questions,
+				Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
+				treten sie meinem
 				join my
-				Discord server: <a href="https://discord.gg/RE3XevS"
+				Discord Server bei: <a href="https://discord.gg/RE3XevS"
 					target="_blank">https://discord.gg/RE3XevS</a><br />
-				A guide on how to use the configurator can be found here: <a
+				Eine Anleitung zur Verwendung des Konfigurators finden Sie hier: <a
 					href="https://github.com/DustinWatts/FreeTouchDeck/wiki/3.-The-Configurator" target="_blank">
 					FreeTouchDeck Wiki</a>
 			</p>
 		</div>
 		<!-- Tab WiFi -->
 		<div id="wifi" class="tabcontent">
-			<div style="float: right; font-size: 11px"><a href="/download?file=wificonfig.json">download
+			<div style="float: right; font-size: 11px"><a href="/download?file=wificonfig.json">herunterladen
 					wificonfig.json</a></div><br>
-			<h3>WiFi Settings</h3>
+			<h3>Wlan Einstellungen</h3>
 			<p>
 			<form method='post' id="savewifi" action='/saveconfig'>
 
@@ -82,23 +83,23 @@
 
 				<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
 
-					<label for="ssid">WiFi SSID:</label><br>
+					<label for="ssid">Wlan SSID:</label><br>
 					<input type="text" id="ssid" name="ssid"><br><br>
 
-					<label for="password">WiFi Password:</label><br>
+					<label for="password">Wlan Passwort:</label><br>
 					<input type="password" id="password" name="password" autocomplete="new-password"><br>
-					<input type="checkbox" onclick="togglepassword()">Show Password <br><br>
+					<input type="checkbox" onclick="togglepassword()">Passwort anzeigen <br><br>
 
-					&nbsp;&nbsp;Wifi Mode:&nbsp;
+					&nbsp;&nbsp;WLAN-Modus:&nbsp;
 					<select class="wifimode" id='wifimode' name='wifimode'>
 						<option value="WIFI_STA">Station</option>
-						<option value="WIFI_AP">Access Point</option>
+						<option value="WIFI_AP">Zugangspunkt</option>
 					</select><br>
 
-					<label for="wifihostname">Wifi Hostname:</label>
+					<label for="wifihostname">WLAN Hostname:</label>
 					<input type="text" id="wifihostname" name="wifihostname"><br>
 
-					&nbsp;&nbsp;Connection attempts:&nbsp;
+					&nbsp;&nbsp;Verbindungsversuche:&nbsp;
 					<select class="attempts" id='attempts' name='attempts'>
 						<option value="5">5</option>
 						<option value="10">10</option>
@@ -106,7 +107,7 @@
 						<option value="20">20</option>
 					</select><br>
 
-					&nbsp;&nbsp;Delay between attempts:&nbsp;
+					&nbsp;&nbsp;Verzögerung zwischen Versuchen:&nbsp;
 					<select class="attemptdelay" id='attemptdelay' name='attemptdelay'>
 						<option value="100">100 ms</option>
 						<option value="500">500 ms</option>
@@ -117,7 +118,7 @@
 
 				<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 					<input type="hidden" id='save' name='save' value="wifi">
-					<br /><button style='cursor: pointer;' form="savewifi" type='save'>Save WiFi Config</button>
+					<br /><button style='cursor: pointer;' form="savewifi" type='save'>WLAN-Konfiguration speichern</button>
 				</div>
 			</form>
 
@@ -126,87 +127,87 @@
 	</div>
 	<!-- Tab General -->
 	<div id="general" class="tabcontent">
-		<div style="float: right; font-size: 11px"><a href="/download?file=general.json">download general.json</a>
+		<div style="float: right; font-size: 11px"><a href="/download?file=general.json">Herunterladen general.json</a>
 		</div>
 		<br>
-		<h3>General Settings</h3>
+		<h3>Allgemeine Einstellungen</h3>
 		<p>
 		<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-			<h2>Colors</h2>
+			<h2>Farben</h2>
 		</div>
 
 		<form method='post' id="generalconfig" action='/saveconfig'>
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				&nbsp;&nbsp;Menu Button Colour:&nbsp;
+				&nbsp;&nbsp;Farbe der Menütasten:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='menubuttoncolor'
 					name='menubuttoncolor' type="color" value=''>
-				&nbsp;&nbsp;Function Button Colour:&nbsp;
+				&nbsp;&nbsp;Farbe der Funktionstasten:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='functionbuttoncolor'
 					name='functionbuttoncolor' type="color" value=''>
-				&nbsp;&nbsp;Latch Colour:&nbsp;
+				&nbsp;&nbsp;Verriegelungsfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='latchcolor'
 					name='latchcolor' type="color" value=''>
-				&nbsp;&nbsp;Background Colour:&nbsp;
+				&nbsp;&nbsp;Hintergrundfarbe:&nbsp;
 				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='background'
 					name='background' type="color" value=''>
 			</div><br>
 
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>Deep Sleep</h2>
+				<h2>Tiefschlaf</h2>
 			</div>
 
-			&nbsp;&nbsp;Deep Sleep:&nbsp;
+			&nbsp;&nbsp;Tiefschlaf:&nbsp;
 			<select class="sleepenable" id='sleepenable' name='sleepenable'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
 			&nbsp;&nbsp;Deep Sleep Timer:&nbsp;
 			<select class="sleeptimer" id='sleeptimer' name='sleeptimer'>
-				<option value="10">10 Minutes</option>
-				<option value="20">20 Minutes</option>
-				<option value="30">30 Minutes</option>
-				<option value="60">60 Minutes</option>
+				<option value="10">10 Minuten</option>
+				<option value="20">20 Minuten</option>
+				<option value="30">30 Minuten</option>
+				<option value="60">60 Minuten</option>
 			</select>
 			&nbsp;&nbsp;USB Comms:&nbsp;
 			<select class="usbcommsenable" id='usbcommsenable' name='usbcommsenable'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>Sound</h2>
+				<h2>Ton</h2>
 			</div>
 
-			&nbsp;&nbsp;Beep on Touch:&nbsp;
+			&nbsp;&nbsp;Signalton bei Berührung:&nbsp;
 			<select class="sleepenable" id='beep' name='beep'>
-				<option value="true">Enabled</option>
-				<option value="false">Disabled</option>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
 			</select>
 
 			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
-				<h2>CADDeck Helpers</h2>
+				<h2>CADDeck Helfer</h2>
 			</div>
 
-			&nbsp;&nbsp;Modifier 1:&nbsp;
+			&nbsp;&nbsp;Modifikator 1:&nbsp;
 			<select class="modifier1" id='modifier1' name='modifier1'>
-				<option value="0">None</option>
+				<option value="0">Keiner</option>
 				<option value="128">CTRL</option>
 				<option value="129">SHIFT</option>
 				<option value="130">ALT</option>
 				<option value="131">GUI</option>
 			</select>
 
-			&nbsp;&nbsp;Modifier 2:&nbsp;
+			&nbsp;&nbsp;Modifikator 2:&nbsp;
 			<select class="modifier2" id='modifier2' name='modifier2'>
-				<option value="0">None</option>
+				<option value="0">Keiner</option>
 				<option value="128">CTRL</option>
 				<option value="129">SHIFT</option>
 				<option value="130">ALT</option>
 				<option value="131">GUI</option>
 			</select>
 
-			&nbsp;&nbsp;Modifier 3:&nbsp;
+			&nbsp;&nbsp;Modifikator 3:&nbsp;
 			<select class="modifier3" id='modifier3' name='modifier3'>
-				<option value="0">None</option>
+				<option value="0">Keiner</option>
 				<option value="128">CTRL</option>
 				<option value="129">SHIFT</option>
 				<option value="130">ALT</option>
@@ -215,7 +216,7 @@
 
 			<br>
 
-			&nbsp;&nbsp;Delay after helper (ms):&nbsp;
+			&nbsp;&nbsp;Verzögerung nach Helfer (ms):&nbsp;
 			<select class="helperdelay" id='helperdelay' name='helperdelay'>
 				<option value="0">0</option>
 				<option value="100">100</option>
@@ -225,7 +226,7 @@
 			</select>
 
 
-			&nbsp;&nbsp;Menu on startup:&nbsp;
+			&nbsp;&nbsp;Menü beim Start:&nbsp;
 			<select class="startup_menu" id='startup_menu' name='startup_menu'>
 				<option value="0">0</option>
 				<option value="1">1</option>
@@ -241,7 +242,7 @@
 
 			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="general">
-				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Save General Config</button>
+				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Allgemeine Konfig speichern</button>
 			</div>
 		</form>
 	</div>
@@ -249,48 +250,48 @@
 	</div>
 	<!-- Tab Menu -->
 	<div id="menu" class="tabcontent">
-		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">download menu1.json</a></div>
+		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">Herunterladen menu1.json</a></div>
 		<br>
-		<h3>Menu</h3>
+		<h3>Menü</h3>
 		<p>
 		<form method='post' id="savemenu" action='/saveconfig'>
-			<label for="framework">Select Menu</label>
+			<label for="framework">Menü auswählen</label>
 			<select name="menunumberlist_save" id="menunumberlist_save" onchange="updateMenuItems(this)">
-				<option value="0">Home Menu</option>
-				<option value="1">Menu 1</option>
-				<option value="2">Menu 2</option>
-				<option value="3">Menu 3</option>
-				<option value="4">Menu 4</option>
-				<option value="5">Menu 5</option>
-				<option value="6">Menu 6</option>
-				<option value="7">Menu 7</option>
-				<option value="8">Menu 8</option>
-				<option value="9">Menu 9</option>
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
 			</select>
 			<div></div> <!-- Add a little space -->
-			<label for="menuname">Menu Name:</label>
+			<label for="menuname">Menü Name:</label>
 			<input type="text" id="menuname" name="menuname"><br><br>
 			<div></div> <!-- Add a little space -->
 			<table style="height: 250px; width: 100%; border: 1px solid #000088; text-align: left;">
 				<tbody>
 					<tr>
 						<td style="width: 10%;">
-							Row/Col
+							Reihe/Spalte
 						</td>
 						<td style="width: 18%;">
-							Col 1
+							Spalte 1
 						</td>
 						<td style="width: 18%;">
-							Col 2
+							Spalte 2
 						</td>
 						<td style="width: 18%;">
-							Col 3
+							Spalte 3
 						</td>
 						<td style="width: 18%;">
-							Col 4
+							Spalte 4
 						</td>
 						<td style="width: 18%;">
-							Col 5
+							Spalte 5
 						</td>
 					</tr>
 					<tr>
@@ -299,83 +300,83 @@
 						</td>
 						<td style="width: 18%;">
 							Button 1-1
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button11logo' name='button11logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button11action0' name='button11action0'></select>
 							<select class="actions" id='button11value0' name='button11value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button11action1' name='button11action1'></select>
 							<select class="actions" id='button11value1' name='button11value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button11action2' name='button11action2'></select>
 							<select class="actions" id='button11value2' name='button11value2'></select>
-							<br />Latch? <input type="checkbox" id="button11latch" name="button11latch">
-							latch to: <select class="images" id='button11latchlogo' name='button11latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button11latch" name="button11latch">
+							einklinken: <select class="images" id='button11latchlogo' name='button11latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 1-2
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button12logo' name='button12logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button12action0' name='button12action0'></select>
 							<select class="actions" id='button12value0' name='button12value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button12action1' name='button12action1'></select>
 							<select class="actions" id='button12value1' name='button12value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button12action2' name='button12action2'></select>
 							<select class="actions" id='button12value2' name='button12value2'></select>
-							<br />Latch? <input type="checkbox" id="button12latch" name="button12latch">
-							latch to: <select class="images" id='button12latchlogo' name='button12latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button12latch" name="button12latch">
+							einklinken: <select class="images" id='button12latchlogo' name='button12latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 1-3
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button13logo' name='button13logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button13action0' name='button13action0'></select>
 							<select class="actions" id='button13value0' name='button13value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button13action1' name='button13action1'></select>
 							<select class="actions" id='button13value1' name='button13value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button13action2' name='button13action2'></select>
 							<select class="actions" id='button13value2' name='button13value2'></select>
-							<br />Latch? <input type="checkbox" id="button13latch" name="button13latch">
-							latch to: <select class="images" id='button13latchlogo' name='button13latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button13latch" name="button13latch">
+							einklinken: <select class="images" id='button13latchlogo' name='button13latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 1-4
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button14logo' name='button14logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button14action0' name='button14action0'></select>
 							<select class="actions" id='button14value0' name='button14value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button14action1' name='button14action1'></select>
 							<select class="actions" id='button14value1' name='button14value1'></select>
 							<br />Action 3:
 							<select class="actions" id='button14action2' name='button14action2'></select>
 							<select class="actions" id='button14value2' name='button14value2'></select>
-							<br />Latch? <input type="checkbox" id="button14latch" name="button14latch">
-							latch to: <select class="images" id='button14latchlogo' name='button14latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button14latch" name="button14latch">
+							einklinken: <select class="images" id='button14latchlogo' name='button14latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 1-5
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button15logo' name='button15logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button15action0' name='button15action0'></select>
 							<select class="actions" id='button15value0' name='button15value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button15action1' name='button15action1'></select>
 							<select class="actions" id='button15value1' name='button15value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button15action2' name='button15action2'></select>
 							<select class="actions" id='button15value2' name='button15value2'></select>
-							<br />Latch? <input type="checkbox" id="button15latch" name="button15latch">
-							latch to: <select class="images" id='button15latchlogo' name='button15latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button15latch" name="button15latch">
+							einklinken: <select class="images" id='button15latchlogo' name='button15latchlogo'></select>
 						</td>
 					</tr>
 					<tr>
@@ -384,83 +385,83 @@
 						</td>
 						<td style="width: 18%;">
 							Button 2-1
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button21logo' name='button21logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button21action0' name='button21action0'></select>
 							<select class="actions" id='button21value0' name='button21value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button21action1' name='button21action1'></select>
 							<select class="actions" id='button21value1' name='button21value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button21action2' name='button21action2'></select>
 							<select class="actions" id='button21value2' name='button21value2'></select>
-							<br />Latch? <input type="checkbox" id="button21latch" name="button21latch">
-							latch to: <select class="images" id='button21latchlogo' name='button21latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button21latch" name="button21latch">
+							einklinken: <select class="images" id='button21latchlogo' name='button21latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 2-2
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button22logo' name='button22logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button22action0' name='button22action0'></select>
 							<select class="actions" id='button22value0' name='button22value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button22action1' name='button22action1'></select>
 							<select class="actions" id='button22value1' name='button22value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button22action2' name='button22action2'></select>
 							<select class="actions" id='button22value2' name='button22value2'></select>
-							<br />Latch? <input type="checkbox" id="button22latch" name="button22latch">
-							latch to: <select class="images" id='button22latchlogo' name='button22latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button22latch" name="button22latch">
+							einklinken: <select class="images" id='button22latchlogo' name='button22latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 2-3
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button23logo' name='button23logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button23action0' name='button23action0'></select>
 							<select class="actions" id='button23value0' name='button23value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button23action1' name='button23action1'></select>
 							<select class="actions" id='button23value1' name='button23value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button23action2' name='button23action2'></select>
 							<select class="actions" id='button23value2' name='button23value2'></select>
-							<br />Latch? <input type="checkbox" id="button23latch" name="button23latch">
-							latch to: <select class="images" id='button23latchlogo' name='button23latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button23latch" name="button23latch">
+							einklinken: <select class="images" id='button23latchlogo' name='button23latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 2-4
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button24logo' name='button24logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button24action0' name='button24action0'></select>
 							<select class="actions" id='button24value0' name='button24value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button24action1' name='button24action1'></select>
 							<select class="actions" id='button24value1' name='button24value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button24action2' name='button24action2'></select>
 							<select class="actions" id='button24value2' name='button24value2'></select>
-							<br />Latch? <input type="checkbox" id="button24latch" name="button24latch">
-							latch to: <select class="images" id='button24latchlogo' name='button24latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button24latch" name="button24latch">
+							einklinken: <select class="images" id='button24latchlogo' name='button24latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 2-5
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button25logo' name='button25logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button25action0' name='button25action0'></select>
 							<select class="actions" id='button25value0' name='button25value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button25action1' name='button25action1'></select>
 							<select class="actions" id='button25value1' name='button25value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button25action2' name='button25action2'></select>
 							<select class="actions" id='button25value2' name='button25value2'></select>
-							<br />Latch? <input type="checkbox" id="button25latch" name="button25latch">
-							latch to: <select class="images" id='button25latchlogo' name='button25latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button25latch" name="button25latch">
+							einklinken: <select class="images" id='button25latchlogo' name='button25latchlogo'></select>
 						</td>
 					</tr>
 					<tr>
@@ -469,105 +470,105 @@
 						</td>
 						<td style="width: 18%;">
 							Button 3-1
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button31logo' name='button31logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button31action0' name='button31action0'></select>
 							<select class="actions" id='button31value0' name='button31value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button31action1' name='button31action1'></select>
 							<select class="actions" id='button31value1' name='button31value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button31action2' name='button31action2'></select>
 							<select class="actions" id='button31value2' name='button31value2'></select>
-							<br />Latch? <input type="checkbox" id="button31latch" name="button31latch">
-							latch to: <select class="images" id='button31latchlogo' name='button31latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button31latch" name="button31latch">
+							einklinken: <select class="images" id='button31latchlogo' name='button31latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 3-2
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button32logo' name='button32logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button32action0' name='button32action0'></select>
 							<select class="actions" id='button32value0' name='button32value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button32action1' name='button32action1'></select>
 							<select class="actions" id='button32value1' name='button32value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button32action2' name='button32action2'></select>
 							<select class="actions" id='button32value2' name='button32value2'></select>
-							<br />Latch? <input type="checkbox" id="button32latch" name="button32latch">
-							latch to: <select class="images" id='button32latchlogo' name='button32latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button32latch" name="button32latch">
+							einklinken: <select class="images" id='button32latchlogo' name='button32latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 3-3
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button33logo' name='button33logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button33action0' name='button33action0'></select>
 							<select class="actions" id='button33value0' name='button33value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button33action1' name='button33action1'></select>
 							<select class="actions" id='button33value1' name='button33value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button33action2' name='button33action2'></select>
 							<select class="actions" id='button33value2' name='button33value2'></select>
-							<br />Latch? <input type="checkbox" id="button33latch" name="button33latch">
-							latch to: <select class="images" id='button33latchlogo' name='button33latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button33latch" name="button33latch">
+							einklinken: <select class="images" id='button33latchlogo' name='button33latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 3-4
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button34logo' name='button34logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button34action0' name='button34action0'></select>
 							<select class="actions" id='button34value0' name='button34value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button34action1' name='button34action1'></select>
 							<select class="actions" id='button34value1' name='button34value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button34action2' name='button34action2'></select>
 							<select class="actions" id='button34value2' name='button34value2'></select>
-							<br />Latch? <input type="checkbox" id="button34latch" name="button34latch">
-							latch to: <select class="images" id='button34latchlogo' name='button34latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button34latch" name="button34latch">
+							einklinken: <select class="images" id='button34latchlogo' name='button34latchlogo'></select>
 						</td>
 						<td style="width: 18%;">
 							Button 3-5
-							<br />Image:
+							<br />Bild:
 							<select class="images" id='button35logo' name='button35logo'></select>
-							<br />Action 1:
+							<br />Aktion 1:
 							<select class="actions" id='button35action0' name='button35action0'></select>
 							<select class="actions" id='button35value0' name='button35value0'></select>
-							<br />Action 2:
+							<br />Aktion 2:
 							<select class="actions" id='button35action1' name='button35action1'></select>
 							<select class="actions" id='button35value1' name='button35value1'></select>
-							<br />Action 3:
+							<br />Aktion 3:
 							<select class="actions" id='button35action2' name='button35action2'></select>
 							<select class="actions" id='button35value2' name='button35value2'></select>
-							<br />Latch? <input type="checkbox" id="button35latch" name="button35latch">
-							latch to: <select class="images" id='button35latchlogo' name='button35latchlogo'></select>
+							<br />Verriegeln? <input type="checkbox" id="button35latch" name="button35latch">
+							einklinken: <select class="images" id='button35latchlogo' name='button35latchlogo'></select>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="menu">
-				<br /><button style='cursor: pointer;' form="savemenu" type='save'>Save Menu Config</button>
+				<br /><button style='cursor: pointer;' form="savemenu" type='save'>Menükonfig speichern</button>
 		</form>
 	</div>
 	</p>
 	</div>
 	<!-- Tab CADParams -->
 	<div id="cadparams" class="tabcontent">
-		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">download cadparams.json</a>
+		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">Herunterladen cadparams.json</a>
 		</div>
 		<br>
-		<h3>CAD Settings</h3>
+		<h3>CAD Einstellungen</h3>
 		<p>
 
 		<form method='post' id="cadparamsconfig" action='/saveconfig'>
 
-			&nbsp;&nbsp;Current CAD Program:&nbsp;
+			&nbsp;&nbsp;Aktuelles CAD-Programm:&nbsp;
 			<select name="current_program" id='current_program'>
 				<option value="0">Solidworks</option>
 				<option value="1">Fusion360</option>
@@ -577,13 +578,13 @@
 			</select>
 			<br><br>
 
-			&nbsp;&nbsp;Joystick Scale X:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung X:&nbsp;
 			<input type="number" id="joy_scale_x" name="joy_scale_x" min="-5.0" max="5.0" value="3.00" step="any">
 
-			&nbsp;&nbsp;Joystick Scale Y:&nbsp;
+			&nbsp;&nbsp;Joystick Skalierung Y:&nbsp;
 			<input type="number" id="joy_scale_y" name="joy_scale_y" min="-5.0" max="5.0" value="3.00" step="any">
 
-			&nbsp;&nbsp;Joystick Deadzone:&nbsp;
+			&nbsp;&nbsp;Joystick Totzone:&nbsp;
 			<select class="joy_deadzone" id='joy_deadzone' name='joy_deadzone'>
 				<option value="0">0</option>
 				<option value="0.01">0.01</option>
@@ -591,7 +592,7 @@
 				<option value="0.05">0.05</option>
 				<option value="0.1">0.1</option>
 			</select>
-			&nbsp;&nbsp;Joystick Sensitivity:&nbsp;
+			&nbsp;&nbsp;Joystick Sensitivität:&nbsp;
 			<select class="joy_sensitivity" id='joy_sensitivity' name='joy_sensitivity'>
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -602,9 +603,9 @@
 				<option value="100">100</option>
 			</select>
 			<br><br>
-			&nbsp;&nbsp;Zoom Scale:&nbsp;
+			&nbsp;&nbsp;Zoomskalierung:&nbsp;
 			<input type="number" id="zoom_scale" name="zoom_scale" min="-5.0" max="5.0" value="3.00" step="any">
-			&nbsp;&nbsp;Zoom Deadzone:&nbsp;
+			&nbsp;&nbsp;Zoom Totzone:&nbsp;
 			<select class="zoom_deadzone" id='zoom_deadzone' name='zoom_deadzone'>
 				<option value="0">0</option>
 				<option value="0.01">0.01</option>
@@ -614,7 +615,7 @@
 				<option value="0.15">0.15</option>
 				<option value="0.2">0.2</option>
 			</select>
-			&nbsp;&nbsp;Zoom Sensitivity:&nbsp;
+			&nbsp;&nbsp;Zoom Sensitivität:&nbsp;
 			<select class="zoom_sensitivity" id='zoom_sensitivity' name='zoom_sensitivity'>
 				<option value="1">1</option>
 				<option value="2">2</option>				
@@ -637,7 +638,7 @@
 				<option value="0.15">0.15</option>
 				<option value="0.2">0.2</option>
 			</select>
-			&nbsp;&nbsp;Rotate Sensitivity:&nbsp;
+			&nbsp;&nbsp;Drehen Sensitivität:&nbsp;
 			<select class="rotate_sensitivity" id='rotate_sensitivity' name='rotate_sensitivity'>
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -685,7 +686,7 @@
 						</td>
 						<!-- <td style="width: 50%;"> -->
 						<td>
-							<br>Selected CAD Program:&nbsp;
+							<br>Gewähltes CAD-Programm:&nbsp;
 							<select name="selected_program" id='selected_program'
 								onchange="update_selected_program_items(this)">
 								<option value="0">Solidworks</option>
@@ -698,16 +699,16 @@
 							<table style="height: 250px; width: 100%;">
 								<tr>
 									<br>
-									<br />Selected Button:
+									<br />Ausgewählte Schaltfläche:
 									<input type="text" id="selected_hw_button" name="selected_hw_button"
 										style="border:0px" readonly>
-									<br />Action 1:
+									<br />Aktion 1:
 									<select class="actions" id='joybuttonaction0' name='joybuttonaction0'></select>
 									<select class="actions" id='joybuttonvalue0' name='joybuttonvalue0'></select>
-									<br />Action 2:
+									<br />Aktion 2:
 									<select class="actions" id='joybuttonaction1' name='joybuttonaction1'></select>
 									<select class="actions" id='joybuttonvalue1' name='joybuttonvalue1'></select>
-									<br />Action 3:
+									<br />Aktion 3:
 									<select class="actions" id='joybuttonaction2' name='joybuttonaction2'></select>
 									<select class="actions" id='joybuttonvalue2' name='joybuttonvalue2'></select>
 								</tr>
@@ -718,7 +719,7 @@
 			</table>
 			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="cadparams">
-				<br /><button style='cursor: pointer;' form="cadparamsconfig" type='save'>Save CAD Config</button>
+				<br /><button style='cursor: pointer;' form="cadparamsconfig" type='save'>CAD-Konfig speichern</button>
 			</div>
 		</form>
 	</div>
@@ -726,22 +727,22 @@
 	</div>
 	<!-- Upload Logo -->
 	<div id="uploadimage" class="tabcontent">
-		<h3>Upload a new logo</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> You can customize the logos that are used. If you
-			upload a file with a name that already exists, the file is <u>overwritten</u>. You can only upload .bmp
-			images. There images should be in a 24-bit RGB format and should be no more then 75x75 pixels. Smaller
-			images are supported.<br /><br />
+		<h3>Hochladen eines neuen Logos</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst die verwendeten Logos anpassen. Wenn du
+			eine Datei mit einem Namen hochlädst, der bereits existiert, wird die Datei <u>überschrieben</u>. Du kannst nur .bmp
+			Bilder hochladen. Die Bilder sollten im 24-Bit-RGB-Format vorliegen und nicht mehr als 75 x 75 Pixel groß sein.
+			Kleinere Bilder werden unterstützt.<br /><br />
 
-			Images that are used for Elgato's Stream Deck are also supported. These should also be in a 24-bit RGB
-			format. You can convert these using free online tools like <a
+			Auch Bilder, die für Elgatos Stream Deck verwendet werden, werden unterstützt. Diese sollten auch in einem 24-Bit-RGB
+			Format vorliegen. Du kannst diese mit diesem kostenlosen Online-Tool konvertieren  <a
 				href="https://online-converting.com/image/convert2bmp/"
 				target="_blank">https://online-converting.com/image/convert2bmp/</a>.<br /><br />
 
-			CADDeck will check the colour of the first pixel in the image. If that pixel is black (#000000),
-			all
-			black pixels will be rendered as transparent and the button colour chosen in the "General" tab will be
-			used.
-			If that pixel has a colour, the button will have that colour so that the image blends in nicely.
+			CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
+			alle
+			schwarze Pixel werden transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe wird transparent
+			dargestellt.
+			Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
 		</div>
 		<p>
 		<div class="form" style="width: 10%; text-align: : center; margin: auto;">
@@ -753,7 +754,7 @@
 
 	<!-- File Editor -->
 	<div id="editor" class="tabcontent">
-		<h3>Remove files</h3>
+		<h3>Dateien entfernen</h3>
 
 		<div class="form" id=deletefilelist style="width: 20%; text-align: left; margin: auto;">
 
@@ -763,18 +764,18 @@
 
 	<!-- Upload JSON -->
 	<div id="uploadjson" class="tabcontent">
-		<h3>Upload a JSON Config File</h3>
-		<div style="width: 70%; text-align: left; margin: auto;"> You can upload a previously downloaded JSON file
-			to save you some time from having to configure a whole menu. The filename should be the menu name (all
-			lower-case), e.g. menu.json for Menu, menu2.json for Menu 2, etc. It is also a good idea to validate
-			your .json file if you made any manual modifications. You can do that using
+		<h3>JSON-Konfigurationsdatei Hochladen</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst eine zuvor heruntergeladene JSON-Datei hochladen
+			um Ihnen etwas Zeit zu ersparen, da Sie nicht ein ganzes Menü konfigurieren müssen. Der Dateiname sollte der Menüname sein (alles
+			Kleinschreibung), z.B. menu.json für Menü, menu2.json für Menü 2 usw. Es ist auch eine gute Idee zu validieren
+			Ihre .json-Datei, wenn Sie manuelle Änderungen vorgenommen haben. Das kannst das machen mit
 			<a href="https://jsonlint.com/" target="_blank">JSONLint</a>
 			<br /><br />
 		</div>
 		<p>
 		<div class="form" style="width: 10%; text-align: center; margin: auto;">
 			<input form="uploadjsonfile" type="file" name="name" accept=".json"><br /><br />
-			<button style='cursor: pointer;' form="uploadjsonfile" type="save">Upload JSON</button>
+			<button style='cursor: pointer;' form="uploadjsonfile" type="save">Hochladen JSON</button>
 		</div>
 		</p>
 	</div>
@@ -782,26 +783,26 @@
 	<!-- Download JSON -->
 	<div id="downloadjson" class="tabcontent">
 		<h3>Download a Menu Config File</h3>
-		<div style="width: 70%; text-align: center; margin: auto;"> Select a file from the list and download it to
-			the client computer. <br /><br /></div>
+		<div style="width: 70%; text-align: center; margin: auto;"> Wählen eine Datei aus der Liste aus und lade diese auf
+			den Client-Rechner herunter. <br /><br /></div>
 		<p>
 		<div class="form" style="width: 20%; text-align: center; margin: auto;">
-			<label for="framework">Select Menu</label>
+			<label for="framework">Menüauswahl</label>
 			<select name="menunumberlist_download" id="menunumberlist_download" form="downloadjsonfile">
-				<option value="0">Home Menu</option>
-				<option value="1">Menu 1</option>
-				<option value="2">Menu 2</option>
-				<option value="3">Menu 3</option>
-				<option value="4">Menu 4</option>
-				<option value="5">Menu 5</option>
-				<option value="6">Menu 6</option>
-				<option value="7">Menu 7</option>
-				<option value="8">Menu 8</option>
-				<option value="9">Menu 9</option>
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
 			</select>
 			<br /><br />
 			<!-- <input form="downloadjsonfile" type=hidden name="name" ><br /><br /> -->
-			<button style='cursor: pointer;' form="downloadjsonfile" type="save">Download</button>
+			<button style='cursor: pointer;' form="downloadjsonfile" type="save">Herunterladen</button>
 		</div>
 		</p>
 	</div>
@@ -810,7 +811,7 @@
 
 	<!-- INFO -->
 	<div id="info" class="tabcontent">
-		<h3>About CADDeck</h3>
+		<h3>Über CADDeck</h3>
 		<div id="infocontent" style="width: 40%; text-align: left; margin: auto;">
 
 		</div>
@@ -864,7 +865,7 @@
 	</script>
 	<script>
 		var selecteditems = [{
-			name: 'Do Nothing',
+			name: 'Mache nichts',
 			value: '0',
 			subitems: [{
 				name: '--',
@@ -872,7 +873,7 @@
 			}]
 		},
 		{
-			name: 'Delay',
+			name: 'Verzögerung',
 			value: '1',
 			subitems: [{
 				name: '100ms',
@@ -895,26 +896,26 @@
 			]
 		},
 		{
-			name: 'Arrows and TAB',
+			name: 'Pfeile und TAB',
 			value: '2',
 			subitems: [{
 				name: '--',
 				value: '0'
 			},
 			{
-				name: 'UP Arrow',
+				name: 'Pfeil HOCH',
 				value: '1'
 			},
 			{
-				name: 'DOWN Arrow',
+				name: 'Pfeil RUNTER',
 				value: '2'
 			},
 			{
-				name: 'LEFT Arrow',
+				name: 'Pfeil LINKS',
 				value: '3'
 			},
 			{
-				name: 'RIGHT Arrow',
+				name: 'Pfeil RECHTS',
 				value: '4'
 			},
 			{
@@ -930,11 +931,11 @@
 				value: '7'
 			},
 			{
-				name: 'Page Up',
+				name: 'Seite HOCH',
 				value: '8'
 			},
 			{
-				name: 'Page Down',
+				name: 'Seite RUNTER',
 				value: '9'
 			},
 			{
@@ -963,15 +964,15 @@
 			name: 'Mediakey',
 			value: '3',
 			subitems: [{
-				name: 'Mute',
+				name: 'Stumm',
 				value: '1'
 			},
 			{
-				name: 'Volume Down',
+				name: 'Leise',
 				value: '2'
 			},
 			{
-				name: 'Volume Up',
+				name: 'Lauter',
 				value: '3'
 			},
 			{
@@ -983,11 +984,11 @@
 				value: '5'
 			},
 			{
-				name: 'Next',
+				name: 'Nächste',
 				value: '6'
 			},
 			{
-				name: 'Previous',
+				name: 'Vorherige',
 				value: '7'
 			},
 			{
@@ -995,19 +996,19 @@
 				value: '8'
 			},
 			{
-				name: 'File Browser',
+				name: 'Dateibrowser',
 				value: '9'
 			},
 			{
-				name: 'Calculator',
+				name: 'Rechner',
 				value: '10'
 			},
 			{
-				name: 'WWW Bookmarks',
+				name: 'WWW Lesezeichen',
 				value: '11'
 			},
 			{
-				name: 'WWW Search',
+				name: 'WWW Suchen',
 				value: '12'
 			},
 			{
@@ -1015,11 +1016,11 @@
 				value: '13'
 			},
 			{
-				name: 'WWW Back',
+				name: 'WWW Zurück',
 				value: '14'
 			},
 			{
-				name: 'Cons Control',
+				name: 'Cons Steuerung',
 				value: '15'
 			},
 			{
@@ -1029,7 +1030,7 @@
 			]
 		},
 		{
-			name: 'Letters',
+			name: 'Buchstaben',
 			value: '4',
 			subitems: [{
 				name: '-space-',
@@ -1143,47 +1144,47 @@
 			]
 		},
 		{
-			name: 'Option Keys',
+			name: 'Optionstasten',
 			value: '5',
 			subitems: [{
-				name: 'Left CTRL',
+				name: 'Links CTRL',
 				value: '1'
 			},
 			{
-				name: 'Left Shift',
+				name: 'Links Shift',
 				value: '2'
 			},
 			{
-				name: 'Left ALT',
+				name: 'Links ALT',
 				value: '3'
 			},
 			{
-				name: 'Left GUI',
+				name: 'Links GUI',
 				value: '4'
 			},
 			{
-				name: 'Right CTRL',
+				name: 'Rechts CTRL',
 				value: '5'
 			},
 			{
-				name: 'Right Shift',
+				name: 'Rechts Shift',
 				value: '6'
 			},
 			{
-				name: 'Right ALT',
+				name: 'Rechts ALT',
 				value: '7'
 			},
 			{
-				name: 'Right GUI',
+				name: 'Rechts GUI',
 				value: '8'
 			},
 			{
-				name: 'Release All',
+				name: 'Alle loslassen',
 				value: '9'
 			}]
 		},
 		{
-			name: 'Function Keys',
+			name: 'Funktionstasten',
 			value: '6',
 			subitems: [{
 				name: 'F1',
@@ -1284,7 +1285,7 @@
 			]
 		},
 		{
-			name: 'Numbers',
+			name: 'Zahlen',
 			value: '7',
 			subitems: [{
 				name: '0',
@@ -1330,7 +1331,7 @@
 			]
 		},
 		{
-			name: 'Special Chars',
+			name: 'Sonderzeichen',
 			value: '8',
 			subitems: [{
 				name: '.',
@@ -1396,130 +1397,130 @@
 			]
 		},
 		{
-			name: 'Combos',
+			name: 'Kombinationen',
 			value: '9',
 			subitems: [{
-				name: 'LEFT CTRL+SHIFT',
+				name: 'LINKS CTRL+SHIFT',
 				value: '1'
 			},
 			{
-				name: 'LEFT ALT+SHIFT',
+				name: 'LINKS ALT+SHIFT',
 				value: '2'
 			},
 			{
-				name: 'LEFT GUI+SHIFT',
+				name: 'LINKS GUI+SHIFT',
 				value: '3'
 			},
 			{
-				name: 'LEFT CTRL+GUI',
+				name: 'LINKS CTRL+GUI',
 				value: '4'
 			},
 			{
-				name: 'LEFT ALT+GUI',
+				name: 'LINKS ALT+GUI',
 				value: '5'
 			},
 			{
-				name: 'LEFT CTRL+ALT',
+				name: 'LINKS CTRL+ALT',
 				value: '6'
 			},
 			{
-				name: 'LEFT CTRL+ALT+GUI',
+				name: 'LINKS CTRL+ALT+GUI',
 				value: '7'
 			},
 			{
-				name: 'RIGHT CTRL+SHIFT',
+				name: 'RECHTS CTRL+SHIFT',
 				value: '8'
 			},
 			{
-				name: 'RIGHT ALT+SHIFT',
+				name: 'RECHTS ALT+SHIFT',
 				value: '9'
 			},
 			{
-				name: 'RIGHT GUI+SHIFT',
+				name: 'RECHTS GUI+SHIFT',
 				value: '10'
 			},
 			{
-				name: 'RIGHT CTRL+GUI',
+				name: 'RECHTS CTRL+GUI',
 				value: '11'
 			},
 			{
-				name: 'RIGHT ALT+GUI',
+				name: 'RECHTS ALT+GUI',
 				value: '12'
 			},
 			{
-				name: 'RIGHT CTRL+ALT',
+				name: 'RECHTS CTRL+ALT',
 				value: '13'
 			},
 			{
-				name: 'RIGHT CTRL+ALT+GUI',
+				name: 'RECHTS CTRL+ALT+GUI',
 				value: '14'
 			}
 
 			]
 		},
 		{
-			name: 'Helpers',
+			name: 'Helfer',
 			value: '10',
 			subitems: [{
-				name: 'Helper 1',
+				name: 'Helfer 1',
 				value: '1'
 			},
 			{
-				name: 'Helper 2',
+				name: 'Helfer 2',
 				value: '2'
 			},
 			{
-				name: 'Helper 3',
+				name: 'Helfer 3',
 				value: '3'
 			},
 			{
-				name: 'Helper 4',
+				name: 'Helfer 4',
 				value: '4'
 			},
 			{
-				name: 'Helper 5',
+				name: 'Helfer 5',
 				value: '5'
 			},
 			{
-				name: 'Helper 6',
+				name: 'Helfer 6',
 				value: '6'
 			},
 			{
-				name: 'Helper 7',
+				name: 'Helfer 7',
 				value: '7'
 			},
 			{
-				name: 'Helper 8',
+				name: 'Helfer 8',
 				value: '8'
 			},
 			{
-				name: 'Helper 9',
+				name: 'Helfer 9',
 				value: '9'
 			},
 			{
-				name: 'Helper 10',
+				name: 'Helfer 10',
 				value: '10'
 			},
 			{
-				name: 'Helper 11',
+				name: 'Helfer 11',
 				value: '11'
 			}
 
 			]
 		},
 		{
-			name: 'FTD Functions',
+			name: 'FTD Funktionen',
 			value: '11',
 			subitems: [{
-				name: 'Config Mode',
+				name: 'Config-Modus',
 				value: '1'
 			},
 			{
-				name: 'Brightness Up',
+				name: 'Helligkeit hoch',
 				value: '2'
 			},
 			{
-				name: 'Brightness Down',
+				name: 'Helligkeit runte',
 				value: '3'
 			},
 			{
@@ -1527,215 +1528,215 @@
 				value: '4'
 			},
 			{
-				name: 'Info Page',
+				name: 'Info Seite',
 				value: '5'
 			},
 			{
-				name: 'Goto Menu 0 (Home)',
+				name: 'Gehe zu Menü 0 (Home)',
 				value: '6'
 			},
 			{
-				name: 'Save General Config',
+				name: 'SAllgemeine Konfig speichern',
 				value: '7'
 			},
 			{
-				name: 'Enable USB Comms',
+				name: 'USB-Kommunikation aktivieren',
 				value: '8'
 			}
 			]
 		},
 		{
-			name: 'Numpad',
+			name: 'Ziffernblock',
 			value: '12',
 			subitems: [{
-				name: 'Numpad 0',
+				name: 'Ziffernblock 0',
 				value: '0'
 			},
 			{
-				name: 'Numpad 1',
+				name: 'Ziffernblock 1',
 				value: '1'
 			},
 			{
-				name: 'Numpad 2',
+				name: 'Ziffernblock 2',
 				value: '2'
 			},
 			{
-				name: 'Numpad 3',
+				name: 'Ziffernblock 3',
 				value: '3'
 			},
 			{
-				name: 'Numpad 4',
+				name: 'Ziffernblock 4',
 				value: '4'
 			},
 			{
-				name: 'Numpad 5',
+				name: 'Ziffernblock 5',
 				value: '5'
 			},
 			{
-				name: 'Numpad 6',
+				name: 'Ziffernblock 6',
 				value: '6'
 			},
 			{
-				name: 'Numpad 7',
+				name: 'Ziffernblock 7',
 				value: '7'
 			},
 			{
-				name: 'Numpad 8',
+				name: 'Ziffernblock 8',
 				value: '8'
 			},
 			{
-				name: 'Numpad 9',
+				name: 'Ziffernblock 9',
 				value: '9'
 			},
 			{
-				name: 'Numpad /',
+				name: 'Ziffernblock /',
 				value: '10'
 			},
 			{
-				name: 'Numpad *',
+				name: 'Ziffernblock *',
 				value: '11'
 			},
 			{
-				name: 'Numpad -',
+				name: 'Ziffernblock -',
 				value: '12'
 			},
 			{
-				name: 'Numpad +',
+				name: 'Ziffernblock +',
 				value: '13'
 			},
 			{
-				name: 'Numpad RETURN',
+				name: 'Ziffernblock RETURN',
 				value: '14'
 			},
 			{
-				name: 'Numpad .',
+				name: 'Ziffernblock .',
 				value: '15'
 			}
 
 			]
 		},
 		{
-			name: 'User Actions',
+			name: 'Benutzeraktionen',
 			value: '13',
 			subitems: [{
-				name: 'Action 1',
+				name: 'Aktion 1',
 				value: '1'
 			},
 			{
-				name: 'Action 2',
+				name: 'Aktion 2',
 				value: '2'
 			},
 			{
-				name: 'Action 3',
+				name: 'Aktion 3',
 				value: '3'
 			},
 			{
-				name: 'Action 4',
+				name: 'Aktion 4',
 				value: '4'
 			},
 			{
-				name: 'Action 5',
+				name: 'Aktion 5',
 				value: '5'
 			},
 			{
-				name: 'Action 6',
+				name: 'Aktion 6',
 				value: '6'
 			},
 			{
-				name: 'Action 7',
+				name: 'Aktion 7',
 				value: '7'
 			}
 
 			]
 		},
 		{
-			name: 'Goto Page',
+			name: 'Gehe zu Seite',
 			value: '14',
 			subitems: [{
 				name: 'Page 0',
 				value: '0'
 			}, {
-				name: 'Page 1',
+				name: 'Seite 1',
 				value: '1'
 			}, {
-				name: 'Page 2',
+				name: 'Seite 2',
 				value: '2'
 			}, {
-				name: 'Page 3',
+				name: 'Seite 3',
 				value: '3'
 			}, {
-				name: 'Page 4',
+				name: 'Seite 4',
 				value: '4'
 			}, {
-				name: 'Page 5',
+				name: 'Seite 5',
 				value: '5'
 			}, {
-				name: 'Page 6',
+				name: 'Seite 6',
 				value: '6'
 			}, {
-				name: 'Page 7',
+				name: 'Seite 7',
 				value: '7'
 			}, {
-				name: 'Page 8',
+				name: 'Seite 8',
 				value: '8'
 			}, {
-				name: 'Page 9',
+				name: 'Seite 9',
 				value: '9'
 			}
 
 			]
 		},
 		{
-			name: 'CAD Functions',
+			name: 'CAD-Funktion',
 			value: '15',
 			subitems: [{
-				name: 'Set Program',
+				name: 'Programm festlegen',
 				value: '1'
 			},
 			{
-				name: 'Joystick Zero',
+				name: 'Joystick Nullpunkt',
 				value: '2'
 			},
 			{
-				name: 'Joystick Scale',
+				name: 'Joystick Skalieren',
 				value: '3'
 			},
 			{
-				name: 'Zoom Scale',
+				name: 'Zoom Skalieren',
 				value: '4'
 			},
 			{
-				name: 'Rotate Scale',
+				name: 'Rotate Skalieren',
 				value: '5'
 			},
 			{
-				name: 'Joystick Invert X',
+				name: 'Joystick Invertieren X',
 				value: '6'
 			},
 			{
-				name: 'Joystick Invert Y',
+				name: 'Joystick Invertieren Y',
 				value: '7'
 			},
 			{
-				name: 'Zoom Invert',
+				name: 'Zoom Invertieren',
 				value: '8'
 			},
 			{
-				name: 'Rotate Invert',
+				name: 'Rotate Invertieren',
 				value: '9'
 			},
 			{
-				name: 'Save Settings',
+				name: 'Einstellungen speichern',
 				value: '10'
 			},
 			{
-				name: 'Mode Button',
+				name: 'Modustaste',
 				value: '15'
 			}
 			]
 		},
 		{
-			name: 'Set CAD Program',
+			name: 'CAD-Programm einstellen',
 			value: '16',
 			subitems: [{
 				name: 'Solidworks',
@@ -1756,66 +1757,66 @@
 			]
 		},
 		{
-			name: 'Mouse Buttons',
+			name: 'Maustasten',
 			value: '17',
 			subitems: [{
-				name: 'Press Left Button',
+				name: 'Drücke Linke Taste',
 				value: '1'
 			}, {
-				name: 'Press Right Button',
+				name: 'Drücke Rechte Taste',
 				value: '2'
 			}, {
-				name: 'Press Middle Button',
+				name: 'Drücke Mittlere Taste',
 				value: '3'
 			}, {
-				name: 'Press Left and Middle Buttons',
+				name: 'Drücke Linke und Mittlere Taste',
 				value: '4'
 			}, {
-				name: 'Press Right and Middle Buttons',
+				name: 'Drücke rechte und Mittlere Taste',
 				value: '5'
 			}, {
-				name: 'Release Left Button',
+				name: 'Freigeben Linke Taste',
 				value: '6'
 			}, {
-				name: 'Release Right Button',
+				name: 'Freigeben Rechte Taste',
 				value: '7'
 			}, {
-				name: 'Release Middle Button',
+				name: 'Freigeben Mittlere Taste',
 				value: '8'
 			}, {
-				name: 'Release Left and Middle Buttons',
+				name: 'Freigeben Linke und Mittlere Taste',
 				value: '9'
 			}, {
-				name: 'Release Right and Middle Buttons',
+				name: 'Freigeben Rechte und Mittlere Taste',
 				value: '10'
 			}, {
-				name: 'Release All Buttons',
+				name: 'Freigeben alle Tasten,
 				value: '11'
 			}
 			]
 		},
 		{
-			name: 'Previous Page',
+			name: 'Vorherige Seite',
 			value: '18',
 			subitems: [{
-				name: 'No Action',
+				name: 'Keine Aktion',
 				value: '0'
 			}
 			]
 		},
 		{
-			name: 'Default Joystick Mode',
+			name: 'Standard-Joystick-Modus',
 			value: '19',
 			subitems: [{
-				name: 'None',
+				name: 'Keiner',
 				value: '0'
 			},
 			{
-				name: 'Pan',
+				name: 'Schwenken',
 				value: '1'
 			},
 			{
-				name: 'Rotate',
+				name: 'Drehen',
 				value: '2'
 			},
 			{
@@ -1844,7 +1845,7 @@
 					// 		.html(this.name)
 					// 		.appendTo(menu);
 					// });
-					console.log("Change detected in form savemenu.")
+					console.log("Änderung im Formularspeichermenü erkannt.")
 				});
 		});
 
