@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "joy_scale_x": -3.045467,
-  "joy_scale_y": -2.65678,
-  "joy_deadzone": 0.05,
-  "joy_sensitivity": 20,
-  "zoom_scale": -2.65679,
-  "zoom_deadzone": 0.05,
-  "zoom_sensitivity": 2,
-  "rotate_scale": 2.652345,
-  "rotate_deadzone": 0.05,
-  "rotate_sensitivity": 20,
+  "joy_scale_x": -7.611524,
+  "joy_scale_y": 2.65,
+  "joy_deadzone": 0.1,
+  "joy_sensitivity": 10,
+  "zoom_scale": -2.5,
+  "zoom_deadzone": 0.2,
+  "zoom_sensitivity": 5,
+  "rotate_scale": 3.5,
+  "rotate_deadzone": 0.2,
+  "rotate_sensitivity": 10,
   "current_program": 1,
   "programs": [
     {
@@ -183,70 +183,18 @@
         {
           "name": "button1",
           "actionarray": [
-            "2",
+            "4",
             "0",
             "0"
           ],
           "valuearray": [
-            "12",
+            "s",
             "0",
             "0"
           ]
         },
         {
           "name": "button2",
-          "actionarray": [
-            "6",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "6",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button3",
-          "actionarray": [
-            "4",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "i",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button4",
-          "actionarray": [
-            "4",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "v",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button5",
-          "actionarray": [
-            "4",
-            "0",
-            "0"
-          ],
-          "valuearray": [
-            "e",
-            "0",
-            "0"
-          ]
-        },
-        {
-          "name": "button6",
           "actionarray": [
             "4",
             "0",
@@ -259,6 +207,58 @@
           ]
         },
         {
+          "name": "button3",
+          "actionarray": [
+            "4",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "q",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button4",
+          "actionarray": [
+            "4",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "e",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button5",
+          "actionarray": [
+            "2",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "12",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "name": "button6",
+          "actionarray": [
+            "4",
+            "0",
+            "0"
+          ],
+          "valuearray": [
+            "l",
+            "0",
+            "0"
+          ]
+        },
+        {
           "name": "button7",
           "actionarray": [
             "4",
@@ -266,7 +266,7 @@
             "0"
           ],
           "valuearray": [
-            "g",
+            "r",
             "0",
             "0"
           ]
@@ -279,7 +279,7 @@
             "0"
           ],
           "valuearray": [
-            "h",
+            "w",
             "0",
             "0"
           ]
@@ -292,7 +292,7 @@
             "0"
           ],
           "valuearray": [
-            "i",
+            "c",
             "0",
             "0"
           ]
@@ -300,12 +300,12 @@
         {
           "name": "button10",
           "actionarray": [
-            "4",
+            "2",
             "0",
             "0"
           ],
           "valuearray": [
-            "j",
+            "7",
             "0",
             "0"
           ]
