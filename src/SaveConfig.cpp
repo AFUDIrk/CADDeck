@@ -5,12 +5,12 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
     int status = 0;
 
     // --- Saving general config
-    MSG_INFOLN("[INFO] Saving General Config");
+    MSG_INFOLN("[INFO] Allgemeine Konfiguration speichern");
 
     FILESYSTEM.remove("/config/general.json");
     File file = FILESYSTEM.open("/config/general.json", "w");
     if (!file) {
-        MSG_WARNLN("[WARNING]: Failed to create /config/general.json file");
+        MSG_WARNLN("[WARNUNG]: Datei /config/general.json konnte nicht erstellt werden");
         status = 1;
         return status;
     }
