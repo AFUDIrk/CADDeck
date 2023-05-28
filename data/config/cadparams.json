@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "joy_scale_x": -7.928364,
+  "joy_scale_x": -4.5,
   "joy_scale_y": 2.65,
   "joy_deadzone": 0.1,
   "joy_sensitivity": 10,
-  "zoom_scale": -6.47943,
+  "zoom_scale": -5,
   "zoom_deadzone": 0.2,
   "zoom_sensitivity": 5,
   "rotate_scale": 3.5,

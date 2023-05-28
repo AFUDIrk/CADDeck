@@ -139,7 +139,7 @@ void configmode()
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
     MSG_INFOLN("[INFO] Konfigurationsmodus aufrufen");
-    tft.println("Verbindung mit WLAN herstellen...");
+    tft.println("Verbindung mit WLAN...");
     tft.print("  SSID: ");
     tft.println(wificonfig.ssid);
     tft.print("  PWD: ");
