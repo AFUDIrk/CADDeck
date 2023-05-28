@@ -275,15 +275,15 @@ uint8_t loadBmpToPSRAM(const char *filename, uint16_t **pImage)
     bmpFS = FILESYSTEM.open(filename, "r");
 
     if (!bmpFS) {
-        MSG_WARN1("[WARN]: Bitmap not found: ", filename);
+        MSG_WARN1("[WARNUNG]: Bitmap nicht gefunden: ", filename);
         filename = "/logos/question.bmp";
-        MSG_WARN1("[WARN]: Will use : ", filename);
+        MSG_WARN1("[WARNUNG]: Wird verwendet : ", filename);
         bmpFS = FILESYSTEM.open(filename, "r");
     }
 
     if (!bmpFS) {
         status = ReturnFail;
-        MSG_ERROR1("[ERROR] Failed to open file: ", filename);
+        MSG_ERROR1("[FEHLER] Datei konnte nicht geöffnet werden: ", filename);
     }
     else {
         uint32_t seekOffset;
@@ -304,7 +304,7 @@ uint8_t loadBmpToPSRAM(const char *filename, uint16_t **pImage)
                 uint16_t *pLogoImage = (uint16_t *)ps_malloc(imageSize);
 
                 if (pLogoImage == NULL) {
-                    MSG_ERROR1("[ERROR] Could not allocate memory for image: ", filename);
+                    MSG_ERROR1("[FEHLER] Für das Bild konnte kein Speicher zugewiesen werden: ", filename);
                     status = ReturnFail;
                 }
                 else {
@@ -335,7 +335,7 @@ uint8_t loadBmpToPSRAM(const char *filename, uint16_t **pImage)
                 }
             }
             else {
-                MSG_ERROR1("[ERROR] BMP format not recognized for file: ", filename);
+                MSG_ERROR1("[FEHLER] BMP-Format für Datei nicht erkannt: ", filename);
                 status = ReturnFail;
             }
         }
@@ -395,7 +395,7 @@ uint16_t getBMPColor(const char *filename)
     int16_t pixelsize = readNbytesInt(&bmpImage, 0x1C, 2);
 
     if (pixelsize != 24) {
-        MSG_ERROR2("[ERROR] getBMPColor: ", filename, " Image is not 24 bpp");
+        MSG_ERROR2("[ERROR] getBMPColor: ", filename, " Das Bild ist nicht 24 bpp groß");
         MSG_ERROR2("        logo is *", filename, "*");
         color = 0x0000;
     }
@@ -436,12 +436,12 @@ uint16_t getImageBG(uint8_t page, uint8_t row, uint8_t col)
             bg_color = getBMPColor(menu[page].button[row][col].logo);
         }
         else {
-            MSG_ERROR3("[ERROR] getImageBG: Invalid logo index ", page, row, col);
+            MSG_ERROR3("[FEHLER] getImageBG: Ungültiger Logo-Index ", page, row, col);
             bg_color = 0x0000;
         }
     }
     else {
-        MSG_ERROR1("[ERROR] getImageBG: Invalid pageNum", page);
+        MSG_ERROR1("[FEHLER] getImageBG: Ungültige pageNum", page);
         bg_color = 0x0000;
     }
     return bg_color;
@@ -471,12 +471,12 @@ uint16_t getLatchImageBG(uint8_t page, uint8_t row, uint8_t col)
             }
         }
         else {
-            MSG_ERRORLN("[ERROR] getLatchImageBG: Invalid latch logo index");
+            MSG_ERRORLN("[FEHLER] getLatchImageBG: Ungültiger Latch-Logo-Index");
             bg_color = 0x0000;
         }
     }
     else {
-        MSG_ERRORLN("[ERROR] getLatchImageBG: Invalid page");
+        MSG_ERRORLN("[FEHLER] getLatchImageBG: Ungültige Seite");
         bg_color = 0x0000;
     }
     return bg_color;

@@ -151,7 +151,7 @@ void drawButtonRowCol(uint8_t page, uint8_t row, uint8_t col)
                         menu[pageNum].button[row][col].latchImageBGColourValid = true;
                     }
                     else {
-                        MSG_ERROR1("Error allocating PSRAM for latch logo: ", menu[pageNum].button[row][col].latchlogo);
+                        MSG_ERROR1("Fehler bei der Zuweisung des PSRAM für das Latch-Logo: ", menu[pageNum].button[row][col].latchlogo);
                     }
                 }
                 else {
@@ -174,7 +174,7 @@ void drawButtonRowCol(uint8_t page, uint8_t row, uint8_t col)
                         menu[pageNum].button[row][col].imageBGColourValid = true;
                     }
                     else {
-                        MSG_ERROR1("Error allocating PSRAM for logo: ", menu[pageNum].button[row][col].logo);
+                        MSG_ERROR1("Fehler beim Zuweisen von PSRAM für das Logo: ", menu[pageNum].button[row][col].logo);
                     }
                 }
                 else {
@@ -248,10 +248,10 @@ void drawKeypad()
         tft.setTextSize(1);
         tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
-        tft.printf("  %s failed to load and might be corrupted.\n", jsonFileFail);
-        tft.println("  You can reset that specific file to default by opening the serial monitor");
-        tft.printf("  and typing \"reset %s\"\n", jsonFileFail);
-        tft.println("  If you don't do this, the configurator will fail to load.");
+        tft.printf("  %s konnte nicht geladen werden und ist möglicherweise beschädigt.\n", jsonFileFail);
+        tft.println("  Sie können diese bestimmte Datei auf die Standardeinstellungen zurücksetzen, indem Sie den seriellen Monitor öffnen");
+        tft.printf("  und Tippen \"reset %s\"\n", jsonFileFail);
+        tft.println("  Wenn Sie dies nicht tun, kann der Konfigurator nicht geladen werden.");
     }
 }
 
@@ -327,43 +327,43 @@ void printinfo()
 
 #ifdef TOUCH_INTERRUPT_PIN
     if (generalconfig.sleepenable) {
-        tft.println("Sleep: Enabled");
-        tft.printf("Sleep timer: %u minutes\n", generalconfig.sleeptimer);
+        tft.println("Schlafmodus: Aktiviert");
+        tft.printf("Einschlaftimer: %u Minuten\n", generalconfig.sleeptimer);
     }
     else {
-        tft.println("Sleep: Disabled");
+        tft.println("Schlafmodus: Deaktiviert");
     }
 #else
-    tft.println("Sleep: Disabled");
+    tft.println("Schlafmodus: Deaktiviert");
 #endif
 
     if (generalconfig.usbcommsenable) {
-        tft.println("USB Comms: Enabled");
+        tft.println("USB-Kommunikation: Aktiviert");
     }
     else {
-        tft.println("USB Comms: Disabled");
+        tft.println("USB-Kommunikation: Deaktiviert");
     }
 
 #ifdef speakerPin
     if (generalconfig.beep) {
-        tft.println("Speaker: Enabled");
+        tft.println("Lautsprecher: Aktiviert");
     }
     else {
-        tft.println("Speaker: Disabled");
+        tft.println("Lautsprecher: Deaktiviert");
     }
 #else
-    tft.println("Speaker: Disabled");
+    tft.println("Lautsprecher: Deaktiviert");
 #endif
 
 #ifdef READ_EXTERNAL_BATTERY
-    tft.printf("Battery voltage: %f V\n", externalBatteryVoltage);
+    tft.printf("Batteriespannung: %f V\n", externalBatteryVoltage);
 #endif
 
-    tft.print("Filesystem storage. Total: ");
+    tft.print("Dateisystemspeicher. Gesamt: ");
     tft.print(FILESYSTEM.totalBytes() / 1000);
-    tft.print(" kB, used: ");
+    tft.print(" kB, benutzt: ");
     tft.print(FILESYSTEM.usedBytes() / 1000);
-    tft.print(" kB, free: ");
+    tft.print(" kB, frei: ");
     long freemem = FILESYSTEM.totalBytes() - FILESYSTEM.usedBytes();
     tft.print(freemem / 1000);
     tft.println(" kB");
@@ -376,25 +376,25 @@ void printinfo()
     tft.print("ESP-IDF: ");
     tft.println(esp_get_idf_version());
     tft.println(esp_get_idf_version());
-    tft.print("Free heap: ");
+    tft.print("freier Heap: ");
     float freeram = esp_get_free_heap_size();
     tft.print(freeram / 1000);
-    tft.print("kB, Minimum free heap: ");
+    tft.print("kB, Minimaler freier Heap: ");
     freeram = esp_get_minimum_free_heap_size();
     tft.print(freeram / 1000);
     tft.println("kB");
     if (psramAvailable) {
-        tft.print("Used PSRAM: ");
+        tft.print("Benutzter PSRAM: ");
         long kBPSRAM = usedPSRAM();
         tft.print(kBPSRAM / 1000);
         tft.print("kB, ");
-        tft.print("Free PSRAM: ");
+        tft.print("Freier PSRAM: ");
         kBPSRAM = ESP.getFreePsram();
         tft.print(kBPSRAM / 1000);
         tft.print("kB");
     }
     else {
-        tft.println("PSRAM: Not available");
+        tft.println("PSRAM: Nicht verfügbar");
     }
     displayinginfo = true;
 }
@@ -430,17 +430,17 @@ void printIOValues()
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
     tft.printf("Version: %s    \n", versionnumber);
 
-    tft.printf("Joystick X: %f     \n", joystick.x());
-    tft.printf("Joystick Y: %f     \n", joystick.y());
+    tft.printf(" Joystick X: %f     \n", joystick.x());
+    tft.printf(" Joystick Y: %f     \n", joystick.y());
 
-    tft.printf("Zoom: %f     \n", zoomControl.Value());
-    tft.printf("Rotate: %f     \n", rotateControl.Value());
+    tft.printf(" Zoom: %f     \n", zoomControl.Value());
+    tft.printf(" Drehen: %f     \n", rotateControl.Value());
 
     //    PCF857X::DigitalInput di = pcf857X.digitalReadAll();
-    tft.print(" Button 0: ");
+    tft.print(" Taster 0: ");
     tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_0));
 
-    tft.print(" Buttons 1-2-3-4-5: ");
+    tft.print(" Taster 1-2-3-4-5: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1));
     tft.print(" - ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2));
@@ -451,7 +451,7 @@ void printIOValues()
     tft.print(" - ");
     tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_5));
 
-    tft.print(" Buttons 6-7-8-9-10: ");
+    tft.print(" Taster 6-7-8-9-10: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_6));
     tft.print(" - ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_7));
@@ -485,7 +485,7 @@ void drawTopStatusBar(bool force_redraw = true)
         snprintf(buffer, sizeof(buffer), "BT OK - %s", cadprogramconfig[cadconfig.current_program].name);
     }
     else {
-        snprintf(buffer, sizeof(buffer), "No BT - %s", cadprogramconfig[cadconfig.current_program].name);
+        snprintf(buffer, sizeof(buffer), "Kein BT - %s", cadprogramconfig[cadconfig.current_program].name);
     }
     comparison = strncmp(buffer, topStatusBarTextLeft, sizeof(buffer));
     if (comparison != 0 || force_redraw) {
