@@ -159,7 +159,8 @@ void configmode()
         startDefaultAP();
         tft.println("Als AP gestartet, da die WLAN-Einstellungen immer noch auf die Standardeinstellungen eingestellt sind.");
         tft.println("");
-        tft.println("Stellen Sie zum Konfigurieren eine Verbindung zu „CADDeck“ mit dem Passwort „defaultpass“ her'");
+        tft.println("Stellen Sie zum Konfigurieren eine Verbindung ");
+        tft.println("zu „CADDeck“ mit dem Passwort „defaultpass“ her");
         tft.println("Dann geh zu http://CADDeck.local");
         tft.print("Die IP ist: ");
         tft.println(WiFi.softAPIP());
@@ -172,7 +173,8 @@ void configmode()
         startDefaultAP();
         tft.println("Als AP gestartet, da die WLAN-Einstellungen nicht geladen werden konnten.");
         tft.println("");
-        tft.println("Stellen Sie zum Konfigurieren eine Verbindung zu „CADDeck“ mit dem Passwort „defaultpass“ her'");
+        tft.println("Stellen Sie zum Konfigurieren eine Verbindung ");
+        tft.println("zu „CADDeck“ mit dem Passwort „defaultpass“ her");
         tft.println("Dann geh zu http://CADDeck.local");
         tft.print("Die IP ist: ");
         tft.println(WiFi.softAPIP());
@@ -184,7 +186,8 @@ void configmode()
             MSG_WARNLN("[WARNUNG]: Verbindung zum AP konnte nicht hergestellt werden, daher als AP gestartet.");
             tft.println("Als AP gestartet, da die WLAN-Verbindung fehlgeschlagen ist.");
             tft.println("");
-            tft.println("Stellen Sie zum Konfigurieren eine Verbindung zu „CADDeck“ mit dem Passwort „defaultpass“ her'");
+            tft.println("Stellen Sie zum Konfigurieren eine Verbindung ");
+            tft.println("zu „CADDeck“ mit dem Passwort „defaultpass“ her");
             tft.println("Dann geh zu http://CADDeck.local");
             tft.print("Die IP ist: ");
             tft.println(WiFi.softAPIP());
