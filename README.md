@@ -99,7 +99,11 @@ The USB-C adapter board is attached to the small base with two self-tapping scre
 The tricky part is the joystick button and in particular the magnets and hall sensors. The upper Hall sensor is glued in directly
 and the lower one I soldered to a small hole pattern circuit board beforehand and then attached it with superglue.
 A circuit board layout is also provided to have this made.
-We may try to create a PCB layout for the MX buttons.
+I have already had circuit boards made for the 10 switches and for the button, this makes the structure cleaner and there is no need to wire the MX buttons.
+
+![PCB] (images/Knopfplatine_oben.png) (images/Knopfplatine_unten.png) 
+
+![PCB] (images/Schalterplatine_oben.png) (images/Schalterplatine_unten.png)
 
 ![Knobinterior](images/Knobinterior.png)
 
