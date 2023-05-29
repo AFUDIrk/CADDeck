@@ -181,6 +181,10 @@ Quantity 10 screws M3x16mm (for the housing and for attaching the joystick)
 
 Quantity 9 screws M2x5mm (to attach the wheel to the joystick button, the USB-C board and to attach the PCF8575)
 
+Quantity 1 M4 hex standoff
+
+![Inside Knob](images/M4_hex_standoff.png)
+
 JST RM 2.54mm connector 5 pin.
 
 JST RM 2.54mm connector 2 pin.
