@@ -1,5 +1,6 @@
 #pragma once
 
+#define BLUETOOTH_COMMANDS   // Enable Bluetooth commands (BLE Keyboard and BLE Mouse). Otherwise only USB commands are enabled. (IN WORK)																																		  
 // This code is being developed on two different hardware platforms with different pin allocations.
 #define NEW_PINS
 
