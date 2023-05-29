@@ -101,13 +101,13 @@ and the lower one I soldered to a small hole pattern circuit board beforehand an
 A circuit board layout is also provided to have this made.
 I have already had circuit boards made for the 10 switches and for the button, this makes the structure cleaner and there is no need to wire the MX buttons.
 
-![PCB 1] (images/Knopfplatine_oben.png) 
+![PCB 1](images/knopfplatineoben.png) 
 
-![PCB 2] (images/Knopfplatine_unten.png) 
+![PCB 2](images/knopfplatineunten.png) 
 
-![PCB 3] (images/Schalterplatine_oben.png) 
+![PCB 3](images/schalterplatineoben.png) 
 
-![PCB 4] (images/Schalterplatine_unten.png)
+![PCB 4](images/schalterplatineunten.png)
 
 ![Knobinterior](images/Knobinterior.png)
 
