@@ -245,12 +245,12 @@ void handleJSONUpload(AsyncWebServerRequest *request, String filename, size_t in
         }
     }
 
-    if (!validMenuName && filename != "general.json" && filename != "wificonfig.json") {
+    if (!validMenuName && filename != "general.json" && filename != "wificonfig.json" && filename != "cadparams.json") {
         MSG_INFO1F("[INFO] JSON has invalid name: %s\n", filename.c_str());
         errorCode = "102";
         errorText = "JSON file has an invalid name. You can only upload JSON files with the following file names:";
-        errorText += "<ul><li>menu0.json</li><li>menu1.json</li><li>menu2.json</li><li>menu3.json</li><li>menu4.json</li>";
-        errorText += "<li>general.json</li><li>wificonfig.json</li></ul>";
+        errorText += "<ul><li>menu0.json</li>...<li>menu9.json</li>";
+        errorText += "<li>cadparams.json</li><li>general.json</li><li>wificonfig.json</li></ul>";
         request->send(FILESYSTEM, "/error.htm", String(), false, processor);
         return;
     }
