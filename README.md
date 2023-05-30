@@ -109,14 +109,14 @@ I have already had circuit boards made for the 10 switches and for the button, t
 
 ![PCB 4](images/schalterplatineunten.png)
 
-![Knobinterior](images/Knobinterior.png)
-
-![button](images/pcb.png)
-
 The joystick button consists of several 3D printed parts.
 Inside the joystick knob are several magnets that repel each other, keeping it in a floating position. I used a little super glue
 to attach the magnets. You can just run a drop of superglue through the small hole in the plastic.
 In the index of images you will find a representation of the arrangement of the magnets (N+S).
+
+![Knobinterior](images/Knobinterior.png)
+
+![button](images/pcb.png)
 
 When all magnets are mounted, the cross and the magnet holder are carefully put together and then turned so that the magnets are on top of each other.
 Then the three guide pins are inserted with a little grease, they hold the two parts together.
