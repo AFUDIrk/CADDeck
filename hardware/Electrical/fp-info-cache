@@ -1,4 +1,4 @@
-21670508630522225
+21675567998625586
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -321,13 +321,6 @@ battery CR-3032 coin cell vertical
 0
 2
 2
-Button_MX_LED
-SW_Cherry_MX_LED_PCB
-Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
-Cherry MX keyswitch 1.00u PCB
-0
-4
-4
 Button_Switch_Keyboard
 SW_Cherry_MX_1.00u_PCB
 Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
@@ -6292,6 +6285,20 @@ capacitor tantalum
 0
 2
 2
+Cherry_MX_LED
+Cherry_MX_LED
+Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
+Cherry MX keyswitch 1.00u PCB
+0
+4
+4
+Cherry_MX_LED
+Hall_49E
+3-pin TSOT23 package, http://www.analog.com.tw/pdf/All_In_One.pdf
+TSOT-23
+0
+3
+3
 Connector
 Banana_Cliff_FCR7350x_S16N-PC_Horizontal
 Cliff single 4mm shrouded banana panel socket, through-hole, horizontal, https://www.cliffuk.co.uk/products/testleads/sockets/S16NPC.pdf
@@ -59499,6 +59506,20 @@ THT
 0
 4
 2
+Joystick
+MountingHole_12.0mm
+Mounting Hole 8.4mm, no annular, M8
+mounting hole 8.4mm no annular m8
+0
+1
+0
+Joystick
+XDCR_COM-09032
+
+
+0
+8
+8
 Jumper
 SolderJumper-2_P1.3mm_Bridged2Bar_Pad1.0x1.5mm
 SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, bridged with 2 copper strips
