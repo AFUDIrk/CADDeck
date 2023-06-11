@@ -35,11 +35,11 @@ const uint8_t BUTTON_2 = P1;
 const uint8_t BUTTON_3 = P4;
 const uint8_t BUTTON_4 = P2;
 const uint8_t BUTTON_5 = P5;
-const uint8_t BUTTON_6 = P12;
-const uint8_t BUTTON_7 = P10;
-const uint8_t BUTTON_8 = P11;
-const uint8_t BUTTON_9 = P14;
-const uint8_t BUTTON_10 = P13;
+const uint8_t BUTTON_6 = P10;
+const uint8_t BUTTON_7 = P8;
+const uint8_t BUTTON_8 = P9;
+const uint8_t BUTTON_9 = P12;
+const uint8_t BUTTON_10 = P11;
 #else
 const uint8_t BUTTON_0 = P14;
 const uint8_t BUTTON_1 = P8;
