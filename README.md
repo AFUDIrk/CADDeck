@@ -101,22 +101,18 @@ and the lower one I soldered to a small hole pattern circuit board beforehand an
 A circuit board layout is also provided to have this made.
 I have already had circuit boards made for the 10 switches and for the button, this makes the structure cleaner and there is no need to wire the MX buttons.
 
-![PCB 1](images/knopfplatineoben.png) 
+![PCB] (images/Knopfplatine_oben.png) (images/Knopfplatine_unten.png) 
 
-![PCB 2](images/knopfplatineunten.png) 
+![PCB] (images/Schalterplatine_oben.png) (images/Schalterplatine_unten.png)
 
-![PCB 3](images/schalterplatineoben.png) 
+![Knobinterior](images/Knobinterior.png)
 
-![PCB 4](images/schalterplatineunten.png)
+![button](images/pcb.png)
 
 The joystick button consists of several 3D printed parts.
 Inside the joystick knob are several magnets that repel each other, keeping it in a floating position. I used a little super glue
 to attach the magnets. You can just run a drop of superglue through the small hole in the plastic.
 In the index of images you will find a representation of the arrangement of the magnets (N+S).
-
-![Knobinterior](images/Knobinterior.png)
-
-![button](images/pcb.png)
 
 When all magnets are mounted, the cross and the magnet holder are carefully put together and then turned so that the magnets are on top of each other.
 Then the three guide pins are inserted with a little grease, they hold the two parts together.
@@ -327,4 +323,5 @@ Menu numbers are assigned as follows:
 9. Menu 8: Fusion360 Actions
 10. Menu 9: Not used
  
+ If you need support to set it up, you can join my discord server.https://discord.gg/kFvPhqmc
 
