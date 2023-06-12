@@ -10,7 +10,7 @@
 #define LOG_MSG_LEVEL 1  // 1=ERROR, 2=ERROR+WARN, 3=ERROR+WARN+INFO
 #define LOG_MSG_DEBUG 0
 #define LOG_MSG_TOUCH_DEBUG 0  // messages to console each time a touch is detected
-#define USE_DEBUG_PINS 0
+
 //#define LOG_JSON_FILES  // log the contents of the JSON files to the console. Comment out to disable.
 
 #include "std_defs.h"
@@ -171,11 +171,18 @@ extern Preferences savedStates;
 
 extern bool psramAvailable;
 
+// ---------------- Debug pins ----------------
+// set to 1 to enable debug pins, 0 to disable
+#define USE_DEBUG_PINS 0
+
+// Careful with which pins you use - they may be used for other functionsconst uint8_t DEBUG_PIN_1 = 25;
 const uint8_t DEBUG_PIN_1 = 25;
 const uint8_t DEBUG_PIN_2 = 26;
 const uint8_t DEBUG_PIN_3 = 27;
 const uint8_t DEBUG_PIN_4 = 5;
 
+// ---------------- Touch Screen Calibration ----------------
+// Applies only to resistive touch screens.
 // This is the file name used to store the calibration data
 // You can change this to create new calibration files.
 // The FILESYSTEM file name must start with "/".
@@ -268,6 +275,8 @@ struct Config {
     uint8_t modifier3;
     uint16_t helperdelay;
     uint16_t startup_menu;
+	uint8_t gpio_pin;
+    uint8_t gpio_pin_mode;
 };
 
 
@@ -415,4 +424,21 @@ enum CADApplications {
     CADApp_Blender = 2,
     CADApp_FreeCAD = 3,
     CADApp_AC3D = 4
+};
+
+enum SpecialFn {
+    SpecialFn_NoAction = 0,
+    SpecialFn_ConfigMode = 1,
+    SpecialFn_DisplayBrightnessDown = 2,
+    SpecialFn_DisplayBrightnessUp = 3,
+    SpecialFn_SleepEnable = 4,
+    SpecialFn_InfoPage = 5,
+    SpecialFn_HomePage = 6,
+    SpecialFn_SaveConfig = 7,
+    SpecialFn_USBComm = 8,
+    SpecialFn_IOMonitor = 9,
+    SpecialFn_GPIO_Toggle = 10,
+    SpecialFn_GPIO_Off = 11,
+    SpecialFn_GPIO_On = 12
+
 };

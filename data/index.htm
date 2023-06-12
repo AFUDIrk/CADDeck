@@ -50,9 +50,11 @@
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
 
-            <button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">JSON-Datei hochladen</button>
 
 
+            <button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">JSON-Datei
+				hochladen</button>
+				
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
 				Herunterladen</button>
 		</div>
@@ -240,7 +242,18 @@
 				<option value="9">9</option>
 			</select>
 
-			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
+			
+			&nbsp;&nbsp;Steuerbarer GPIO-Pin:&nbsp;
+			<select class="gpio_pin" id='gpio_pin' name='gpio_pin'>
+				<option value="255">Keiner</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+			</select>
+
+
+            <div class="form" style="width: 50%; text-align: : center; margin: auto;">
 				<input type="hidden" id='save' name='save' value="general">
 				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Allgemeine Konfig speichern</button>
 			</div>
@@ -616,6 +629,7 @@
 				<option value="0.1">0.1</option>
 				<option value="0.15">0.15</option>
 				<option value="0.2">0.2</option>
+				<option value="0.2">0.25</option>
 			</select>
 			&nbsp;&nbsp;Zoom Sensitivität:&nbsp;
 			<select class="zoom_sensitivity" id='zoom_sensitivity' name='zoom_sensitivity'>
@@ -639,6 +653,7 @@
 				<option value="0.1">0.1</option>
 				<option value="0.15">0.15</option>
 				<option value="0.2">0.2</option>
+				<option value="0.2">0.25</option>
 			</select>
 			&nbsp;&nbsp;Drehen Sensitivität:&nbsp;
 			<select class="rotate_sensitivity" id='rotate_sensitivity' name='rotate_sensitivity'>
@@ -1544,6 +1559,20 @@
 			{
 				name: 'USB-Kommunikation aktivieren',
 				value: '8'
+			{
+				name: 'IO Monitor Page',
+				value: '9'
+			},
+			{
+				name: 'Toggle GPIO Pin',
+				value: '10'
+			},
+			{
+				name: 'Set GPIO Pin Low',
+				value: '11'
+			},
+			{
+				name: 'Set GPIO Pin High',
 			}
 			]
 		},
@@ -3436,6 +3465,7 @@
 				document.getElementById("modifier3").value = data.modifier3;
 				document.getElementById("helperdelay").value = data.helperdelay;
 				document.getElementById("startup_menu").value = data.startup_menu;
+				document.getElementById("gpio_pin").value = data.gpio_pin;	
 			}).then(() => {
 				getwificonfig();
 			})

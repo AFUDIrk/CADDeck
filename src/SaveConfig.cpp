@@ -65,8 +65,8 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
     general["sleeptimer"] = sleepTimer.toInt();
 
     // Modifiers
-
-    AsyncWebParameter *modifier1 = request->getParam("modifier1", true);
+    
+	AsyncWebParameter *modifier1 = request->getParam("modifier1", true);
     String Modifier1 = modifier1->value().c_str();
     general["modifier1"] = Modifier1.toInt();
 
@@ -86,6 +86,11 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
     String Startup_menu = startup_menu->value().c_str();
     general["startup_menu"] = Startup_menu.toInt();
 
+AsyncWebParameter *gpio_pin = request->getParam("gpio_pin", true);
+    String Gpio_pin = gpio_pin->value().c_str();
+    general["gpio_pin"] = Gpio_pin.toInt();
+
+    general["gpio_pin_mode"] = generalconfig.gpio_pin_mode;
     if (serializeJsonPretty(doc, file) == 0) {
         MSG_WARNLN("[WARNING]: Failed to write to /config/general.json file");
         status = 2;
@@ -160,6 +165,9 @@ int saveCurrentConfigGeneral()
     general["helperdelay"] = generalconfig.helperdelay;
 
     general["startup_menu"] = generalconfig.startup_menu;
+
+	general["gpio_pin"] = generalconfig.gpio_pin;
+    general["gpio_pin_mode"] = generalconfig.gpio_pin_mode;
 
     if (serializeJsonPretty(doc, file) == 0) {
         MSG_WARNLN("[WARNING]: Failed to write to /config/general.json file");
@@ -239,7 +247,7 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
     String Current_program = current_program->value().c_str();
     cadparams["current_program"] = Current_program.toInt();
 
-    // TODO: Fix this to include all of the program-specific parameters. Need to figure out how to do 
+    // TODO: Fix this to include all of the program-specific parameters. Need to figure out how to do
     // this with the AsyncWebServerRequest object. Look at how the menu parameters are saved.
     // For the moment, ignore the web page and just save back the currently loaded parameters.
     //

@@ -480,12 +480,12 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
 
         case Action_SpecialFn:  // Special functions
             switch (value) {
-                case 1:  // Enter config mode
+                case SpecialFn_ConfigMode:  // Enter config mode
 
                     configmode();
 
                     break;
-                case 2:  // Display Brightness Down
+                case SpecialFn_DisplayBrightnessDown:  // Display Brightness Down
                     if (ledBrightness > 25) {
                         ledBrightness = ledBrightness - 25;
                         ledcWrite(0, ledBrightness);
@@ -493,7 +493,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                         MSG_INFOLN("[INFO] Brightness down.");
                     }
                     break;
-                case 3:  // Display Brightness Up
+                case SpecialFn_DisplayBrightnessUp:  // Display Brightness Up
                     if (ledBrightness < 230) {
                         ledBrightness = ledBrightness + 25;
                         ledcWrite(0, ledBrightness);
@@ -501,7 +501,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                         MSG_INFOLN("[INFO] Brightness up.");
                     }
                     break;
-                case 4:  // Sleep Enabled
+                case SpecialFn_SleepEnable:  // Sleep Enabled
                     if (generalconfig.sleepenable) {
                         generalconfig.sleepenable = false;
                         MSG_INFOLN("[INFO] Sleep disabled.");
@@ -515,7 +515,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     }
                     break;
 
-                case 5:
+                case SpecialFn_InfoPage:
                     callingPageNum = pageNum;
                     pageNum = SPECIAL_PAGE_INFO;
                     pageHistoryStack.push(pageNum);
@@ -526,7 +526,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     }
                     break;
 
-                case 6:
+                case SpecialFn_HomePage:
                     callingPageNum = pageNum;
                     pageNum = 0;
                     pageHistoryStack.push(pageNum);
@@ -538,11 +538,11 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     drawKeypad();
                     break;
 
-                case 7:
+                case SpecialFn_SaveConfig:
                     saveCurrentConfigGeneral();
                     break;
 
-                case 8:  // USB Comms Enable/Disable
+                case SpecialFn_USBComm:  // USB Comms Enable/Disable
                     if (generalconfig.usbcommsenable) {
                         generalconfig.usbcommsenable = false;
                         MSG_INFOLN("[INFO] USB Comms Disabled.");
@@ -553,7 +553,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     }
                     break;
 
-                case 9:
+                case SpecialFn_IOMonitor:
                     callingPageNum = pageNum;
                     pageNum = SPECIAL_PAGE_IO_MONITOR;
                     pageHistoryStack.push(pageNum);
@@ -563,6 +563,21 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                         Serial.println(usbData);
                     }
 
+                    break;
+					case SpecialFn_GPIO_Toggle:
+                    generalconfig.gpio_pin_mode = !generalconfig.gpio_pin_mode;
+                    digitalWrite(generalconfig.gpio_pin, generalconfig.gpio_pin_mode);
+                    MSG_INFOLN("[INFO] Toggle GPIO.");
+                    break;
+                case SpecialFn_GPIO_Off:
+                    generalconfig.gpio_pin_mode = LOW;
+                    digitalWrite(generalconfig.gpio_pin, generalconfig.gpio_pin_mode);
+                    MSG_INFOLN("[INFO] Set GPIO off.");
+                    break;
+                case SpecialFn_GPIO_On:
+                    generalconfig.gpio_pin_mode = HIGH;
+                    digitalWrite(generalconfig.gpio_pin, generalconfig.gpio_pin_mode);
+                    MSG_INFOLN("[INFO] Set GPIO on.");
                     break;
             }
             break;

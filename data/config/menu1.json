@@ -1,5 +1,5 @@
 {
-  "menuname":"Settings", 
+  "menuname": "Settings",
   "button11": {
     "logo": "wifi.bmp",
     "latch": false,
@@ -60,21 +60,6 @@
       "0"
     ]
   },
-  "button15": {
-    "logo": "blank.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "0",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
   "button21": {
     "logo": "sleep_off.bmp",
     "latch": true,
@@ -121,31 +106,16 @@
     ]
   },
   "button24": {
-    "logo": "blank.bmp",
+    "logo": "GreenLED.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "11",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
-  "button25": {
-    "logo": "blank.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "0",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
+      "10",
       "0",
       "0"
     ]
@@ -196,21 +166,6 @@
     ]
   },
   "button34": {
-    "logo": "home.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "14",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
-  "button35": {
     "logo": "home.bmp",
     "latch": false,
     "latchlogo": "",

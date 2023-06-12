@@ -68,9 +68,12 @@
 
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.16_10Button";
+const char *versionnumber = "0.0.17_10Button";
 
 /*
+* Version 0.0.17.10Button
+ *                   - Added controllable GPIO functions
+ *  
  * Version 0.0.13.10Button
  *                   - Removed unneeded configurator code that was previously used to define which buttons were selecting 
  *                     joystick actions

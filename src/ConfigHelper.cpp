@@ -421,6 +421,8 @@ bool resetconfig(String file)
         newfile.println("\"modifier3\": 0,");
         newfile.println("\"helperdelay\": 500,");
         newfile.println("\"startup_menu\": 0,");
+		newfile.println("\"gpio_pin\": 255,");
+        newfile.println("\"gpio_pin_mode\": 0,");
         newfile.println("\"joy_scale_x\": 1.0,");
         newfile.println("\"joy_scale_y\": 1.0,");
         newfile.println("\"joy_deadzone\": 0.01,");
