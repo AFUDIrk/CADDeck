@@ -16,7 +16,7 @@ It should be possible to power the device and hard-wired it to the screen instea
 
 ## Touch panel
 The touch panel is inspired by Dustin Watt's FreeTouchDeck project (https://github.com/DustinWatts/FreeTouchDeck.git), which I modified to increase the number of buttons.
-etc. (https://github.com/andrewfernie/FreeTouchDeckWT32.git). For this project I added joystick, encoder and button support.
+etc. (https://github.com/andrewfernie/FreeTouchDeckWT32.git). For this project I added joystick, Hallsensor and button support.
 The easiest way to get this going is to use a WT32-SC01 card (http://www.wireless-tag.com/portfolio/wt32-sc01/).
 Buy the base board, not the "Plus" version, as the Plus uses a parallel interface to the LCD panel and doesn't leave enough IO lines free for the joystick and buttons.
 etc. The board contains an ESP32 module and a 3.5 inch LCD with a capacitive touchscreen.
