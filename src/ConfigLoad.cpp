@@ -154,7 +154,7 @@ bool loadConfig(String value)
         uint16_t startup_menu = doc["startup_menu"] | 0;
         generalconfig.startup_menu = startup_menu;
 
-		uint8_t gpio_pin = doc["gpio_pin"] | 255;
+        uint8_t gpio_pin = doc["gpio_pin"] | 255;
         generalconfig.gpio_pin = gpio_pin;
         uint8_t gpio_pin_mode = doc["gpio_pin_mode"] | 0;
         generalconfig.gpio_pin_mode = gpio_pin_mode;

@@ -175,7 +175,7 @@ extern bool psramAvailable;
 // set to 1 to enable debug pins, 0 to disable
 #define USE_DEBUG_PINS 0
 
-// Careful with which pins you use - they may be used for other functionsconst uint8_t DEBUG_PIN_1 = 25;
+// Careful with which pins you use - they may be used for other functions
 const uint8_t DEBUG_PIN_1 = 25;
 const uint8_t DEBUG_PIN_2 = 26;
 const uint8_t DEBUG_PIN_3 = 27;

@@ -91,6 +91,7 @@ AsyncWebParameter *gpio_pin = request->getParam("gpio_pin", true);
     general["gpio_pin"] = Gpio_pin.toInt();
 
     general["gpio_pin_mode"] = generalconfig.gpio_pin_mode;
+
     if (serializeJsonPretty(doc, file) == 0) {
         MSG_WARNLN("[WARNING]: Failed to write to /config/general.json file");
         status = 2;

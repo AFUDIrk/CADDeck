@@ -564,7 +564,7 @@ void KeyboardMouseAction(int action, int value, char *symbol, uint8_t hwbutton_i
                     }
 
                     break;
-					case SpecialFn_GPIO_Toggle:
+				case SpecialFn_GPIO_Toggle:
                     generalconfig.gpio_pin_mode = !generalconfig.gpio_pin_mode;
                     digitalWrite(generalconfig.gpio_pin, generalconfig.gpio_pin_mode);
                     MSG_INFOLN("[INFO] Toggle GPIO.");

@@ -71,7 +71,7 @@
 const char *versionnumber = "0.0.17_10Button";
 
 /*
-* Version 0.0.17.10Button
+ * Version 0.0.17.10Button
  *                   - Added controllable GPIO functions
  *  
  * Version 0.0.13.10Button
