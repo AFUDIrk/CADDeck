@@ -1,0 +1,3489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="shortcut icon" href="">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\" />
+	<title>CADDeck  Konfigurator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="jquery-3.5.1.slim.min.js"></script>
+</head>
+
+<body>
+	<!-- <div id="contentloading" class="pageloading"> Loading the configurator.</div> -->
+
+	<div id="contentloading" class="pageloading">
+		Lade Konfigurator
+	</div>
+
+	<div id="ball-loader" class="ball-loader">
+
+		<div class="ball-loader-ball ball1"></div>
+		<div class="ball-loader-ball ball2"></div>
+		<div class="ball-loader-ball ball3"></div>
+	</div>
+
+	<div id="maincontent" style="display: none;">
+		<h1>CADDeck Konfigurator</h1>
+		<form class="form" method="post" action='/upload' id="uploadfile" enctype="multipart/form-data"></form>
+		<form class="form" method="post" action='/uploadJSON' id="uploadjsonfile" enctype="multipart/form-data"></form>
+		<form class="form" method="get" action='/downloadJSON' id="downloadjsonfile"></form>
+
+		<!-- Menu -->
+		<div class="tab">
+			<button class="tablinks" onclick="openMenu(event, 'wifi')">WiFi</button>
+			<button class="tablinks" onclick="openMenu(event, 'general')">Einstellungen</button>
+			<button class="tablinks" onclick="openMenu(event, 'menu')">Menü</button>
+			<button class="tablinks" onclick="openMenu(event, 'cadparams')">CAD Parameter</button>
+			<button class="tablinks" onclick="openMenu(event, 'uploadimage')">Logo hochladen</button>
+
+			<form method='post' action='/restart'>
+				<button style="float: right;"
+					onclick="return confirm('Bist du dir sicher? Nicht gespeicherte Konfiguration gehen verloren!')" class="tablinks">
+					Neustart </button>
+			</form>
+
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'info')">Info</button>
+
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
+
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">JSON Datei
+				    hochladen</button>
+
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
+				Herunterladen</button>
+		</div>
+
+		<!-- Tab Intro -->
+		<div id="intro" class="tabcontent">
+			<h3>Willkommen</h3>
+			<p>
+				Willkommen im Konfigurator! Wählen Sie eine Option/Seite aus dem oberen Menü. Wenn Sie irgendwelche Fragen haben,
+				treten sie meinem
+				join my
+				Discord Server bei: <a href="https://discord.gg/RE3XevS"
+					target="_blank">https://discord.gg/RE3XevS</a><br />
+				Eine Anleitung zur Verwendung des Konfigurators finden Sie hier: <a
+					href="https://github.com/DustinWatts/FreeTouchDeck/wiki/3.-The-Configurator" target="_blank">
+					FreeTouchDeck Wiki</a>
+			</p>
+		</div>
+		<!-- Tab WiFi -->
+		<div id="wifi" class="tabcontent">
+			<div style="float: right; font-size: 11px"><a href="/download?file=wificonfig.json">herunterladen
+					wificonfig.json</a></div><br>
+			<h3>Wlan Einstellungen</h3>
+			<p>
+			<form method='post' id="savewifi" action='/saveconfig'>
+
+
+
+				<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+
+					<label for="ssid">Wlan SSID:</label><br>
+					<input type="text" id="ssid" name="ssid"><br><br>
+
+					<label for="password">Wlan Passwort:</label><br>
+					<input type="password" id="password" name="password" autocomplete="new-password"><br>
+					<input type="checkbox" onclick="togglepassword()">Passwort anzeigen <br><br>
+
+					&nbsp;&nbsp;WLAN-Modus:&nbsp;
+					<select class="wifimode" id='wifimode' name='wifimode'>
+						<option value="WIFI_STA">Station</option>
+						<option value="WIFI_AP">Zugangspunkt</option>
+					</select><br>
+
+					<label for="wifihostname">WLAN Hostname:</label>
+					<input type="text" id="wifihostname" name="wifihostname"><br>
+
+					&nbsp;&nbsp;Verbindungsversuche:&nbsp;
+					<select class="attempts" id='attempts' name='attempts'>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+					</select><br>
+
+					&nbsp;&nbsp;Verzögerung zwischen Versuchen:&nbsp;
+					<select class="attemptdelay" id='attemptdelay' name='attemptdelay'>
+						<option value="100">100 ms</option>
+						<option value="500">500 ms</option>
+						<option value="1000">1000 ms</option>
+						<option value="2000">2000 ms</option>
+					</select><br>
+				</div>
+
+				<div class="form" style="width: 50%; text-align: : center; margin: auto;">
+					<input type="hidden" id='save' name='save' value="wifi">
+					<br /><button style='cursor: pointer;' form="savewifi" type='save'>WLAN-Konfiguration speichern</button>
+				</div>
+			</form>
+
+		</div>
+		</p>
+	</div>
+	<!-- Tab General -->
+	<div id="general" class="tabcontent">
+		<div style="float: right; font-size: 11px"><a href="/download?file=general.json">Herunterladen general.json</a>
+		</div>
+		<br>
+		<h3>Allgemeine Einstellungen</h3>
+		<p>
+		<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+			<h2>Farben</h2>
+		</div>
+
+		<form method='post' id="generalconfig" action='/saveconfig'>
+			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+				&nbsp;&nbsp;Farbe der Menütasten:&nbsp;
+				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='menubuttoncolor'
+					name='menubuttoncolor' type="color" value=''>
+				&nbsp;&nbsp;Farbe der Funktionstasten:&nbsp;
+				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='functionbuttoncolor'
+					name='functionbuttoncolor' type="color" value=''>
+				&nbsp;&nbsp;Verriegelungsfarbe:&nbsp;
+				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='latchcolor'
+					name='latchcolor' type="color" value=''>
+				&nbsp;&nbsp;Hintergrundfarbe:&nbsp;
+				<input style='width: 100px; height: 30px; padding:1px; border-radius:0.3rem;' id='background'
+					name='background' type="color" value=''>
+			</div><br>
+
+			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+				<h2>Tiefschlaf</h2>
+			</div>
+
+			&nbsp;&nbsp;Tiefschlaf:&nbsp;
+			<select class="sleepenable" id='sleepenable' name='sleepenable'>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
+			</select>
+			&nbsp;&nbsp;Tiefschlaf-Timer:&nbsp;
+			<select class="sleeptimer" id='sleeptimer' name='sleeptimer'>
+				<option value="10">10 Minuten</option>
+				<option value="20">20 Minuten</option>
+				<option value="30">30 Minuten</option>
+				<option value="60">60 Minuten</option>
+			</select>
+			&nbsp;&nbsp;USBKommunikation:&nbsp;
+			<select class="usbcommsenable" id='usbcommsenable' name='usbcommsenable'>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
+			</select>
+			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+				<h2>Ton</h2>
+			</div>
+
+			&nbsp;&nbsp;Signalton bei Berührung:&nbsp;
+			<select class="sleepenable" id='beep' name='beep'>
+				<option value="true">Aktiviert</option>
+				<option value="false">Deaktiviert</option>
+			</select>
+
+			<div style="font-family: Arial, Helvetica, Sans-Serif; Color: #000088;">
+				<h2>CADDeck Helfer</h2>
+			</div>
+
+			&nbsp;&nbsp;Modifikator 1:&nbsp;
+			<select class="modifier1" id='modifier1' name='modifier1'>
+				<option value="0">Keiner</option>
+				<option value="128">CTRL</option>
+				<option value="129">SHIFT</option>
+				<option value="130">ALT</option>
+				<option value="131">GUI</option>
+			</select>
+
+			&nbsp;&nbsp;Modifikator 2:&nbsp;
+			<select class="modifier2" id='modifier2' name='modifier2'>
+				<option value="0">Keiner</option>
+				<option value="128">CTRL</option>
+				<option value="129">SHIFT</option>
+				<option value="130">ALT</option>
+				<option value="131">GUI</option>
+			</select>
+
+			&nbsp;&nbsp;Modifikator 3:&nbsp;
+			<select class="modifier3" id='modifier3' name='modifier3'>
+				<option value="0">Keiner</option>
+				<option value="128">CTRL</option>
+				<option value="129">SHIFT</option>
+				<option value="130">ALT</option>
+				<option value="131">GUI</option>
+			</select>
+
+			<br>
+
+			&nbsp;&nbsp;Verzögerung nach Helfer (ms):&nbsp;
+			<select class="helperdelay" id='helperdelay' name='helperdelay'>
+				<option value="0">0</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+				<option value="500">500</option>
+				<option value="1000">1000</option>
+			</select>
+
+
+			&nbsp;&nbsp;Menü beim Start:&nbsp;
+			<select class="startup_menu" id='startup_menu' name='startup_menu'>
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+			</select>
+						<br>
+
+			&nbsp;&nbsp;Steuerbarer GPIO Pin:&nbsp;
+			<select class="gpio_pin" id='gpio_pin' name='gpio_pin'>
+				<option value="255">keiner</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+			</select>
+
+
+            <div class="form" style="width: 50%; text-align: : center; margin: auto;">
+				<input type="hidden" id='save' name='save' value="general">
+				<br /><button style='cursor: pointer;' form="generalconfig" type='save'>Allgemeine Konfig speichern</button>
+			</div>
+		</form>
+	</div>
+	</p>
+	</div>
+	<!-- Tab Menu -->
+	<div id="menu" class="tabcontent">
+		<div style="float: right; font-size: 11px"><a href="/download?file=menu1.json">Herunterladen menu1.json</a></div>
+		<br>
+		<h3>Menü</h3>
+		<p>
+		<form method='post' id="savemenu" action='/saveconfig'>
+			<label for="framework">Menü auswählen</label>
+			<select name="menunumberlist_save" id="menunumberlist_save" onchange="updateMenuItems(this)">
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
+			</select>
+			<div></div> <!-- Add a little space -->
+			<label for="menuname">Menü Name:</label>
+			<input type="text" id="menuname" name="menuname"><br><br>
+			<div></div> <!-- Add a little space -->
+			<table style="height: 250px; width: 100%; border: 1px solid #000088; text-align: left;">
+				<tbody>
+					<tr>
+						<td style="width: 10%;">
+							Reihe/Spalte
+						</td>
+						<td style="width: 18%;">
+							Spalte 1
+						</td>
+						<td style="width: 18%;">
+							Spalte 2
+						</td>
+						<td style="width: 18%;">
+							Spalte 3
+						</td>
+						<td style="width: 18%;">
+							Spalte 4
+						</td>
+						<td style="width: 18%;">
+							Spalte 5
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 10%;">
+							Reihe 1
+						</td>
+						<td style="width: 18%;">
+							Taste 1-1
+							<br />Bild:
+							<select class="images" id='button11logo' name='button11logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button11action0' name='button11action0'></select>
+							<select class="actions" id='button11value0' name='button11value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button11action1' name='button11action1'></select>
+							<select class="actions" id='button11value1' name='button11value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button11action2' name='button11action2'></select>
+							<select class="actions" id='button11value2' name='button11value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button11latch" name="button11latch">
+							einklinken: <select class="images" id='button11latchlogo' name='button11latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 1-2
+							<br />Bild:
+							<select class="images" id='button12logo' name='button12logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button12action0' name='button12action0'></select>
+							<select class="actions" id='button12value0' name='button12value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button12action1' name='button12action1'></select>
+							<select class="actions" id='button12value1' name='button12value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button12action2' name='button12action2'></select>
+							<select class="actions" id='button12value2' name='button12value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button12latch" name="button12latch">
+							einklinken: <select class="images" id='button12latchlogo' name='button12latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 1-3
+							<br />Bild:
+							<select class="images" id='button13logo' name='button13logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button13action0' name='button13action0'></select>
+							<select class="actions" id='button13value0' name='button13value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button13action1' name='button13action1'></select>
+							<select class="actions" id='button13value1' name='button13value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button13action2' name='button13action2'></select>
+							<select class="actions" id='button13value2' name='button13value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button13latch" name="button13latch">
+							einklinken: <select class="images" id='button13latchlogo' name='button13latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 1-4
+							<br />Bild:
+							<select class="images" id='button14logo' name='button14logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button14action0' name='button14action0'></select>
+							<select class="actions" id='button14value0' name='button14value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button14action1' name='button14action1'></select>
+							<select class="actions" id='button14value1' name='button14value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button14action2' name='button14action2'></select>
+							<select class="actions" id='button14value2' name='button14value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button14latch" name="button14latch">
+							einklinken: <select class="images" id='button14latchlogo' name='button14latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 1-5
+							<br />Bild:
+							<select class="images" id='button15logo' name='button15logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button15action0' name='button15action0'></select>
+							<select class="actions" id='button15value0' name='button15value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button15action1' name='button15action1'></select>
+							<select class="actions" id='button15value1' name='button15value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button15action2' name='button15action2'></select>
+							<select class="actions" id='button15value2' name='button15value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button15latch" name="button15latch">
+							einklinken: <select class="images" id='button15latchlogo' name='button15latchlogo'></select>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 10%;">
+							Reihe 2
+						</td>
+						<td style="width: 18%;">
+							Taste 2-1
+							<br />Bild:
+							<select class="images" id='button21logo' name='button21logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button21action0' name='button21action0'></select>
+							<select class="actions" id='button21value0' name='button21value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button21action1' name='button21action1'></select>
+							<select class="actions" id='button21value1' name='button21value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button21action2' name='button21action2'></select>
+							<select class="actions" id='button21value2' name='button21value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button21latch" name="button21latch">
+							einklinken: <select class="images" id='button21latchlogo' name='button21latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 2-2
+							<br />Bild:
+							<select class="images" id='button22logo' name='button22logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button22action0' name='button22action0'></select>
+							<select class="actions" id='button22value0' name='button22value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button22action1' name='button22action1'></select>
+							<select class="actions" id='button22value1' name='button22value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button22action2' name='button22action2'></select>
+							<select class="actions" id='button22value2' name='button22value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button22latch" name="button22latch">
+							einklinken: <select class="images" id='button22latchlogo' name='button22latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 2-3
+							<br />Bild:
+							<select class="images" id='button23logo' name='button23logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button23action0' name='button23action0'></select>
+							<select class="actions" id='button23value0' name='button23value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button23action1' name='button23action1'></select>
+							<select class="actions" id='button23value1' name='button23value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button23action2' name='button23action2'></select>
+							<select class="actions" id='button23value2' name='button23value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button23latch" name="button23latch">
+							einklinken: <select class="images" id='button23latchlogo' name='button23latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 2-4
+							<br />Bild:
+							<select class="images" id='button24logo' name='button24logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button24action0' name='button24action0'></select>
+							<select class="actions" id='button24value0' name='button24value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button24action1' name='button24action1'></select>
+							<select class="actions" id='button24value1' name='button24value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button24action2' name='button24action2'></select>
+							<select class="actions" id='button24value2' name='button24value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button24latch" name="button24latch">
+							einklinken: <select class="images" id='button24latchlogo' name='button24latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 2-5
+							<br />Bild:
+							<select class="images" id='button25logo' name='button25logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button25action0' name='button25action0'></select>
+							<select class="actions" id='button25value0' name='button25value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button25action1' name='button25action1'></select>
+							<select class="actions" id='button25value1' name='button25value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button25action2' name='button25action2'></select>
+							<select class="actions" id='button25value2' name='button25value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button25latch" name="button25latch">
+							einklinken: <select class="images" id='button25latchlogo' name='button25latchlogo'></select>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 10%;">
+							Reihe 3
+						</td>
+						<td style="width: 18%;">
+							Taste 3-1
+							<br />Bild:
+							<select class="images" id='button31logo' name='button31logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button31action0' name='button31action0'></select>
+							<select class="actions" id='button31value0' name='button31value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button31action1' name='button31action1'></select>
+							<select class="actions" id='button31value1' name='button31value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button31action2' name='button31action2'></select>
+							<select class="actions" id='button31value2' name='button31value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button31latch" name="button31latch">
+							einklinken: <select class="images" id='button31latchlogo' name='button31latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 3-2
+							<br />Bild:
+							<select class="images" id='button32logo' name='button32logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button32action0' name='button32action0'></select>
+							<select class="actions" id='button32value0' name='button32value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button32action1' name='button32action1'></select>
+							<select class="actions" id='button32value1' name='button32value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button32action2' name='button32action2'></select>
+							<select class="actions" id='button32value2' name='button32value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button32latch" name="button32latch">
+							einklinken: <select class="images" id='button32latchlogo' name='button32latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 3-3
+							<br />Bild:
+							<select class="images" id='button33logo' name='button33logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button33action0' name='button33action0'></select>
+							<select class="actions" id='button33value0' name='button33value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button33action1' name='button33action1'></select>
+							<select class="actions" id='button33value1' name='button33value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button33action2' name='button33action2'></select>
+							<select class="actions" id='button33value2' name='button33value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button33latch" name="button33latch">
+							einklinken: <select class="images" id='button33latchlogo' name='button33latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 3-4
+							<br />Bild:
+							<select class="images" id='button34logo' name='button34logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button34action0' name='button34action0'></select>
+							<select class="actions" id='button34value0' name='button34value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button34action1' name='button34action1'></select>
+							<select class="actions" id='button34value1' name='button34value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button34action2' name='button34action2'></select>
+							<select class="actions" id='button34value2' name='button34value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button34latch" name="button34latch">
+							einklinken: <select class="images" id='button34latchlogo' name='button34latchlogo'></select>
+						</td>
+						<td style="width: 18%;">
+							Taste 3-5
+							<br />Bild:
+							<select class="images" id='button35logo' name='button35logo'></select>
+							<br />Aktion 1:
+							<select class="actions" id='button35action0' name='button35action0'></select>
+							<select class="actions" id='button35value0' name='button35value0'></select>
+							<br />Aktion 2:
+							<select class="actions" id='button35action1' name='button35action1'></select>
+							<select class="actions" id='button35value1' name='button35value1'></select>
+							<br />Aktion 3:
+							<select class="actions" id='button35action2' name='button35action2'></select>
+							<select class="actions" id='button35value2' name='button35value2'></select>
+							<br />Verriegeln? <input type="checkbox" id="button35latch" name="button35latch">
+							einklinken: <select class="images" id='button35latchlogo' name='button35latchlogo'></select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
+				<input type="hidden" id='save' name='save' value="menu">
+				<br /><button style='cursor: pointer;' form="savemenu" type='save'>Menükonfig speichern</button>
+		</form>
+	</div>
+	</p>
+	</div>
+	<!-- Tab CADParams -->
+	<div id="cadparams" class="tabcontent">
+		<div style="float: right; font-size: 11px"><a href="/download?file=cadparams.json">Herunterladen cadparams.json</a>
+		</div>
+		<br>
+		<h3>CAD Einstellungen</h3>
+		<p>
+
+		<form method='post' id="cadparamsconfig" action='/saveconfig'>
+
+			&nbsp;&nbsp;Aktuelles CAD-Programm:&nbsp;
+			<select name="current_program" id='current_program'>
+				<option value="0">Solidworks</option>
+				<option value="1">Fusion360</option>
+				<option value="2">Blender</option>
+				<option value="3">FreeCAD</option>
+				<option value="4">AC3D</option>
+			</select>
+			<br><br>
+
+			&nbsp;&nbsp;Joystick Skalierung X:&nbsp;
+			<input type="number" id="joy_scale_x" name="joy_scale_x" min="-5.0" max="5.0" value="3.00" step="any">
+
+			&nbsp;&nbsp;Joystick Skalierung Y:&nbsp;
+			<input type="number" id="joy_scale_y" name="joy_scale_y" min="-5.0" max="5.0" value="3.00" step="any">
+
+			&nbsp;&nbsp;Joystick Totzone:&nbsp;
+			<select class="joy_deadzone" id='joy_deadzone' name='joy_deadzone'>
+				<option value="0">0</option>
+				<option value="0.01">0.01</option>
+				<option value="0.02">0.02</option>
+				<option value="0.05">0.05</option>
+				<option value="0.1">0.1</option>
+				<option value="0.15">0.15</option>
+				<option value="0.2">0.2</option>
+			</select>
+			&nbsp;&nbsp;Joystick Sensitivität:&nbsp;
+			<select class="joy_sensitivity" id='joy_sensitivity' name='joy_sensitivity'>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			<br><br>
+			&nbsp;&nbsp;Zoom Skalierung:&nbsp;
+			<input type="number" id="zoom_scale" name="zoom_scale" min="-5.0" max="5.0" value="3.00" step="any">
+			&nbsp;&nbsp;Zoom Totzone:&nbsp;
+			<select class="zoom_deadzone" id='zoom_deadzone' name='zoom_deadzone'>
+				<option value="0">0</option>
+				<option value="0.01">0.01</option>
+				<option value="0.02">0.02</option>
+				<option value="0.05">0.05</option>
+				<option value="0.1">0.1</option>
+				<option value="0.15">0.15</option>
+				<option value="0.2">0.2</option>
+				<option value="0.2">0.25</option>
+			</select>
+			&nbsp;&nbsp;Zoom Sensitivität:&nbsp;
+			<select class="zoom_sensitivity" id='zoom_sensitivity' name='zoom_sensitivity'>
+				<option value="1">1</option>
+				<option value="2">2</option>		
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+			<br><br>
+			&nbsp;&nbsp;Drehen Skalierung:&nbsp;
+			<input type="number" id="rotate_scale" name="rotate_scale" min="-5.0" max="5.0" value="3.00" step="any">
+			&nbsp;&nbsp;Drehen Totzone:&nbsp;
+			<select class="rotate_deadzone" id='rotate_deadzone' name='rotate_deadzone'>
+				<option value="0">0</option>
+				<option value="0.01">0.01</option>
+				<option value="0.02">0.02</option>
+				<option value="0.05">0.05</option>
+				<option value="0.1">0.1</option>
+				<option value="0.15">0.15</option>
+				<option value="0.2">0.2</option>
+				<option value="0.2">0.25</option>
+			</select>
+			&nbsp;&nbsp;Drehen Sensitivität:&nbsp;
+			<select class="rotate_sensitivity" id='rotate_sensitivity' name='rotate_sensitivity'>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+			</select>
+
+			<br><br>
+			<table style="height: 250px; width: 100%; border: 1px solid #000088; text-align: left;">
+				<tbody>
+					<tr>
+						<!-- <td style="width: 50%;"> -->
+						<td>
+
+							<!-- Image Map Generated by http://www.image-map.net/ -->
+							<img src="ButtonLayout10.png" usemap="#image-map">
+
+							<map name="image-map">
+								<area target="" alt="Taste 0" title="Taste 0" href="#" coords="247,133,285,166"
+									shape="rect" onclick="select_new_button(0)">
+								<area target="" alt="Taste 1" title="Taste 1" href="#" coords="67,74,103,110"
+									shape="rect" onclick="select_new_button(1)">
+								<area target="" alt="Taste 2" title="Taste 2" href="#" coords="120,74,151,106"
+									shape="rect" onclick="select_new_button(2)">
+								<area target="" alt="Taste 3" title="Taste 3" href="#" coords="63,125,101,164"
+									shape="rect" onclick="select_new_button(3)">
+								<area target="" alt="Taste 4" title="Taste 4" href="#" coords="116,131,156,165"
+									shape="rect" onclick="select_new_button(4)">
+								<area target="" alt="Taste 5" title="Taste 5" href="#" coords="114,184,157,224"
+									shape="rect" onclick="select_new_button(5)">
+								<area target="" alt="Taste 6" title="Taste 6" href="#" coords="378,76,417,110"
+									shape="rect" onclick="select_new_button(6)">
+								<area target="" alt="Taste 7" title="Taste 7" href="#" coords="430,73,473,111"
+									shape="rect" onclick="select_new_button(7)">
+								<area target="" alt="Taste 8" title="Taste 8" href="#" coords="377,126,420,167"
+									shape="rect" onclick="select_new_button(8)">
+								<area target="" alt="Taste 9" title="Taste 9" href="#" coords="431,129,474,171"
+									shape="rect" onclick="select_new_button(9)">
+								<area target="" alt="Taste 10" title="Taste 10" href="#" coords="376,179,421,224"
+									shape="rect" onclick="select_new_button(10)">
+							</map>
+						</td>
+						<!-- <td style="width: 50%;"> -->
+						<td>
+							<br>Gewähltes CAD-Programm:&nbsp;
+							<select name="selected_program" id='selected_program'
+								onchange="update_selected_program_items(this)">
+								<option value="0">Solidworks</option>
+								<option value="1">Fusion360</option>
+								<option value="2">Blender</option>
+								<option value="3">FreeCAD</option>
+								<option value="4">AC3D</option>
+							</select>
+							<br><br>
+							<table style="height: 250px; width: 100%;">
+								<tr>
+									<br>
+									<br />Ausgewählte Schaltfläche:
+									<input type="text" id="selected_hw_button" name="selected_hw_button"
+										style="border:0px" readonly>
+									<br />Aktion 1:
+									<select class="actions" id='joybuttonaction0' name='joybuttonaction0'></select>
+									<select class="actions" id='joybuttonvalue0' name='joybuttonvalue0'></select>
+									<br />Aktion 2:
+									<select class="actions" id='joybuttonaction1' name='joybuttonaction1'></select>
+									<select class="actions" id='joybuttonvalue1' name='joybuttonvalue1'></select>
+									<br />Aktion 3:
+									<select class="actions" id='joybuttonaction2' name='joybuttonaction2'></select>
+									<select class="actions" id='joybuttonvalue2' name='joybuttonvalue2'></select>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="form" style="width: 50%; text-align: : center; margin: auto;">
+				<input type="hidden" id='save' name='save' value="cadparams">
+				<br /><button style='cursor: pointer;' form="cadparamsconfig" type='save'>CAD-Konfig speichern</button>
+			</div>
+		</form>
+	</div>
+	</p>
+	</div>
+	<!-- Upload Logo -->
+	<div id="uploadimage" class="tabcontent">
+		<h3>Hochladen eines neuen Logos</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst die verwendeten Logos anpassen. Wenn du
+			eine Datei mit einem Namen hochlädst, der bereits existiert, wird die Datei <u>überschrieben</u>. Du kannst nur .bmp
+			Bilder hochladen. Die Bilder sollten im 24-Bit-RGB-Format vorliegen und nicht mehr als 75 x 75 Pixel groß sein.
+			Kleinere Bilder werden unterstützt.<br /><br />
+
+			Auch Bilder, die für Elgatos Stream Deck verwendet werden, werden unterstützt. Diese sollten auch in einem 24-Bit-RGB
+			Format vorliegen. Du kannst diese mit diesem kostenlosen Online-Tool konvertieren  <a
+				href="https://online-converting.com/image/convert2bmp/"
+				target="_blank">https://online-converting.com/image/convert2bmp/</a>.<br /><br />
+
+			CADDeck überprüft die Farbe des ersten Pixels im Bild. Wenn dieses Pixel schwarz ist (#000000),
+			alle
+			schwarze Pixel werden transparent gerendert und die auf der Registerkarte "Allgemein" gewählte Schaltflächenfarbe wird transparent
+			dargestellt.
+			Wenn dieses Pixel eine Farbe hat, hat die Schaltfläche diese Farbe, sodass sich das Bild gut einfügt.
+		</div>
+		<p>
+		<div class="form" style="width: 10%; text-align: : center; margin: auto;">
+			<input form="uploadfile" type="file" name="name" accept=".bmp"><br /><br />
+			<button style='cursor: pointer;' form="uploadfile" type="save">Upload</button>
+		</div>
+		</p>
+	</div>
+
+	<!-- File Editor -->
+	<div id="editor" class="tabcontent">
+		<h3>Dateien entfernen</h3>
+
+		<div class="form" id=deletefilelist style="width: 20%; text-align: left; margin: auto;">
+
+		</div>
+
+	</div>
+
+	<!-- Upload JSON -->
+	<div id="uploadjson" class="tabcontent">
+		<h3>JSON-Konfigurationsdatei Hochladen</h3>
+		<div style="width: 70%; text-align: left; margin: auto;"> Du kannst eine zuvor heruntergeladene JSON-Datei hochladen
+			um Ihnen etwas Zeit zu ersparen, da Sie nicht ein ganzes Menü konfigurieren müssen. Der Dateiname sollte der Menüname sein (alles
+			Kleinschreibung), z.B. menu.json für Menü, menu2.json für Menü 2 usw. Es ist auch eine gute Idee zu validieren
+			Ihre .json-Datei, wenn Sie manuelle Änderungen vorgenommen haben. Das kannst das machen mit
+			<a href="https://jsonlint.com/" target="_blank">JSONLint</a>
+			<br /><br />
+		</div>
+		<p>
+		<div class="form" style="width: 10%; text-align: center; margin: auto;">
+			<input form="uploadjsonfile" type="file" name="name" accept=".json"><br /><br />
+			<button style='cursor: pointer;' form="uploadjsonfile" type="save">Hochladen JSON</button>
+		</div>
+		</p>
+	</div>
+
+	<!-- Download JSON -->
+	<div id="downloadjson" class="tabcontent">
+		<h3>Menükonfigurationsdatei Herunterladen</h3>
+		<div style="width: 70%; text-align: center; margin: auto;"> Wählen eine Datei aus der Liste aus und lade diese auf
+			den Client-Rechner herunter. <br /><br /></div>
+		<p>
+		<div class="form" style="width: 20%; text-align: center; margin: auto;">
+			<label for="framework">Menüauswahl</label>
+			<select name="menunumberlist_download" id="menunumberlist_download" form="downloadjsonfile">
+				<option value="0">Home Menü</option>
+				<option value="1">Menü 1</option>
+				<option value="2">Menü 2</option>
+				<option value="3">Menü 3</option>
+				<option value="4">Menü 4</option>
+				<option value="5">Menü 5</option>
+				<option value="6">Menü 6</option>
+				<option value="7">Menü 7</option>
+				<option value="8">Menü 8</option>
+				<option value="9">Menü 9</option>
+			</select>
+			<br /><br />
+			<!-- <input form="downloadjsonfile" type=hidden name="name" ><br /><br /> -->
+			<button style='cursor: pointer;' form="downloadjsonfile" type="save">Herunterladen</button>
+		</div>
+		</p>
+	</div>
+
+
+
+	<!-- INFO -->
+	<div id="info" class="tabcontent">
+		<h3>Über CADDeck</h3>
+		<div id="infocontent" style="width: 40%; text-align: left; margin: auto;">
+
+		</div>
+		<p>
+	</div>
+	</div>
+
+	</div>
+
+	<!-- ---------------------- javscript includes ---------------------- -->
+
+
+	<script>
+		function togglepassword() {
+			var field = document.getElementById("password");
+			if (field.type === "password") {
+				field.type = "text";
+			} else {
+				field.type = "password";
+			}
+		}
+	</script>
+	<script>
+		function openMenu(evt, menuitem) {
+			// Declare all variables
+			var i, tabcontent, tablinks;
+
+			// Get all elements with class="tabcontent" and hide them
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+
+			// Get all elements with class="tablinks" and remove the class "active"
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+
+			// Show the current tab, and add an "active" class to the button that opened the tab
+			console.log("openMenu():", menuitem);
+
+			if (menuitem == 'menu') {
+				getMenuConfig(0);               // load the first menu data
+			}
+			document.getElementById(menuitem).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		document.addEventListener('DOMContentLoaded', openMenu(event, 'intro'), false);
+	</script>
+	<script>
+		var selecteditems = [{
+			name: 'Mache nichts',
+			value: '0',
+			subitems: [{
+				name: '--',
+				value: '0'
+			}]
+		},
+		{
+			name: 'Verzögerung',
+			value: '1',
+			subitems: [{
+				name: '100ms',
+				value: '100'
+			},
+			{
+				name: '200ms',
+				value: '200'
+			}
+				,
+			{
+				name: '500ms',
+				value: '500'
+			}
+				,
+			{
+				name: '1000ms',
+				value: '1000'
+			}
+			]
+		},
+		{
+			name: 'Pfeile und TAB',
+			value: '2',
+			subitems: [{
+				name: '--',
+				value: '0'
+			},
+			{
+				name: 'Pfeil HOCH',
+				value: '1'
+			},
+			{
+				name: 'Pfeil RUNTER',
+				value: '2'
+			},
+			{
+				name: 'Pfeil LINKS',
+				value: '3'
+			},
+			{
+				name: 'Pfeil RECHTS',
+				value: '4'
+			},
+			{
+				name: 'Backspace',
+				value: '5'
+			},
+			{
+				name: 'TAB',
+				value: '6'
+			},
+			{
+				name: 'Return',
+				value: '7'
+			},
+			{
+				name: 'Seite HOCH',
+				value: '8'
+			},
+			{
+				name: 'Seite RUNTER',
+				value: '9'
+			},
+			{
+				name: 'Delete',
+				value: '10'
+			},
+			{
+				name: 'PrintScreen',
+				value: '11'
+			},
+			{
+				name: 'ESC',
+				value: '12'
+			},
+			{
+				name: 'HOME',
+				value: '13'
+			},
+			{
+				name: 'END',
+				value: '14'
+			}
+			]
+		},
+		{
+			name: 'Mediakey',
+			value: '3',
+			subitems: [{
+				name: 'Stumm',
+				value: '1'
+			},
+			{
+				name: 'Leise',
+				value: '2'
+			},
+			{
+				name: 'Lauter',
+				value: '3'
+			},
+			{
+				name: 'Play/Pause',
+				value: '4'
+			},
+			{
+				name: 'Stop',
+				value: '5'
+			},
+			{
+				name: 'Nächste',
+				value: '6'
+			},
+			{
+				name: 'Vorherige',
+				value: '7'
+			},
+			{
+				name: 'WWW Home',
+				value: '8'
+			},
+			{
+				name: 'Dateibrowser',
+				value: '9'
+			},
+			{
+				name: 'Rechner',
+				value: '10'
+			},
+			{
+				name: 'WWW Lesezeichen',
+				value: '11'
+			},
+			{
+				name: 'WWW Suchen',
+				value: '12'
+			},
+			{
+				name: 'WWW Stop',
+				value: '13'
+			},
+			{
+				name: 'WWW Zurück',
+				value: '14'
+			},
+			{
+				name: 'Cons Steuerung',
+				value: '15'
+			},
+			{
+				name: 'Email App',
+				value: '16'
+			}
+			]
+		},
+		{
+			name: 'Buchstaben',
+			value: '4',
+			subitems: [{
+				name: '-space-',
+				value: ' '
+			},
+			{
+				name: 'a',
+				value: 'a'
+			},
+			{
+				name: 'b',
+				value: 'b'
+			},
+			{
+				name: 'c',
+				value: 'c'
+			},
+			{
+				name: 'd',
+				value: 'd'
+			},
+			{
+				name: 'e',
+				value: 'e'
+			},
+			{
+				name: 'f',
+				value: 'f'
+			},
+			{
+				name: 'g',
+				value: 'g'
+			},
+			{
+				name: 'h',
+				value: 'h'
+			},
+			{
+				name: 'i',
+				value: 'i'
+			},
+			{
+				name: 'j',
+				value: 'j'
+			},
+			{
+				name: 'k',
+				value: 'k'
+			},
+			{
+				name: 'l',
+				value: 'l'
+			},
+			{
+				name: 'm',
+				value: 'm'
+			},
+			{
+				name: 'n',
+				value: 'n'
+			},
+			{
+				name: 'o',
+				value: 'o'
+			},
+			{
+				name: 'p',
+				value: 'p'
+			},
+			{
+				name: 'q',
+				value: 'q'
+			},
+			{
+				name: 'r',
+				value: 'r'
+			},
+			{
+				name: 's',
+				value: 's'
+			},
+			{
+				name: 't',
+				value: 't'
+			},
+			{
+				name: 'u',
+				value: 'u'
+			},
+			{
+				name: 'v',
+				value: 'v'
+			},
+			{
+				name: 'w',
+				value: 'w'
+			},
+			{
+				name: 'x',
+				value: 'x'
+			},
+			{
+				name: 'y',
+				value: 'y'
+			},
+			{
+				name: 'z',
+				value: 'z'
+			}
+
+			]
+		},
+		{
+			name: 'Optionstasten',
+			value: '5',
+			subitems: [{
+				name: 'Links CTRL',
+				value: '1'
+			},
+			{
+				name: 'Links Shift',
+				value: '2'
+			},
+			{
+				name: 'Links ALT',
+				value: '3'
+			},
+			{
+				name: 'Links GUI',
+				value: '4'
+			},
+			{
+				name: 'Rechts CTRL',
+				value: '5'
+			},
+			{
+				name: 'Rechts Shift',
+				value: '6'
+			},
+			{
+				name: 'Rechts ALT',
+				value: '7'
+			},
+			{
+				name: 'Rechts GUI',
+				value: '8'
+			},
+			{
+				name: 'Alle loslassen',
+				value: '9'
+			}]
+		},
+		{
+			name: 'Funktionstasten',
+			value: '6',
+			subitems: [{
+				name: 'F1',
+				value: '1'
+			},
+			{
+				name: 'F2',
+				value: '2'
+			},
+			{
+				name: 'F3',
+				value: '3'
+			},
+			{
+				name: 'F4',
+				value: '4'
+			},
+			{
+				name: 'F5',
+				value: '5'
+			},
+			{
+				name: 'F6',
+				value: '6'
+			},
+			{
+				name: 'F7',
+				value: '7'
+			},
+			{
+				name: 'F8',
+				value: '8'
+			},
+			{
+				name: 'F9',
+				value: '9'
+			},
+			{
+				name: 'F10',
+				value: '10'
+			},
+			{
+				name: 'F11',
+				value: '11'
+			},
+			{
+				name: 'F12',
+				value: '12'
+			},
+			{
+				name: 'F13',
+				value: '13'
+			},
+			{
+				name: 'F14',
+				value: '14'
+			},
+			{
+				name: 'F15',
+				value: '15'
+			},
+			{
+				name: 'F16',
+				value: '16'
+			},
+			{
+				name: 'F17',
+				value: '17'
+			},
+			{
+				name: 'F18',
+				value: '18'
+			},
+			{
+				name: 'F19',
+				value: '19'
+			},
+			{
+				name: 'F20',
+				value: '20'
+			},
+			{
+				name: 'F21',
+				value: '21'
+			},
+			{
+				name: 'F22',
+				value: '22'
+			},
+			{
+				name: 'F23',
+				value: '23'
+			},
+			{
+				name: 'F24',
+				value: '24'
+			}
+			]
+		},
+		{
+			name: 'Zahlen',
+			value: '7',
+			subitems: [{
+				name: '0',
+				value: '0'
+			},
+			{
+				name: '1',
+				value: '1'
+			},
+			{
+				name: '2',
+				value: '2'
+			},
+			{
+				name: '3',
+				value: '3'
+			},
+			{
+				name: '4',
+				value: '4'
+			},
+			{
+				name: '5',
+				value: '5'
+			},
+			{
+				name: '6',
+				value: '6'
+			},
+			{
+				name: '7',
+				value: '7'
+			},
+			{
+				name: '8',
+				value: '8'
+			},
+			{
+				name: '9',
+				value: '9'
+			}
+
+			]
+		},
+		{
+			name: 'Sonderzeichen',
+			value: '8',
+			subitems: [{
+				name: '.',
+				value: '.'
+			},
+			{
+				name: ',',
+				value: ','
+			},
+			{
+				name: '!',
+				value: '!'
+			},
+			{
+				name: '?',
+				value: '?'
+			},
+			{
+				name: '/',
+				value: '/'
+			},
+			{
+				name: '+',
+				value: '+'
+			},
+			{
+				name: '-',
+				value: '-'
+			},
+			{
+				name: '&',
+				value: '&'
+			},
+			{
+				name: '^',
+				value: '^'
+			},
+			{
+				name: '%',
+				value: '%'
+			},
+			{
+				name: '*',
+				value: '*'
+			},
+			{
+				name: '#',
+				value: '#'
+			},
+			{
+				name: '$',
+				value: '$'
+			},
+			{
+				name: '[',
+				value: '['
+			},
+			{
+				name: ']',
+				value: ']'
+			}
+
+			]
+		},
+		{
+			name: 'Kombinationen',
+			value: '9',
+			subitems: [{
+				name: 'LINKS CTRL+SHIFT',
+				value: '1'
+			},
+			{
+				name: 'LINKS ALT+SHIFT',
+				value: '2'
+			},
+			{
+				name: 'LINKS GUI+SHIFT',
+				value: '3'
+			},
+			{
+				name: 'LINKS CTRL+GUI',
+				value: '4'
+			},
+			{
+				name: 'LINKS ALT+GUI',
+				value: '5'
+			},
+			{
+				name: 'LINKS CTRL+ALT',
+				value: '6'
+			},
+			{
+				name: 'LINKS CTRL+ALT+GUI',
+				value: '7'
+			},
+			{
+				name: 'RECHTS CTRL+SHIFT',
+				value: '8'
+			},
+			{
+				name: 'RECHTS ALT+SHIFT',
+				value: '9'
+			},
+			{
+				name: 'RECHTS GUI+SHIFT',
+				value: '10'
+			},
+			{
+				name: 'RECHTS CTRL+GUI',
+				value: '11'
+			},
+			{
+				name: 'RECHTS ALT+GUI',
+				value: '12'
+			},
+			{
+				name: 'RECHTS CTRL+ALT',
+				value: '13'
+			},
+			{
+				name: 'RECHTS CTRL+ALT+GUI',
+				value: '14'
+			}
+
+			]
+		},
+		{
+			name: 'Helfer',
+			value: '10',
+			subitems: [{
+				name: 'Helfer 1',
+				value: '1'
+			},
+			{
+				name: 'Helfer 2',
+				value: '2'
+			},
+			{
+				name: 'Helfer 3',
+				value: '3'
+			},
+			{
+				name: 'Helfer 4',
+				value: '4'
+			},
+			{
+				name: 'Helfer 5',
+				value: '5'
+			},
+			{
+				name: 'Helfer 6',
+				value: '6'
+			},
+			{
+				name: 'Helfer 7',
+				value: '7'
+			},
+			{
+				name: 'Helfer 8',
+				value: '8'
+			},
+			{
+				name: 'Helfer 9',
+				value: '9'
+			},
+			{
+				name: 'Helfer 10',
+				value: '10'
+			},
+			{
+				name: 'Helfer 11',
+				value: '11'
+			}
+
+			]
+		},
+		{
+			name: 'FTD Funktionen',
+			value: '11',
+			subitems: [{
+				name: 'Config-Modus',
+				value: '1'
+			},
+			{
+				name: 'Helligkeit hoch',
+				value: '2'
+			},
+			{
+				name: 'Helligkeit runter',
+				value: '3'
+			},
+			{
+				name: 'Ruhezustand aktivieren/deaktivieren',
+				value: '4'
+			},
+			{
+				name: 'Info Seite',
+				value: '5'
+			},
+			{
+				name: 'Gehe zu Menü 0 (Home)',
+				value: '6'
+			},
+			{
+				name: 'Allgemeine Konfig speichern',
+				value: '7'
+			},
+			{
+				name: 'USB-Kommunikation aktivieren',
+				value: '8'
+		    },
+			{
+				name: 'IO Monitor Seite',
+				value: '9'
+			},
+			{
+				name: 'GPIO-Pin umschalten',
+				value: '10'
+			},
+			{
+				name: 'Setze GPIO-Pin auf Low',
+				value: '11'
+			},
+			{
+				name: 'Setze GPIO-Pin auf High',
+				value: '12'
+			}
+			]
+		},
+		{
+			name: 'Ziffernblock',
+			value: '12',
+			subitems: [{
+				name: 'Ziffernblock 0',
+				value: '0'
+			},
+			{
+				name: 'Ziffernblock 1',
+				value: '1'
+			},
+			{
+				name: 'Ziffernblock 2',
+				value: '2'
+			},
+			{
+				name: 'Ziffernblock 3',
+				value: '3'
+			},
+			{
+				name: 'Ziffernblock 4',
+				value: '4'
+			},
+			{
+				name: 'Ziffernblock 5',
+				value: '5'
+			},
+			{
+				name: 'Ziffernblock 6',
+				value: '6'
+			},
+			{
+				name: 'Ziffernblock 7',
+				value: '7'
+			},
+			{
+				name: 'Ziffernblock 8',
+				value: '8'
+			},
+			{
+				name: 'Ziffernblock 9',
+				value: '9'
+			},
+			{
+				name: 'Ziffernblock /',
+				value: '10'
+			},
+			{
+				name: 'Ziffernblock *',
+				value: '11'
+			},
+			{
+				name: 'Ziffernblock -',
+				value: '12'
+			},
+			{
+				name: 'Ziffernblock +',
+				value: '13'
+			},
+			{
+				name: 'Ziffernblock RETURN',
+				value: '14'
+			},
+			{
+				name: 'Ziffernblock .',
+				value: '15'
+			}
+
+			]
+		},
+		{
+			name: 'Benutzeraktionen',
+			value: '13',
+			subitems: [{
+				name: 'Aktion 1',
+				value: '1'
+			},
+			{
+				name: 'Aktion 2',
+				value: '2'
+			},
+			{
+				name: 'Aktion 3',
+				value: '3'
+			},
+			{
+				name: 'Aktion 4',
+				value: '4'
+			},
+			{
+				name: 'Aktion 5',
+				value: '5'
+			},
+			{
+				name: 'Aktion 6',
+				value: '6'
+			},
+			{
+				name: 'Aktion 7',
+				value: '7'
+			}
+
+			]
+		},
+		{
+			name: 'Gehe zu Seite',
+			value: '14',
+			subitems: [{
+				name: 'Seite 0',
+				value: '0'
+			}, {
+				name: 'Seite 1',
+				value: '1'
+			}, {
+				name: 'Seite 2',
+				value: '2'
+			}, {
+				name: 'Seite 3',
+				value: '3'
+			}, {
+				name: 'Seite 4',
+				value: '4'
+			}, {
+				name: 'Seite 5',
+				value: '5'
+			}, {
+				name: 'Seite 6',
+				value: '6'
+			}, {
+				name: 'Seite 7',
+				value: '7'
+			}, {
+				name: 'Seite 8',
+				value: '8'
+			}, {
+				name: 'Seite 9',
+				value: '9'
+			}
+
+			]
+		},
+		{
+			name: 'CAD-Funktion',
+			value: '15',
+			subitems: [{
+				name: 'Programm festlegen',
+				value: '1'
+			},
+			{
+				name: 'Joystick Nullpunkt',
+				value: '2'
+			},
+			{
+				name: 'Joystick Skalieren',
+				value: '3'
+			},
+			{
+				name: 'Zoom Skalieren',
+				value: '4'
+			},
+			{
+				name: 'Rotate Skalieren',
+				value: '5'
+			},
+			{
+				name: 'Joystick Invertieren X',
+				value: '6'
+			},
+			{
+				name: 'Joystick Invertieren Y',
+				value: '7'
+			},
+			{
+				name: 'Zoom Invertieren',
+				value: '8'
+			},
+			{
+				name: 'Rotate Invertieren',
+				value: '9'
+			},
+			{
+				name: 'Einstellungen speichern',
+				value: '10'
+			},
+			{
+				name: 'Modustaste',
+				value: '15'
+			}
+			]
+		},
+		{
+			name: 'CAD-Programm einstellen',
+			value: '16',
+			subitems: [{
+				name: 'Solidworks',
+				value: '0'
+			}, {
+				name: 'Fusion 360',
+				value: '1'
+			}, {
+				name: 'Blender',
+				value: '2'
+			}, {
+				name: 'FreeCAD',
+				value: '3'
+			}, {
+				name: 'AC3D',
+				value: '4'
+			}
+			]
+		},
+		{
+			name: 'Maustasten',
+			value: '17',
+			subitems: [{
+				name: 'Drücke Linke Taste',
+				value: '1'
+			}, {
+				name: 'Drücke Rechte Taste',
+				value: '2'
+			}, {
+				name: 'Drücke Mittlere Taste',
+				value: '3'
+			}, {
+				name: 'Drücke Linke und Mittlere Taste',
+				value: '4'
+			}, {
+				name: 'Drücke rechte und Mittlere Taste',
+				value: '5'
+			}, {
+				name: 'Freigeben Linke Taste',
+				value: '6'
+			}, {
+				name: 'Freigeben Rechte Taste',
+				value: '7'
+			}, {
+				name: 'Freigeben Mittlere Taste',
+				value: '8'
+			}, {
+				name: 'Freigeben Linke und Mittlere Taste',
+				value: '9'
+			}, {
+				name: 'Freigeben Rechte und Mittlere Taste',
+				value: '10'
+			}, {
+				name: 'Freigeben alle Tasten',
+				value: '11'
+			}
+			]
+		},
+		{
+			name: 'Vorherige Seite',
+			value: '18',
+			subitems: [{
+				name: 'Keine Aktion',
+				value: '0'
+			}
+			]
+		},
+		{
+			name: 'Standard-Joystick-Modus',
+			value: '19',
+			subitems: [{
+				name: 'Keiner',
+				value: '0'
+			},
+			{
+				name: 'Schwenken',
+				value: '1'
+			},
+			{
+				name: 'Drehen',
+				value: '2'
+			},
+			{
+				name: 'Zoom',
+				value: '3'
+			},
+			{
+				name: 'Mouse',
+				value: '4'
+			}
+			]
+		}
+		];
+	</script>
+	<script>
+		$(function () {
+			$('#savemenu')
+				.change(function () {
+					// var value = $(this).val();
+					// var menu = $('#button11value0');
+
+					// menu.empty();
+					// $.each(temp[value], function () {
+					// 	$('<option />')
+					// 		.attr('value', this.value)
+					// 		.html(this.name)
+					// 		.appendTo(menu);
+					// });
+					console.log("Änderung im Formularspeichermenü erkannt.")
+				});
+		});
+
+	</script>
+	<script>
+
+		// TODO: Find some way to get rid of the per-button duplicated code below
+
+		var items = selecteditems.slice(0); // Create a duplicate of the selecteditems array for now
+
+		$(function () {
+			var temp = {};
+			////////////////////////// Row 1 ///////////////////////////
+			// menu button11
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button11action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button11action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button11value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button11action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button11action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button11value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button11action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button11action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button11value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menuButton 12
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button12action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button12action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button12value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button12action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button12action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button12value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button12action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button12action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button12value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu Button13
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button13action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button13action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button13value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button13action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button13action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button13value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button13action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button13action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button13value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button14
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button14action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button14action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button14value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button14action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button14action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button14value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button14action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button14action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button14value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button15
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button15action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button15action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button15value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button15action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button15action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button15value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button15action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button15action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button15value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+			////////////////////////// Row 2 ///////////////////////////
+			// menu button21
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button21action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button21action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button21value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button21action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button21action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button21value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button21action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button21action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button21value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menuButton 22
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button22action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button22action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button22value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button22action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button22action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button22value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button22action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button22action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button22value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu Button23
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button23action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button23action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button23value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button23action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button23action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button23value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button23action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button23action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button23value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button24
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button24action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button24action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button24value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button24action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button24action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button24value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button24action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button24action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button24value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button25
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button25action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button25action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button25value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button25action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button25action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button25value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button25action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button25action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button25value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			////////////////////////// Row 3 ///////////////////////////
+			// menu button31
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button31action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button31action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button31value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button31action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button31action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button31value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button31action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button31action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button31value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menuButton 12
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button32action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button32action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button32value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button32action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button32action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button32value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button32action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button32action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button32value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu Button33
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button33action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button33action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button33value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button33action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button33action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button33value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button33action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button33action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button33value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button34
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button34action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button34action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button34value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button34action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button34action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button34value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button34action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button34action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button34value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// menu button35
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button35action0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button35action0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button35value0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button35action1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button35action1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button35value1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#button35action2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#button35action2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#button35value2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+				})
+				.change();
+
+			// joystick button actions
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#joybuttonaction0');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#joybuttonaction0')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#joybuttonvalue0');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_hwbutton_def(this, 1, 0);
+				})
+				.change();
+
+			$('#joybuttonvalue0')
+				.change(function () {
+					update_hwbutton_def(this, 2, 0);
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#joybuttonaction1');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#joybuttonaction1')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#joybuttonvalue1');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_hwbutton_def(this, 1, 1);
+				})
+				.change();
+
+			$('#joybuttonvalue1')
+				.change(function () {
+					update_hwbutton_def(this, 2, 1);
+				})
+				.change();
+
+			$.each(items, function () {
+				$('<option />')
+					.attr('value', this.value)
+					.html(this.name)
+					.appendTo('#joybuttonaction2');
+				temp[this.value] = this.subitems;
+			});
+
+			$('#joybuttonaction2')
+				.change(function () {
+					var value = $(this).val();
+					var menu = $('#joybuttonvalue2');
+
+					menu.empty();
+					$.each(temp[value], function () {
+						$('<option />')
+							.attr('value', this.value)
+							.html(this.name)
+							.appendTo(menu);
+					});
+					update_hwbutton_def(this, 1, 2);
+				})
+				.change();
+
+			$('#joybuttonvalue2')
+				.change(function () {
+					update_hwbutton_def(this, 2, 2);
+				})
+				.change();
+
+		});
+
+
+	</script>
+	<script>
+		function createCheck(filename) {
+			return `<input form="delete" type="checkbox" id="${filename}" name="${filename}" value="${filename}"><label for="${filename}"> ${filename}</label><br>`;
+		}
+
+		function fillvaluelist(targetNode, srcArray) {
+
+			targetNode.innerHTML = srcArray.reduce((options, { value, name }) =>
+				options += `<option value="${value}">${name}</option>`,
+				'');
+
+		}
+
+
+
+		function updateMenuItems(select) {
+			var selectedOption = select.options[select.selectedIndex];
+			//    alert("The selected menu is " + selectedOption.value);
+			getMenuConfig(selectedOption.value);
+		}
+
+		function getMenuConfig(loadingMenuNumber) {
+
+			menuFileName = `config/menu${loadingMenuNumber}.json`;
+			console.log('getMenuConfig(): called with menu number ' + loadingMenuNumber);
+			console.log('getMenuConfig(): fetching ' + menuFileName);
+
+			// Load Menu
+			fetch(menuFileName)
+				.then((response) => {
+					return response.json()
+				})
+				.then((data) => {
+					console.log('getMenuConfig(): loading menu ' + menuFileName);
+
+					if (data.menuname !== undefined) {
+						document.getElementById('menuname').value = data.menuname;
+					}
+
+
+					for (let row = 1; row <= 3; row++) {
+						for (let col = 1; col <= 5; col++) {
+
+							buttonName = 'button' + row + col
+
+							if (data[buttonName] !== undefined) {
+								document.getElementById(buttonName + 'logo').value = data[buttonName]['logo'];
+
+								if (data[buttonName]['latch']) {
+									document.getElementById(buttonName + 'latch').checked = true;
+								} else {
+									document.getElementById(buttonName + 'latch').checked = false;
+								}
+
+								if (data[buttonName]['latchlogo'] == '') {
+									document.getElementById(buttonName + 'latchlogo').value = '---';
+								} else {
+									document.getElementById(buttonName + 'latchlogo').value = data[buttonName]['latchlogo'];
+								}
+
+								document.getElementById(buttonName + 'action0').value = data[buttonName]['actionarray'][0];
+								document.getElementById(buttonName + 'action1').value = data[buttonName]['actionarray'][1];
+								document.getElementById(buttonName + 'action2').value = data[buttonName]['actionarray'][2];
+
+								fillvaluelist(document.getElementById(buttonName + 'value0'), selecteditems[data[buttonName]['actionarray'][0]].subitems);
+								document.getElementById(buttonName + 'value0').value = data[buttonName]['valuearray'][0];
+								fillvaluelist(document.getElementById(buttonName + 'value1'), selecteditems[data[buttonName]['actionarray'][1]].subitems);
+								document.getElementById(buttonName + 'value1').value = data[buttonName]['valuearray'][1];
+								fillvaluelist(document.getElementById(buttonName + 'value2'), selecteditems[data[buttonName]['actionarray'][2]].subitems);
+								document.getElementById(buttonName + 'value2').value = data[buttonName]['valuearray'][2];
+							} else {
+								console.log('Button ' + buttonName + ' not found. Set to default values');
+								document.getElementById(buttonName + 'logo').value = 'question.bmp';
+
+								document.getElementById(buttonName + 'latch').checked = false;
+
+								document.getElementById(buttonName + 'latchlogo').value = '---';
+
+								document.getElementById(buttonName + 'action0').value = 0;
+								document.getElementById(buttonName + 'action1').value = 0;
+								document.getElementById(buttonName + 'action2').value = 0;
+								document.getElementById(buttonName + 'value0').value = 0;
+								document.getElementById(buttonName + 'value1').value = 0;
+								document.getElementById(buttonName + 'value2').value = 0;
+							}
+						}
+					}
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+		}
+
+		var loadIsComplete = false;
+
+		function getlogoconfig() {
+
+			var logolist = []; // Array holding the logos (empty to start)
+
+			var selects = document.getElementsByClassName('images');
+
+
+			fetch('/info')
+				.then((response4) => {
+					return response4.json()
+				})
+				.then((data4) => {
+					var divcontent = '';
+					data4.forEach(obj => {
+						Object.entries(obj).forEach(([key, value]) => {
+
+							divcontent += `${key}: ${value}<br>`;
+						});
+
+					});
+					document.getElementById("infocontent").innerHTML = divcontent;
+
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+
+				.then((data) => {
+					fetch('/list?dir=/logos')
+						.then((response2) => {
+							return response2.json()
+						})
+						.then((data2) => {
+							data2.forEach(obj => {
+								Object.entries(obj).forEach(([key, value]) => {
+									logolist.push(`${value}`);
+									var i = selects.length;
+									while (i--) {
+										var select = selects[i];
+										select.add(new Option(`${value}`, `${value}`));
+									}
+
+								});
+							});
+
+							var i = selects.length;
+							while (i--) {
+								var select = selects[i];
+								select.add(new Option('---', '---'));
+							}
+
+							var checkboxlist = '<form method="post" id="delete" action="/editor">';
+							data2.forEach(obj => {
+								Object.entries(obj).forEach(([key, value]) => {
+
+									var input = createCheck(value); // Creates the html for the checkbox
+									checkboxlist += input;
+
+								});
+
+							});
+							checkboxlist += '<br><button style="cursor: pointer;"" type="save">Dateien löschen</button></form>';
+							document.getElementById("deletefilelist").innerHTML = checkboxlist;
+
+						})
+						.then(() => {
+							document.getElementById("contentloading").style.display = "none";
+							document.getElementById('ball-loader').style.display = "none";
+							document.getElementById("maincontent").style.display = "block";
+							loadIsComplete = true;
+						})
+						.catch((err) => {
+							console.log(err)
+						})
+
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+
+
+		}
+
+		// Function to get Sleep settings:
+		function getwificonfig() {
+
+			// Load Menu 5
+			fetch('config/wificonfig.json')
+				.then((response) => {
+					return response.json()
+				})
+				.then((data) => {
+
+
+					document.getElementById("ssid").value = data.ssid;
+					document.getElementById("password").value = data.password;
+					document.getElementById("wifimode").value = data.wifimode;
+					document.getElementById("wifihostname").value = data.wifihostname;
+					document.getElementById("attempts").value = data.attempts;
+					document.getElementById("attemptdelay").value = data.attemptdelay;
+
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+		}
+
+		// Five applications, each with eleven buttons, each with action and value arrays
+		var hwbuttondefs =
+			[[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]]];
+
+		// Five applications, each with four axis, each with action and value arrays
+		const PanAxis = 0;
+		const TiltAxis = 1;
+		const ZoomAxis = 2;
+		const RotateAxis = 3;
+		axisbuttondefs =
+			[[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]],
+			[[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]],
+			[["0", "0", "0"], ["0", "0", "0"]]]];
+
+		var current_program_index = 0;
+		var current_button_index = 0;
+
+		function getCADParamsConfig() {
+
+
+			fetch('config/cadparams.json')
+				.then((response) => {
+					return response.json()
+				})
+				.then((data) => {
+
+					document.getElementById("joy_scale_x").value = data.joy_scale_x;
+					document.getElementById("joy_scale_y").value = data.joy_scale_y;
+					document.getElementById("joy_deadzone").value = data.joy_deadzone;
+					document.getElementById("joy_sensitivity").value = data.joy_sensitivity;
+					document.getElementById("zoom_scale").value = data.zoom_scale;
+					document.getElementById("zoom_deadzone").value = data.zoom_deadzone;
+					document.getElementById("zoom_sensitivity").value = data.zoom_sensitivity;
+					document.getElementById("rotate_scale").value = data.rotate_scale;
+					document.getElementById("rotate_deadzone").value = data.rotate_deadzone;
+					document.getElementById("rotate_sensitivity").value = data.rotate_sensitivity;
+					document.getElementById("current_program").value = data.current_program;
+					document.getElementById("selected_program").value = data.current_program;
+
+					for (let program = 0; program < 5; program++) {
+						console.log('Loading program ' + program);
+						for (let button = 0; button <= 10; button++) {
+							console.log('   Loading defn button ' + button);
+							hwbuttondefs[program][button][0][0] = data.programs[program].buttons[button].actionarray[0];
+							hwbuttondefs[program][button][0][1] = data.programs[program].buttons[button].actionarray[1];
+							hwbuttondefs[program][button][0][2] = data.programs[program].buttons[button].actionarray[2];
+							hwbuttondefs[program][button][1][0] = data.programs[program].buttons[button].valuearray[0];
+							hwbuttondefs[program][button][1][1] = data.programs[program].buttons[button].valuearray[1];
+							hwbuttondefs[program][button][1][2] = data.programs[program].buttons[button].valuearray[2];
+						}
+					}
+
+					current_program_index = data.current_program;
+					current_button_index = 0;
+					show_hwbutton_def(current_program_index, current_button_index);
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+		}
+
+		function show_hwbutton_def(program_index, button_index) {
+			document.getElementById("selected_hw_button").value = "Button " + (button_index);
+
+			document.getElementById("joybuttonaction0").value = hwbuttondefs[program_index][button_index][0][0];
+			document.getElementById("joybuttonaction1").value = hwbuttondefs[program_index][button_index][0][1];
+			document.getElementById("joybuttonaction2").value = hwbuttondefs[program_index][button_index][0][2];
+
+			fillvaluelist(document.getElementById("joybuttonvalue0"), selecteditems[hwbuttondefs[program_index][button_index][0][0]].subitems);
+			document.getElementById("joybuttonvalue0").value = hwbuttondefs[program_index][button_index][1][0];
+			fillvaluelist(document.getElementById("joybuttonvalue1"), selecteditems[hwbuttondefs[program_index][button_index][0][1]].subitems);
+			document.getElementById("joybuttonvalue1").value = hwbuttondefs[program_index][button_index][1][1];
+			fillvaluelist(document.getElementById("joybuttonvalue2"), selecteditems[hwbuttondefs[program_index][button_index][0][2]].subitems);
+			document.getElementById("joybuttonvalue2").value = hwbuttondefs[program_index][button_index][1][2];
+		}
+
+
+		function select_new_button(button_index) {
+			current_button_index = button_index;
+			show_hwbutton_def(current_program_index, current_button_index);
+		}
+
+		function update_selected_program_items(select) {
+			var selectedOption = select.options[select.selectedIndex];
+			current_program_index = selectedOption.value;
+			show_hwbutton_def(current_program_index, current_button_index);
+		}
+
+
+		function update_hwbutton_def(select, actionValue, arrayIndex) {
+
+			let validArrayIndex = false;
+
+			if (loadIsComplete) {
+				switch (arrayIndex) {
+					case 0:
+						hwbuttondefs[current_program_index][current_button_index][0][0] = document.getElementById('joybuttonaction0').value;
+						hwbuttondefs[current_program_index][current_button_index][1][0] = document.getElementById('joybuttonvalue0').value;
+						validArrayIndex = true;
+						break;
+
+					case 1:
+						hwbuttondefs[current_program_index][current_button_index][1][1] = document.getElementById('joybuttonvalue1').value;
+						hwbuttondefs[current_program_index][current_button_index][0][1] = document.getElementById('joybuttonaction1').value;
+						validArrayIndex = true;
+						break;
+
+					case 2:
+						hwbuttondefs[current_program_index][current_button_index][0][2] = document.getElementById('joybuttonaction2').value;
+						hwbuttondefs[current_program_index][current_button_index][1][2] = document.getElementById('joybuttonvalue2').value;
+						validArrayIndex = true;
+						break;
+
+					default:
+				}
+
+				if (validArrayIndex) {
+					let xhr = new XMLHttpRequest();
+
+					xhr.open("GET", "/updatebutton?app=" + current_program_index + "&button=" + current_button_index +
+						"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
+						"&action=" + hwbuttondefs[current_program_index][current_button_index][0][arrayIndex] +
+						"&value=" + hwbuttondefs[current_program_index][current_button_index][1][arrayIndex], true);
+
+					xhr.send();
+
+					console.log("updatebutton?app=" + current_program_index + "&button=" + current_button_index +
+						"&arrayIndex=" + arrayIndex + "&actionValue=" + actionValue +
+						"&action=" + hwbuttondefs[current_program_index][current_button_index][0][arrayIndex] +
+						"&value=" + hwbuttondefs[current_program_index][current_button_index][1][arrayIndex]);
+				}
+			}
+		}
+
+
+
+		// Load Colors and then other configs
+		fetch('config/general.json')
+			.then((response) => {
+				return response.json()
+			})
+			.then((data) => {
+
+				document.getElementById("menubuttoncolor").value = data.menubuttoncolor;
+				document.getElementById("functionbuttoncolor").value = data.functionbuttoncolor;
+				document.getElementById("latchcolor").value = data.latchcolor;
+				document.getElementById("background").value = data.background;
+				document.getElementById("sleepenable").value = data.sleepenable;
+				document.getElementById("usbcommsenable").value = data.usbcommsenable;
+				document.getElementById("sleeptimer").value = data.sleeptimer;
+				document.getElementById("beep").value = data.beep;
+				document.getElementById("modifier1").value = data.modifier1;
+				document.getElementById("modifier2").value = data.modifier2;
+				document.getElementById("modifier3").value = data.modifier3;
+				document.getElementById("helperdelay").value = data.helperdelay;
+				document.getElementById("startup_menu").value = data.startup_menu;
+				document.getElementById("gpio_pin").value = data.gpio_pin;	
+			}).then(() => {
+				getwificonfig();
+			})
+			.then(() => {
+				getMenuConfig(0);
+			})
+			.then(() => {
+				getCADParamsConfig();
+			})
+			.then(() => {
+				getlogoconfig();
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	</script>
+
+
+</body>
+
+</html>
