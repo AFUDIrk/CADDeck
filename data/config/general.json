@@ -1,17 +1,17 @@
 {
-  "menubuttoncolor": "#00ECC8",
+  "menubuttoncolor": "#000000",
   "functionbuttoncolor": "#000000",
-  "latchcolor": "#F80048",
+  "latchcolor": "#f80048",
   "background": "#000000",
   "sleepenable": false,
   "usbcommsenable": false,
-  "beep": true,
+  "beep": false,
   "sleeptimer": 10,
   "modifier1": 130,
   "modifier2": 129,
   "modifier3": 0,
   "helperdelay": 500,
   "startup_menu": 0,
-  "gpio_pin": 4,
+  "gpio_pin": 25,
   "gpio_pin_mode": 0
 }
