@@ -29,7 +29,7 @@ const uint16_t CALIBRATION_TIME_MS = 10000;
 
 // The buttons are on the pcf857X encoder. pins "Pn" are the PCF857X pin numbers
 #ifdef NEW_PINS
-const uint8_t BUTTON_0 = P0;  //P0
+const uint8_t BUTTON_0 = P0;  //P0 Einstellung für Platinenversion
 const uint8_t BUTTON_1 = P1;  //P3
 const uint8_t BUTTON_2 = P2;  //P1
 const uint8_t BUTTON_3 = P3;  //P4
