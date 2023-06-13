@@ -50,13 +50,8 @@
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'editor')">Datei-Editor</button>
 
-			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">JSON File
-				hochladen</button>
-
-
-
-
-
+			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'uploadjson')">JSON Datei
+				    hochladen</button>
 
 			<button style="float: right;" class="tablinks" onclick="openMenu(event, 'downloadjson')">Konfig Menü
 				Herunterladen</button>
@@ -244,11 +239,11 @@
 				<option value="8">8</option>
 				<option value="9">9</option>
 			</select>
-			<br>
-			
-			&nbsp;&nbsp;Steuerbarer GPIO-Pin:&nbsp;
+						<br>
+
+			&nbsp;&nbsp;Steuerbarer GPIO Pin:&nbsp;
 			<select class="gpio_pin" id='gpio_pin' name='gpio_pin'>
-				<option value="255">Keiner</option>
+				<option value="255">keiner</option>
 				<option value="4">4</option>
 				<option value="5">5</option>
 				<option value="25">25</option>
@@ -637,7 +632,7 @@
 			&nbsp;&nbsp;Zoom Sensitivität:&nbsp;
 			<select class="zoom_sensitivity" id='zoom_sensitivity' name='zoom_sensitivity'>
 				<option value="1">1</option>
-				<option value="2">2</option>				
+				<option value="2">2</option>		
 				<option value="5">5</option>
 				<option value="10">10</option>
 				<option value="20">20</option>
@@ -1562,20 +1557,22 @@
 			{
 				name: 'USB-Kommunikation aktivieren',
 				value: '8'
+		    },
 			{
-				name: 'IO Monitor Page',
+				name: 'IO Monitor Seite',
 				value: '9'
 			},
 			{
-				name: 'Toggle GPIO Pin',
+				name: 'GPIO-Pin umschalten',
 				value: '10'
 			},
 			{
-				name: 'Set GPIO Pin Low',
+				name: 'Setze GPIO-Pin auf Low',
 				value: '11'
 			},
 			{
-				name: 'Set GPIO Pin High',
+				name: 'Setze GPIO-Pin auf High',
+				value: '12'
 			}
 			]
 		},
