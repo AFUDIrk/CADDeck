@@ -22,7 +22,7 @@ Kaufen Sie das Basisboard, nicht die „Plus“-Version, da das Plus eine parall
 usw. Das Board enthält ein ESP32-Modul und ein 3,5-Zoll-LCD mit kapazitivem Touchscreen.
 
 
-## S/W-Build-Hinweise:
+## S/W-Aufbau-Hinweise:
 1. Der Build verwendet die PlatformIO-IDE für VSCode. Installieren Sie VSCode, dann das PlatformIO-Plugin und schon kann es losgehen.
 2. Sie müssen sicherstellen, dass die entsprechenden Pins für Ihre Hardwarekonfiguration definiert sind. Ich habe meines für den WT32-SC01 gebaut und den Code für ein handverdrahtetes ESP32-Modul + einen resistiven Touchscreen erstellt.
 3. Möglicherweise sehen Sie Build-Meldungen wie
@@ -59,7 +59,7 @@ Dies ist ein bekanntes Problem mit ESPAsyncWebsServer im Zusammenhang mit von Li
 Versuchen Sie, LOG_MSG_LEVEL auf 3 zu setzen, und Sie erhalten weitere Statusmeldungen
 
 
-# Hardware-Build
+# Hardware-Aufbau
 
 ![Assembly](images/Assembly.png)
 
@@ -70,7 +70,7 @@ Die Verweise auf Tastennummern werden in diesem Diagramm angezeigt:
 
 ![Schaltflächennummern](images/ButtonLayout.png)
 
-## Fall
+## Gehäuse
 Ein Fusion360-Modell des Falls und STL-Dateien sind im CADDeck-Repository enthalten. Das Hauptgehäuse ist zweiteilig bedruckt.
 Das Ober- und Unterteil wird von unten mit M3-Kopfschrauben verschraubt.
 
@@ -80,7 +80,7 @@ Es gibt keine offensichtliche Möglichkeit, den Bildschirm am Gehäuse zu befest
 Zuerst wird das Display in das Gehäuse geschoben, bis es in den hinteren Abstandshaltern einrastet.
 Anschließend wird die TPU-Dichtung zwischen Gehäuse und Display geschoben und abschließend die beiden vorderen Abstandshalter eingefügt.
 Bei Bedarf kann das Display mit zwei Schrauben von hinten gegen die TPU-Dichtung gedrückt werden.
-Aber war für mich nicht nötig.
+Aber war bei mir nicht nötig.
 
 ![Bildschirmanhang](images/displayinstallation.png)
 ![Bildschirmanhang](images/ScreenAttachment.png)
@@ -92,7 +92,7 @@ Die USB-C-Adapterplatine wird mit zwei selbstschneidenden Schrauben an der klein
 6 x M3-Flachkopfschrauben gehen durch die Unterseite des Gehäuses und dienen dazu, das Gehäuse geschlossen zu halten.
 4 x M3-Flachkopfschrauben kommen durch die Unterseite des Gehäuses und dienen zur Befestigung sowohl des Joysticks als auch der Schalterplatte mit den 10 Schaltern.
 
-## Joystick-Taste
+## Joystick-Knopf
 
 ![button](images/guidesleeve.png)
 
@@ -101,9 +101,9 @@ und das untere habe ich vorher auf eine kleine Lochmusterplatine gelötet und da
 Für die Erstellung steht auch ein Platinenlayout zur Verfügung.
 Platinen für die 10 Schalter und für den Taster habe ich bereits anfertigen lassen, dadurch ist der Aufbau übersichtlicher und die Verkabelung der MX-Taster entfällt.
 
-![PCB] (images/Knopfplatine_oben.png) (images/Knopfplatine_unten.png)
+![PCB] (images/Knopfplatineoben.png) (images/Knopfplatineunten.png)
 
-![PCB] (images/Schalterplatine_oben.png) (images/Schalterplatine_unten.png)
+![PCB] (images/Schalterplatineoben.png) (images/Schalterplatineunten.png)
 
 ![Knobinterior](images/Knobinterior.png)
 
@@ -155,7 +155,7 @@ Menge 1 [Kapazitiver Berührungsschalter TTP223](https://www.aliexpress.com/i/33
 Menge 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (Diese gibt es in verschiedenen Ausführungen. Mit oder ohne Klick, starker oder leichter Widerstand.)
 
 Menge 1 [FrSky M9 Joystick] (https://www.ebay.de/itm/374032459911) Dieses Gerät ist etwas teuer, aber von guter Qualität.
-Funktionell gibt es nichts Besonderes – man braucht nur etwas mit analogen X- und Y-Ausgängen.
+        Funktionell gibt es nichts Besonderes – man braucht nur etwas mit analogen X- und Y-Ausgängen.
 
 
 Menge 1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
@@ -165,7 +165,7 @@ Menge 1 [USB-C-Adapterplatine] (https://www.aliexpress.com/item/1005003446036071
 Menge 2 [Hallsensoren 49E](https://www.aliexpress.com/item/1903819684.html)
 
 Menge 40 [Klebe-Ausgleichsgewichte](https://www.ebay.de/itm/363221786745) (Bei Bedarf. Als ich den Knopf hochzog, war das Gehäuse zu leicht für mich.
-Sie können aber auch etwas anderes verwenden, um das Gewicht zu erhöhen.)
+         Sie können aber auch etwas anderes verwenden, um das Gewicht zu erhöhen.)
 
 Menge 10 10k 1/8W Push-Through-Widerstände Cherry MX-Druckknopf
 
@@ -181,11 +181,11 @@ Menge 6 Neodym-Magnet N52 8x1mm (in der Joystick-Taste oben und unten)
 
 Menge 3 Neodym-Magnet N52 8x3mm (im Joystick-Knopf in der Mitte)
 
-Anzahl 6 Schrauben M3x10mm (für das Gehäuse)
+Menge 6 Schrauben M3x10mm (für das Gehäuse)
 
-Anzahl 4 Schrauben M3x20mm (zur Befestigung des Joysticks)
+Menge 4 Schrauben M3x20mm (zur Befestigung des Joysticks)
 
-Anzahl 9 Schrauben M2x5mm (zur Befestigung des Rads an der Joystick-Taste, der USB-C-Platine und zur Befestigung des PCF8575)
+Menge 9 Schrauben M2x5mm (zur Befestigung des Rads an der Joystick-Taste, der USB-C-Platine und zur Befestigung des PCF8575)
 
 Menge 1 M4x16mm Sechskant-Abstandsbolzen ![Innenknopf](images/M4_hex_standoff.png)
 
@@ -219,11 +219,11 @@ So kalibrieren Sie den Joystick und den Knopf:
 1. Gehen Sie zurück zur Seite CAD-Einstellungen
 2. Drücken Sie die Joystick-Nulltaste, wenn der Joystick zentriert und stationär ist. Dadurch wird der Nullpunkt für Joystick und Knopf festgelegt.
 3. Drücken Sie die Joystick-Skalentaste und bewegen Sie den Joystick zum äußersten X- und Y-Punkt, drehen Sie den Knopf und drücken Sie ihn nach oben und unten.
-Du hast 5 Sekunden Zeit.
-Sobald die Funktion abgeschlossen ist, werden die Kalibrierungsparameter berechnet und alle Achsen sollten einen Bereich von ungefähr +/- 1 sowohl in X als auch in Y anzeigen.
+   Du hast 5 Sekunden Zeit.
+   Sobald die Funktion abgeschlossen ist, werden die Kalibrierungsparameter berechnet und alle Achsen sollten einen Bereich von ungefähr +/- 1 sowohl in X als auch in Y anzeigen.
 4. Wenn Sie mit der Kalibrierung zufrieden sind, klicken Sie auf die Schaltfläche „CAD-Konfiguration speichern“ und die Parameter werden in der Datei cadparams.json im ESP32 gespeichert.
-Diese Datei kann vom ESP32 über die Seite CAD-Einstellungen im Konfigurator auf Ihren PC heruntergeladen werden.
-Es empfiehlt sich, dies zu tun und die Datei in den Ordner data\config im CADDeck-Code zu kopieren, damit Sie die Parameter nicht verlieren, wenn Sie den Datenordner das nächste Mal auf den ESP32 hochladen.
+   Diese Datei kann vom ESP32 über die Seite CAD-Einstellungen im Konfigurator auf Ihren PC heruntergeladen werden.
+   Es empfiehlt sich, dies zu tun und die Datei in den Ordner data\config im CADDeck-Code zu kopieren, damit Sie die Parameter nicht verlieren, wenn Sie den Datenordner das nächste Mal auf den ESP32 hochladen.
 4. Wenn Sie mit den Ergebnissen nicht zufrieden sind, versuchen Sie es erneut.
 
 Verbinden Sie Ihren Computer über die Bluetooth-Einstellungsseite Ihres Computers mit CADDeck.
@@ -274,7 +274,7 @@ Die Hardwaretasten werden über eine spezielle Seite innerhalb desselben webbasi
 Der obere Abschnitt umfasst:
 1. Aktuelles CAD-Programm: Dies ist das Programm, dessen Einstellungen geladen werden, wenn CADDeck neu gestartet wird
 2. X- und Y-Skalierungsparameter für Joystick und Knopf. Diese können manuell eingestellt werden
-Es gibt jedoch eine Funktion, die Daten sammelt, während der Joystick ganz nach unten gedrückt wird, und den Maßstab für Sie berechnet. Die Ausgabeskalierung beträgt +/-1
+   Es gibt jedoch eine Funktion, die Daten sammelt, während der Joystick ganz nach unten gedrückt wird, und den Maßstab für Sie berechnet. Die Ausgabeskalierung beträgt +/-1
 3. Deadzone von Joystick und Knopf. Jeder X- oder Y-Wert mit einem absoluten Wert unter dieser Zahl wird auf Null gesetzt.
 4. Joystick-Empfindlichkeit. Joystick-Werte werden bei der Umwandlung in Mausbewegungsbefehle damit multipliziert
 5. Empfindlichkeit des Knopfes. Der Knob-Wert wird damit multipliziert und in Mausbewegungsbefehle umgewandelt
@@ -325,5 +325,6 @@ Menünummern werden wie folgt vergeben:
 9. Menü 8: Fusion360-Aktionen
 10. Menü 9: Nicht verwendet
  
-Wenn Sie Unterstützung bei der Einrichtung benötigen, können Sie meinem Discord-Server beitreten.https://discord.gg/kFvPhqmc
+Wenn Sie Unterstützung bei der Einrichtung oder beim Beschaffen der Platinen benötigen,
+können Sie meinem Discord-Server beitreten.https://discord.gg/kFvPhqmc
 
