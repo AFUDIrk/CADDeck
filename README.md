@@ -101,9 +101,9 @@ und das untere habe ich vorher auf eine kleine Lochmusterplatine gelötet und da
 Für die Erstellung steht auch ein Platinenlayout zur Verfügung.
 Platinen für die 10 Schalter und für den Taster habe ich bereits anfertigen lassen, dadurch ist der Aufbau übersichtlicher und die Verkabelung der MX-Taster entfällt.
 
-![PCB] (images/Knopfplatineoben.png) (images/Knopfplatineunten.png)
+![PCB] (images/knopfplatineoben.png) (images/knopfplatineunten.png)
 
-![PCB] (images/Schalterplatineoben.png) (images/Schalterplatineunten.png)
+![PCB] (images/schalterplatineoben.png) (images/schalterplatineunten.png)
 
 ![Knobinterior](images/Knobinterior.png)
 
