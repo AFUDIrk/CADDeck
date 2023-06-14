@@ -181,7 +181,9 @@ Quantity 6 neodymium magnet N52 8x1mm (in the joystick button above and below)
 
 Quantity 3 neodymium magnet N52 8x3mm (inside the joystick button in the middle)
 
-Quantity 10 screws M3x16mm (for the housing and for attaching the joystick)
+Quantity 6 screws M3x10mm (for the housing)
+
+Quantity 4 screws M3x20mm (for attaching the joystick)
 
 Quantity 9 screws M2x5mm (to attach the wheel to the joystick button, the USB-C board and to attach the PCF8575)
 
