@@ -1,7 +1,7 @@
 (export (version "E")
   (design
     (source "U:\\3D Modelle\\Sonstiges\\3D-Mouse\\CADDeck-mit Display_AFUDirk\\hardware\\Electrical\\CADDeck.kicad_sch")
-    (date "18.06.2023 14:23:04")
+    (date "18.06.2023 14:25:08")
     (tool "Eeschema 7.0.2")
     (sheet (number "1") (name "/") (tstamps "/")
       (title_block
@@ -32,7 +32,6 @@
       (tstamps "77cbd2f5-f710-46ae-8fff-398ea60ac81d"))
     (comp (ref "J2")
       (value "Conn_01x05_Pin")
-      (footprint "Connector_JST:JST_XA_B05B-XASK-1_1x05_P2.50mm_Vertical")
       (libsource (lib "Connector") (part "Conn_01x05_Pin") (description "Generic connector, single row, 01x05, script generated"))
       (property (name "Sheetname") (value ""))
       (property (name "Sheetfile") (value "CADDeck.kicad_sch"))
@@ -42,7 +41,6 @@
       (tstamps "ca81ee0d-27f7-4c20-b0f0-bb085e480632"))
     (comp (ref "J3")
       (value "Conn_01x04_Pin")
-      (footprint "Connector_JST:JST_XA_B04B-XASK-1_1x04_P2.50mm_Vertical")
       (libsource (lib "Connector") (part "Conn_01x04_Pin") (description "Generic connector, single row, 01x04, script generated"))
       (property (name "Sheetname") (value ""))
       (property (name "Sheetfile") (value "CADDeck.kicad_sch"))
@@ -72,7 +70,6 @@
       (tstamps "da64a59e-48ed-4574-87c1-536fb5c0e32a"))
     (comp (ref "J6")
       (value "Conn_01x10_Pin")
-      (footprint "Connector_JST:JST_XA_B10B-XASK-1-A_1x10_P2.50mm_Vertical")
       (libsource (lib "Connector") (part "Conn_01x10_Pin") (description "Generic connector, single row, 01x10, script generated"))
       (property (name "Sheetname") (value ""))
       (property (name "Sheetfile") (value "CADDeck.kicad_sch"))
