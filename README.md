@@ -146,59 +146,61 @@ Ein [Verdrahtungsplan] (hardware/Electrical/WiringDiagram10Buttons.pdf) ist im O
 ![Innenansicht](images/Innenansichtverkabelt.png)
 
 ## Teileliste
-Menge 1 [ESP32-SC01 LCD-Touchscreen] (https://www.aliexpress.com/item/1005004399769442.html)
+Menge  1 [ESP32-SC01 LCD-Touchscreen] (https://www.aliexpress.com/item/1005004399769442.html)
 
-Menge 1 [2mm 2x20 Pin Header](https://www.aliexpress.com/item/1005001852671581.html)
+Menge  1 [2mm 2x20 Pin Header](https://www.aliexpress.com/item/1005001852671581.html)
 
-Menge 1 [Kapazitiver Berührungsschalter TTP223](https://www.aliexpress.com/i/33012282190.html)
+Menge  1 [Kapazitiver Berührungsschalter TTP223](https://www.aliexpress.com/i/33012282190.html)
 
 Menge 10 [Cherry MX Button](https://www.ebay.de/itm/183967039197) (Diese gibt es in verschiedenen Ausführungen. Mit oder ohne Klick, starker oder leichter Widerstand.)
 
-Menge 1 [FrSky M9 Joystick] (https://www.ebay.de/itm/374032459911) Dieses Gerät ist etwas teuer, aber von guter Qualität.
-        Funktionell gibt es nichts Besonderes – man braucht nur etwas mit analogen X- und Y-Ausgängen.
+Menge  1 [FrSky M9 Joystick] (https://www.ebay.de/itm/374032459911) Dieses Gerät ist etwas teuer, aber von guter Qualität.
+         Funktionell gibt es nichts Besonderes – man braucht nur etwas mit analogen X- und Y-Ausgängen.
 
 
-Menge 1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
+Menge  1 [PCF8575 I2C IO Expander] (https://www.aliexpress.com/item/1005004433286881.html)
 
-Menge 1 [USB-C-Adapterplatine] (https://www.aliexpress.com/item/1005003446036071.html)
+Menge  1 [USB-C-Adapterplatine] (https://www.aliexpress.com/item/1005003446036071.html)
 
-Menge 2 [Hallsensoren 49E](https://www.aliexpress.com/item/1903819684.html)
+Menge  2 [Hallsensoren 49E](https://www.aliexpress.com/item/1903819684.html)
 
 Menge 40 [Klebe-Ausgleichsgewichte](https://www.ebay.de/itm/363221786745) (Bei Bedarf. Als ich den Knopf hochzog, war das Gehäuse zu leicht für mich.
          Sie können aber auch etwas anderes verwenden, um das Gewicht zu erhöhen.)
 
 Menge 10 10k 1/8W Push-Through-Widerstände Cherry MX-Druckknopf
 
-Menge 6 M3-Messingeinsätze (für Gehäuseoberseite)
+Menge  6 M3-Messingeinsätze (für Gehäuseoberseite)
 
-Menge 3 M2-Messingeinsätze (für den Joystick-Knopf zum Befestigen des Rads)
+Menge  3 M2-Messingeinsätze (für den Joystick-Knopf zum Befestigen des Rads)
 
-Menge 3 selbstschneidende Schrauben 2,2x5mm (für Magnethalter unten)
+Menge  3 selbstschneidende Schrauben 2,2x5mm (für Magnethalter unten)
 
 Menge 11 Neodym-Magnete N52 5x5x1mm (9 Stück für die Drehbewegung und zwei Stück übereinander für den Hallsensor)
 
-Menge 6 Neodym-Magnet N52 8x1mm (in der Joystick-Taste oben und unten)
+Menge  6 Neodym-Magnet N52 8x1mm (in der Joystick-Taste oben und unten)
 
-Menge 3 Neodym-Magnet N52 8x3mm (im Joystick-Knopf in der Mitte)
+Menge  3 Neodym-Magnet N52 8x3mm (im Joystick-Knopf in der Mitte)
 
-Menge 6 Schrauben M3x10mm (für das Gehäuse)
+Menge  6 Schrauben M3x10mm (für das Gehäuse)
 
-Menge 4 Schrauben M3x20mm (zur Befestigung des Joysticks)
+Menge  4 Schrauben M3x20mm (zur Befestigung des Joysticks)
 
-Menge 9 Schrauben M2x5mm (zur Befestigung des Rads an der Joystick-Taste, der USB-C-Platine und zur Befestigung des PCF8575)
+Menge  9 Schrauben M2x5mm (zur Befestigung des Rads an der Joystick-Taste, der USB-C-Platine und zur Befestigung des PCF8575)
 
-Menge 1 M4x16mm Sechskant-Abstandsbolzen ![Innenknopf](images/M4_hex_standoff.png)
+Menge  1 M4x16mm Sechskant-Abstandsbolzen ![Innenknopf](images/M4_hex_standoff.png)
 
+Menge  1 JST RM 2,54 mm Stecker und Stiftleiste  5-polig
 
-JST RM 2,54 mm Stecker 5-polig.
+Menge  1 JST RM 2,54 mm Stecker und Stiftleiste  4-polig
 
-JST RM 2,54 mm Stecker 2-polig.
+Menge  1 JST RM 2,54 mm Stecker und Stiftleiste 10-polig
 
-Dupont-Stecker RM 2,54 mm
 
 Leicht weicher Schaumstoff (zwischen Joystick-Taste und Joystick)
 
-26 AWG (0,14 mm²) Silikondraht (vorzugsweise in mehreren Farben, um Verwechslungen zu vermeiden)
+26 AWG (0,14 mm²) Silikondraht für die Verbindung zwischen den Platinen(vorzugsweise in mehreren Farben, um Verwechslungen zu vermeiden)
+
+30 AWG (0,05 mm²) Silikondraht für den Knopf(vorzugsweise in mehreren Farben, um Verwechslungen zu vermeiden)
 
 # Aufstellen
 Sobald das Gerät zusammengebaut ist und das Display erscheint, sollten Sie die Hauptseite sehen.
