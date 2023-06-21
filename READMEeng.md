@@ -105,6 +105,10 @@ I have already had circuit boards made for the 10 switches and for the button, t
 
 ![PCB] (images/Schalterplatine_oben.png) (images/Schalterplatine_unten.png)
 
+![PCB](images/knopfplatineoben.png) 
+![PCB](images/knopfplatineunten.png)
+![PCB](images/schalterplatineoben.png) 
+![PCB](images/schalterplatineunten.png)								   
 ![Knobinterior](images/Knobinterior.png)
 
 ![button](images/pcb.png)
@@ -189,12 +193,13 @@ Quantity 9 screws M2x5mm (to attach the wheel to the joystick button, the USB-C 
 
 Quantity 1 M4x16mm hex standoff ![Inside Knob](images/M4_hex_standoff.png)
 
+Quantity 1 JST RM 2,54 mm connector and pin header  5-pin
 
-JST RM 2.54mm connector 5 pin.
+Quantity 1 JST RM 2.54mm male and female header 4 pin
 
-JST RM 2.54mm connector 2 pin.
+Quantity 1 JST RM 2.54mm male and female header 10 pin
 
-Dupont connector RM 2.54 mm
+
 
 Slightly soft foam (between joystick button and joystick)
 
@@ -325,5 +330,6 @@ Menu numbers are assigned as follows:
 9. Menu 8: Fusion360 Actions
 10. Menu 9: Not used
  
- If you need support to set it up, you can join my discord server.https://discord.gg/kFvPhqmc
+If you need assistance with setup or sourcing the boards,
+you can join my discord server.https://discord.gg/kFvPhqmc
 
