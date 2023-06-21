@@ -1,7 +1,7 @@
 # CADdeck
 ![Systemfoto](images/systemphoto.png)
 
-Die englishe[Anleitung](/READMEeng.md) Anleitung
+The english[Anleitung](/READMEeng.md) Manual
 
 Hierbei handelt es sich um ein kombiniertes Joystick- und Touchpanel-Display, das für die Verwendung mit gängigen CAD-Programmen geeignet ist. Es beinhaltet:
 1. Zwei-Achsen-Joystick (z. B. für X-, Y-Schwenk)

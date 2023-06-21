@@ -141,7 +141,7 @@ Now align the switch console so that the switch caps do not jam and finally tigh
 In the picture directory there are a few more pictures of how I printed out the support.
 
 ## wiring
-A [Wiring Diagram] (hardware/Electrical/WiringDiagram10Buttons.pdf) is included in the hardware/electrical folder. Most of this is straightforward.
+A [Wiring Diagram](hardware/Electrical/WiringDiagram10Buttons.pdf) is included in the hardware/electrical folder. Most of this is straightforward.
 
 ![Inside view](images/Innenansichtverkabelt.png)
 
