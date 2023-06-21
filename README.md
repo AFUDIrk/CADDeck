@@ -1,7 +1,8 @@
 # CADdeck
 ![Systemfoto](images/systemphoto.png)
 
-![Anleitung]Englische Anleitung(/READMEeng.md)
+Die englishe[Anleitung](/READMEeng.md) Anleitung
+Ein [Schaltplan](hardware/Electrical/WiringDiagram10Buttons.pdf)
 
 Hierbei handelt es sich um ein kombiniertes Joystick- und Touchpanel-Display, das für die Verwendung mit gängigen CAD-Programmen geeignet ist. Es beinhaltet:
 1. Zwei-Achsen-Joystick (z. B. für X-, Y-Schwenk)
@@ -143,7 +144,7 @@ Richten Sie nun die Schalterkonsole so aus, dass die Schalterkappen nicht verkle
 Im Bilderverzeichnis gibt es noch ein paar Bilder, wie ich die Stütze ausgedruckt habe.
 
 ## Verkabelung
-Ein [Verdrahtungsplan] (hardware/Electrical/WiringDiagram10Buttons.pdf) ist im Ordner „hardware/electrical“ enthalten. Das meiste davon ist unkompliziert.
+Ein [Schaltplan](hardware/Electrical/WiringDiagram10Buttons.pdf) ist im Ordner hardware/electrical enthalten. Das meiste davon ist unkompliziert.
 
 ![Innenansicht](images/Innenansichtverkabelt.png)
 
