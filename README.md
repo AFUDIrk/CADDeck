@@ -2,7 +2,6 @@
 ![Systemfoto](images/systemphoto.png)
 
 Die englishe[Anleitung](/READMEeng.md) Anleitung
-Ein [Schaltplan](hardware/Electrical/WiringDiagram10Buttons.pdf)
 
 Hierbei handelt es sich um ein kombiniertes Joystick- und Touchpanel-Display, das für die Verwendung mit gängigen CAD-Programmen geeignet ist. Es beinhaltet:
 1. Zwei-Achsen-Joystick (z. B. für X-, Y-Schwenk)
