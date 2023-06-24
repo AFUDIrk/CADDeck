@@ -34,9 +34,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 0.41,
-          "width": 1.8
+          "drill": 4.0,
+          "height": 4.0,
+          "width": 4.0
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -446,7 +446,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "CADDeck.sch.net",
+      "netlist": "CADDeck.net",
       "specctra_dsn": "",
       "step": "CADDeck.step",
       "vrml": ""
