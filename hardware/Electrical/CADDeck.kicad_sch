@@ -1618,29 +1618,29 @@
         )
       )
     )
-    (symbol "Transistor_BJT:BC857" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+    (symbol "Transistor_BJT:MMBT3904" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
       (property "Reference" "Q" (at 5.08 1.905 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
-      (property "Value" "BC857" (at 5.08 0 0)
+      (property "Value" "MMBT3904" (at 5.08 0 0)
         (effects (font (size 1.27 1.27)) (justify left))
       )
       (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 5.08 -1.905 0)
         (effects (font (size 1.27 1.27) italic) (justify left) hide)
       )
-      (property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC860-D.pdf" (at 0 0 0)
+      (property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" (at 0 0 0)
         (effects (font (size 1.27 1.27)) (justify left) hide)
       )
-      (property "ki_keywords" "PNP transistor" (at 0 0 0)
+      (property "ki_keywords" "NPN Transistor" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "ki_description" "0.1A Ic, 45V Vce, PNP Transistor, SOT-23" (at 0 0 0)
+      (property "ki_description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
       (property "ki_fp_filters" "SOT?23*" (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (symbol "BC857_0_1"
+      (symbol "MMBT3904_0_1"
         (polyline
           (pts
             (xy 0.635 0.635)
@@ -1669,11 +1669,11 @@
         )
         (polyline
           (pts
-            (xy 2.286 -1.778)
-            (xy 1.778 -2.286)
-            (xy 1.27 -1.27)
-            (xy 2.286 -1.778)
-            (xy 2.286 -1.778)
+            (xy 1.27 -1.778)
+            (xy 1.778 -1.27)
+            (xy 2.286 -2.286)
+            (xy 1.27 -1.778)
+            (xy 1.27 -1.778)
           )
           (stroke (width 0) (type default))
           (fill (type outline))
@@ -1683,7 +1683,7 @@
           (fill (type none))
         )
       )
-      (symbol "BC857_1_1"
+      (symbol "MMBT3904_1_1"
         (pin input line (at -5.08 0 0) (length 5.715)
           (name "B" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
@@ -4921,12 +4921,12 @@
     (property "Datasheet" "" (at 162.56 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
-    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f578b))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
+    (pin "" (uuid c4788a55-2276-41e1-8ab9-c0a3885f5790))
     (instances
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
@@ -4981,6 +4981,33 @@
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
           (reference "H6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Transistor_BJT:MMBT3904") (at 185.928 91.948 180) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3eac1701-104d-4982-8999-16d6c665a568)
+    (property "Reference" "Q1" (at 180.34 90.678 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "2N2222" (at 180.34 93.218 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 180.848 90.043 0)
+      (effects (font (size 1.27 1.27) italic) (justify left) hide)
+    )
+    (property "Datasheet" "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" (at 185.928 91.948 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (pin "1" (uuid 0c2ab719-fd2d-4483-b8a4-a076800c82b0))
+    (pin "2" (uuid 37d5b785-d855-45b3-a554-6eacf0ac988f))
+    (pin "3" (uuid f5cedeac-2dbc-43fd-9406-7a34c08c9fd1))
+    (instances
+      (project "CADDeck"
+        (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
+          (reference "Q1") (unit 1)
         )
       )
     )
@@ -6483,33 +6510,6 @@
       (project "CADDeck"
         (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
           (reference "#PWR06") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Transistor_BJT:BC857") (at 185.928 91.948 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid fd0fb15b-b9db-484e-8d2d-209c5c6e1158)
-    (property "Reference" "Q1" (at 189.103 95.123 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "BC857" (at 193.675 90.805 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 180.848 90.043 0)
-      (effects (font (size 1.27 1.27) italic) (justify left) hide)
-    )
-    (property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC860-D.pdf" (at 185.928 91.948 0)
-      (effects (font (size 1.27 1.27)) (justify left) hide)
-    )
-    (pin "1" (uuid 4d2781ab-fcb3-4022-9842-ef7e3560ca2c))
-    (pin "2" (uuid 69c5cdc5-4d3a-4a1a-9aeb-677715dbf082))
-    (pin "3" (uuid 82ee9514-c2c6-4b05-86f1-b53797b1dac8))
-    (instances
-      (project "CADDeck"
-        (path "/35ea3785-d2ac-411c-b2c0-fb3fbf77b703"
-          (reference "Q1") (unit 1)
         )
       )
     )
