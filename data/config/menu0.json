@@ -1,7 +1,7 @@
 {
-  "menuname":"Home", 
+  "menuname": "Home",
   "button11": {
-    "logo": "win.bmp",
+    "logo": "KiCad.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -46,7 +46,7 @@
     ]
   },
   "button14": {
-    "logo": "solidworks.bmp",
+    "logo": "FreeCAD.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [

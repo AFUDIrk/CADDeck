@@ -1,17 +1,17 @@
 {
   "menuname": "Fusion360",
   "button11": {
-    "logo": "F360_Sketch.bmp",
+    "logo": "zero.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "9",
-      "4",
+      "2",
+      "0",
       "0"
     ],
     "valuearray": [
-      "1",
-      "n",
+      "10",
+      "0",
       "0"
     ]
   },
@@ -63,15 +63,15 @@
   "button21": {
     "logo": "F360_RPattern.bmp",
     "latch": false,
-    "latchlogo": "",
+    "latchlogo": "F360_Sketch.bmp",
     "actionarray": [
-      "5",
-      "7",
+      "9",
+      "4",
       "0"
     ],
     "valuearray": [
-      "2",
       "1",
+      "n",
       "0"
     ]
   },
@@ -121,17 +121,17 @@
     ]
   },
   "button31": {
-    "logo": "F360_Move.bmp",
+    "logo": "home.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
+      "5",
       "4",
-      "0",
       "0"
     ],
     "valuearray": [
-      "m",
-      "0",
+      "2",
+      "h",
       "0"
     ]
   },

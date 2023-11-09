@@ -1,7 +1,7 @@
 {
-  "menuname":"Menu-6", 
+  "menuname": "Menu-6",
   "button11": {
-    "logo": "blank.bmp",
+    "logo": "KiCad_Gerberview.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -16,7 +16,7 @@
     ]
   },
   "button12": {
-    "logo": "blank.bmp",
+    "logo": "KiCad_ImageConvert.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -31,7 +31,7 @@
     ]
   },
   "button13": {
-    "logo": "blank.bmp",
+    "logo": "KiCad_PCBCalk.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -46,22 +46,7 @@
     ]
   },
   "button14": {
-    "logo": "blank.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "0",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
-  "button15": {
-    "logo": "blank.bmp",
+    "logo": "KiCad_PCBEdit.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -76,7 +61,7 @@
     ]
   },
   "button21": {
-    "logo": "blank.bmp",
+    "logo": "KiCad_Symboleditor.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
@@ -121,21 +106,6 @@
     ]
   },
   "button24": {
-    "logo": "blank.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "0",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
-  "button25": {
     "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
@@ -196,21 +166,6 @@
     ]
   },
   "button34": {
-    "logo": "home.bmp",
-    "latch": false,
-    "latchlogo": "",
-    "actionarray": [
-      "14",
-      "0",
-      "0"
-    ],
-    "valuearray": [
-      "0",
-      "0",
-      "0"
-    ]
-  },
-  "button35": {
     "logo": "home.bmp",
     "latch": false,
     "latchlogo": "",
