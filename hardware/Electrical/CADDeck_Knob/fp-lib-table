@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Lötpad")(type "KiCad")(uri "U:/KiCad Libraries/Lötkontakt")(options "")(descr ""))
+  (lib (name "Lötkontakt")(type "KiCad")(uri "U:/KiCad Libraries/Lötkontakt.pretty")(options "")(descr ""))
+)
