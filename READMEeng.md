@@ -193,6 +193,8 @@ Quantity 9 screws M2x5mm (to attach the wheel to the joystick button, the USB-C 
 
 Quantity 1 M4x16mm hex standoff ![Inside Knob](images/M4_hex_standoff.png)
 
+Quantity 3 M2.5x15mm hexagonal standoff bolts ALU or brass
+
 Quantity 1 JST RM 2,54 mm connector and pin header  5-pin
 
 Quantity 1 JST RM 2.54mm male and female header 4 pin

@@ -191,6 +191,8 @@ Menge  9 Schrauben M2x5mm (zur Befestigung des Rads an der Joystick-Taste, der U
 
 Menge  1 M4x16mm Sechskant-Abstandsbolzen ![Innenknopf](images/M4_hex_standoff.png)
 
+Menge  3 M2,5x15mm Sechskant-Abstandsbolzen ALU oder Messing
+
 Menge  1 JST RM 2,54 mm Stecker und Stiftleiste  5-polig
 
 Menge  1 JST RM 2,54 mm Stecker und Stiftleiste  4-polig
