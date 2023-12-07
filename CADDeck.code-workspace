@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.cps": "javascript",
+			"functional": "cpp",
+			"random": "cpp"
+		}
+	}
+}

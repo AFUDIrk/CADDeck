@@ -18,7 +18,7 @@
 
     This project is derived from TouchDeck by Dustin Watts. The original TouchDeck project is available at:
     https://github.com/DustinWatts/FreeTouchDeck
-
+r
 */
 
 /*
@@ -64,18 +64,51 @@
         using. Also make sure TOUCH_CS is defined correctly. TFT_BL is also needed!
 
 */
-#include <Arduino.h>
-
 #include "CADDeck.h"
 
-const char *versionnumber = "0.0.17_10Button";
+#include <Arduino.h>
+
+const char *versionnumber = "10Button V1.1.4";
 
 /*
+ * Version V1.1.4
+ *                   - Use stack properly (push current page number then change it, and pop when returning to previous page)
+ * 
+ * Version V1.1.3
+ *                   - Started work on support for multiple H/W buttons held down at the same time
+ *                   - Renamed BLE device to "CADDeck"
+ *                   - Fixed issues with "return to previous page" stack when not on page 0 at start
+ *                   - removed a bunch of MSG_DEBUG statements
+ *                   - Added images with my SpaceMouse button assignments for Solidworks and F360, and included
+ *                     corresponding 3dxz files that can be imported in the 3dx settings app.
+ *
+ * Version V1.1.2
+ *                   - Fix issues with H/W button description handling (wasn't saving, and possible buffer overflows)
+ *                   - Prevent possible buffer overflow in filenames (mainly logos)
+ *
+ * Version V1.1.1
+ *                   - Enable knob push/pull (vertical move) while in rotation mode and knob rotate when in translation mode
+ *                   - Add SpaceMouse soft button support to configurator
+ *
+ * Version V1.1
+ *                   - Added code for Spacemouse output to serial port. Needs to be hooked up to a Raspberry Pi Pico running this code
+ *                     https://github.com/andrewfernie/magellan-spacemouse
+ *
+ * Version 1.0.0_10Button
+ *                   - Using button numbering scheme as defined by AFUDirk
+ *                   - Added controllable GPIO pin for LEDs on 10 button card
+ *                   - Some messages (in ConfigHelper.cpp) can be displayed in English or German (compile time option). Does not apply
+ *                     to messages on web pages, only those stored directly in the C++ code. Will eventually add the rest of AFUDirk's
+ *                     messages, but want to look at how to do this in a more elegant way.
+ *                   - Support for "click" and "double click" action for button on top of joystick (button 0).
+ *                   - Added enumerations for actions. Makes code more readable, but not tied to the values in the
+ *                     configurator and configuration json files, so these must be kept alienged manually.
+ *
  * Version 0.0.17.10Button
  *                   - Added controllable GPIO functions
- *  
+ *
  * Version 0.0.13.10Button
- *                   - Removed unneeded configurator code that was previously used to define which buttons were selecting 
+ *                   - Removed unneeded configurator code that was previously used to define which buttons were selecting
  *                     joystick actions
  *
  * Version 0.0.12.10Button
@@ -241,10 +274,11 @@ Generallogos generallogo;
 
 unsigned long previousMillis = 0;
 unsigned long Interval = 0;
-bool displayinginfo;
-bool displayingIOValues;
+bool displayinginfo = false;
+bool displayingIOValues = false;
+bool displayingButtonDescriptions = false;
 
-char jsonFileFail[32] = "";
+char jsonFileFail[LEN_FILENAME] = "";
 
 bool psramAvailable = false;
 
@@ -265,10 +299,14 @@ long this_loop_start = 0;
 long loop_100_count = 0;
 long loop_100_time = 0;
 
+SpaceMouse spaceMouse(SPACEMOUSE_BAUD, SPACEMOUSE_CONFIG, SPACEMOUSE_RX_PIN, SPACEMOUSE_TX_PIN);
+
 //-------------------------------- SETUP --------------------------------------------------------------
 
 void setup()
 {
+    uint8_t status;
+
     // Use serial port
     Serial.begin(115200);
     Serial.setDebugOutput(true);
@@ -281,6 +319,11 @@ void setup()
     MSG_INFOLN("[INFO] Brightness has been set");
 
     psramAvailable = psramFound();
+
+#ifdef SPACEMOUSE_SUPPORT
+    spaceMouse.Init();
+    MSG_INFOLN("[INFO] SpaceMouse support enabled");
+#endif
 
 #ifdef USECAPTOUCH
 #ifdef CUSTOM_TOUCH_SDA
@@ -406,12 +449,12 @@ void setup()
     }
 
     for (size_t i = 0; i < NUM_PAGES; i++) {
-        char filename[32];
+        char filename[LEN_FILENAME];
         char filenumber[4];
-        strcpy(filename, "/config/menu");
+        strlcpy(filename, "/config/menu", sizeof(filename));
         sprintf(filenumber, "%d", i);
-        strcat(filename, filenumber);
-        strcat(filename, ".json");
+        strlcat(filename, filenumber, sizeof(filename));
+        strlcat(filename, ".json", sizeof(filename));
         MSG_INFO1("[INFO] Check for ", filename);
 
         if (!checkfile(filename, false)) {
@@ -462,19 +505,30 @@ void setup()
     if (!loadConfig("general")) {
         MSG_WARNLN("[WARNING]: general.json failed to load!");
         MSG_WARNLN("[WARNING]: To reset to default type \'reset general\'");
+
+        status = pageHistoryStack.push(pageNum);
+        if (status == STACK_STATUS_FULL) {
+            MSG_INFOLN("[INFO] Page History Stack is full. Dropped oldest value..");
+        }
         pageNum = SPECIAL_4_PAGE;
-        pageHistoryStack.push(pageNum);
     }
     else if (!loadConfig("cadparams")) {
         MSG_WARNLN("[WARNING]: cadparams.json failed to load!");
         MSG_WARNLN("[WARNING]: To reset to default type \'reset cadparams\'");
+        status = pageHistoryStack.push(pageNum);
+        if (status == STACK_STATUS_FULL) {
+            MSG_INFOLN("[INFO] Page History Stack is full. Dropped oldest value..");
+        }
         pageNum = SPECIAL_4_PAGE;
-        pageHistoryStack.push(pageNum);
     }
     else {
+
         // Menu to display on startup
+        status = pageHistoryStack.push(pageNum);
+        if (status == STACK_STATUS_FULL) {
+            MSG_INFOLN("[INFO] Page History Stack is full. Dropped oldest value..");
+        }
         pageNum = constrain(generalconfig.startup_menu, 0, NUM_PAGES - 1);
-        pageHistoryStack.push(pageNum);
 
 #ifdef TOUCH_INTERRUPT_PIN
         Interval = generalconfig.sleeptimer * MIN_TO_MS;
@@ -496,12 +550,12 @@ void setup()
 
     // Next, load the menu pages
     for (size_t i = 0; i < NUM_PAGES; i++) {
-        char menuName[16];
+        char menuName[LEN_FILENAME];
         char menuNumber[4];
         char menuNumberZeroIndex[4];
-        strcpy(menuName, "menu");
+        strlcpy(menuName, "menu", sizeof(menuName));
         sprintf(menuNumber, "%d", i);
-        strcat(menuName, menuNumber);
+        strlcat(menuName, menuNumber, sizeof(menuName));
 
         if (!loadConfig(menuName)) {
             Serial.print("[WARNING]: menu");
@@ -511,9 +565,13 @@ void setup()
             Serial.print("[WARNING]: To reset to default type 'reset ");
             Serial.print(menuName);
             MSG_INFOLN("'.");
-            strcpy(jsonFileFail, menuName);
+            strlcpy(jsonFileFail, menuName, sizeof(jsonFileFail));
+            status = pageHistoryStack.push(pageNum);
+            if (status == STACK_STATUS_FULL) {
+                MSG_INFOLN("[INFO] Page History Stack is full. Dropped oldest value..");
+            }
             pageNum = SPECIAL_4_PAGE;
-            pageHistoryStack.push(pageNum);
+
         }
     }
 
@@ -581,18 +639,18 @@ void setup()
     // Setup the Font used for plain text
     tft.setFreeFont(LABEL_FONT);
 
-    //------------------BLE Initialization ------------------------
-    #ifdef BLUETOOTH_COMMANDS
+//------------------BLE Initialization ------------------------
+#ifdef BLUETOOTH_COMMANDS
     MSG_INFOLN("[INFO] Starting BLE HID devices");
-    #else
+#else
     MSG_INFOLN("[INFO] Starting USB HID devices");
-    #endif
+#endif
+    Keyboard.deviceManufacturer = "CADDeck";
+    Keyboard.deviceName = "CADDeck";
     Keyboard.begin();
     Mouse.begin();
 
     // ---------------- Printing version numbers ------------------
-    // MSG_INFO("[INFO] BLE Keyboard version: ");
-    // MSG_INFOLN(BLE_COMBO_VERSION);
     MSG_INFO("[INFO] ArduinoJson version: ");
     MSG_INFOLN(ARDUINOJSON_VERSION);
     MSG_INFO("[INFO] TFT_eSPI version: ");
@@ -605,9 +663,10 @@ void setup()
 
     // Draw keypad
     MSG_INFOLN("[INFO] Drawing keypad");
-
-    pageHistoryStack.push(pageNum);
     drawKeypad();
+
+    // End of setup
+    MSG_INFOLN("[INFO] End of setup()");
 }
 
 //--------------------- LOOP ---------------------------------------------------------------------
@@ -616,19 +675,22 @@ void loop(void)
 {
     bool pressed = false;
     uint16_t t_x = 0, t_y = 0;
+    uint8_t status;
 
     if (millis() > (last_loop_start + loop_period)) {
         this_loop_start = millis();
         loop_count++;
 
-        // Update andf handle the joystick and physical buttons
+        // Update and handle the joystick and physical buttons
         update_io();
 
         // Check and handle any commands from the serial port
         serial_commands();
 
-        // Handle the touch screen
+        // The SpaceMouse Pro button reset
+        spaceMouse.ClearButtonMask();
 
+        // Handle the touch screen
 #ifdef USECAPTOUCH
 #ifdef USE_FT6336U_LIB
         FT6336U_TouchPointType touchPos;
@@ -685,8 +747,16 @@ void loop(void)
 
             if (pressed) {
                 displayinginfo = false;
-                pageHistoryStack.pop();
-                pageNum = pageHistoryStack.peek();
+
+                pageNum = pageHistoryStack.pop(&status);
+                if(!isValidPageNumber(pageNum)){
+                    MSG_ERROR1("[ERROR] Invalid page number: ", pageNum);
+                    pageNum = 0;
+                }
+                else if (status == STACK_STATUS_EMPTY) {
+                    MSG_ERRORLN("[ERROR] Page History Stack is empty. Cannot pop page so switching to home page.");
+                    pageNum = 0;
+                }
 
                 tft.fillScreen(generalconfig.backgroundColour);
                 drawKeypad();
@@ -697,8 +767,39 @@ void loop(void)
 
             if (pressed) {
                 displayingIOValues = false;
-                pageHistoryStack.pop();
-                pageNum = pageHistoryStack.peek();
+                pageNum = pageHistoryStack.pop(&status);
+
+                if (!isValidPageNumber(pageNum)) {
+                    MSG_ERROR1("[ERROR] Invalid page number: ", pageNum);
+                    pageNum = 0;
+                }
+                else if (status == STACK_STATUS_EMPTY) {
+                    MSG_ERRORLN("[ERROR] Page History Stack is empty. Cannot pop page so switching to home page.");
+                    pageNum = 0;
+                }
+
+                tft.fillScreen(generalconfig.backgroundColour);
+                drawKeypad();
+            }
+        }
+        else if (pageNum == SPECIAL_PAGE_BUTTON_INFO) {
+            if (!displayingButtonDescriptions) {
+                printButtonInfo(cadconfig.current_program);
+            }
+
+            if (pressed) {
+                displayingButtonDescriptions = false;
+
+                pageNum = pageHistoryStack.pop(&status);
+                if (!isValidPageNumber(pageNum)) {
+                    MSG_ERROR1("[ERROR] Invalid page number: ", pageNum);
+                    pageNum = 0;
+                }
+                else if (status == STACK_STATUS_EMPTY) {
+                    MSG_ERRORLN("[ERROR] Page History Stack is empty. Cannot pop page so switching to home page.");
+                    pageNum = 0;
+                }
+
                 tft.fillScreen(generalconfig.backgroundColour);
                 drawKeypad();
             }
@@ -709,8 +810,17 @@ void loop(void)
             if (pressed) {
                 // Return to Settings page
                 displayinginfo = false;
-                pageHistoryStack.pop();
-                pageNum = pageHistoryStack.peek();
+
+                pageNum = pageHistoryStack.pop(&status);
+                if (!isValidPageNumber(pageNum)) {
+                    MSG_ERROR1("[ERROR] Invalid page number: ", pageNum);
+                    pageNum = 0;
+                }
+                else if (status == STACK_STATUS_EMPTY) {
+                    MSG_ERRORLN("[ERROR] Page History Stack is empty. Cannot pop page so switching to home page.");
+                    pageNum = 0;
+                }
+
                 tft.fillScreen(generalconfig.backgroundColour);
                 drawKeypad();
             }
@@ -721,8 +831,16 @@ void loop(void)
             if (pressed) {
                 // Load home screen
                 displayinginfo = false;
-                pageHistoryStack.pop();
-                pageNum = pageHistoryStack.peek();
+
+                pageNum = pageHistoryStack.pop(&status);
+                if (!isValidPageNumber(pageNum)) {
+                    MSG_ERROR1("[ERROR] Invalid page number: ", pageNum);
+                    pageNum = 0;
+                }
+                else if (status == STACK_STATUS_EMPTY) {
+                    MSG_ERRORLN("[ERROR] Page History Stack is empty. Cannot pop page so switching to home page.");
+                    pageNum = 0;
+                }
                 tft.fillScreen(generalconfig.backgroundColour);
                 drawKeypad();
             }
@@ -838,13 +956,13 @@ void loop(void)
 
                                 if (generalconfig.usbcommsenable) {
                                     // separate filename from menu[pageNum].button[row][col].logo path
-                                    char logoname[20];
+                                    char logoname[LEN_FILENAME];
                                     char *p = strrchr(menu[pageNum].button[row][col].logo, '/');
                                     if (p != NULL) {
-                                        strcpy(logoname, p + 1);
+                                        strlcpy(logoname, p + 1, sizeof(logoname));
                                     }
                                     else {
-                                        strcpy(logoname, menu[pageNum].button[row][col].logo);
+                                        strlcpy(logoname, menu[pageNum].button[row][col].logo, sizeof(logoname));
                                     }
 
                                     // remove extension from logoname
@@ -867,36 +985,50 @@ void loop(void)
                         MSG_INFO1("Battery voltage:", externalBatteryVoltage);
 #endif
                     }
-                    //                    delay(10);  // UI debouncing
                 }
             }
 
             // Check if any hw button has been pressed
-            // if(loop_count % 10 == 0) MSG_DEBUG("Checking HW buttons:");
             for (uint8_t i = 0; i < cadprogramconfig[cadconfig.current_program].num_buttons; i++) {
                 uint8_t button_state = get_hwbutton(i);
-                // if (loop_count % 10 == 0) MSG_DEBUG2("hw:",i, button_state);
 
-                if (button_state && (last_hwbutton_state[i] == 0)) {
-                    //---------------------------------------- Button press handling --------------------------------------------------
-
-                    KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].action,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].value,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].symbol, i);
-
-                    KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].action,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].value,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].symbol, i);
-
-                    KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].action,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].value,
-                                        cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].symbol, i);
+                if (cadconfig.spacemouse_enable) {
+                    // Button 0 is the mode select button. It does not go to the SpaceMouse emulation
+                    if (i > 0) {
+                        if (button_state) {
+                            spaceMouse.SetButton(i);
+                        }
+                        else {
+                            spaceMouse.ClearButton(i);
+                        }
+                    }
                 }
-                last_hwbutton_state[i] = button_state;
+                else {
+                    if (button_state && (last_hwbutton_state[i] == 0)) {
+                        //---------------------------------------- Button press handling --------------------------------------------------
+
+                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].action,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].value,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][0].symbol, i);
+
+                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].action,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].value,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][1].symbol, i);
+
+                        KeyboardMouseAction(cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].action,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].value,
+                                            cadprogramconfig[cadconfig.current_program].hw_buttons[i][2].symbol, i);
+                    }
+                    last_hwbutton_state[i] = button_state;
+                }
             }
-            // if (loop_count % 10 == 0) MSG_DEBUGLN("");
         }
 
+        // Send the SpaceMouse button presses
+        if (cadconfig.spacemouse_enable) {
+            spaceMouse.SendButtonPacket();
+        }
+        
         // Draw top status bar.
         drawTopStatusBar(false);
 
@@ -908,14 +1040,6 @@ void loop(void)
             lastADCRead = millis();
         }
 #endif
-        loop_100_time = loop_100_time + (millis() - this_loop_start);
-        loop_100_count++;
-        if (loop_100_count > 100) {
-            //           MSG_DEBUG1("[DEBUG] Time for 100 loops:", loop_100_time);
-            loop_100_count = 0;
-
-            loop_100_time = 0;
-        }
         last_loop_start = this_loop_start;
     }
 }

@@ -25,6 +25,13 @@ uint8_t last_control_mode = JOYSTICK_CONTROL_MODE_MOUSE;
 
 PCF857X::DigitalInput pcf857X_inputs;
 
+Button2 joystickModeButton;
+
+byte joystickModeButtonHandler()
+{
+    return get_hwbutton(mode_select_button_pin);
+}
+
 void init_io()
 {
     MSG_INFOLN("[INFO] Init joystick");
@@ -50,6 +57,11 @@ void init_io()
 
     set_pantilt_mode(cadconfig.current_program);
 
+    joystickModeButton.setButtonStateFunction(joystickModeButtonHandler);
+    joystickModeButton.setClickHandler(joystickModeButtonClick);
+    joystickModeButton.setDoubleClickHandler(joystickModeButtonDoubleClick);
+    joystickModeButton.begin(VIRTUAL_PIN);
+
     pcf857X.begin(false);  // false so as not to start the I2C bus (already done by the touch controller)
 }
 
@@ -57,144 +69,160 @@ void set_move_mode(uint8_t cadapp)
 {
     switch (cadapp) {
         case CADApp_SolidWorks:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 1, 0);    // Set left ctrl key
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LCtrl, 0);        // Set left ctrl key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Fusion360:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Blender:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 2, 0);    // Set left shift key
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LShift, 0);       // Set left shift key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_FreeCAD:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_AC3D:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         default:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
             break;
     }
     control_mode = JOYSTICK_CONTROL_MODE_MOVE;
-    MSG_DEBUGLN("[DEBUG] Set move mode");
 }
 
 void set_rotate_mode(uint8_t cadapp)
 {
     switch (cadapp) {
         case CADApp_SolidWorks:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Fusion360:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 2, 0);    // Set left shift key
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LShift, 0);       // Set left shift key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Blender:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_FreeCAD:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
-            KeyboardMouseAction(17, 2, 0);   // Set right mouse button (must set middle mouse button then right mouse button for FreeCAD)
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PR, 0);    // Set right mouse button (must set middle mouse button then right mouse button for FreeCAD)
             break;
 
         case CADApp_AC3D:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 3, 0);    // Set left alt key
-            KeyboardMouseAction(17, 1, 0);   // Set left mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LAlt, 0);         // Set left alt key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PL, 0);    // Set left mouse button
             break;
 
         default:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
             break;
     }
 
     control_mode = JOYSTICK_CONTROL_MODE_ROTATE;
-    MSG_DEBUGLN("[DEBUG] Set rotate mode");
 }
 
 void set_pantilt_mode(uint8_t cadapp)
 {
     switch (cadapp) {
         case CADApp_SolidWorks:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Fusion360:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 2, 0);    // Set left shift key
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LShift, 0);       // Set left shift key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_Blender:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
             break;
 
         case CADApp_FreeCAD:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(17, 3, 0);   // Set middle mouse button
-            KeyboardMouseAction(17, 2, 0);   // Set right mouse button (must set middle mouse button then right mouse button for FreeCAD)
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PM, 0);    // Set middle mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PR, 0);    // Set right mouse button (must set middle mouse button then right mouse button for FreeCAD)
             break;
 
         case CADApp_AC3D:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
-            KeyboardMouseAction(5, 3, 0);    // Set left alt key
-            KeyboardMouseAction(17, 1, 0);   // Set left mouse button
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
+            KeyboardMouseAction(Action_Option, OptionKey_LAlt, 0);         // Set left alt key
+            KeyboardMouseAction(Action_MouseButton, MouseButton_PL, 0);    // Set left mouse button
             break;
 
         default:
-            KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-            KeyboardMouseAction(5, 9, 0);    // Release all keys
+            KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+            KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
             break;
     }
 
     control_mode = JOYSTICK_CONTROL_MODE_PANTILT;
-    MSG_DEBUGLN("[DEBUG] Set pantilt mode");
 }
 
 void set_mouse_mode()
 {
-    KeyboardMouseAction(17, 11, 0);  // Release all mouse buttons
-    KeyboardMouseAction(5, 9, 0);    // Release all keys
+    KeyboardMouseAction(Action_MouseButton, MouseButton_RLRM, 0);  // Release all mouse buttons
+    KeyboardMouseAction(Action_Option, OptionKey_ReleaseAll, 0);   // Release all keys
     control_mode = JOYSTICK_CONTROL_MODE_MOUSE;
-    MSG_DEBUGLN("[DEBUG] Set mouse mode");
+}
+
+void joystickModeButtonClick(Button2& btn)
+{
+    if (control_mode != JOYSTICK_CONTROL_MODE_MOUSE) {
+        set_mouse_mode();
+    }
+    KeyboardMouseAction(Action_MouseButton, MouseButton_PL, 0);  // Set left mouse button
+    KeyboardMouseAction(Action_MouseButton, MouseButton_RL, 0);  // Release left mouse button
+}
+
+void joystickModeButtonDoubleClick(Button2& btn)
+{
+    if (control_mode != JOYSTICK_CONTROL_MODE_MOUSE) {
+        set_mouse_mode();
+    }
+    KeyboardMouseAction(Action_MouseButton, MouseButton_PL, 0);  // Set left mouse button
+    KeyboardMouseAction(Action_MouseButton, MouseButton_RL, 0);  // Release left mouse button
+    KeyboardMouseAction(Action_MouseButton, MouseButton_PL, 0);  // Set left mouse button
+    KeyboardMouseAction(Action_MouseButton, MouseButton_RL, 0);  // Release left mouse button
 }
 
 void update_io()
@@ -203,8 +231,9 @@ void update_io()
     zoomControl.Update();
     rotateControl.Update();
     pcf857X_inputs = pcf857X.digitalReadAll();
+    joystickModeButton.loop();
 
-    uint8_t hw_button0_set = get_hwbutton(0);
+    uint8_t hw_button0_set = !get_hwbutton(mode_select_button_pin);
 
     uint8_t joystick_x_steadyzero = joy_x_comparison.Equals(joystick.x());
     uint8_t joystick_y_steadyzero = joy_y_comparison.Equals(joystick.y());
@@ -212,87 +241,113 @@ void update_io()
     uint8_t zoom_knob_steadyzero = zoom_comparison.Equals(zoomControl.Value());
     uint8_t all_control_steadyzero = joystick_x_steadyzero && joystick_y_steadyzero && rotate_knob_steadyzero && zoom_knob_steadyzero;
 
-    if (Keyboard.isConnected()) {
-        if (!all_control_steadyzero) {
-            switch (cadconfig.current_program) {
-                case CADApp_SolidWorks:
-                case CADApp_Fusion360:
-                case CADApp_FreeCAD:
-                case CADApp_AC3D:
-                    if (hw_button0_set) {
-                        if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
-                            set_move_mode(cadconfig.current_program);
-                        }
+    if (!cadconfig.spacemouse_enable) {
+        if (Keyboard.isConnected()) {
+#if (LOG_MSG_JOYSTICK_MODE > 0)
+            if (!get_pcf857X_bit(pcf857X_inputs, BUTTON_10)) {
+                char msg[30];
+                // sprintf(msg, "[DBG] %d,%d,%d,%d,%d", all_control_steadyzero, joystick_x_steadyzero,
+                //         joystick_y_steadyzero, rotate_knob_steadyzero, zoom_knob_steadyzero);
+                sprintf(msg, "[DBG] %d", joystickModeButton.isPressed());
+                MSG_PORT.println(msg);
+            }
 
-                        if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
-                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+#endif
+            if (!all_control_steadyzero) {
+                switch (cadconfig.current_program) {
+                    case CADApp_SolidWorks:
+                    case CADApp_Fusion360:
+                    case CADApp_FreeCAD:
+                    case CADApp_AC3D:
+                        if (hw_button0_set) {
+                            if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
+                                if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
+                                    set_move_mode(cadconfig.current_program);
+                                }
+                                Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, zoomControl.Value() * cadconfig.zoom_sensitivity);
+                            }
                         }
-                    }
-                    else {
-                        if (!zoom_knob_steadyzero) {
+                        else {
+                            if (!zoom_knob_steadyzero || !rotate_knob_steadyzero) {
+                                if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
+                                    set_rotate_mode(cadconfig.current_program);
+                                }
+                                Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, zoomControl.Value() * cadconfig.rotate_sensitivity, 0);
+                            }
+                            else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
+                                if (control_mode != JOYSTICK_CONTROL_MODE_MOUSE) {
+                                    set_mouse_mode();
+                                }
+                                Mouse.move(joystick.x() * cadconfig.mouse_sensitivity, joystick.y() * cadconfig.mouse_sensitivity, 0.0);
+                            }
+                        }
+                        break;
+
+                    case CADApp_Blender:
+
+                        if (hw_button0_set) {
                             if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
                                 set_move_mode(cadconfig.current_program);
                             }
-                            Mouse.move(0, 0, zoomControl.Value() * cadconfig.zoom_sensitivity);
-                        }
-                        else if (!rotate_knob_steadyzero) {
-                            if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
-                                set_rotate_mode(cadconfig.current_program);
+
+                            if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
+                                Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
                             }
-                            Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0, 0);
                         }
-                        else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
-                            if (control_mode != JOYSTICK_CONTROL_MODE_PANTILT) {
-                                set_pantilt_mode(cadconfig.current_program);
+                        else {
+                            if (!rotate_knob_steadyzero) {
+                                if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
+                                    set_rotate_mode(cadconfig.current_program);
+                                }
+                                Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0.0, 0.0);
                             }
-                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
-                        }
-                    }
-
-                    break;
-
-                case CADApp_Blender:
-
-                    if (hw_button0_set) {
-                        if (control_mode != JOYSTICK_CONTROL_MODE_MOVE) {
-                            set_move_mode(cadconfig.current_program);
-                        }
-
-                        if (!joystick_x_steadyzero || !joystick_y_steadyzero || !zoom_knob_steadyzero) {
-                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
-                        }
-                    }
-                    else {
-                        if (!rotate_knob_steadyzero) {
-                            if (control_mode != JOYSTICK_CONTROL_MODE_ROTATE) {
-                                set_rotate_mode(cadconfig.current_program);
+                            else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
+                                if (control_mode != JOYSTICK_CONTROL_MODE_PANTILT) {
+                                    set_pantilt_mode(cadconfig.current_program);
+                                }
+                                Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
                             }
-                            Mouse.move(rotateControl.Value() * cadconfig.rotate_sensitivity, 0.0, 0.0);
                         }
-                        else if (!joystick_x_steadyzero || !joystick_y_steadyzero) {
-                            if (control_mode != JOYSTICK_CONTROL_MODE_PANTILT) {
-                                set_pantilt_mode(cadconfig.current_program);
-                            }
-                            Mouse.move(joystick.x() * cadconfig.joy_sensitivity, joystick.y() * cadconfig.joy_sensitivity, 0.0);
-                        }
-                    }
 
-                    break;
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
+            else {
+                if (all_control_steadyzero && (control_mode != JOYSTICK_CONTROL_MODE_MOUSE)) {
+                    set_mouse_mode();
+                }
+            }
+
+            last_control_mode = control_mode;
+        }
+
+        else {
+            MSG_WARNLN("[WARN] BLE Mouse not connected");
+        }
+    }
+
+    else {
+        uint16_t x, y, z, a, b, c;
+        if (hw_button0_set) {
+            x = joystick.x() * 2047.0 + 32768;
+            y = joystick.y() * 2047.0 + 32768;
+            z = zoomControl.Value() * 2047.0 + 32768;
+            a = 32768;
+            b = 32768;
+            c = rotateControl.Value() * 2047.0 + 32768;
         }
         else {
-            if (all_control_steadyzero && (control_mode != JOYSTICK_CONTROL_MODE_MOUSE)) {
-                set_mouse_mode();
-            }
+            x = 32768;
+            y = 32768;
+            z = zoomControl.Value() * 2047.0 + 32768;
+            a = joystick.x() * 2047.0 + 32768;
+            b = joystick.y() * 2047.0 + 32768;
+            c = rotateControl.Value() * 2047.0 + 32768;
         }
-
-        last_control_mode = control_mode;
-    }
-    else {
-        MSG_WARNLN("[DEBUG] BLE Mouse not connected");
+        spaceMouse.SendViewpointDataPacket(x, y, z, a, b, c);
     }
 }
 

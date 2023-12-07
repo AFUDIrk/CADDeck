@@ -120,11 +120,11 @@ String handleInfo()
     output += String(freemem / 1000);
     output += " kB\"},";
 
-    // output += "{\"";
-    // output += "BLE Keyboard Version";
-    // output += "\":\"";
-    // output += String(BLE_COMBO_VERSION);
-    // output += "\"},";
+    output += "{\"";
+    output += "BLE Keyboard-Mouse Combo Version";
+    output += "\":\"";
+    output += String(BLE_COMBO_VERSION);
+    output += "\"},";
 
     output += "{\"";
     output += "ArduinoJson Version";
@@ -159,18 +159,18 @@ String handleInfo()
         output += String("Timer: ");
         output += String(generalconfig.sleeptimer);
         output += String(" minutes");
-        output += "\"}";
+        output += "\"},";
     }
     else {
         output += String("Disabled");
-        output += "\"}";
+        output += "\"},";
     }
 #else
     output += "{\"";
     output += "Sleep";
     output += "\":\"";
     output += String("Disabled");
-    output += "\"}";
+    output += "\"},";
 
 #endif
     output += "{\"";
@@ -450,6 +450,7 @@ void handlerSetup()
     webserver.on("/updatebutton", HTTP_GET, [](AsyncWebServerRequest *request) {
         String value;
         String debugString;
+        String description;
 
         int appIndex = 0;
         int buttonIndex = 0;
@@ -460,30 +461,37 @@ void handlerSetup()
 
         if (request->hasParam("app") && request->hasParam("button") &&
             request->hasParam("arrayIndex") && request->hasParam("actionValue") &&
-            request->hasParam("action") && request->hasParam("value")) {
+            request->hasParam("action") && request->hasParam("value") && 
+            request->hasParam("description")) {
             appIndex = request->getParam("app")->value().toInt();
             buttonIndex = request->getParam("button")->value().toInt();
             arrayIndex = request->getParam("arrayIndex")->value().toInt();
             actionValue = request->getParam("actionValue")->value().toInt();
             action = request->getParam("action")->value().toInt();
             value = request->getParam("value")->value();
+            description = request->getParam("description")->value();
 
             if (appIndex >= 0 && appIndex < NUM_CAD_PROGRAMS) {
                 if (buttonIndex >= 0 && buttonIndex < NUM_HW_BUTTONS) {
-                    cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = value.toInt();
 
-                    cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = action;
+                     strlcpy(cadprogramconfig[appIndex].hw_button_descriptions[buttonIndex], description.c_str(),
+                             sizeof(cadprogramconfig[appIndex].hw_button_descriptions[buttonIndex]));
 
-                    if (action == Action_Char || action == Action_SpecialChar) {
-                        strcpy(cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].symbol, value.c_str());
+                     cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = value.toInt();
+
+                     cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].action = action;
+
+                     if (action == Action_Char || action == Action_SpecialChar) {
+                         strcpy(cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].symbol, value.c_str());
                     }
                     else {
                         cadprogramconfig[appIndex].hw_buttons[buttonIndex][arrayIndex].value = value.toInt();
                     }
 
-                    debugString = "appIndex: " + String(appIndex) + ", buttonIndex: " + String(buttonIndex) + 
-                                  ", arrayIndex: " + String(arrayIndex) + ", action: " + action + ", value: " + value;
-                    //                    MSG_DEBUG1("[DEBUG] updatebutton: ", debugString.c_str());
+                    // debugString = "appIndex: " + String(appIndex) + ", buttonIndex: " + String(buttonIndex) + 
+                    //               "description: " + description +
+                    //               ", arrayIndex: " + String(arrayIndex) + ", action: " + action + ", value: " + value;
+                    // MSG_DEBUG1("[DEBUG] updatebutton: ", debugString.c_str());
                 }
                 else {
                     MSG_ERROR1("[ERROR] updatebutton: invalid button index: ", buttonIndex);
@@ -491,6 +499,45 @@ void handlerSetup()
             }
             else {
                 MSG_ERROR1("[ERROR] updatebutton: invalid app index: ", appIndex);
+            }
+        }
+        request->send(200, "text/plain", "OK");
+    });
+    //----------- updatebuttondescription handler -----------------
+
+    webserver.on("/updatebuttondescription", HTTP_GET, [](AsyncWebServerRequest *request) {
+        String value;
+        String debugString;
+        String description;
+
+        int appIndex = 0;
+        int buttonIndex = 0;
+        int arrayIndex = 0;
+        int actionValue = 0;
+
+        uint8_t action = 0;
+
+        if (request->hasParam("app") && request->hasParam("button") &&
+            request->hasParam("description")) {
+            appIndex = request->getParam("app")->value().toInt();
+            buttonIndex = request->getParam("button")->value().toInt();
+            description = request->getParam("description")->value();
+
+            if (appIndex >= 0 && appIndex < NUM_CAD_PROGRAMS) {
+                if (buttonIndex >= 0 && buttonIndex < NUM_HW_BUTTONS) {
+                    strlcpy(cadprogramconfig[appIndex].hw_button_descriptions[buttonIndex], description.c_str(),
+                            sizeof(cadprogramconfig[appIndex].hw_button_descriptions[buttonIndex]));
+
+                    // debugString = "appIndex: " + String(appIndex) + ", buttonIndex: " + String(buttonIndex) +
+                    //               "description: " + description ;
+                    // MSG_DEBUG1("[DEBUG] updatebuttondescription: ", debugString.c_str());
+                }
+                else {
+                    MSG_ERROR1("[ERROR] updatebuttondescription: invalid button index: ", buttonIndex);
+                }
+            }
+            else {
+                MSG_ERROR1("[ERROR] updatebuttondescription: invalid app index: ", appIndex);
             }
         }
         request->send(200, "text/plain", "OK");

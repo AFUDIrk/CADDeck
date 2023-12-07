@@ -1,61 +1,61 @@
 {
-  "menuname":"Menu_9", 
+  "menuname":"Solidworks", 
   "button11": {
-    "logo": "blank.bmp",
+    "logo": "F360_Abrunden.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "20",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "11",
       "0",
       "0"
     ]
   },
   "button12": {
-    "logo": "blank.bmp",
+    "logo": "F360_Schale.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "20",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "12",
       "0",
       "0"
     ]
   },
   "button13": {
-    "logo": "blank.bmp",
+    "logo": "F360_Hole.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "20",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "13",
       "0",
       "0"
     ]
   },
   "button14": {
-    "logo": "blank.bmp",
+    "logo": "F360_RPattern.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "20",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "14",
       "0",
       "0"
     ]
@@ -76,16 +76,16 @@
     ]
   },
   "button21": {
-    "logo": "blank.bmp",
+    "logo": "F360_CPattern.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "20",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "15",
       "0",
       "0"
     ]

@@ -1,5 +1,5 @@
 {
-  "menuname": "Home",
+  "menuname":"Home", 
   "button11": {
     "logo": "KiCad.bmp",
     "latch": false,
@@ -61,16 +61,16 @@
     ]
   },
   "button21": {
-    "logo": "blank.bmp",
+    "logo": "button_desc.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "0",
+      "11",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "13",
       "0",
       "0"
     ]

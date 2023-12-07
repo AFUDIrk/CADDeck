@@ -4,7 +4,7 @@
 #include "AnalogControl.h"
 #include "PCF857X.h"
 #include "DenoiseComparison.h"
-
+#include "Button2.h" // Button library with support for clicks, etc.
 
 const uint8_t PCF857X_SCL = 19;
 const uint8_t PCF857X_SDA = 18;
@@ -28,7 +28,6 @@ const uint8_t ROTATE_PIN = 34;
 const uint16_t CALIBRATION_TIME_MS = 10000;
 
 // The buttons are on the pcf857X encoder. pins "Pn" are the PCF857X pin numbers
-#ifdef NEW_PINS
 const uint8_t BUTTON_0 = P0;
 const uint8_t BUTTON_1 = P1;
 const uint8_t BUTTON_2 = P3;
@@ -40,19 +39,6 @@ const uint8_t BUTTON_7 = P10;
 const uint8_t BUTTON_8 = P12;
 const uint8_t BUTTON_9 = P9;
 const uint8_t BUTTON_10 = P11;
-#else
-const uint8_t BUTTON_0 = P14;
-const uint8_t BUTTON_1 = P8;
-const uint8_t BUTTON_2 = P9;
-const uint8_t BUTTON_3 = P0;
-const uint8_t BUTTON_4 = P1;
-const uint8_t BUTTON_5 = P12;
-const uint8_t BUTTON_6 = P13;
-const uint8_t BUTTON_7 = P7;
-const uint8_t BUTTON_8 = P15;
-const uint8_t BUTTON_9 = P10;
-const uint8_t BUTTON_10 = P11;
-#endif
 
 extern PCF857X::DigitalInput pcf857X_inputs;
 extern const uint8_t HWButton_Pins[];
@@ -72,8 +58,11 @@ void calibrate_zero_analog_controls();
 void set_rotate_mode(uint8_t cadapp);
 void set_move_mode(uint8_t cadapp);
 void set_pantilt_mode(uint8_t cadapp);
+byte joystickModeButtonHandler();
+void joystickModeButtonClick(Button2 &btn);
+void joystickModeButtonDoubleClick(Button2 &btn);
 
-extern uint8_t current_joystick_mode;
+    extern uint8_t current_joystick_mode;
 extern uint8_t previous_joystick_mode;
 
 enum JoystickControlMode {

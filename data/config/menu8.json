@@ -1,17 +1,17 @@
 {
   "menuname": "Fusion360",
   "button11": {
-    "logo": "zero.bmp",
+    "logo": "F360_Sketch.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "2",
-      "0",
+      "9",
+      "4",
       "0"
     ],
     "valuearray": [
-      "10",
-      "0",
+      "1",
+      "n",
       "0"
     ]
   },
@@ -60,18 +60,33 @@
       "0"
     ]
   },
-  "button21": {
-    "logo": "F360_RPattern.bmp",
+  "button15": {
+    "logo": "blank.bmp",
     "latch": false,
-    "latchlogo": "F360_Sketch.bmp",
+    "latchlogo": "",
     "actionarray": [
-      "9",
-      "4",
+      "0",
+      "0",
       "0"
     ],
     "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button21": {
+    "logo": "F360_RPattern.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "5",
+      "7",
+      "0"
+    ],
+    "valuearray": [
+      "2",
       "1",
-      "n",
       "0"
     ]
   },
@@ -120,18 +135,33 @@
       "0"
     ]
   },
-  "button31": {
-    "logo": "home.bmp",
+  "button25": {
+    "logo": "blank.bmp",
     "latch": false,
     "latchlogo": "",
     "actionarray": [
-      "5",
-      "4",
+      "0",
+      "0",
       "0"
     ],
     "valuearray": [
-      "2",
-      "h",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button31": {
+    "logo": "F360_Move.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "4",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "m",
+      "0",
       "0"
     ]
   },
@@ -166,6 +196,21 @@
     ]
   },
   "button34": {
+    "logo": "return.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "actionarray": [
+      "18",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button35": {
     "logo": "return.bmp",
     "latch": false,
     "latchlogo": "",

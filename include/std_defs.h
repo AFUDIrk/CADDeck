@@ -1,3 +1,4 @@
+#pragma once
 #include <stdint.h>
 const uint8_t ReturnSuccess = 0;
 const uint8_t ReturnFail = 1;

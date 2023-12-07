@@ -5,12 +5,12 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
     int status = 0;
 
     // --- Saving general config
-    MSG_INFOLN("[INFO] Allgemeine Konfiguration speichern");
+    MSG_INFOLN("[INFO] Saving General Config");
 
     FILESYSTEM.remove("/config/general.json");
     File file = FILESYSTEM.open("/config/general.json", "w");
     if (!file) {
-        MSG_WARNLN("[WARNUNG]: Datei /config/general.json konnte nicht erstellt werden");
+        MSG_WARNLN("[WARNING]: Failed to create /config/general.json file");
         status = 1;
         return status;
     }
@@ -60,13 +60,11 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
 
     // Sleep timer
     AsyncWebParameter *sleeptimer = request->getParam("sleeptimer", true);
-
     String sleepTimer = sleeptimer->value().c_str();
     general["sleeptimer"] = sleepTimer.toInt();
 
     // Modifiers
-    
-	AsyncWebParameter *modifier1 = request->getParam("modifier1", true);
+    AsyncWebParameter *modifier1 = request->getParam("modifier1", true);
     String Modifier1 = modifier1->value().c_str();
     general["modifier1"] = Modifier1.toInt();
 
@@ -86,7 +84,7 @@ int saveConfigGeneral(AsyncWebServerRequest *request)
     String Startup_menu = startup_menu->value().c_str();
     general["startup_menu"] = Startup_menu.toInt();
 
-AsyncWebParameter *gpio_pin = request->getParam("gpio_pin", true);
+    AsyncWebParameter *gpio_pin = request->getParam("gpio_pin", true);
     String Gpio_pin = gpio_pin->value().c_str();
     general["gpio_pin"] = Gpio_pin.toInt();
 
@@ -167,10 +165,11 @@ int saveCurrentConfigGeneral()
 
     general["startup_menu"] = generalconfig.startup_menu;
 
-	general["gpio_pin"] = generalconfig.gpio_pin;
+    general["gpio_pin"] = generalconfig.gpio_pin;
     general["gpio_pin_mode"] = generalconfig.gpio_pin_mode;
 
-    if (serializeJsonPretty(doc, file) == 0) {
+    if (serializeJsonPretty(doc, file) == 0)
+    {
         MSG_WARNLN("[WARNING]: Failed to write to /config/general.json file");
         status = 2;
     }
@@ -201,12 +200,10 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
 
     cadparams["version"] = CADCONFIG_VERSION;
 
-    MSG_DEBUGLN("[DEBUG] Requesting joy_scale_x");
     AsyncWebParameter *scalex = request->getParam("joy_scale_x", true);
     String ScaleX = scalex->value().c_str();
     cadparams["joy_scale_x"] = ScaleX.toFloat();
 
-    MSG_DEBUGLN("[DEBUG] Requesting joy_scale_y");
     AsyncWebParameter *scaley = request->getParam("joy_scale_y", true);
     String ScaleY = scaley->value().c_str();
     cadparams["joy_scale_y"] = ScaleY.toFloat();
@@ -243,10 +240,23 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
     String SensitivityRotate = sensitivityrotate->value().c_str();
     cadparams["rotate_sensitivity"] = SensitivityRotate.toFloat();
 
-    MSG_DEBUGLN("[DEBUG] Requesting current_program");
+    AsyncWebParameter *sensitivitymouse = request->getParam("mouse_sensitivity", true);
+    String SensitivityMouse = sensitivitymouse->value().c_str();
+    cadparams["mouse_sensitivity"] = SensitivityMouse.toFloat();
+
     AsyncWebParameter *current_program = request->getParam("current_program", true);
     String Current_program = current_program->value().c_str();
     cadparams["current_program"] = Current_program.toInt();
+
+    AsyncWebParameter *space_mouse_enable = request->getParam("spacemouse_enable", true);
+    String StrSpaceMouseEnable = space_mouse_enable->value().c_str();
+    if (StrSpaceMouseEnable == "true") {
+        cadparams["spacemouse_enable"] = true;
+    }
+    else {
+        cadparams["spacemouse_enable"] = false;
+    }
+
 
     // TODO: Fix this to include all of the program-specific parameters. Need to figure out how to do
     // this with the AsyncWebServerRequest object. Look at how the menu parameters are saved.
@@ -255,7 +265,6 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
     JsonArray programObject_programarray = cadparams.createNestedArray("programs");
 
     for (int program = 0; program < cadconfig.num_programs; program++) {
-        MSG_DEBUG1("[DEBUG] Requesting partameters for program", program);
         JsonObject programObject = programObject_programarray.createNestedObject();
 
         programObject["name"] = cadprogramconfig[program].name;
@@ -267,6 +276,8 @@ int saveConfigCADParams(AsyncWebServerRequest *request)
             JsonObject programButtonObject = programHWButtonsArray.createNestedObject();
 
             programButtonObject["name"] = "button" + String(button);
+
+            programButtonObject["description"] = cadprogramconfig[program].hw_button_descriptions[button];
 
             JsonArray programButtonObject_actionarray = programButtonObject.createNestedArray("actionarray");
 
@@ -343,10 +354,11 @@ int saveCurrentConfigCADParams()
     cadparams["rotate_scale"] = cadconfig.rotate_scale;
     cadparams["rotate_deadzone"] = cadconfig.rotate_deadzone;
     cadparams["rotate_sensitivity"] = cadconfig.rotate_sensitivity;
+    cadparams["mouse_sensitivity"] = cadconfig.mouse_sensitivity;
     cadparams["current_program"] = cadconfig.current_program;
+    cadparams["spacemouse_enable"] = cadconfig.spacemouse_enable;
 
     JsonArray programObject_programarray = cadparams.createNestedArray("programs");
-
     for (int program = 0; program < cadconfig.num_programs; program++) {
         JsonObject programObject = programObject_programarray.createNestedObject();
 
@@ -359,6 +371,8 @@ int saveCurrentConfigCADParams()
             JsonObject programButtonObject = programHWButtonsArray.createNestedObject();
 
             programButtonObject["name"] = "button" + String(button);
+
+            programButtonObject["description"] = cadprogramconfig[program].hw_button_descriptions[button];
 
             JsonArray programButtonObject_actionarray = programButtonObject.createNestedArray("actionarray");
 

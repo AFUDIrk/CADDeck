@@ -1,5 +1,11 @@
 // Header file for stack_queue.cpp
 #pragma once
+#include <Arduino.h>
+#include "std_defs.h"
+
+const uint8_t STACK_STATUS_OK = 0;
+const uint8_t STACK_STATUS_EMPTY = 1;
+const uint8_t STACK_STATUS_FULL = 2;
 
 // Create a stack class
 class Stack {
@@ -11,10 +17,10 @@ class Stack {
     ~Stack();
 
     // Push an item onto the stack
-    void push(int item);
+    uint8_t push(int item);
 
     // Pop an item off the stack
-    int pop();
+    int pop(uint8_t *status);
 
     // Check if the stack is empty
     bool isEmpty();
@@ -29,9 +35,9 @@ class Stack {
     int count();
 
     // Peek at the top of the stack without removing the item
-    int peek();
+    int peek(uint8_t *status);
 
-   private:
+private:
     // The stack
     int *stack;
 

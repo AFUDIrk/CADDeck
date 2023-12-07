@@ -72,8 +72,12 @@ void serial_commands()
                 sprintf(menuName, "menu%d", i);
 
                 if (command == menuName && pageNum != i && pageNum != WEB_REQUEST_PAGE) {
+                    uint8_t status = pageHistoryStack.push(pageNum);
+                    if (status == STACK_STATUS_FULL) {
+                        MSG_INFOLN("[INFO] Page History Stack is full. Dropped oldest value..");
+                    }
                     pageNum = i;
-                    pageHistoryStack.push(pageNum);
+
                     drawKeypad();
                     MSG_INFO("[Info] Switched to ");
                     MSG_INFOLN(menuName);

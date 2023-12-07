@@ -19,8 +19,10 @@ Stack::~Stack()
 }
 
 // Push an item onto the stack
-void Stack::push(int item)
+uint8_t Stack::push(int item)
 {
+    uint8_t status = STACK_STATUS_OK;
+
     // Check if the stack is full
     if (top == stack_size - 1) {
         // move all items down one position
@@ -28,29 +30,48 @@ void Stack::push(int item)
             stack[i] = stack[i + 1];
         }
         stack[top] = item;
+        status = STACK_STATUS_FULL;
     }
     else {
         // Increment the top of the stack
         top++;
+
+        // Add the item to the stack
+        stack[top] = item;
+
+        status = STACK_STATUS_OK;
     }
-    // Add the item to the stack
-    stack[top] = item;
+
+    // Return the status
+    return status;
 }
 
-
 // Pop an item from the stack
-int Stack::pop()
+int Stack::pop(uint8_t *status )
 {
+    int item = 0;
+    uint8_t ret_status = STACK_STATUS_OK;
+
     // Check if the stack is empty
     if (top == -1) {
         // The stack is empty
         // Throw an exception
-        throw "Stack is empty";
+        MSG_ERRORLN("Stack is empty. Returning 0");
+        item = 0;
+        ret_status = STACK_STATUS_EMPTY;
     }
-    // Get the item from the top of the stack
-    int item = stack[top];
-    // Decrement the top of the stack
-    top--;
+    else {
+        // Get the item from the top of the stack
+        item = stack[top];
+        // Decrement the top of the stack
+        top--;
+
+        ret_status = STACK_STATUS_OK;
+    }
+
+    // Set the status
+    *status = ret_status;
+
     // Return the item
     return item;
 }
@@ -58,26 +79,15 @@ int Stack::pop()
 // Check if the stack is empty
 bool Stack::isEmpty()
 {
-    // Check if the top of the stack is -1
-    if (top == -1) {
-        // The stack is empty
-        return true;
-    }
-    // The stack is not empty
-    return false;
+    // If the top of the stack is -1 return true, otherwise false
+    return (top == -1);
 }
 
 // Check if the stack is full
 
 bool Stack::isFull()
 {
-    // Check if the top of the stack is equal to the stack size - 1
-    if (top == stack_size - 1) {
-        // The stack is full
-        return true;
-    }
-    // The stack is not full
-    return false;
+    return (top == stack_size - 1);
 }
 
 // Get the size of the stack
@@ -96,16 +106,28 @@ int Stack::count()
     return top + 1;
 }
 
-int Stack::peek()
+int Stack::peek(uint8_t *status)
 {
+    int item = 0;
+    uint8_t ret_status = STACK_STATUS_OK;
+
     // Check if the stack is empty
     if (top == -1) {
         // The stack is empty
         // Throw an exception
-        throw "Stack is empty";
+        MSG_ERRORLN("Stack is empty. Returning 0");
+        item = 0;
+        ret_status = STACK_STATUS_EMPTY;
     }
-    // Get the item from the top of the stack
-    int item = stack[top];
+    else {
+        // Get the item from the top of the stack
+        item = stack[top];
+        ret_status = STACK_STATUS_OK;
+    }
+
+    // Set the status
+    *status = ret_status;
+
     // Return the item
     return item;
 }

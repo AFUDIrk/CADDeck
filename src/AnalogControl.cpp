@@ -35,6 +35,9 @@ AnalogControl::~AnalogControl()
 {
 }
 
+/**
+ * Initializes the analog control by setting the pin mode to INPUT and calibrate its zero point.
+ */
 void AnalogControl::Init()
 {
     pinMode(gpio_pin_a, INPUT);
@@ -120,6 +123,10 @@ uint8_t AnalogControl::CalibrateScale()
     return 0;
 }
 
+/**
+ * Returns the current value of the analog control.
+ * @return The current value of the analog control.
+ */
 float AnalogControl::Value()
 {
     float value = (value_int_a - zero_a) * scale_a / 4095.0;

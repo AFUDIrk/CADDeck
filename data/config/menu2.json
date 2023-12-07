@@ -31,16 +31,16 @@
     ]
   },
   "button13": {
-    "logo": "blank.bmp",
-    "latch": false,
-    "latchlogo": "",
+    "logo": "spacemouseoff.bmp",
+    "latch": true,
+    "latchlogo": "spacemouseon.bmp",
     "actionarray": [
-      "0",
+      "11",
       "0",
       "0"
     ],
     "valuearray": [
-      "0",
+      "14",
       "0",
       "0"
     ]

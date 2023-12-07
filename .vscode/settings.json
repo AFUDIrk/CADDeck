@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "*.cps": "javascript",
+        "functional": "cpp",
+        "random": "cpp"
+    }
+}

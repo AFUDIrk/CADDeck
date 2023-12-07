@@ -63,7 +63,7 @@ bool loadMainConfig()
 */
 bool loadConfig(String value)
 {
-    char fileNameType[20];
+    char fileNameType[LEN_FILENAME];
     int fileNameMenuNumber = 0;
     int numConverted = 0;
     numConverted = sscanf(value.c_str(), "%4s%d", fileNameType, &fileNameMenuNumber);
@@ -156,14 +156,15 @@ bool loadConfig(String value)
 
         uint8_t gpio_pin = doc["gpio_pin"] | 255;
         generalconfig.gpio_pin = gpio_pin;
+
         uint8_t gpio_pin_mode = doc["gpio_pin_mode"] | 0;
         generalconfig.gpio_pin_mode = gpio_pin_mode;
 
-        if(gpio_pin != 255) {
+        if (gpio_pin != 255) {
             pinMode(gpio_pin, OUTPUT);
             digitalWrite(gpio_pin, gpio_pin_mode);
         }
-	
+
         configfile.close();
 
         if (error) {
@@ -268,11 +269,30 @@ bool loadConfig(String value)
             return false;
         }
 
+        float mouse_sensitivity = doc["mouse_sensitivity"] | 20.0;
+        cadconfig.mouse_sensitivity = mouse_sensitivity;
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error mouse_sensitivity ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
         uint8_t current_program = doc["current_program"] | 0;
         current_program = constrain(current_program, 0, NUM_CAD_PROGRAMS - 1);
         cadconfig.current_program = current_program;
         if (error) {
             MSG_ERROR2("[ERROR] deserializeJson() error current_program ", error.c_str(), doc.memoryUsage());
+            return false;
+        }
+
+        bool spacemouse_enable = doc["spacemouse_enable"] | false;
+        if (spacemouse_enable) {
+            cadconfig.spacemouse_enable = true;
+        }
+        else {
+            cadconfig.spacemouse_enable = false;
+        }
+        if (error) {
+            MSG_ERROR2("[ERROR] deserializeJson() error spacemouse_enable ", error.c_str(), doc.memoryUsage());
             return false;
         }
 
@@ -304,8 +324,8 @@ bool loadConfig(String value)
             strlcpy(cadprogramconfig[program].logo, logo, sizeof(cadprogramconfig[program].logo));
             MSG_INFO2("[INFO] load_config loading logo", program_name, templogopath);
 
-            cadprogramconfig[program].default_joystick_mode = program_array[program]["default_joystick_mode"] | JoystickModeTilt;          
-            
+            cadprogramconfig[program].default_joystick_mode = program_array[program]["default_joystick_mode"] | JoystickModeTilt;
+
             // Button assignments
 
             JsonArray button_array = program_array[program]["buttons"];
@@ -316,7 +336,7 @@ bool loadConfig(String value)
                 num_buttons = NUM_HW_BUTTONS;
             }
             else if (num_buttons < 1) {
-                MSG_WARN2("[WARN] No buttons in cadparams.json for program ", cadprogramconfig[program].name,". Will use defaults");
+                MSG_WARN2("[WARN] No buttons in cadparams.json for program ", cadprogramconfig[program].name, ". Will use defaults");
             }
             else {
                 MSG_INFO3("[INFO] Number of buttons in cadparams.jsonfor program ", cadprogramconfig[program].name, " is ", num_buttons);
@@ -326,6 +346,18 @@ bool loadConfig(String value)
 
             for (uint8_t button = 0; button < num_buttons; button++) {
                 MSG_INFO1("[INFO] Loading button ", button)
+
+                const char *button_description = button_array[button]["description"] | "Unknown";
+                strlcpy(cadprogramconfig[program].hw_button_descriptions[button], button_description, sizeof(cadprogramconfig[program].hw_button_descriptions[button]));
+                if (cadprogramconfig[program].hw_button_descriptions[button][sizeof(cadprogramconfig[program].hw_button_descriptions[button]) - 1] != '\0') {
+                    // We have overflow, so we need to truncate the string
+                    cadprogramconfig[program].hw_button_descriptions[button][sizeof(cadprogramconfig[program].hw_button_descriptions[button]) - 1] = '\0';
+                }
+                if (error) {
+                    MSG_ERROR2("[ERROR] deserializeJson() error button_description ", error.c_str(), doc.memoryUsage());
+                    return false;
+                }
+
                 JsonArray program_button_actionarray = button_array[button]["actionarray"];
                 int program_button_actionarray_0 = program_button_actionarray[0];
                 int program_button_actionarray_1 = program_button_actionarray[1];
@@ -363,7 +395,6 @@ bool loadConfig(String value)
                 cadprogramconfig[program].hw_buttons[button][1].action = program_button_actionarray_1;
                 cadprogramconfig[program].hw_buttons[button][2].action = program_button_actionarray_2;
             }
-  
         }
 
         configfile.close();
@@ -382,7 +413,7 @@ bool loadConfig(String value)
     }
     // --------------------- Loading menu ----------------------
     else if ((numConverted == 2) && (strncmp("menu", value.c_str(), 4) == 0) && (fileNameMenuNumber >= 0) && (fileNameMenuNumber < NUM_PAGES)) {
-        char configFileName[30];
+        char configFileName[LEN_FILENAME];
         char menuFileNameRoot[10];
 
         snprintf(configFileName, sizeof(configFileName), "/config/menu%d.json", fileNameMenuNumber);
@@ -397,7 +428,7 @@ bool loadConfig(String value)
         snprintf(menuFileNameRoot, sizeof(menuFileNameRoot), "menu%d", fileNameMenuNumber);
         const char *menuName = doc["menuname"] | menuFileNameRoot;
         MSG_INFO1("[INFO] load_config menuname is ", menuName);
-        strncpy(menu[fileNameMenuNumber].name, menuName, sizeof(menu[fileNameMenuNumber].name));
+        strlcpy(menu[fileNameMenuNumber].name, menuName, sizeof(menu[fileNameMenuNumber].name));
 
         for (uint8_t row = 0; row < BUTTON_ROWS; row++) {
             for (uint8_t col = 0; col < BUTTON_COLS; col++) {
@@ -407,18 +438,20 @@ bool loadConfig(String value)
 
                 const char *logo = doc[objectName]["logo"] | "question.bmp";
 
-                strcpy(templogopath, logopath);
-                strcat(templogopath, logo);
-                strcpy(menu[fileNameMenuNumber].button[row][col].logo, templogopath);
+                strlcpy(templogopath, logopath, sizeof(templogopath));
+                strlcat(templogopath, logo, sizeof(templogopath));
+                strlcpy(menu[fileNameMenuNumber].button[row][col].logo, templogopath,
+                        sizeof(menu[fileNameMenuNumber].button[row][col].logo));
                 MSG_INFO2("[INFO] load_config loading logo", objectName, templogopath);
 
                 const char *latchlogo = doc[objectName]["latchlogo"] | "question.bmp";
 
                 menu[fileNameMenuNumber].button[row][col].latch = doc[objectName]["latch"] | false;
 
-                strcpy(templogopath, logopath);
-                strcat(templogopath, latchlogo);
-                strcpy(menu[fileNameMenuNumber].button[row][col].latchlogo, templogopath);
+                strlcpy(templogopath, logopath, sizeof(templogopath));
+                strlcat(templogopath, latchlogo, sizeof(templogopath));
+                strlcpy(menu[fileNameMenuNumber].button[row][col].latchlogo, templogopath, 
+                    sizeof(menu[fileNameMenuNumber].button[row][col].latchlogo));
                 MSG_INFO2("[INFO] load_config loading latchlogo", objectName, templogopath);
 
                 menu[fileNameMenuNumber].button[row][col].imageBGColourValid = false;
@@ -476,6 +509,11 @@ bool loadConfig(String value)
                 if (menu[fileNameMenuNumber].button[row][col].actions[0].action == Action_SpecialFn &&
                     menu[fileNameMenuNumber].button[row][col].actions[0].value == 8) {
                     menu[fileNameMenuNumber].button[row][col].islatched = generalconfig.usbcommsenable;
+                }
+                // Spacemouse mode enable button
+                if (menu[fileNameMenuNumber].button[row][col].actions[0].action == Action_SpecialFn &&
+                    menu[fileNameMenuNumber].button[row][col].actions[0].value == 14) {
+                    menu[fileNameMenuNumber].button[row][col].islatched = cadconfig.spacemouse_enable;
                 }
             }
         }

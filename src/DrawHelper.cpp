@@ -151,7 +151,7 @@ void drawButtonRowCol(uint8_t page, uint8_t row, uint8_t col)
                         menu[pageNum].button[row][col].latchImageBGColourValid = true;
                     }
                     else {
-                        MSG_ERROR1("Fehler bei der Zuweisung des PSRAM für das Latch-Logo: ", menu[pageNum].button[row][col].latchlogo);
+                        MSG_ERROR1("Error allocating PSRAM for latch logo: ", menu[pageNum].button[row][col].latchlogo);
                     }
                 }
                 else {
@@ -174,7 +174,7 @@ void drawButtonRowCol(uint8_t page, uint8_t row, uint8_t col)
                         menu[pageNum].button[row][col].imageBGColourValid = true;
                     }
                     else {
-                        MSG_ERROR1("Fehler beim Zuweisen von PSRAM für das Logo: ", menu[pageNum].button[row][col].logo);
+                        MSG_ERROR1("Error allocating PSRAM for logo: ", menu[pageNum].button[row][col].logo);
                     }
                 }
                 else {
@@ -236,7 +236,7 @@ void drawKeypad()
             }
         }
 
-        drawTopStatusBar(true);  // Draw the top status bar, with a forced redraw
+        drawTopStatusBar(true);     // Draw the top status bar, with a forced redraw
         drawBottomStatusBar(true);  // Draw the bottom status bar, with a forced redraw
     }
 
@@ -248,10 +248,10 @@ void drawKeypad()
         tft.setTextSize(1);
         tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
-        tft.printf("  %s konnte nicht geladen werden und ist möglicherweise beschädigt.\n", jsonFileFail);
-        tft.println("  Sie können diese bestimmte Datei auf die Standardeinstellungen zurücksetzen, indem Sie den seriellen Monitor öffnen");
-        tft.printf("  und Tippen \"reset %s\"\n", jsonFileFail);
-        tft.println("  Wenn Sie dies nicht tun, kann der Konfigurator nicht geladen werden.");
+        tft.printf("  %s failed to load and might be corrupted.\n", jsonFileFail);
+        tft.println("  You can reset that specific file to default by opening the serial monitor");
+        tft.printf("  and typing \"reset %s\"\n", jsonFileFail);
+        tft.println("  If you don't do this, the configurator will fail to load.");
     }
 }
 
@@ -327,43 +327,50 @@ void printinfo()
 
 #ifdef TOUCH_INTERRUPT_PIN
     if (generalconfig.sleepenable) {
-        tft.println("Schlafmodus: Aktiviert");
-        tft.printf("Einschlaftimer: %u Minuten\n", generalconfig.sleeptimer);
+        tft.println("Sleep: Enabled");
+        tft.printf("Sleep timer: %u minutes\n", generalconfig.sleeptimer);
     }
     else {
-        tft.println("Schlafmodus: Deaktiviert");
+        tft.println("Sleep: Disabled");
     }
 #else
-    tft.println("Schlafmodus: Deaktiviert");
+    tft.println("Sleep: Disabled");
 #endif
 
     if (generalconfig.usbcommsenable) {
-        tft.println("USB-Kommunikation: Aktiviert");
+        tft.println("USB Comms: Enabled");
     }
     else {
-        tft.println("USB-Kommunikation: Deaktiviert");
+        tft.println("USB Comms: Disabled");
+    }
+
+    if (cadconfig.spacemouse_enable) {
+        tft.println("Spacemouse Mode: Enabled");
+    }
+    else {
+        tft.println("Spacemouse Mode: Disabled");
     }
 
 #ifdef speakerPin
     if (generalconfig.beep) {
-        tft.println("Lautsprecher: Aktiviert");
+        tft.println("Speaker: Enabled");
     }
     else {
-        tft.println("Lautsprecher: Deaktiviert");
+        tft.println("Speaker: Disabled");
     }
 #else
-    tft.println("Lautsprecher: Deaktiviert");
+    tft.println("Speaker: Disabled");
 #endif
 
 #ifdef READ_EXTERNAL_BATTERY
-    tft.printf("Batteriespannung: %f V\n", externalBatteryVoltage);
+    tft.printf("Battery voltage: %f V\n", externalBatteryVoltage);
 #endif
 
-    tft.print("Dateisystemspeicher. Gesamt: ");
+    tft.print("Filesystem storage. Total: ");
     tft.print(FILESYSTEM.totalBytes() / 1000);
-    tft.print(" kB, benutzt: ");
+    tft.print(" kB, used: ");
     tft.print(FILESYSTEM.usedBytes() / 1000);
-    tft.print(" kB, frei: ");
+    tft.print(" kB, free: ");
     long freemem = FILESYSTEM.totalBytes() - FILESYSTEM.usedBytes();
     tft.print(freemem / 1000);
     tft.println(" kB");
@@ -376,27 +383,57 @@ void printinfo()
     tft.print("ESP-IDF: ");
     tft.println(esp_get_idf_version());
     tft.println(esp_get_idf_version());
-    tft.print("freier Heap: ");
+    tft.print("Free heap: ");
     float freeram = esp_get_free_heap_size();
     tft.print(freeram / 1000);
-    tft.print("kB, Minimaler freier Heap: ");
+    tft.print("kB, Minimum free heap: ");
     freeram = esp_get_minimum_free_heap_size();
     tft.print(freeram / 1000);
     tft.println("kB");
     if (psramAvailable) {
-        tft.print("Benutzter PSRAM: ");
+        tft.print("Used PSRAM: ");
         long kBPSRAM = usedPSRAM();
         tft.print(kBPSRAM / 1000);
         tft.print("kB, ");
-        tft.print("Freier PSRAM: ");
+        tft.print("Free PSRAM: ");
         kBPSRAM = ESP.getFreePsram();
         tft.print(kBPSRAM / 1000);
         tft.print("kB");
     }
     else {
-        tft.println("PSRAM: Nicht verfügbar");
+        tft.println("PSRAM: Not available");
     }
     displayinginfo = true;
+}
+
+/**
+ * @brief This function displays the description for each of the H/W buttons to the TFT screen.
+ *
+ * @param none
+ *
+ * @return none
+ *
+ * @note none
+ */
+void printButtonInfo(uint8_t program)
+{
+    tft.fillScreen(TFT_BLACK);
+    tft.setCursor(KEY_MARGIN_X, KEY_MARGIN_Y_TOP);
+    tft.setTextFont(2);
+    if (SCREEN_WIDTH < 480) {
+        tft.setTextSize(1);
+    }
+    else {
+        tft.setTextSize(1);
+    }
+    tft.setTextColor(TFT_WHITE, TFT_BLACK);
+    tft.printf("CAD Program: %s\n", cadprogramconfig[cadconfig.current_program].name);
+
+    for (int i = 0; i < NUM_HW_BUTTONS; i++) {
+        tft.printf("  Button %d: %s\n", i, cadprogramconfig[cadconfig.current_program].hw_button_descriptions[i]);
+    }
+
+    displayingButtonDescriptions = true;
 }
 
 uint32_t usedPSRAM()
@@ -428,19 +465,19 @@ void printIOValues()
         tft.setTextSize(1);
     }
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
-    tft.printf("Version: %s    \n", versionnumber);
+    tft.printf("Version: %s       \n", versionnumber);
 
-    tft.printf(" Joystick X: %f     \n", joystick.x());
-    tft.printf(" Joystick Y: %f     \n", joystick.y());
+    tft.printf("Joystick X: %d,  %f     \n", joystick.RawX(), joystick.x());
+    tft.printf("Joystick Y: %d,  %f     \n", joystick.RawY(), joystick.y());
 
-    tft.printf(" Zoom: %f     \n", zoomControl.Value());
-    tft.printf(" Drehen: %f     \n", rotateControl.Value());
+    tft.printf("Zoom: %d,  %f     \n", zoomControl.RawValue(), zoomControl.Value());
+    tft.printf("Rotate: %d,  %f     \n", rotateControl.RawValue(), rotateControl.Value());
 
     //    PCF857X::DigitalInput di = pcf857X.digitalReadAll();
-    tft.print(" Taster 0: ");
+    tft.print(" Button 0: ");
     tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_0));
 
-    tft.print(" Taster 1-2-3-4-5: ");
+    tft.print(" Buttons 1-2-3-4-5: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_1));
     tft.print(" - ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_2));
@@ -451,7 +488,7 @@ void printIOValues()
     tft.print(" - ");
     tft.println(get_pcf857X_bit(pcf857X_inputs, BUTTON_5));
 
-    tft.print(" Taster 6-7-8-9-10: ");
+    tft.print(" Buttons 6-7-8-9-10: ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_6));
     tft.print(" - ");
     tft.print(get_pcf857X_bit(pcf857X_inputs, BUTTON_7));
@@ -485,7 +522,7 @@ void drawTopStatusBar(bool force_redraw = true)
         snprintf(buffer, sizeof(buffer), "BT OK - %s", cadprogramconfig[cadconfig.current_program].name);
     }
     else {
-        snprintf(buffer, sizeof(buffer), "Kein BT - %s", cadprogramconfig[cadconfig.current_program].name);
+        snprintf(buffer, sizeof(buffer), "No BT - %s", cadprogramconfig[cadconfig.current_program].name);
     }
     comparison = strncmp(buffer, topStatusBarTextLeft, sizeof(buffer));
     if (comparison != 0 || force_redraw) {
@@ -585,4 +622,22 @@ void drawBottomStatusBar(bool force_redraw = true)
 
         strncpy(bottomStatusBarTextRight, buffer, sizeof(bottomStatusBarTextRight));
     }
+}
+
+/**
+ * @brief This function validates a page number 
+ *
+ * @param page uint8_t. The page number to be validated
+ *
+ * @return true if the page number is valid, false otherwise
+ *
+ * @note  It is not currently being used, but is provided for potential future use.
+ */
+uint8_t isValidPageNumber(uint8_t page)
+{
+    uint8_t valid = false;
+
+    valid = (page >= 0) && (page <= MAX_PAGE_NUM);
+
+    return valid;
 }
