@@ -13,6 +13,11 @@ The connection to the PC is via Bluetooth via the HID interface (ie to the PC it
 A USB-C port is available for power and code downloading.
 The USB-C port on the back is for power to upload the code.
 It should be possible to power the device and hard-wired it to the screen instead of using USB-C for power, but I haven't tried that.
+Andrew added a USB interface with an RP2040 with which the CADDec6 is 6DOF capable. We are still working on changing the code so
+that only one processor is needed. At the moment a Bluetooth and a USB connection are required for the whole thing to work.
+
+The firmware for the RP2040 is from https://github.com/jfedor2/magellan-spacemouse.
+The version for the CADDeck can be found here: https://github.com/AFUDIrk/magellan-spacemouse
 
 ## Touch panel
 The touch panel is inspired by Dustin Watt's FreeTouchDeck project (https://github.com/DustinWatts/FreeTouchDeck.git), which I modified to increase the number of buttons.
@@ -192,8 +197,6 @@ Quantity 4 screws M3x20mm (for attaching the joystick)
 Quantity 9 screws M2x5mm (to attach the wheel to the joystick button, the USB-C board and to attach the PCF8575)
 
 Quantity 1 M4x16mm hex standoff ![Inside Knob](images/M4_hex_standoff.png)
-
-Quantity 3 M2.5x15mm hexagonal standoff bolts ALU or brass
 
 Quantity 1 JST RM 2,54 mm connector and pin header  5-pin
 
