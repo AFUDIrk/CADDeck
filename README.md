@@ -16,7 +16,7 @@ Für die Stromversorgung und das Herunterladen von Code steht ein USB-C-Anschlus
 Der USB-C-Anschluss auf der Rückseite dient der Stromversorgung zum Hochladen des Codes.
 Es sollte möglich sein, das Gerät mit Strom zu versorgen und es fest mit dem Bildschirm zu verbinden, anstatt es über USB-C mit Strom zu versorgen, aber das habe ich noch nicht versucht.
 
-Es wurde von Andrew eine USB-Schnitstelle mit einem RP2040 hinzugefügt, mit der das CADDec6 6DOF fähig ist. Es wird noch daran gearbeitet, den Code so zu ändern,
+Es wurde von Andrew eine USB-Schnitstelle mit einem RP2040 hinzugefügt, mit der das CADDeck 6DOF fähig ist. Es wird noch daran gearbeitet, den Code so zu ändern,
 das nur noch ein Prozessor gebraucht wird. Momentan ist noch eine Bluetooth- und eine USB-Verbindung nötig, damit das ganze funktioniert.
 
 Die Firmware für den RP2040 ist von https://github.com/jfedor2/magellan-spacemouse.

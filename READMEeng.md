@@ -13,7 +13,8 @@ The connection to the PC is via Bluetooth via the HID interface (ie to the PC it
 A USB-C port is available for power and code downloading.
 The USB-C port on the back is for power to upload the code.
 It should be possible to power the device and hard-wired it to the screen instead of using USB-C for power, but I haven't tried that.
-Andrew added a USB interface with an RP2040 with which the CADDec6 is 6DOF capable. We are still working on changing the code so
+
+Andrew added a USB interface with an RP2040 with which the CADDeck is 6DOF capable. We are still working on changing the code so
 that only one processor is needed. At the moment a Bluetooth and a USB connection are required for the whole thing to work.
 
 The firmware for the RP2040 is from https://github.com/jfedor2/magellan-spacemouse.
