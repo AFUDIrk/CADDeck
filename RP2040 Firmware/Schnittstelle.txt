@@ -1,4 +1,4 @@
-CADDeck  ->  Pico
-Pin 5 RX ->  Pin 20 TX
-Pin 4 TX ->  Pin 21 RX
-GND      ->  GND
+CADDeck   ->  Pico
+GPIO 5 RX ->  GPIO 20 TX
+GPIO 4 TX ->  GPIO 21 RX
+GND       ->  GND
