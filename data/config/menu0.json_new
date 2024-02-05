@@ -1,0 +1,195 @@
+{
+  "menuname": "Home",
+  "button11": {
+    "logo": "KiCad.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "6",
+      "0",
+      "0"
+    ]
+  },
+  "button12": {
+    "logo": "cad_options.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "2",
+      "0",
+      "0"
+    ]
+  },
+  "button13": {
+    "logo": "fusion360.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "8",
+      "0",
+      "0"
+    ]
+  },
+  "button14": {
+    "logo": "FreeCAD.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "9",
+      "0",
+      "0"
+    ]
+  },
+  "button21": {
+    "logo": "button_desc.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "11",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "13",
+      "0",
+      "0"
+    ]
+  },
+  "button22": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button23": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button24": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button31": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button32": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button33": {
+    "logo": "blank.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "0",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "button34": {
+    "logo": "settings.bmp",
+    "latch": false,
+    "latchlogo": "",
+    "buttontext": null,
+    "actionarray": [
+      "14",
+      "0",
+      "0"
+    ],
+    "valuearray": [
+      "1",
+      "0",
+      "0"
+    ]
+  }
+}
